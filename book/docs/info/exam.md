@@ -47,8 +47,4 @@ There will be handed out four projects during the semesters. You will need to do
 
 ## Exam
 
-You need to pass all four projects in the course to qualify for the final oral exam. The final oral exam is a Pass/Fail grade, and must be passed to pass the course as a whole. The oral exam is individual and will focus mainly on the project work in the course. You will be asked to present your work from one of projects (chosen randomly). In addition you will get a few questions from the other projects and the remaining curriculum. Note that even if you do project work in pairs, you will need to be able to answer questions regarding all parts of your submission. 
-
-
-
-
+You need to pass all four projects in the course to qualify for the final oral exam. The final oral exam is a Pass/Fail grade, and must be passed to pass the course as a whole. The oral exam is individual and will focus mainly on the project work in the course. You will be asked to present your work from one of projects (chosen randomly). In addition you will get a few questions from the other projects and the remaining curriculum. Note that even if you do project work in pairs, you will need to be able to answer questions regarding all parts of your submission.

@@ -32,7 +32,7 @@ If you want a different introduction to OOP in Python, these two lectures from M
 
 Object-oriented programming (OOP for short), is a [*programming paradigm*](https://en.wikipedia.org/wiki/Programming_paradigm). Put simply, a paradigm is a way to think about, organize, and write code. Paradigms are used to classify and describe languages and programming styles. Many other paradigms exists, and you might have heard of some of them. Some examples are: procedural programming, functional programming, imperative programming, and symbolic programming. Most programming languages don't belong to a single, specific paradigm. Instead most languages, including Python and C++, are described as *multi-paradigm*, meaning it is possible to structure and write your code in different ways.
 
-Object-oriented programming is a way of solving problems, or building software, by defining data as *objects*, and specifying how those objects behave and interact. It is one of the most popular programming paradigms, and is often used when developing software. When done correctly, OOP leads to code that is usually quite easy to understand, use and extend. 
+Object-oriented programming is a way of solving problems, or building software, by defining data as *objects*, and specifying how those objects behave and interact. It is one of the most popular programming paradigms, and is often used when developing software. When done correctly, OOP leads to code that is usually quite easy to understand, use and extend.
 
 #### The origins of OOP
 
@@ -65,7 +65,7 @@ One of the reasons OOP is so popular is that it is quite intuitive, because it m
 
 Think about the contact list on your phone. For each contact, you can store information of different types: name, different phone numbers, emails, etc. For some contacts you have many pieces of information about, some you only have a single piece of information.
 
-Let us say we want to implement such a contact list for a new phone system we are making. We might start thinking how to solve this problem. It makes sense to think of each individual contact as an individual *object*. Each piece of information belongs to a given contact, so it should be part of that object in the code. 
+Let us say we want to implement such a contact list for a new phone system we are making. We might start thinking how to solve this problem. It makes sense to think of each individual contact as an individual *object*. Each piece of information belongs to a given contact, so it should be part of that object in the code.
 
 To begin with, we only want to store information about each contact, and so dictionaries would be a natural choice for this. We can use key-value pairs to store the information we want, and ignore the pieces of information we don't want. Other parts of the software system can then go in and access information from the contact dictionary as needed
 
@@ -167,13 +167,13 @@ class Deck:
         for s in ('D', 'H', 'C', 'S'):
             for v in range(1, 14):
                 self.cards.append((s,v))
-    
+
     def shuffle(self):
         random.shuffle(self.cards)
-    
+
     def draw(self, n=1):
-        return [self.cards.pop() for _ in range(n)]        
-    
+        return [self.cards.pop() for _ in range(n)]
+
     def shuffle_into_deck(self, cards):
         self.cards.extend(cards)
         self.shuffle()
@@ -195,11 +195,11 @@ print(hand)
 
 In our class examples so far, we have simply used the `self`-syntax without explaining it. It is a normal point of confusion for those learning Python, and even those who learn how to define the classes and method using `self` might not really understand *why* it works like it does.
 
-When we call a method on a given instance of a class, like for example 
+When we call a method on a given instance of a class, like for example
 ```
 deck.shuffle()
 ```
-This is interpreted behind the scenes by Python as 
+This is interpreted behind the scenes by Python as
 ```
 Deck.shuffle(deck)
 ```
@@ -217,7 +217,7 @@ When we intend to use this on a specific deck we simply write `deck.shuffle()`, 
 
 ### Interfaces
 
-In our deck of cards example, we have specific methods the user can use to interact with the deck of cards, and we can call this the *interface* (På norsk: grensesnitt) of the class. To put it simply, the interface is what is "visible" or usable from outside the class. If you build a large and complex class, all anyone really needs to interact with it is a good understanding of its interface. In this sense, the interface itself is an abstraction tool. Take a car for example, the interface used for driving that gar is the steering wheel, the pedals and the gear stick. However, under the hood there is an engine and lots of complicated machinery. 
+In our deck of cards example, we have specific methods the user can use to interact with the deck of cards, and we can call this the *interface* (På norsk: grensesnitt) of the class. To put it simply, the interface is what is "visible" or usable from outside the class. If you build a large and complex class, all anyone really needs to interact with it is a good understanding of its interface. In this sense, the interface itself is an abstraction tool. Take a car for example, the interface used for driving that gar is the steering wheel, the pedals and the gear stick. However, under the hood there is an engine and lots of complicated machinery.
 
 The act of hiding dirty implementation or technical details under the hood is called *encapsulation*. Encapsulation is useful for keeping code nice and tidy and user friendly. Also, it means that the details under the hood can change without issue, as long as the external interface remains the same. A mechanic can replace the engine in your car, but you will still be able to drive it as before, because the interface is the same.
 
@@ -251,7 +251,7 @@ print(f"Has a surface area of {football.area:.0f} cm^2")
 print(f"And a volume of {football.volume:.0f} cm^3")
 ```
 
-Once we define a new instance of the class, the `__init__`-method is called behind the scenes. As usual, the first argument is called "self", because this will be the object itself. In addition we send in any additional arguments we need to define an object of the given class. In this example we define a sphere-object, and so we send in the radius as an argument. In our constructor we then choose to store the radius as a data attribute by writing 
+Once we define a new instance of the class, the `__init__`-method is called behind the scenes. As usual, the first argument is called "self", because this will be the object itself. In addition we send in any additional arguments we need to define an object of the given class. In this example we define a sphere-object, and so we send in the radius as an argument. In our constructor we then choose to store the radius as a data attribute by writing
 ```python
 self.radius = radius
 ```
@@ -285,19 +285,19 @@ class Sphere:
 
     def __str__(self):
         return(f"Sphere({self.radius})")
-        
+
 football = Sphere(11)
 print(football)
 ```
 
-A different special method that is similar to the string method is the representation special method (`__repr__`). The main difference is that `__str__` is meant to be human readable, so that it works with `print()`. This means that `__str__` can be informal, and ambiguous, as long as it is somewhat informative. 
+A different special method that is similar to the string method is the representation special method (`__repr__`). The main difference is that `__str__` is meant to be human readable, so that it works with `print()`. This means that `__str__` can be informal, and ambiguous, as long as it is somewhat informative.
 
 On the other hand we have `__repr__`, which is meant to be unambiguous and more formal. It should be a unique representation of the object so that it could be used to recreate that object later. When calling `repr(u)` we should get a string that we for example can write to a file, then later load in and execute that statement to get the object back. So `eval(repr(u))` should give `u`.
 
 The repr special method is also called when printing out elements inside a list for example, so if we write out our football inside a list, the output will be as before, despite having implemented a str-method. To fix this we would need to add a repr instead, or in addition to, the str-method.
 
 ```python
-list_of_spheres = [Sphere(0), Sphere(5), Sphere(10)] 
+list_of_spheres = [Sphere(0), Sphere(5), Sphere(10)]
 print(list_of_spheres)
 ```
 
@@ -314,7 +314,7 @@ class Sphere:
 
     def __str__(self):
         return f"Sphere({self.radius})"
-    
+
     def __repr__(self):
         return str(self)
 ```
@@ -322,7 +322,7 @@ class Sphere:
 Here we use a quick little trick. Because we don't really want `__repr__` and `__str__` to produce any different output, we simply let `__repr__` use the string special method by writing `self(str)`. Using methods internally when defining classes is very common, and can save us a lot of hassle
 
 ```python
-list_of_spheres = [Sphere(0), Sphere(5), Sphere(10)] 
+list_of_spheres = [Sphere(0), Sphere(5), Sphere(10)]
 print(list_of_spheres)
 ```
 
@@ -342,11 +342,11 @@ Here, there a three free parameters, the coefficients $a$, $b$, and $c$. We ther
 class Quadratic:
     def __init__(self, a, b, c):
         self.coefficients = a, b, c
-    
+
     def __call__(self, x):
         a, b, c = self.coefficients
         return a*x**2 + b*x + c
-    
+
 f = Quadratic(1, 2, 1)
 print(f(4))
 ```
@@ -375,11 +375,11 @@ plt.show()
 There are several advantages to implementing these quadratic functions as actual Quadratic-objects, rather than as normal Python functions. For one, they now have a custom type, which we can check using `isinstance(f, Quadratic)`. Thus, other parts of our code can *know* that the function is a quadratic function. We can also extend the class adding plenty of useful functionality. We could for example add functionality for adding or subtracting functions, producing new Quadratic-objects. This cannot be done with normal functions. Or we could add a method for returning the derivative. If you do this week's exercises, you will get the chance to implement all of these for a general degree polynomial.
 
 
-#### Polymorphism 
+#### Polymorphism
 
-The fact that we can use callable objects as if they were functions is very useful in Python, and it is an example of [*polymorphism*](https://en.wikipedia.org/wiki/Polymorphism_(computer_science)). Polymorphism is another of the pillars of OOP, but the concept is a bit tricky to define or understand. The term itself comes from greek and means "many forms". It is a means of generalizing code, in that we can write different code that behaves the same under given circumstances, and thus we can use those objects as long as they have a given property we need. In this case, we can create objects that acts and feels like functions, and we can use them for any purpose were we need a Python function. 
+The fact that we can use callable objects as if they were functions is very useful in Python, and it is an example of [*polymorphism*](https://en.wikipedia.org/wiki/Polymorphism_(computer_science)). Polymorphism is another of the pillars of OOP, but the concept is a bit tricky to define or understand. The term itself comes from greek and means "many forms". It is a means of generalizing code, in that we can write different code that behaves the same under given circumstances, and thus we can use those objects as long as they have a given property we need. In this case, we can create objects that acts and feels like functions, and we can use them for any purpose were we need a Python function.
 
-This is an example of Python's [*duck typing*](https://en.wikipedia.org/wiki/Duck_typing). This term comes from the saying: 
+This is an example of Python's [*duck typing*](https://en.wikipedia.org/wiki/Duck_typing). This term comes from the saying:
 
 * *If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck.*
 
@@ -409,10 +409,10 @@ class Derivative:
     def __init__(self, f, dx=1e-6):
         if not callable(f):
             raise ValueError("Input must be callable.")
-        
+
         self.f = f
         self.dx = dx
-    
+
     def __call__(self, x):
         dx = self.dx
         return (self.f(x+dx) - self.f(x-dx))/(2*dx)
@@ -495,7 +495,7 @@ ball = Sphere(5)
 print(f"{ball} has a volume of {ball.volume:.0f}")
 
 ball.radius += 5
-print(f"{ball} has a volume of {ball.volume:.0f}")      
+print(f"{ball} has a volume of {ball.volume:.0f}")
 ```
 
 So here we create a `Sphere`-object, which we call `ball`. We can update the radius of the ball by changing the `ball.radius` attribute directly. However, when we do this, the volume does not change. This is because the volume is only computed in the constructor (the `__init__` method), which is called only when the object is first created.
@@ -508,13 +508,13 @@ A simple solution is to make the `area` and `volume` attributes methods instead 
 class Sphere:
     def __init__(self, radius):
         self.radius = radius
-        
+
     def area(self):
         return 4*pi*self.radius**2
-    
+
     def volume(self):
         return 4*pi*self.radius**3/3
-    
+
     def __str__(self):
         return f"Sphere({self.radius})"
 ```
@@ -526,7 +526,7 @@ ball = Sphere(5)
 print(f"{ball} has a volume of {ball.volume():.0f}")
 
 ball.radius += 5
-print(f"{ball} has a volume of {ball.volume():.0f}")  
+print(f"{ball} has a volume of {ball.volume():.0f}")
 ```
 
 By making the `area` and `volume` attributes methods, they will always be recomputed as they are needed, which is nice. It will also make it easier for the user to understand that they are derived quantities from `Sphere.radius` and not independent attributes.
@@ -547,18 +547,18 @@ When we add the `@property` decorator to a method in a class, that method will b
 class Sphere:
     def __init__(self, radius):
         self.radius = radius
-    
+
     @property
     def area(self):
         return 4*pi*self.radius**2
-    
+
     @property
     def volume(self):
         return 4*pi*self.radius**3/3
-    
+
     def __str__(self):
         return f"Sphere({self.radius})"
-    
+
 football = Sphere(11)
 print(football.area)
 print(type(football.area))
@@ -573,7 +573,7 @@ ball = Sphere(5)
 print(f"{ball} has a volume of {ball.volume:.0f}")
 
 ball.radius += 5
-print(f"{ball} has a volume of {ball.volume:.0f}")  
+print(f"{ball} has a volume of {ball.volume:.0f}")
 ```
 
 Let us now look at what happens if we try to change the `area` and `volume` properties directly, instead of changing the radius. If you try this yourself, you will get an error as follows
@@ -618,7 +618,7 @@ class Sphere:
         if area < 0:
             raise ValueError("Area cannot be negative")
         self.radius = sqrt(area/(4*pi))
-        
+
     def __str__(self):
         return f"Sphere({self.radius})"
 ```
@@ -633,7 +633,7 @@ print(f"{ball} has an area of {ball.area:.0f}")
 
 ball.radius = 5
 print(f"{ball} has an area of {ball.area:.0f}")
-      
+
 ball.area = 1000
 print(f"{ball} has an area of {ball.area:.0f}")
 ```
@@ -658,7 +658,7 @@ Our sphere class now works quite well and is user friendly. We can now the radiu
 
 For such a simple computation as this, recomputing the area or volume isn't a big deal. But say these computations were more complicated and took something like a minute to complete. It would be annoying an inefficient to repeat such computations again and again.
 
-The way we would get around this would be to store the computed values as *internal* data in the class that the user should not interact with from outside the class. Such attributes are typically called *private attributes*. In Python there is no way to implement actual private variables, but you can designate that variables should be considered private by giving them name with a leading underscore. 
+The way we would get around this would be to store the computed values as *internal* data in the class that the user should not interact with from outside the class. Such attributes are typically called *private attributes*. In Python there is no way to implement actual private variables, but you can designate that variables should be considered private by giving them name with a leading underscore.
 
 Let us show by an example (again we skip the `volume` property, which you can add yourself)
 
@@ -667,22 +667,22 @@ class Sphere:
     def __init__(self, radius):
         self._radius = radius
         self._area = 4*pi*radius**2
-    
+
     @property
     def radius(self):
         return self._radius
-    
+
     @radius.setter
     def radius(self, r):
         if r < 0:
             raise ValueError("Radius cannot be negative")
         self._radius = r
         self._area = 4*pi*self.radius**2
-    
+
     @property
     def area(self):
         return self._area
-    
+
     @area.setter
     def area(self, area):
         if area < 0:
@@ -693,7 +693,7 @@ class Sphere:
 
 We now store the area of the sphere as a private attribute called `sphere._area`. The underscore means this variable should never be accessed from outside the class. In addition we add the property `sphere.area` which can be used from outside.
 
-The code will now behave exactly the same as before from outside the class, but by using `sphere._area` we avoid unnecessarily recomputing the area many times. 
+The code will now behave exactly the same as before from outside the class, but by using `sphere._area` we avoid unnecessarily recomputing the area many times.
 
 Note that we have also made the radius into a private variable `sphere._radius` and external property `sphere.radius`. We had to do this do ensure that the `sphere._area` attribute is recomputed if the radius is set (using `@radius.setter`).
 
@@ -705,4 +705,3 @@ The code is now *a lot* more complex than what we started out with. And in many 
 In our final example, the user has the properties `football.radius` and `football.area` they can interact with, while the class itself stores the internal data in the fields `_radius` and `_area`. We call the first two *public* properties or variables. Here, public means that they are accessible from outside the class. The latter two variables are *private*, meaning they should only be accessed from inside the class and are not meant to be used from outside.
 
 Note that we give the private variables leading underscores in their name, which indicates they are private. In Python, there is no way to enforce private variables however, and the leading underscore is just a convention. Thus the user can go inn and change these directly: `football._radius = 9`, however, this is breaking the *convention* that one should change a private variable, and if this breaks the object, it is the users fault. Other languages, such as Java and C++ however, *do* enforce private and public variables. If you attempt to access a private variable from outside, an error is thrown.
-

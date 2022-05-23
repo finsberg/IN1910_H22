@@ -26,7 +26,7 @@ Another, more extensive, resource you can use is *A Primer on Scientific Program
 
 ## A short note on on Jupyter Notebooks
 
-This document, and most of the others in IN1910, are written in Jupyter Notebooks. This is a tool that allows for combining traditional text with code that is executable. Previously known as IPython notebooks, the name was changed to reflect that it works with many different languages. The name Jupyter comes from "Julia, Python and R", which are three programming languages that work with the software. Jupyter has grown into a popular tool for scientific programming, both for teaching and development. 
+This document, and most of the others in IN1910, are written in Jupyter Notebooks. This is a tool that allows for combining traditional text with code that is executable. Previously known as IPython notebooks, the name was changed to reflect that it works with many different languages. The name Jupyter comes from "Julia, Python and R", which are three programming languages that work with the software. Jupyter has grown into a popular tool for scientific programming, both for teaching and development.
 
 You are not required to become proficient at using or writing notebooks in this course, and you are free to simply read the documents and do all your own coding in your preferred text editor. However, Jupyter is a nice tool to know, so feel free to also make your own notebooks, or to solve the weekly exercises in Jupyter. Note also that if you open the lecture notes in notebooks you will be able to play around with code and concepts as you are reading the notes, which can be a big help.
 
@@ -78,7 +78,7 @@ print(f"After {t:.2f} seconds, the object has traveled {s:.2f} meters")
 Here `:.2f` is used to specify two decimals, the letter f in this context is short for `float`. If you want a more comprehensive introduction for formating output, you can take a look at this link from the official Python docs:
 * https://docs.python.org/3/tutorial/inputoutput.html
 
-#### Rounding 
+#### Rounding
 Note from the previous example that the result is a bit surprising, as 1.025 got rounded to 1.02, instead of 1.03 as you might have expected it to. This is because we are using Python3, which uses something called [*bankers' rounding*](https://en.wikipedia.org/wiki/Rounding), in which a .5 is rounded down if the preceeding number is even, and up if it is odd. The same behavior is shown in the built in `round` function
 
 ```python
@@ -88,7 +88,7 @@ print(round(2.5))
 print(round(3.5))
 ```
 
-### Importing 
+### Importing
 
 Python includes a large number of standard libraries and external packages. In IN1910 we will for example make use of the SciPy stack, which includes packages like numpy, scipy, matplotlib, etc. We can import packages in several ways
 
@@ -111,7 +111,7 @@ y = sin(x)
 ```
 This code will not work, as the `sin` function will here refer to `math.sin`, which is not vectorized and so cannot work on `x`, which is an array. If you change the order of the two imports however, the code will work, because then `sin` refers to `numpy.sin`, which *is* vectorized.
 
-(**Example line 2 & 3**) It would be much better to import the two packages in their own namespace with 
+(**Example line 2 & 3**) It would be much better to import the two packages in their own namespace with
 ```python
 import math
 import numpy as np
@@ -211,7 +211,7 @@ print(f"x = {x}")
 print(f"y = {y}")
 ```
 
-These two example show fundamentally different behavior. In both cases we first define one variable, then we make a "copy" of the first variable, by assigning `b = a` and `y = x`. We then change the original and print out both variables. 
+These two example show fundamentally different behavior. In both cases we first define one variable, then we make a "copy" of the first variable, by assigning `b = a` and `y = x`. We then change the original and print out both variables.
 
 You might expect that the copied variables (`b` and `y`) should be unchanged, since we only change the originals (`a` and `x`). In the first example, we see that this is indeed the case, as `b` is still 5. In the second case however, the list `y` is changed! What is going on?
 
@@ -231,7 +231,7 @@ When learning programming, it is easy to get confused by examples such as the on
 
 This tools lets you write Python code and execute it line by line. For each statement executed, it shows what objects and variables exist, and in which scopes. This can be super helpful for understanding confusing examples such as mutable variables. You can run the two cases shown above in Python tutor and observe the differences.
 
-If you are using Visual Studio Code editor, there is also an extension called [Python Preview](https://marketplace.visualstudio.com/items?itemName=dongli.python-preview) that will show you how the code is executed as you type it in your editor.  
+If you are using Visual Studio Code editor, there is also an extension called [Python Preview](https://marketplace.visualstudio.com/items?itemName=dongli.python-preview) that will show you how the code is executed as you type it in your editor.
 
 
 ## Functions in Python
@@ -267,7 +267,7 @@ for n in range(10):
 
 ### Defining your own functions
 
-You can define your own functions in Python using the `def` keyword. You should use the `return` keyword to specify the return-value (the output) of the function. You can choose freely how many arguments and keyword-arguments a function should have, and you can name these yourself. For any keyword argument you must specify their default value. 
+You can define your own functions in Python using the `def` keyword. You should use the `return` keyword to specify the return-value (the output) of the function. You can choose freely how many arguments and keyword-arguments a function should have, and you can name these yourself. For any keyword argument you must specify their default value.
 
 ```python
 def double(x, n=1):
@@ -308,7 +308,7 @@ This function is an example of a *stochastic trial*, which means the result is r
 
 
 #### Exercise 2: Your turn
- 
+
 Normal dice have six sides, but many other types of dice existing. In board games for example, dice with 4, 8, 12, and 20 sides are for example very common. Therefore, extend the `roll_dice` function to also use a keyword argument `d` which represents the number of faces on the dice being thrown. The keyword should default to the standard 6 sides.
 
 ```python
@@ -344,17 +344,17 @@ In the following example we define a function that checks whether a given intege
 def is_prime(n):
     if n == 1:
         return False
-    
+
     for d in range(2, n):
         if n % d == 0:
             return False
-        
+
     return True
 ```
 
 This function works because as soon as a number is returned, the function ends. So we first check for 1 as a separate test, because this is a special case. Then we do trial division for the remaining possible candidates. To check whether a given trial divisor $d$ divides $n$ we check whether $n \ \text{mod}\ d = 0$, where `%` is the modulus operator in Python.
 
-Note also that as soon as the function hits a divisor, we know the number is not prime and we can immediately return the boolean `False`. As soon as the function returns, the rest of the execution halts. This is good for efficiency, as the program automatically stops looking for further divisors once one is found. 
+Note also that as soon as the function hits a divisor, we know the number is not prime and we can immediately return the boolean `False`. As soon as the function returns, the rest of the execution halts. This is good for efficiency, as the program automatically stops looking for further divisors once one is found.
 
 ```python
 for i in range(1, 12):
@@ -364,7 +364,7 @@ for i in range(1, 12):
         print(f"{i:2} is not prime")
 ```
 
-### List Comprehensions 
+### List Comprehensions
 
 We can also use *list* comprehensions to quickly compile lists on single-lines using a for-loop syntax. Take the following example where we assemble a list of primes.
 
@@ -448,7 +448,7 @@ money = 10000
 while money < 20000:
     money *= interest
     years += 1
-    
+
 print(f"You will need to wait {years} years, you'll have {money:.0f} kr in your account")
 ```
 
@@ -517,7 +517,7 @@ $$
 g(y) = e^{-y}\sin(8y),
 $$
 
-for $y \in [0,4]$. 
+for $y \in [0,4]$.
 
 Also add in the enveloping curves $e^{-y}$ and $-e^{-y}$ as dashed gray lines (Hint: You can add `'--'` and `color='gray'` as arguments to `plt.plot`).
 
@@ -569,7 +569,7 @@ Here we use `np.arange` to define the array $t \in [0, 10]$ with a step size of 
 
 ```python
 for i in range(len(u)-1):
-    u[i+1] = (1 - a*dt)*u[i]     
+    u[i+1] = (1 - a*dt)*u[i]
 ```
 
 After running this loop, `u` should contain the solution for all given time points, and we can not plot $u(t)$ to see the solution

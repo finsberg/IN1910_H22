@@ -14,7 +14,7 @@ Note that the lecture notes might get minor updates and revisions as the semeste
 
 ## Exercises and Group Sessions
 
-Most weeks we have weekly exercises that are not mandatory, but strongly recommended. They cover topics covered in the lectures, and often lead up to the project work. 
+Most weeks we have weekly exercises that are not mandatory, but strongly recommended. They cover topics covered in the lectures, and often lead up to the project work.
 
 There are weekly group sessions where you get help with both the weekly exercises, as well sa project work from a teaching assistant/gruppelærer. Everyone is assigned to a given group and you can only attend the group session to which you belong. To find the time and location of your group, see https://www.uio.no/studier/emner/matnat/ifi/IN1910/h22/timeplan. In addition to the physical group sessions, there is a weekly digital group session where anyone who wants to can join. The weekly digital group is help on Fridays at TBD at the following Zoom link: (Link to be added later).
 
@@ -33,7 +33,7 @@ There are weekly group sessions where you get help with both the weekly exercise
 * Slides
     * [Lecture 1](../slides/L01/L1_course_overview.ipynb)
     * [Lecture 2](../slides/L02/L2_git.md)
-   
+
 #### Week 35 - Exception handling and Testing and Object Oriented Programming
 
 * Lecture notes
@@ -86,7 +86,7 @@ There are weekly group sessions where you get help with both the weekly exercise
 * Slides
     * [Lecture 11](../slides/L11/L11_cpp_intro.md)
     * [Lecture 12](../slides/L12/L12_array_memory_pointers.md)
-    
+
 #### Week 40 — Object-oriented Programming in C++
 * Lecture notes
     * [Structs and Classes](../lectures/cpp/oop_in_cpp.md)
@@ -110,7 +110,7 @@ There are weekly group sessions where you get help with both the weekly exercise
     * [Algorithm Analysis](../lectures/cpp/algorithm_analysis.md)
     * [Comparing Linked Lists and Dynamic Arrays](../lectures/cpp/linkedlists_vs_dynamicarrays.md)
     * [Header files, Debugging, Code style, Testing, Documentation and Makefiles](../lectures/cpp/cpptools.md)
-    
+
 * Exercises
     * [Project 2](../projects/project2/project2.ipynb)
 * Slides
@@ -126,7 +126,7 @@ There are weekly group sessions where you get help with both the weekly exercise
     * [Random Number Generators](../exercises/week10/E8_random_number_generators.ipynb)
 * Slides
     * [Lecture 17](../slides/L17/L17_generating_random_numbers.ipynb)
-    
+
 #### Week 44 — Random Walks and Markov Processes
 
 * Lecture Notes
@@ -155,10 +155,10 @@ There are weekly group sessions where you get help with both the weekly exercise
   * Slides
     * [Software Optimization](../slides/L23/L23_software_optimization.ipynb)
     * [Mixed programming](../slides/L24/L24_mixed_programming.ipynb)
-    
+
 #### Week 47 — Parallelization and Course Summary
 * Lecture Notes
-    * [Parallelization](../lectures/optimization/parallel_programming.ipynb) 
+    * [Parallelization](../lectures/optimization/parallel_programming.ipynb)
     * [Course Summary](../lectures/summary/course_summary.md)
     * [Best Practices for Scientific Programming by Wilson et al](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745)
 * Exercises

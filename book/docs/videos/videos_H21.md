@@ -23,4 +23,3 @@
 - [Lecture 23: 16.11.21 - Profilering og optimalisering](https://www.uio.no/studier/emner/matnat/ifi/IN1910/h21/forelesningsvideoer/2021-11-16.mp4)
 - [Lecture 24: 18.11.21 - Blandet programmering](https://www.uio.no/studier/emner/matnat/ifi/IN1910/h21/forelesningsvideoer/2021-11-18.mp4)
 - [Lecture 25: 23.11.21 - Parallel programmering](https://www.uio.no/studier/emner/matnat/ifi/IN1910/h21/forelesningsvideoer/2021-11-23.mp4)
-

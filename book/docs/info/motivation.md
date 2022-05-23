@@ -33,7 +33,7 @@ In IN1910, we will return to these practices and try to reflect on how to implem
 
 ## Languages in 1910
 
-In 1910 is a continuation of IN1900, and will primarily be using Python. However, we will also be introducing a second language: C++. 
+In 1910 is a continuation of IN1900, and will primarily be using Python. However, we will also be introducing a second language: C++.
 
 Python is a modern, object-oriented programming language. It has a clear, readable syntax, making it easy to learn, and easy to write understandable, maintainable, and shareable code. It also has a good standard library and plenty of extensions for scientific computing. It is also open source. All of this points to Python being a good language for scientific computing. A language that is fairly comparable to Python for some scientific applications is Matlab, but we will also dive deeper into object-oriented programming and other concepts in computer science that are not that well covered by Matlab. Besides, Python has a syntax fairly similar to Matlab, and so learning Python well will equip you to handle Matlab at a later point. We opt to go for Python 3, hopefully you have already taken the move over to 3 yourself, but if you are used to 2.7, don't worry, the differences are minor.
 

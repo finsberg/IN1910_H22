@@ -30,7 +30,7 @@ docs: ## Build book
 	done
 	cp -r book/docs/info/fig book/_build/html/docs/info/
 	touch book/_build/html/.nojekyll
-	
+
 
 show:  ## Open index page
 	open book/_build/html/index.html
@@ -66,4 +66,3 @@ clean-ipynb:  ## remove notebook artifacts
 
 clean-pytest:  ## remove pytest cache
 	find . -name '.pytest_cache' -exec rm -fr {} +
-

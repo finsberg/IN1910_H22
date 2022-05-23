@@ -1,6 +1,6 @@
 # Curriculum
 
-The lecture notes and the four mandatory projects are the curriculum of IN1910. 
+The lecture notes and the four mandatory projects are the curriculum of IN1910.
 
 ## Curriculum and Teaching Materials
 
@@ -33,7 +33,7 @@ The teaching material are published using something called GitHub pages which yo
 
 These lecture notes are generated from Jupyter notebooks which you can find here
 
-* [https://github.uio.no/IN1910/IN1910](https://github.uio.no/IN1910/IN1910). 
+* [https://github.uio.no/IN1910/IN1910](https://github.uio.no/IN1910/IN1910).
 
 These notebooks contain working code examples and we encourage you to try changed the code in order to see how this will alter the output. You can download these notebooks through git to your own machine and run them through Jupyter, or you can use the UiO Jupyterhub server. Here you will also log in with your UiO username and password, and you can then navigate to IN1910. When you run Jupyter notebooks through Jupyterhub, you are running things on a UiO server, so this is a good solution for reading materials if you are on a different computer than your regular computer with everything installed.
 * [https://jupyterhub.uio.no/](https://jupyterhub.uio.no/)

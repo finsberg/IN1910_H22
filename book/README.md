@@ -6,11 +6,3 @@ General information about the course can be found on the [course site](https://w
 
 
 This course can be seen as a follow up to IN1900 and continues the the introduction into the world of scientific programming. We will focus on teaching you important tools and concepts, and the goal is for you to walk away from the course as a competent scientific programmer.
-
-
-
-
-
-
-
-

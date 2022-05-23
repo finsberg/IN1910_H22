@@ -46,8 +46,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/_build/html
 
-      - name: Deploy to github pages at uio
-        id: ./
+      - name: Deploy to github pages at UiO
         uses: cpina/github-action-push-to-another-repository@devel
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}

@@ -37,3 +37,7 @@ Matplotlib
 Kompilere
 flere
 analyse
+pkgs
+peaceiris
+cpina
+devel

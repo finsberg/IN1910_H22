@@ -70,9 +70,7 @@ Let us say we want to implement such a contact list for a new phone system we ar
 To begin with, we only want to store information about each contact, and so dictionaries would be a natural choice for this. We can use key-value pairs to store the information we want, and ignore the pieces of information we don't want. Other parts of the software system can then go in and access information from the contact dictionary as needed
 
 ```python
-contact = {"name": "Lisa",
-           "email": "lisa@python.org",
-           "mobile_number": "767828292"}
+contact = {"name": "Lisa", "email": "lisa@python.org", "mobile_number": "767828292"}
 
 print(contact["email"])
 ```
@@ -134,7 +132,7 @@ print(type(x.conjugate))
 
 #### Class vs Instance
 
-When we define a class, we are defining a new data type. To actually use it, we have to define a new object of that type, we call this an *instance* of the class. In our contact-list example, the `Contact` class is the general class we defined, then we can implement specific instances of the class, one for "Lisa", one for "Frank" and so on. The class is thus the abstract *concept* of a contact, and objects are the specific cases of that type. A different example: A Nissan leaf is a given type of car, and can be represented as a class. A specific car with the licensce plate "EM93277" (courtesy of random.org) is an *instance* of the Nissan leaf class. The specific car is an object of the *type* Nissan leaf. In this sense, the class is like the blue-print, it specifies how objects of that type should be built and how they should behave.
+When we define a class, we are defining a new data type. To actually use it, we have to define a new object of that type, we call this an *instance* of the class. In our contact-list example, the `Contact` class is the general class we defined, then we can implement specific instances of the class, one for "Lisa", one for "Frank" and so on. The class is thus the abstract *concept* of a contact, and objects are the specific cases of that type. A different example: A Nissan leaf is a given type of car, and can be represented as a class. A specific car with the license plate "EM93277" (courtesy of random.org) is an *instance* of the Nissan leaf class. The specific car is an object of the *type* Nissan leaf. In this sense, the class is like the blue-print, it specifies how objects of that type should be built and how they should behave.
 
 #### Naming Conventions
 
@@ -160,13 +158,14 @@ We do this by implementing a `Deck` class. After having implemented our class, w
 ```python
 import random
 
+
 class Deck:
     def __init__(self):
         """Create a standard 52-card deck."""
         self.cards = []
-        for s in ('D', 'H', 'C', 'S'):
+        for s in ("D", "H", "C", "S"):
             for v in range(1, 14):
-                self.cards.append((s,v))
+                self.cards.append((s, v))
 
     def shuffle(self):
         random.shuffle(self.cards)
@@ -179,7 +178,7 @@ class Deck:
         self.shuffle()
 ```
 
-Here we implement a class that has four methods. The first method is the constructor (called `__init__`, we explain why later), this is run everytime we create a new object of the class. In this case we initialize a deck of cards by adding all the cards in the deck using a double-loop. We also add a `shuffle` method that shuffles the deck, a `draw` method that draws $n$ cards from the deck, and a `shuffle_into_deck` for when we want to shuffle cards back into the deck. These are just simple examples of functionality that makes sense for a deck of cards, and we could add plenty more.
+Here we implement a class that has four methods. The first method is the constructor (called `__init__`, we explain why later), this is run every time we create a new object of the class. In this case we initialize a deck of cards by adding all the cards in the deck using a double-loop. We also add a `shuffle` method that shuffles the deck, a `draw` method that draws $n$ cards from the deck, and a `shuffle_into_deck` for when we want to shuffle cards back into the deck. These are just simple examples of functionality that makes sense for a deck of cards, and we could add plenty more.
 
 Once we have taken the time to build the `Deck`-class, we can easily create decks of cards, and use them, without having to think too much about the underlying details of the implementation. Implementing a class therefore represents adding a new layer of abstraction to our code. For example, we can now create a random 5-card poker hand as follows:
 
@@ -203,12 +202,13 @@ This is interpreted behind the scenes by Python as
 ```
 Deck.shuffle(deck)
 ```
-And so the method `Deck.shuffle`, even though it is written inside the class, actually just acts like a stand-alone function, the object is simply passed in and manipulated. And so when we define the function we call the first input-argument `self`, because this is the *object itself* (in this case `self = deck`). Note that you can, technically, call this argument something other than `self`, it is just a function argument, like any other. However, it is considered good code style to always use `self` and it will be confusing for others if you use something else. (Most langagues use either "self" or "this".)
+And so the method `Deck.shuffle`, even though it is written inside the class, actually just acts like a stand-alone function, the object is simply passed in and manipulated. And so when we define the function we call the first input-argument `self`, because this is the *object itself* (in this case `self = deck`). Note that you can, technically, call this argument something other than `self`, it is just a function argument, like any other. However, it is considered good code style to always use `self` and it will be confusing for others if you use something else. (Most languages use either "self" or "this".)
 
 So for most class methods you define, you both define the method with `self` as the first argument. And you use `self` inside the method to manipulate the data within the object. Let us look back at the `Deck.shuffle` method:
 ```python
-Class Deck:
+class Deck:
     ...
+
     def shuffle(self):
         random.shuffle(self.cards)
 ```
@@ -227,9 +227,9 @@ In some languages, like Java and C++, you can explicitly define interfaces that 
 
 ## Special Methods
 
-In Python, defining classes often involve implementing *special* methods, also known as *magic* methods. These are methods we do not expect to call explicitly. Rather, we expect Python to call them for us as needed, depending on the situation. They are extremely useful to learn how to use, and they lead to elegant, understandable and usable code. Becoming adept at special methods is crucial if you want to make good Pythonic code.
+In Python, defining classes often involve implementing *special* methods, also known as *magic* methods (or dunder methods). These are methods we do not expect to call explicitly. Rather, we expect Python to call them for us as needed, depending on the situation. They are extremely useful to learn how to use, and they lead to elegant, understandable and usable code. Becoming adept at special methods is crucial if you want to make good Pythonic code.
 
-Special methods have specific names, so Python knows what to call. They all use *dunders*, meaning they have to leading and trailing underscores. You have already seen an example of this, the constructor: `__init__`.
+Special methods have specific names, so Python knows what to call. They all use two leading and two trailing underscores. You have already seen an example of this, the constructor: `__init__`.
 
 
 ### The constructor (`__init__`)
@@ -239,11 +239,13 @@ You have already seen the most important example of special methods, the constru
 ```python
 from math import pi
 
+
 class Sphere:
     def __init__(self, radius):
         self.radius = radius
-        self.area = 4*pi*radius**2
-        self.volume = 4*pi*radius**3/3
+        self.area = 4 * pi * radius**2
+        self.volume = 4 * pi * radius**3 / 3
+
 
 football = Sphere(11)
 print(f"A football of radius {football.radius:.0f} cm")
@@ -277,14 +279,16 @@ This means: if we implement a `__str__` that returns a nicely formatted string, 
 ```python
 from math import pi
 
+
 class Sphere:
     def __init__(self, radius):
         self.radius = radius
-        self.area = 4*pi*radius**2
-        self.volume = 4*pi*radius**3/3
+        self.area = 4 * pi * radius**2
+        self.volume = 4 * pi * radius**3 / 3
 
     def __str__(self):
-        return(f"Sphere({self.radius})")
+        return f"Sphere({self.radius})"
+
 
 football = Sphere(11)
 print(football)
@@ -306,11 +310,12 @@ Now let us implement the `__repr__` method
 ```python
 from math import pi
 
+
 class Sphere:
     def __init__(self, radius):
         self.radius = radius
-        self.area = 4*pi*radius**2
-        self.volume = 4*pi*radius**3/3
+        self.area = 4 * pi * radius**2
+        self.volume = 4 * pi * radius**3 / 3
 
     def __str__(self):
         return f"Sphere({self.radius})"
@@ -345,7 +350,8 @@ class Quadratic:
 
     def __call__(self, x):
         a, b, c = self.coefficients
-        return a*x**2 + b*x + c
+        return a * x**2 + b * x + c
+
 
 f = Quadratic(1, 2, 1)
 print(f(4))
@@ -394,7 +400,7 @@ This function returns `True` if the object `f` is callable, and `False` if it is
 
 In mathematics, Newton's method is a numerical method for finding the roots of a mathematical function (a root is the point where the function is equal to zero). Normally to use Newtons method you need the function itself ($f(x)$), it's derivative ,$\frac{\rm d}{{\rm d}x} f(x)$. which also is a function, and an initial guess $x_0$.
 
-Let us now assume we are given a function `newton(f, x0, dfdx)` that implements Newton's method. The SciPy library for example has the function `scipi.optimize.newton(func, x0, dfdx)`. We want to use this function to find the roots of a function $f(x)$. However, we don't know the derivative $f'(x)$ that must be sent in, and we cannot find it analytically. What do we do?
+Let us now assume we are given a function `newton(f, x0, dfdx)` that implements Newton's method. The SciPy library for example has the function `scipy.optimize.newton(func, x0, dfdx)`. We want to use this function to find the roots of a function $f(x)$. However, we don't know the derivative $f'(x)$ that must be sent in, and we cannot find it analytically. What do we do?
 
 One solution would be to implement the derivative function numerically. We can approximate the derivative function in any point using the central finite difference for example,
 
@@ -415,7 +421,7 @@ class Derivative:
 
     def __call__(self, x):
         dx = self.dx
-        return (self.f(x+dx) - self.f(x-dx))/(2*dx)
+        return (self.f(x + dx) - self.f(x - dx)) / (2 * dx)
 ```
 
 Here we create the class from a given function `f`, which we double check is *callable*. We store the function as an attribute so we can use it later. We also store the step size $\Delta x$, which defaults to $10^{-6}$ if we do not supply it.
@@ -443,8 +449,10 @@ With the `Derivative` class implemented, we can now easily use the `newton` meth
 ```python
 from scipy.optimize import newton
 
+
 def f(x):
-    return x**2 + 4*x + 4
+    return x**2 + 4 * x + 4
+
 
 dfdx = Derivative(f)
 x0 = 0
@@ -480,8 +488,8 @@ The final topic we will cover today are what we call *properties*, which is a ve
 class Sphere:
     def __init__(self, radius):
         self.radius = radius
-        self.area = 4*pi*radius**2
-        self.volume = 4*pi*radius**3/3
+        self.area = 4 * pi * radius**2
+        self.volume = 4 * pi * radius**3 / 3
 
     def __str__(self):
         return f"Sphere({self.radius})"
@@ -510,10 +518,10 @@ class Sphere:
         self.radius = radius
 
     def area(self):
-        return 4*pi*self.radius**2
+        return 4 * pi * self.radius**2
 
     def volume(self):
-        return 4*pi*self.radius**3/3
+        return 4 * pi * self.radius**3 / 3
 
     def __str__(self):
         return f"Sphere({self.radius})"
@@ -550,14 +558,15 @@ class Sphere:
 
     @property
     def area(self):
-        return 4*pi*self.radius**2
+        return 4 * pi * self.radius**2
 
     @property
     def volume(self):
-        return 4*pi*self.radius**3/3
+        return 4 * pi * self.radius**3 / 3
 
     def __str__(self):
         return f"Sphere({self.radius})"
+
 
 football = Sphere(11)
 print(football.area)
@@ -595,7 +604,7 @@ In Python, such setters and getters are usually not implement explicitly, but we
 ```python
 @property
 def area(self):
-    return 4*pi*self.radius**2
+    return 4 * pi * self.radius**2
 ```
 And this method is effectively a *getter* for the area. It isn't called `get_area`, but that is what the function does.
 
@@ -605,19 +614,20 @@ Similarly, we can define a *setter* method for the area property using the decor
 ```python
 from math import pi, sqrt
 
+
 class Sphere:
     def __init__(self, radius):
         self.radius = radius
 
     @property
     def area(self):
-        return 4*pi*self.radius**2
+        return 4 * pi * self.radius**2
 
     @area.setter
     def area(self, area):
         if area < 0:
             raise ValueError("Area cannot be negative")
-        self.radius = sqrt(area/(4*pi))
+        self.radius = sqrt(area / (4 * pi))
 
     def __str__(self):
         return f"Sphere({self.radius})"
@@ -666,7 +676,7 @@ Let us show by an example (again we skip the `volume` property, which you can ad
 class Sphere:
     def __init__(self, radius):
         self._radius = radius
-        self._area = 4*pi*radius**2
+        self._area = 4 * pi * radius**2
 
     @property
     def radius(self):
@@ -677,7 +687,7 @@ class Sphere:
         if r < 0:
             raise ValueError("Radius cannot be negative")
         self._radius = r
-        self._area = 4*pi*self.radius**2
+        self._area = 4 * pi * self.radius**2
 
     @property
     def area(self):
@@ -687,7 +697,7 @@ class Sphere:
     def area(self, area):
         if area < 0:
             raise ValueError("Area cannot be negative")
-        self._radius = sqrt(area/(4*pi))
+        self._radius = sqrt(area / (4 * pi))
         self._area = area
 ```
 

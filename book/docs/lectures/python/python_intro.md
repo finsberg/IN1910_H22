@@ -43,7 +43,7 @@ In Python, as in most languages, we use `=` for assigning variables. We do not n
 t = 0.5
 v0 = 2
 a = 0.2
-s = v0*t + 0.5*a*t**2
+s = v0 * t + 0.5 * a * t**2
 ```
 
 Here we first assign the three variables `t`, `v0` and `a`. Then we assign the variable `s` based on our other variables by doing some arithmetic. An assignment on the form of the final line is interpreted as follows:
@@ -106,7 +106,7 @@ These are different examples of importing. They are all functional Python code, 
 from numpy import *
 from math import *
 
-x = linspace(0, 2*pi, 1001)
+x = linspace(0, 2 * pi, 1001)
 y = sin(x)
 ```
 This code will not work, as the `sin` function will here refer to `math.sin`, which is not vectorized and so cannot work on `x`, which is an array. If you change the order of the two imports however, the code will work, because then `sin` refers to `numpy.sin`, which *is* vectorized.
@@ -151,6 +151,7 @@ A lot of code editors and IDEs (integrated developer environments) also let you 
 As you work on bigger projects, many of the Python scripts you create are not necessarily meant to be run directly, but rather imported by other scripts. A useful code structure to include then is the following statement
 ```python
 if __name__ == "__main__":
+    ...
     # Code that is to be executed goes here
 ```
 Any code that is put into an if-statement like this is executed if, and only if, you run the script directly, but not if the script is imported by another. This statement is not strictly necessary, but it is very useful when working on bigger projects and is therefore considered good practice. We will explain the statement and why it works the way it does later in the course.
@@ -242,13 +243,13 @@ To call on a function we place round parentheses (`()`) behind the variable name
 
 
 ```python
-round(22/7)
+round(22 / 7)
 ```
 
 However, we can use a second argument to specify the number of decimals we want to round to
 
 ```python
-round(22/7, 3)
+round(22 / 7, 3)
 ```
 
 In Python we also often use something called *keyword arguments*. These are optional arguments that are named by a keyword. Take for example the `print` function, which takes whatever you want to print out as its input argument. It also has keyword arguments like `sep` and `end` which can be used to influence what characters it places between different inputs or at the end of lines. Normally different `print` calls will give new lines, as follows
@@ -291,6 +292,7 @@ Let us show one more example of defining a function
 
 ```python
 import numpy as np
+
 
 def roll_dice(n=1):
     return sum(np.random.randint(1, 7, n))
@@ -430,10 +432,9 @@ Likewise you could `zip` three or more sequences together.
 
 We have covered for loops, which iterate over some sequence. The other kind of loop is a while loop, which repeats a block of code as long as some condition is true. The syntax is as follows:
 ```python
-while <condition>:
-    <code block to be repeated>
-    <code block to be repeated>
-    <code block to be repeated>
+while condition:
+    ...
+    # <code block to be repeated>
 ```
 The condition has to be some statement that can be evaluated to either True or False.
 
@@ -449,7 +450,9 @@ while money < 20000:
     money *= interest
     years += 1
 
-print(f"You will need to wait {years} years, you'll have {money:.0f} kr in your account")
+print(
+    f"You will need to wait {years} years, you'll have {money:.0f} kr in your account"
+)
 ```
 
 It is not uncommon to accidentally define while loops that never end. If you for example forget to update the `money` variable in the last example. In such cases you need to interrupt the execution of the program yourself. If you have run from the terminal you can enter `Ctrl + C`, while in Jupyter you should click `Kernel > Interrupt`. If you are running through your editor there should also be a command for terminating execution, but this will depend on what editor you use and how it is set up.
@@ -476,32 +479,32 @@ import matplotlib.pyplot as plt
 The `plt.plot` command takes a list of values on the $x$-axis and a list of values on the $y$-axis, and draws a line through them. As an example we use `np.linspace` and `np.sin` to define a sine-curve:
 
 ```python
-x = np.linspace(0, 2*pi, 11)
+x = np.linspace(0, 2 * pi, 11)
 y = np.sin(x)
 
 plt.plot(x, y)
-plt.xlabel('x')
-plt.ylabel('sin(x)')
+plt.xlabel("x")
+plt.ylabel("sin(x)")
 plt.show()
 ```
 
 The curve is choppy because we have such few points, which is more obvious if we redefine the linestyle:
 
 ```python
-plt.plot(x, y, 'o--')
-plt.xlabel('x')
-plt.ylabel('sin(x)')
+plt.plot(x, y, "o--")
+plt.xlabel("x")
+plt.ylabel("sin(x)")
 plt.show()
 ```
 
 To get a smoother curve, we need to add more points, this is as easy as adding more points to the `linspace` argument. Let us also illustrate how we add another curve to the same figure
 
 ```python
-x = np.linspace(0, 4*pi, 1001)
+x = np.linspace(0, 4 * pi, 1001)
 
-plt.plot(x, np.sin(x), label='Sin')
-plt.plot(x, np.cos(x), label='Cos')
-plt.xlabel('x')
+plt.plot(x, np.sin(x), label="Sin")
+plt.plot(x, np.cos(x), label="Cos")
+plt.xlabel("x")
 plt.legend()
 plt.show()
 ```
@@ -560,7 +563,7 @@ u0 = 4
 dt = 0.001
 T = 10
 
-t = np.arange(0, T+dt, dt)
+t = np.arange(0, T + dt, dt)
 u = np.zeros(len(t))
 u[0] = 4
 ```
@@ -568,15 +571,15 @@ u[0] = 4
 Here we use `np.arange` to define the array $t \in [0, 10]$ with a step size of $\Delta t$. Then we use `np.zeros` to define an array filled with zeros of the same length as $t$. We do this because numpy arrays cannot change in size, and so we need to define it of the correct length. Note that the final code line is very important, because we need the correct $u_0$ value to compute the next value, i.e., $u_1$, which can be used to compute $u_2$ which gives us $u_3$ and so forth. The time stepping itself is given by a for loop
 
 ```python
-for i in range(len(u)-1):
-    u[i+1] = (1 - a*dt)*u[i]
+for i in range(len(u) - 1):
+    u[i + 1] = (1 - a * dt) * u[i]
 ```
 
 After running this loop, `u` should contain the solution for all given time points, and we can not plot $u(t)$ to see the solution
 
 ```python
 plt.plot(t, u)
-plt.xlabel('time')
-plt.ylabel('u(t)')
+plt.xlabel("time")
+plt.ylabel("u(t)")
 plt.show()
 ```

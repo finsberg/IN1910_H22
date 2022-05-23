@@ -1,115 +1,28 @@
 format: jb-book
 root: README.md
 parts:
-- caption: General information
-  chapters:
-  - file: docs/info/overview.md
-  - file: docs/info/curriculum.md
-  - file: docs/info/motivation.md
-  - file: docs/info/exam.md
-  - file: docs/info/help.md
-- caption: Setting up your computer for IN1910
-  chapters:
-  - file: docs/setup/setup.md
-  - file: docs/setup/cpp_compiler.md
-- caption: Slides
-  chapters:
-  - file: docs/slides/L01/L1_course_overview.ipynb
-  #- file: docs/slides/L02/L2_git.md
-  #- file: docs/slides/L03/L3_pytest.md
-  #- file: docs/slides/L09/L9_recap_of_oop_in_python.ipynb
-  #- file: docs/slides/L11/L11_cpp_intro.md
-  #- file: docs/slides/L12/L12_array_memory_pointers.md
-  #- file: docs/slides/L13/L13_oop_in_cpp.md
-  #- file: docs/slides/L14/L14_dynamics_allocation_and_arrays.md
-  #- file: docs/slides/L15/L15_linked_lists_big_oh.md
-  #- file: docs/slides/L16/L16_header_files_debug.md
-  #- file: docs/slides/L17/L17_generating_random_numbers.ipynb
-  #- file: docs/slides/L21/L21_plotting_with_matplotlib.ipynb
-  #- file: docs/slides/L22/L22_plotly_express.ipynb
-  #- file: docs/slides/L23/L23_software_optimization.ipynb
-  #- file: docs/slides/L24/L24_mixed_programming.ipynb
-  #- file: docs/slides/L25/L25_paralell_programming.ipynb
-  #- file: docs/slides/L26/L26_summary.ipynb
-  #- file: docs/slides/project0/project0.md
-- caption: Lecture videos
-  chapters:
-  - file: docs/videos/videos_H21.md
-  - file: docs/videos/videos_H20.md
-  - file: docs/videos/videos_H19.md
-- caption: Course material
-  chapters:
-  - file: docs/lectures/python/python_intro.md
-  - file: docs/lectures/python/python_oop.md
-    sections:
-    - file: docs/lectures/python/intro_to_oop.md
-  #  - file: docs/lectures/python/classes_methods_decorators.ipynb
-  #  - file: docs/lectures/python/more_oop.ipynb
-  #- file: docs/lectures/git/version_control_with_git.md
-  #- file: docs/lectures/testing_codestyle/testing_codestyle.md
-  #  sections:
-  #  - file: docs/lectures/testing_codestyle/writing_functioning_code.md
-  #  - file: docs/lectures/testing_codestyle/codestyle_and_docstrings.ipynb
-  #- file: docs/lectures/cpp/cpp.md
-  #  sections:
-  #  - file: docs/lectures/cpp/intro_to_cpp.md
-  #  - file: docs/lectures/cpp/arrays_and_pointers.md
-  #  - file: docs/lectures/cpp/oop_in_cpp.md
-  #  - file: docs/lectures/cpp/dynamic_allocation.md
-  #  - file: docs/lectures/cpp/cpptools.md
-  #  - file: docs/lectures/cpp/arraylist.md
-  #  - file: docs/lectures/cpp/linked_lists.md
-  #  - file: docs/lectures/cpp/algorithm_analysis.md
-  #  - file: docs/lectures/cpp/linkedlists_vs_dynamicarrays.md
-  #  - file: docs/lectures/cpp/sorting.md
-  #- file: docs/lectures/stochastic_processes/stochastic_processes.md
-  #  sections:
-  #  - file: docs/lectures/stochastic_processes/random_number_generators.ipynb
-  #  - file: docs/lectures/stochastic_processes/using_random_numbers.ipynb
-  #  - file: docs/lectures/stochastic_processes/random_walks_and_markov_processes.ipynb
-  #  - file: docs/lectures/stochastic_processes/solving_the_1D_diffusion_equation.ipynb
-  #  - file: docs/lectures/stochastic_processes/markov_chains.ipynb
-  #- file: docs/lectures/optimization/optimization.md
-  #  sections:
-  #  - file: docs/lectures/optimization/software_optimization.ipynb
-  #  - file: docs/lectures/optimization/optimization_and_mixed_programming.ipynb
-  #  - file: docs/lectures/optimization/parallel_programming.ipynb
-  #- file: docs/lectures/summary/course_summary.md
-#- caption: Exercises
-#  chapters:
-#  - file: docs/exercises/week1/E1_python_refresh_and_git.ipynb
-#  - file: docs/exercises/week3/E3_testing_and_docstrings.ipynb
-#  - file: docs/exercises/week2/E2_exercises_on_oop.ipynb
-#  - file: docs/exercises/week4/pancake_sort.ipynb
-#  - file: docs/exercises/week6/E6_intro_to_cpp.md
-#    sections:
-#    - file: docs/exercises/week6/E6_references_and_pointers.md
-#    - file: docs/exercises/week6/C1_primes_by_trial_division.md
-#  - file: docs/exercises/week7/E7_oop_in_cpp.md
-#    sections:
-#    - file: docs/exercises/week7/C2_primes_by_sieve.md
-#  - file: docs/exercises/cpp_exercises.md
-#  - file: docs/exercises/week10/E8_random_number_generators.ipynb
-#  - file: docs/exercises/week11/E9_random_walks_and_markov_process.ipynb
-#  - file: docs/exercises/Exercises for Plotly Express.ipynb
-#  - file: docs/exercises/week12/E10_optimization_and_mixed_programming.ipynb
-#  - file: docs/exercises/week13/E11_parallel_programming.ipynb
-#- caption: Exercise solutions
-#  chapters:
-#  - file: docs/exercises/week1/E1_solutions.ipynb
-#  - file: docs/exercises/week3/E3_solutions.ipynb
-#  - file: docs/exercises/week2/E2_solutions.ipynb
-#  - file: docs/exercises/week4/pancake_sort_solution.ipynb
-#  - file: docs/exercises/week6/E6_solutions.md
-#  - file: docs/exercises/week6/week6-challenge.md
-#  - file: docs/exercises/week7/E7_solutions.md
-#  - file: docs/exercises/week11/E9_solutions.ipynb
-#  - file: docs/exercises/week12/E10_solutions.ipynb
-#  - file: docs/exercises/week13/E11_solutions.ipynb
-#- caption: Projects
-#  chapters:
-#  - file: docs/projects/how_to_project_work.md
-#  - file: docs/projects/project0/project0.md
-#  - file: docs/projects/project1/double_pendulum.ipynb
-#  - file: docs/projects/project2/project2.md
-#  - file: docs/projects/project3/project3.ipynb
+  - caption: General information
+    chapters:
+    - file: docs/info/overview.md
+    - file: docs/info/curriculum.md
+    - file: docs/info/motivation.md
+    - file: docs/info/exam.md
+    - file: docs/info/help.md
+    - file: docs/info/dictionary.md
+  - caption: Setting up your computer for IN1910
+    chapters:
+    - file: docs/setup/setup.md
+    - file: docs/setup/cpp_compiler.md
+  - caption: Lecture videos
+    chapters:
+    - file: docs/videos/videos_H21.md
+    - file: docs/videos/videos_H20.md
+    - file: docs/videos/videos_H19.md
+  - caption: Course material
+    chapters:
+    - file: docs/lectures/python/python_intro.md
+    - file: docs/lectures/python/python_oop.md
+      sections:
+      - file: docs/lectures/python/intro_to_oop.md
+      - file: docs/lectures/python/classes_methods_decorators.md
+      - file: docs/lectures/python/more_oop.ipynb

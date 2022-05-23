@@ -1,0 +1,7 @@
+dictionaryDefinitions:
+  - name: in1910
+    path: .cspell_dict.txt
+    addWords: true
+dictionaries:
+  - in1910
+ignoreWords: []

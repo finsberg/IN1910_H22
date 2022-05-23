@@ -44,7 +44,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: ./docs/_build/html
+          source-directory: ./book/_build/html
           destination-github-username: 'IN1910'
           destination-repository-name: 'IN1910_H22'
           github-server: github.uio.no

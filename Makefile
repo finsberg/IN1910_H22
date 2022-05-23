@@ -1,7 +1,7 @@
 .PHONY: clean clean-ipynb clean-pyc clean-build docs help upgrade
 .DEFAULT_GOAL := help
 
-define PRINT_HELP_PYSCRIPT
+define PRINT_HELP_PY_SCRIPT
 import re, sys
 
 for line in sys.stdin:
@@ -10,25 +10,13 @@ for line in sys.stdin:
 		target, help = match.groups()
 		print("%-20s %s" % (target, help))
 endef
-export PRINT_HELP_PYSCRIPT
-
-BROWSER := python -c "$$BROWSER_PYSCRIPT"
+export PRINT_HELP_PY_SCRIPT
 
 help:
-	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
+	@python -c "$$PRINT_HELP_PY_SCRIPT" < $(MAKEFILE_LIST)
 
 docs: ## Build book
 	jupyter-book build book
-	for folder in cpp git optimization python stochastic_processes testing_codestyle summary; do \
-    	cp -r book/docs/lectures/$$folder/fig book/_build/html/docs/lectures/$$folder/ ; \
-	done
-	for lecture in L01 L17; do \
-		cp -r book/docs/slides/$$lecture/figures book/_build/html/docs/slides/$$lecture/ ; \
-	done
-	for project in project1 project3; do \
-		cp -r book/docs/projects/$$project/fig book/_build/html/docs/projects/$$project/ ; \
-	done
-	cp -r book/docs/info/fig book/_build/html/docs/info/
 	touch book/_build/html/.nojekyll
 
 

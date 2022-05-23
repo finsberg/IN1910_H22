@@ -52,7 +52,7 @@ Here we first assign the three variables `t`, `v0` and `a`. Then we assign the v
 In this case, the result of the computation is a number, and `s` becomes a name for that number. But how do we check what `s` is? We use the `print`-statement.
 
 
-### Printing
+## Printing
 
 ```python
 print(s)
@@ -63,7 +63,7 @@ Note that `s` is a name pointing at a number object containing 1.025. If we now 
 
 Typically we want to print out a longer message, rather than just the variable. In this case we can use print-formatting to have more control. There are several ways to do this in Python, but the most straight-forward method (also the most recently introduced) are called f-strings.
 
-To use f-strings, you must place a `f` or `F` charaacter immediately before your string. You can then use curly braces `{}` to place variables into the string as follows
+To use f-strings, you must place a `f` or `F` character immediately before your string. You can then use curly braces `{}` to place variables into the string as follows
 
 ```python
 print(f"After {t} seconds, the object has traveled {s} meters")
@@ -75,11 +75,11 @@ In addition to specifying which variables are to be printed where, you can add i
 print(f"After {t:.2f} seconds, the object has traveled {s:.2f} meters")
 ```
 
-Here `:.2f` is used to specify two decimals, the letter f in this context is short for `float`. If you want a more comprehensive introduction for formating output, you can take a look at this link from the official Python docs:
+Here `:.2f` is used to specify two decimals, the letter f in this context is short for `float`. If you want a more comprehensive introduction for formatting output, you can take a look at this link from the official Python docs:
 * https://docs.python.org/3/tutorial/inputoutput.html
 
-#### Rounding
-Note from the previous example that the result is a bit surprising, as 1.025 got rounded to 1.02, instead of 1.03 as you might have expected it to. This is because we are using Python3, which uses something called [*bankers' rounding*](https://en.wikipedia.org/wiki/Rounding), in which a .5 is rounded down if the preceeding number is even, and up if it is odd. The same behavior is shown in the built in `round` function
+## Rounding
+Note from the previous example that the result is a bit surprising, as 1.025 got rounded to 1.02, instead of 1.03 as you might have expected it to. This is because we are using Python3, which uses something called [*bankers' rounding*](https://en.wikipedia.org/wiki/Rounding), in which a .5 is rounded down if the preceding number is even, and up if it is odd. The same behavior is shown in the built in `round` function
 
 ```python
 print(round(0.5))
@@ -88,7 +88,7 @@ print(round(2.5))
 print(round(3.5))
 ```
 
-### Importing
+## Importing
 
 Python includes a large number of standard libraries and external packages. In IN1910 we will for example make use of the SciPy stack, which includes packages like numpy, scipy, matplotlib, etc. We can import packages in several ways
 
@@ -125,7 +125,7 @@ Note that the keyword `as` is used rename the namespace from `numpy` to `np`. Th
 Regardless of which style of import you use, import statements should always appear at the top of modules. Modules are what we call separate Python-files. Placing imports at the top is an example of *code style*, which we will cover later in the course.
 
 
-#### Exercise 1: Your turn
+### Exercise 1: Your turn
 
 The radius of a standard size football is 11 cm. Write code that defines this radius as the variable `R`, the computes the volume of the football according to the following formula
 $$V = \frac{4\pi R^3}{3}.$$
@@ -138,7 +138,7 @@ Then finally print out the volume with a single decimal.
 # Fill in your code here
 ```
 
-### Running scripts from the command line
+## Running scripts from the command line
 
 Python scripts are typically saved with the extension `.py`. When you create a Python file, i.e., `find_volume.py`, you can run it from a terminal with the command
 ```
@@ -156,9 +156,9 @@ if __name__ == "__main__":
 Any code that is put into an if-statement like this is executed if, and only if, you run the script directly, but not if the script is imported by another. This statement is not strictly necessary, but it is very useful when working on bigger projects and is therefore considered good practice. We will explain the statement and why it works the way it does later in the course.
 
 
-### Variable Types
+## Variable Types
 
-In our assignment earlier, we defined four variables, all numbers. However, their datatypes are slightly different. The variables `t`, `a` and `s` were assigned decimal numbers, and therefore became `float` objects, while `v0` is set to an integer number, and became an `integer` object. You can check the type of a variables with the `type` command
+In our assignment earlier, we defined four variables, all numbers. However, their data types are slightly different. The variables `t`, `a` and `s` were assigned decimal numbers, and therefore became `float` objects, while `v0` is set to an integer number, and became an `integer` object. You can check the type of a variables with the `type` command
 
 ```python
 print(type(t))
@@ -183,7 +183,7 @@ There are plenty of built-in types in Python 3. Some of the common ones are
 There are plenty of others, especially if we include the standard libraries, but not all are equally important. One of the more important ones for scientific programming is the numpy array, which is especially useful for vectorized computations and linear algebra. We will learn more about why numpy arrays are so efficient later in the course, when we turn to C++.
 
 
-#### Mutable vs Immutable
+## Mutable vs Immutable
 
 Note that in Python some variables are *mutable*, while some are *immutable*. This somewhat strange word simply means "changeable". The differences between these variable types can trip up many Python novices, and it is worth taking a closer look at how they behave.
 
@@ -224,7 +224,7 @@ For the list case, the underlying object *can* change, as lists are mutable. Whe
 This example might feel like we are making a lot of fuss about minor details. But the differences between mutable and immutable objects and how they are treated is quite important for properly understanding Python. As we will work a lot with object-oriented programming in IN1910, it is worth spending time to properly grasp these basics.
 
 
-#### PythonTutor
+## PythonTutor
 
 When learning programming, it is easy to get confused by examples such as the one we just saw. In such cases, it can be good to visualizing what is going by drawing a small sketch of what is going on behind the scenes in the program. A helpful tool here is the online Python tutor:
 [http://pythontutor.com](http://pythontutor.com/visualize.html#mode=edit)
@@ -307,7 +307,7 @@ This function is an example of a *stochastic trial*, which means the result is r
 
 
 
-#### Exercise 2: Your turn
+### Exercise 2: Your turn
 
 Normal dice have six sides, but many other types of dice existing. In board games for example, dice with 4, 8, 12, and 20 sides are for example very common. Therefore, extend the `roll_dice` function to also use a keyword argument `d` which represents the number of faces on the dice being thrown. The keyword should default to the standard 6 sides.
 
@@ -364,7 +364,7 @@ for i in range(1, 12):
         print(f"{i:2} is not prime")
 ```
 
-### List Comprehensions
+## List Comprehensions
 
 We can also use *list* comprehensions to quickly compile lists on single-lines using a for-loop syntax. Take the following example where we assemble a list of primes.
 
@@ -390,7 +390,7 @@ However, list comprehensions are considered very "pythonic" and are actually fas
 
 
 
-**Exercise 3: Your turn**
+### Exercise 3: Your turn
 
 Use a list comprehension to assemble a list of all non-primes $\leq 12$. To do this either use the `is_prime` function, or use the list `primes`.
 
@@ -398,7 +398,7 @@ Use a list comprehension to assemble a list of all non-primes $\leq 12$. To do t
 # Fill in your code here
 ```
 
-### Enumerate and zip
+## Enumerate and zip
 
 To built-in functions that are very useful when looping over sequences are `enumerate` and `zip`. Let us show an example of these in practice.
 
@@ -413,10 +413,10 @@ for i, prime in enumerate(primes):
 Here we loop over the `primes` list from earlier, but because we use `enumerate` we can loop over the index as well, which is why we write `for i, prime in ...`. Here `i` will start at 0 and count up for each element, while `prime` will be equal to the values in the list.
 
 
-The function `zip` is useful if you want to loop over two or more sequeneces simultaneously. Say for example we are making a game and have a list of players and a list of the points scored for each player, then we could write out the results as follows
+The function `zip` is useful if you want to loop over two or more sequences simultaneously. Say for example we are making a game and have a list of players and a list of the points scored for each player, then we could write out the results as follows
 
 ```python
-players = ["Alice", "Bob", "Charlie", "Dany"]
+players = ["Alice", "Bob", "Charlie", "Danny"]
 points_per_player = [212, 189, 244, 231]
 
 for player, points in zip(players, points_per_player):
@@ -429,7 +429,7 @@ Likewise you could `zip` three or more sequences together.
 ## While Loops
 
 We have covered for loops, which iterate over some sequence. The other kind of loop is a while loop, which repeats a block of code as long as some condition is true. The syntax is as follows:
-```Python
+```python
 while <condition>:
     <code block to be repeated>
     <code block to be repeated>
@@ -455,7 +455,7 @@ print(f"You will need to wait {years} years, you'll have {money:.0f} kr in your 
 It is not uncommon to accidentally define while loops that never end. If you for example forget to update the `money` variable in the last example. In such cases you need to interrupt the execution of the program yourself. If you have run from the terminal you can enter `Ctrl + C`, while in Jupyter you should click `Kernel > Interrupt`. If you are running through your editor there should also be a command for terminating execution, but this will depend on what editor you use and how it is set up.
 
 
-**Exercise 4: Your Turn**
+### Exercise 4: Your Turn**
 
 Use a while loop to find the biggest integer $n$, such that $n^3 < 50000$.
 
@@ -509,7 +509,7 @@ plt.show()
 Plotting mathematical functions is very fast with numpy and matplotlib because numpy arrays are vectorized, meaning we can define a series of $x$ values, and compute all $y$ values in a single function call. This is nice, as it makes it quick to explore functions and their behavior.
 
 
-**Exercise 5: Your turn**
+### Exercise 5: Your turn
 
 Using `numpy` and `matplotlib.pyplot`, plot the dampened sine wave
 

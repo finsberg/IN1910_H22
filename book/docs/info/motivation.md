@@ -1,6 +1,6 @@
 # The motivation behind IN1910
 
-The paper [*Best Practices for Scientific Computing*](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745) by Wilson, et al, discusses the need for better practicies in the field of scientific computing. They quote recent studies that show scientists typically use 30% or more of their time developing software, but that 90% or more are primarily self-taught. As a result, most are not properly trained in the use of good tools and practicies.
+The paper [*Best Practices for Scientific Computing*](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745) by Wilson, et al, discusses the need for better practices in the field of scientific computing. They quote recent studies that show scientists typically use 30% or more of their time developing software, but that 90% or more are primarily self-taught. As a result, most are not properly trained in the use of good tools and practices.
 
 A movement called [*Software Carpentry*](https://software-carpentry.org/) is trying to remedy the situation by giving workshops and sharing resources for training researchers in computing and programming. As the name implies, the goal is to give researchers a set of useful *tools* and the competence and confidence to use them properly.
 

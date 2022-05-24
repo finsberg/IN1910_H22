@@ -69,8 +69,8 @@ There are weekly group sessions where you get help with both the weekly exercise
 
 * Exercises
     * [Project 1](../projects/project1/double_pendulum.ipynb)
-    * [Pankake sorting](../exercises/week4/pancake_sort.ipynb)
-    * [Pankake sorting solutions](../exercises/week4/pancake_sort_solution.ipynb)
+    * [Pancake sorting](../exercises/week4/pancake_sort.ipynb)
+    * [Pancake sorting solutions](../exercises/week4/pancake_sort_solution.ipynb)
 
 #### Week 39 — Introduction to C++
 * Lecture notes
@@ -133,7 +133,7 @@ There are weekly group sessions where you get help with both the weekly exercise
     * [Random Walks](../lectures/stochastic_processes/random_walks_and_markov_processes.ipynb)
     * [Markov Processes](../lectures/stochastic_processes/markov_chains.ipynb)
 * Exercises
-    * [Random Walks and Markov Processess](../exercises/week11/E9_random_walks_and_markov_process.ipynb)
+    * [Random Walks and Markov Processes](../exercises/week11/E9_random_walks_and_markov_process.ipynb)
     * [Project 3](../projects/project3/project3.ipynb)
 
 #### Week 45 - Introduction to data science
@@ -141,16 +141,16 @@ There are weekly group sessions where you get help with both the weekly exercise
 * Slides
     * [Intro to pandas and plotting with matplotlib](../slides/L21/L21_plotting_with_matplotlib.ipynb)
     * [Datasett med `pandas` og plotting med `Plotly Express`](../slides/L22/L22_plotly_express.ipynb)
-* Excercises
+* Exercises
     * [Project 3](../projects/project3/project3.ipynb)
 
 #### Week 46 — Software Optimization and Mixed Programming
 
 * Lecture Notes
     * [Software Optimization](../lectures/optimization/software_optimization.ipynb)
-    * [Optmization and Mixed Programming](../lectures/optimization/optimization_and_mixed_programming.ipynb)
+    * [Optimization and Mixed Programming](../lectures/optimization/optimization_and_mixed_programming.ipynb)
 * Exercises
-    * [Optmization and Mixed Programming](../exercises/week12/E10_optimization_and_mixed_programming.ipynb)
+    * [Optimization and Mixed Programming](../exercises/week12/E10_optimization_and_mixed_programming.ipynb)
     * [Example Solutions](../exercises/week12/E10_solutions.ipynb)
   * Slides
     * [Software Optimization](../slides/L23/L23_software_optimization.ipynb)
@@ -164,5 +164,5 @@ There are weekly group sessions where you get help with both the weekly exercise
 * Exercises
     * [Parallelization](../exercises/week13/E11_parallel_programming.ipynb)
 * Slides
-    * [Parallel programming](../slides/L25/L25_paralell_programming.ipynb)
+    * [Parallel programming](../slides/L25/L25_parallel_programming.ipynb)
     * [Course summary](../slides/L26/L26_summary.ipynb)

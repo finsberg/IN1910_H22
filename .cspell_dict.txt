@@ -24,12 +24,9 @@ elif
 endef
 endl
 Finsberg
-flere
 frozenset
 functools
 getitem
-grensesnitt
-gruppelærer
 guttag
 henriknf
 imag
@@ -44,8 +41,6 @@ jupyterhub
 jupyterlab
 jupytext
 kernelspec
-Kompilere
-kontroll
 Kutta
 Langtangen
 linalg
@@ -59,14 +54,10 @@ miniconda
 Miniconda
 mypy
 ndim
-nettskjema
 nojekyll
-norsk
 numba
 numpy
 Nygaard
-Ordliste
-ostehøvel
 overrideable
 peaceiris
 pikachu
@@ -76,7 +67,6 @@ plotly
 Plotly
 Pokémons
 posix
-programmering
 pybind
 pycache
 pycon
@@ -96,7 +86,10 @@ Stackoverflow
 staticmethod
 Stroustrup
 Sundnes
-versjon
 walkthrough
 xlabel
 ylabel
+lrwxr
+Structs
+Makefiles
+projecteuler

@@ -13,7 +13,7 @@
 - [Lecture 12: 30.09.21 - Arrays, minne og pekere](https://www.uio.no/studier/emner/matnat/ifi/IN1910/h21/forelesningsvideoer/2021-09-30.mp4)
 - [Lecture 13: 05.10.21 - Objektorientert programmering i C++](https://www.uio.no/studier/emner/matnat/ifi/IN1910/h21/forelesningsvideoer/2021-10-05.mp4)
 - [Lecture 14: 07.10.21 - Allokering av minne og dynamiske arrays](https://www.uio.no/studier/emner/matnat/ifi/IN1910/h21/forelesningsvideoer/2021-10-07.mp4)
-- [Lecture 15: 19.10.21 - Lenkede lister og algortime analyse](https://www.uio.no/studier/emner/matnat/ifi/IN1910/h21/forelesningsvideoer/2021-10-19.mp4)
+- [Lecture 15: 19.10.21 - Lenkede lister og algoritme analyse](https://www.uio.no/studier/emner/matnat/ifi/IN1910/h21/forelesningsvideoer/2021-10-19.mp4)
 - [Lecture 16: 21.10.21 - Kompilere flere filer og debugging](https://www.uio.no/studier/emner/matnat/ifi/IN1910/h21/forelesningsvideoer/2021-10-21.mp4)
 - [Lecture 18: 28.10.21 - Stokastiske forsøk med numpy](https://www.uio.no/studier/emner/matnat/ifi/IN1910/h21/forelesningsvideoer/L18.mkv?vrtx=view-as-webpage)
 - [Lecture 19: 02.11.21 - Random walks](https://www.uio.no/studier/emner/matnat/ifi/IN1910/h21/forelesningsvideoer/L19.mkv?vrtx=view-as-webpage)

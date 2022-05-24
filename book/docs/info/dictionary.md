@@ -19,5 +19,6 @@ If you find a word that you want to add to the dictionary please send an email t
 | **Norwegian**           | **English**            |
 | ----------------------- | ---------------------- |
 | kompilere               | compiling              |
+| atributt                | attribute              |
 | refakturering           | refactoring            |
 | versjon kontroll system | version control system |

@@ -50,3 +50,4 @@ repos:
     rev: v5.9.1
     hooks:
       - id: cspell
+        files: book/(.+).md|book/(.+).rst|README.md

@@ -102,7 +102,7 @@
 
 <https://www.uio.no/studier/emner/matnat/ifi/IN1910/h20/forelesningsvideoer/IN1910-2020-10-27.mp4>
 
-## Lecture 20: Markov processess and Markov chains
+## Lecture 20: Markov processes and Markov chains
 
 <https://www.uio.no/studier/emner/matnat/ifi/IN1910/h20/forelesningsvideoer/IN1910-2020-10-29.mp4>
 

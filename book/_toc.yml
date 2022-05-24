@@ -25,4 +25,4 @@ parts:
       sections:
       - file: docs/lectures/python/intro_to_oop.md
       - file: docs/lectures/python/classes_methods_decorators.md
-      - file: docs/lectures/python/more_oop.ipynb
+      - file: docs/lectures/python/more_oop.md

@@ -16,13 +16,13 @@ jupyter:
 
 In this week's lecture, and the next, we will go more into the theoretical basis of object-oriented programming, and show you some more advanced possibilities in Python.
 
-### Outline
+## Outline
 * The four pillars of OOP
 * Other important OOP concepts
 * Class methods and class variables
 * Static methods
 
-### The four pillars of OOP
+## The four pillars of OOP
 
 The "four pillars" are four concepts that are central when programming object-oriented, and are often referred to in the literature. These are:
 
@@ -31,22 +31,22 @@ The "four pillars" are four concepts that are central when programming object-or
 * **Inheritance**; defining new classes based on existing classes.
 * **Polymorphism**; the idea that an object or a function can have different behavior based on the context.
 
-#### Abstraction
+### Abstraction
 
 Abstraction means to extract the essential features of objects we use into a common abstract concept (i.e. a class). As part of the abstraction we also decouple how something is used from how it is implemented, and only need to focus on the implementation when developing the class. We can hide away unnecessary or complex details when using the class, exposing only a clean interface externally. Abstraction reduces overall code complexity and makes code easier to understand. Abstraction is essential in modern software systems, since it would be impossible to deal with the complexity of modern systems while still keeping track of all details down to the level of single bits. For instance, we work with integers and floating point numbers as abstract quantities without knowing how these are represented on the computer.
 
-#### Encapsulation
+### Encapsulation
 
 Encapsulation means collecting all the data and functionality into a single class. The concept of encapsulation is related to and to some extent overlapping with abstraction, in that we "encapsulate" details inside a class, exposing only the easy-to-use interface. Encapsulation also encompasses hiding data inside classes that the external user never interacts with directly or sees. An essential goal of proper encapsulation is that internal data structures of a class may be completely changed, but as long as the interface is untouched all code using the class will still work.
 We use floating point numbers continuously in our codes, but only through the defined Python operators, never
 manipulating the actual number representation in memory. Therefore, our codes still work even if the standard for floating point number representation is changed (which has happened several times through history).
 
 
-#### Inheritance
+### Inheritance
 
 Inheritance means defining new classes based on existing classes. Inheritance is useful because it lets us avoid re-implementing the same methods and behaviors many times (don't repeat yourself), but also because it creates a clear *hierarchy* in your classes, which can be used to structure code. Inheritance can be seen as a central tool for *abstraction*, since the class hierarchies will (should) often map to natural hierarchical relations between different concepts. Consider an example from daily life; in most contexts it is sufficient to think of a car simply as a car, without knowing the brand, model, type, etc, while for other applications more details are needed. The same is true in many programming applications, and inheritance provides the tools for handling these relations.
 
-#### Polymorphism
+### Polymorphism
 
 Polymorphism is perhaps the most tricky concept, but it means that an object can have different behavior based on context. A blu-ray player can read both a blu-ray disc and a DVD, on a technical level, these are very different, but for the user, they are added to the player and functions the same. This would be an example of polymorphic behavior. Similarly, we can for example define a method that can take input of different types, for example an integer *or* a list of integers. The concept of polymorphism is tightly coupled to the use of inheritance and class hierarchies, in *statically typed languages*, where input arguments to a function are required to be of a specific type. With the dynamic typing in Python, polymorphic behavior can also be achieved with other methods, but using class hierarchies and OOP often leads to better structured and more readable code. By making polymorphic classes, we can generalize our classes so they can be easier to use.
 
@@ -272,7 +272,7 @@ Inheritance implies an *is a* relationship. A herbivore *is an* animal, which in
 
 Note that while `isinstance` checks whether a given object instance belongs to a given class, there is also a `issubclass` that can be used on class objects. So you can for example check that a Herbivore is an animal.
 
-#### Note: Constructors in class hierarchies
+### Note: Constructors in class hierarchies
 
 The following is true for subclasses:
 * The subclass automatically has all the same methods as the superclass, including the constructor
@@ -571,7 +571,7 @@ print(p.G)
 
 Thus, the parameter has a single, definite representation in our system. Which is usually a good approach.
 
-### Class Methods
+## Class Methods
 
 In addition to defining class variables, we can define class methods. Class methods are methods we call on the *class*, not on a specific object. The easiest approach to creating a class method in Python is to use the `@classmethod` decorator. One of the typical use cases for a class method are *factory methods*. Factory methods are methods that create objects of the class, but perhaps in a different way than what the constructor does.
 
@@ -649,7 +649,7 @@ def create_solver(cls,solver_type,f):
 
 
 
-#### Other factory method use cases
+### Other factory method use cases
 
 * Create factory methods for unit testing, i.e. initiate some instances with predefined parameters.
 * Initiating objects based on *random* data.

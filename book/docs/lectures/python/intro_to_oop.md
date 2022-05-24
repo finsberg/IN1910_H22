@@ -17,7 +17,7 @@ jupyter:
 In this lecture we will start looking at object-oriented programming (OOP). This is one of the major components of IN1910. In this lecture we will start to look at what OOP is, and how to program object-oriented in Python. In later lectures we will cover some more theory of object-oriented programming and also touch on it in C++.
 
 
-#### Other references
+## Other references
 
 Object-oriented programming in Python is fairly well covered by *Langtangen*. Especially so in:
 * **Chapter 7: Introduction to Classes** Gives a good introduction to defining classes and Python syntax.
@@ -28,13 +28,13 @@ If you want a different introduction to OOP in Python, these two lectures from M
 * [Lecture 9: Python Classes and Inheritance](https://www.youtube.com/watch?v=FlGjISF3l78)
 
 
-### What is Object-Oriented Programming?
+## What is Object-Oriented Programming?
 
 Object-oriented programming (OOP for short), is a [*programming paradigm*](https://en.wikipedia.org/wiki/Programming_paradigm). Put simply, a paradigm is a way to think about, organize, and write code. Paradigms are used to classify and describe languages and programming styles. Many other paradigms exists, and you might have heard of some of them. Some examples are: procedural programming, functional programming, imperative programming, and symbolic programming. Most programming languages don't belong to a single, specific paradigm. Instead most languages, including Python and C++, are described as *multi-paradigm*, meaning it is possible to structure and write your code in different ways.
 
 Object-oriented programming is a way of solving problems, or building software, by defining data as *objects*, and specifying how those objects behave and interact. It is one of the most popular programming paradigms, and is often used when developing software. When done correctly, OOP leads to code that is usually quite easy to understand, use and extend.
 
-#### The origins of OOP
+### The origins of OOP
 
 Object-oriented programming was invented in Norway by Ole-Johan Dahl and Kristen Nygaard in 1967. They made a new programming language, and called the first object-oriented language *Simula*. While Simula was revolutionary and historically an important language, it didn't see widespread adoption. Inspired by Simula, the language *Smalltalk* came on the scene in 1972 and saw a wider use, pushing the use of OOP. Smalltalk still sees some use today, mainly as a means of teaching OOP and introductory programming. In 1983 *C++* arrived on the scene, and can be described as the first "industrial" object-oriented language. C++ was invented by Bjarne Stroustrup. He thought Simula had some nice features for large software development, but considered it to be to slow to be practical. He therefore started developing *"C with classes"*, which would eventually become C++.
 
@@ -49,7 +49,7 @@ You might have thought the ostehøvel was the greatest Norwegian invention, but 
 ```
 
 
-#### What are objects?
+### What are objects?
 
 So what are *objects*? You probably already have some intuition around what objects are. In Python, all variables are objects. So in a sense an object is similar to a variable. All objects have a few characteristics we can associate with them.
 
@@ -61,7 +61,7 @@ One of the reasons OOP is so popular is that it is quite intuitive, because it m
 
 **Everything in Python are objects**. When you are programming in Python, you are defining and using objects all the time. Does this mean you are programming object-oriented? Not necessarily. As we mentioned in the introduction the important thing is *thinking* and *solving problems* in an object-oriented manner. Meaning to do OOP properly one should ask what kind of objects are best for organizing a program and solving problems. Probably the most important task of programming object-oriented is therefore to define new data types, and defining how objects of that type should be represented and interact.
 
-##### Example: A contact list
+### Example: A contact list
 
 Think about the contact list on your phone. For each contact, you can store information of different types: name, different phone numbers, emails, etc. For some contacts you have many pieces of information about, some you only have a single piece of information.
 
@@ -102,7 +102,7 @@ print(type(contact))
 So far we have only added the same information as the dictionary, but we could now go ahead and change how this object behaves. We could for example add a method that starts a new call to the person, so that we could do `contact.initiate_call()`, or a button to start an email to the person, and so on.
 
 
-### Attributes, Fields, Methods
+## Attributes, Fields, Methods
 
 Classes are custom data types, and are extremely central to object-oriented programming. When you are developing object-oriented, most of your development will go into defining classes and how they interact.
 
@@ -130,11 +130,11 @@ print(type(x.conjugate))
 ```
 
 
-#### Class vs Instance
+## Class vs Instance
 
 When we define a class, we are defining a new data type. To actually use it, we have to define a new object of that type, we call this an *instance* of the class. In our contact-list example, the `Contact` class is the general class we defined, then we can implement specific instances of the class, one for "Lisa", one for "Frank" and so on. The class is thus the abstract *concept* of a contact, and objects are the specific cases of that type. A different example: A Nissan leaf is a given type of car, and can be represented as a class. A specific car with the license plate "EM93277" (courtesy of random.org) is an *instance* of the Nissan leaf class. The specific car is an object of the *type* Nissan leaf. In this sense, the class is like the blue-print, it specifies how objects of that type should be built and how they should behave.
 
-#### Naming Conventions
+### Naming Conventions
 
 According to the [PEP8](https://www.python.org/dev/peps/pep-0008/?#class-names) style-guide (more on this next week), class names should use the CapWords convention. This means every word in the class name should be capitalized, and the words should **not** be separated by underscores.
 
@@ -149,7 +149,7 @@ acc9302100 = BankAccount()
 You should be strict about this rule, as it makes it much easier to differentiate the *classes* themselves (the general datatype) from instances of that class (the specific objects) in your code.
 
 
-#### Example: A deck of cards
+### Example: A deck of cards
 
 Time for another example. Let us say we are implementing some card games. Now, we can easily represent a deck of cards using lists of strings in Python, no problem. However, for most card games, we need to use the exact same operations: get a new deck, shuffle the deck, draw cards, etc. It would be useful to implement the code to do this one time, and then just use that functionality each time we implement a new card game.
 
@@ -215,7 +215,7 @@ class Deck:
 When we intend to use this on a specific deck we simply write `deck.shuffle()`, i.e., without arguments. We still define the function with a `self` argument, and the method shuffles the internal list attribute of the deck, i.e., `self.cards`.
 
 
-### Interfaces
+## Interfaces
 
 In our deck of cards example, we have specific methods the user can use to interact with the deck of cards, and we can call this the *interface* (På norsk: grensesnitt) of the class. To put it simply, the interface is what is "visible" or usable from outside the class. If you build a large and complex class, all anyone really needs to interact with it is a good understanding of its interface. In this sense, the interface itself is an abstraction tool. Take a car for example, the interface used for driving that gar is the steering wheel, the pedals and the gear stick. However, under the hood there is an engine and lots of complicated machinery.
 
@@ -331,7 +331,7 @@ list_of_spheres = [Sphere(0), Sphere(5), Sphere(10)]
 print(list_of_spheres)
 ```
 
-## Making callable objects
+### Making callable objects
 
 Another important special method is the *call* method (`__call__`). If a class has an implemented call method, we can call a given object as though it were a function. This is because Python automatically will use the call-method behind the scenes. This is extremely useful when we want to create objects that represent mathematical functions.
 
@@ -381,7 +381,7 @@ plt.show()
 There are several advantages to implementing these quadratic functions as actual Quadratic-objects, rather than as normal Python functions. For one, they now have a custom type, which we can check using `isinstance(f, Quadratic)`. Thus, other parts of our code can *know* that the function is a quadratic function. We can also extend the class adding plenty of useful functionality. We could for example add functionality for adding or subtracting functions, producing new Quadratic-objects. This cannot be done with normal functions. Or we could add a method for returning the derivative. If you do this week's exercises, you will get the chance to implement all of these for a general degree polynomial.
 
 
-#### Polymorphism
+## Polymorphism
 
 The fact that we can use callable objects as if they were functions is very useful in Python, and it is an example of [*polymorphism*](https://en.wikipedia.org/wiki/Polymorphism_(computer_science)). Polymorphism is another of the pillars of OOP, but the concept is a bit tricky to define or understand. The term itself comes from greek and means "many forms". It is a means of generalizing code, in that we can write different code that behaves the same under given circumstances, and thus we can use those objects as long as they have a given property we need. In this case, we can create objects that acts and feels like functions, and we can use them for any purpose were we need a Python function.
 
@@ -396,7 +396,7 @@ callable(f)
 This function returns `True` if the object `f` is callable, and `False` if it is not. It doesn't care whether `f` is a Python function, a custom class or a given class method. It only cares if `f` quacks like a duck.
 
 
-#### Example: The derivative class
+### Example: The derivative class
 
 In mathematics, Newton's method is a numerical method for finding the roots of a mathematical function (a root is the point where the function is equal to zero). Normally to use Newtons method you need the function itself ($f(x)$), it's derivative ,$\frac{\rm d}{{\rm d}x} f(x)$. which also is a function, and an initial guess $x_0$.
 
@@ -469,7 +469,7 @@ newton(f, x0)
 Implementing the `Derivative` class ourselves does hopefully make it more apparent how SciPy can use Newton's method without having the derivative function - it is also a good example of how OOP can be used in scientific computing.
 
 
-### More Special Methods
+## More Special Methods
 
 So far, we have shown the following special methods
 * `__init__`

@@ -26,3 +26,4 @@ parts:
       - file: docs/lectures/python/intro_to_oop.md
       - file: docs/lectures/python/classes_methods_decorators.md
       - file: docs/lectures/python/more_oop.md
+    - file: docs/lectures/git/version_control_with_git.md

@@ -27,3 +27,7 @@ parts:
       - file: docs/lectures/python/classes_methods_decorators.md
       - file: docs/lectures/python/more_oop.md
     - file: docs/lectures/git/version_control_with_git.md
+    - file: docs/lectures/testing_codestyle/testing_codestyle.md
+    sections:
+    - file: docs/lectures/testing_codestyle/writing_functioning_code.md
+    - file: docs/lectures/testing_codestyle/codestyle_and_docstrings.md

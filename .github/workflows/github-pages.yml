@@ -8,36 +8,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    container:
+      image: finsberg/in1910
     steps:
       - uses: actions/checkout@v2
 
-      - name: Cache conda
-        uses: actions/cache@v2
-        env:
-          # Increase this value to reset cache if etc/example-environment.yml has not changed
-          CACHE_NUMBER: 0
-        with:
-          path: ~/conda_pkgs_dir
-          key:
-            conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('environment.yml') }}
-
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          activate-environment: in1910-book
-          use-mamba: true
-          environment-file: environment.yml
-          use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
-
       - name: Build docs
-        shell: bash -l {0}
         run: |
           make docs
-
-      - name: Deploy to github pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/_build/html
 
       - name: Deploy to github pages at UiO
         uses: cpina/github-action-push-to-another-repository@devel

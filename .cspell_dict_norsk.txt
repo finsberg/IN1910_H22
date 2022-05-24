@@ -34,8 +34,10 @@ dynamiske
 Lenkede
 algoritme
 Stokastiske
+stokastisk
 forsøk
 Markovprosesser
+Markovprosess
 Profilering
 optimalisering
 Blandet
@@ -48,3 +50,9 @@ Fagutvalg
 Midsemester
 Datasett
 allokere
+objekt
+datavitenskap
+prosess
+kildekode
+variabel
+refakturere

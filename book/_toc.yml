@@ -31,3 +31,15 @@ parts:
     sections:
     - file: docs/lectures/testing_codestyle/writing_functioning_code.md
     - file: docs/lectures/testing_codestyle/codestyle_and_docstrings.md
+    - file: docs/lectures/cpp/cpp.md
+      sections:
+      - file: docs/lectures/cpp/intro_to_cpp.md
+      - file: docs/lectures/cpp/arrays_and_pointers.md
+      - file: docs/lectures/cpp/oop_in_cpp.md
+      - file: docs/lectures/cpp/dynamic_allocation.md
+      - file: docs/lectures/cpp/cpptools.md
+      - file: docs/lectures/cpp/arraylist.md
+      - file: docs/lectures/cpp/linked_lists.md
+      - file: docs/lectures/cpp/algorithm_analysis.md
+      - file: docs/lectures/cpp/linkedlists_vs_dynamicarrays.md
+      - file: docs/lectures/cpp/sorting.md

@@ -1139,3 +1139,97 @@ for i in range(5):
 * To avoid name conflicts, use import statements like `import math` to create a new namespace for the imported module, rather than importing everything into the existing namespace with `from math import *`
 * The functions `globals(), locals(), dir()` are useful for examining existing namespaces.
 * When a function is defined inside another function, it remembers the namespace of the outer function. This technique, called closure, can be used to create parameterized function.
+
+
+### Exit codes
+
+In this section we will cover a topic that might seem a bit strange but will make more sense when we transition from python to C++. Imagine that you want to chain together two commands in the terminal, meaning that you for example first want to run a python program and if that completes without errors you would like to do something else. Consider the following program
+
+```python
+# divide.py
+
+import sys
+
+
+def main(args):
+    if len(args) != 2:
+        print("You need to provide 2 arguments")
+    else:
+        print(f"The result is {float(args[0]) / float(args[1])}")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
+```
+Here we ask the user to provide two numbers and the program will print the first number divided by the second, e.g
+```
+$ python divide.py 4 2
+The result is 2.0
+```
+The execution of this program was successful because it ran without any errors. We can verify this by checking that the exit code is `0`
+```
+$ echo $?
+0
+```
+Here `echo` is the equivalent of `print` in python, but in `bash`, and $? just mean *the exit code of the last running program*.
+If you try to run the program with the input `1` and `0` you will get the following
+```
+$ python divide.py 1 0
+Traceback (most recent call last):
+  File "/Users/henriknf/divide.py", line 12, in <module>
+    exit(main(sys.argv[1:]))
+  File "/Users/henriknf/divide.py", line 8, in main
+    print(f"The result is {float(args[0]) / float(args[1])}")
+ZeroDivisionError: float division by zero
+```
+and now the exit code is `1`
+```
+echo $?
+1
+```
+Why is this important? If you have a big program the consist of several programs then exit codes are a way to tell the next program if the previous program failed. In `bash` you can chain together programs using `&&`, for example
+```
+$ python divide.py 4 2 && echo 'Success!'
+The result is 2.0
+Success!
+```
+and we we that 'Success!' is printed after the python program is finished. However, if you try
+```
+$ python divide.py 1 0 && echo 'Success!'
+Traceback (most recent call last):
+  File "/Users/henriknf/test/divide.py", line 12, in <module>
+    main(sys.argv[1:])
+  File "/Users/henriknf/test/divide.py", line 8, in main
+    print(f"The result is {float(args[0]) / float(args[1])}")
+ZeroDivisionError: float division by zero
+```
+you will only get the error and not the message 'Success!'. This is because `bash` knows that it should stop if it receives a non-zero exit code.
+
+Now, you may want to also abort the program if you provided to few or too many arguments to the script, but currently we get the following behavior if you for example try to provide three arguments
+```
+$ python divide.py 4 2 3 && echo 'Success!'
+You need to provide 2 arguments
+Success!
+```
+which is not what we want. One way to handle this is to return an exit code from the program to the `exit` method so that your program becomes
+```python
+import sys
+
+
+def main(args):
+    if len(args) != 2:
+        print("You need to provide 2 arguments")
+        return 2
+    else:
+        print(f"The result is {float(args[0]) / float(args[1])}")
+
+
+if __name__ == "__main__":
+    exit(main(sys.argv[1:]))
+```
+Note that the value `2` (which is chosen somewhat arbitrarily) is returned and passed to the `exit` method if the number of arguments are different from two. If we try to repeat the procedure above we get
+```
+$ python divide.py 4 2 3 && echo 'Success!'
+You need to provide 2 arguments
+```
+which is what we want. Note that if you want to continue the program even if a failure occurs (such as `ZeroDivisionError`) you can just add a `try-except` block and just suppress the error that way.

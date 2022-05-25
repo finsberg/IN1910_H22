@@ -4,6 +4,7 @@ dictionaryDefinitions:
     addWords: true
   - name: norsk
     path: .cspell_dict_norsk.txt
+    addWords: true
 dictionaries:
   - in1910
   - norsk

@@ -1,14 +1,13 @@
 ---
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.7.1
-  kernelspec:
-    display_name: 'Python 3.9.2 64-bit (''in1910-book'': conda)'
-    name: python3
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
 ---
 
 # Writing Reliable Software
@@ -48,7 +47,7 @@ It is useful to add a simple message, as it makes it easier to understand what w
 
 Let us look at a specific example
 
-```python
+```{code-cell} python3
 class Sphere:
     def __init__(self, radius):
         assert radius >= 0, "Radius cannot be negative."
@@ -93,7 +92,7 @@ raise <exception>
 ```
 where we fill the proper exception type. All the normal "errors" you get in Python (`TypeError`, `NameError`, etc) are exceptions. So in our Sphere example as before, we could change our assertion to raising an error:
 
-```python
+```{code-cell} python3
 class Sphere:
     def __init__(self, radius):
         if radius < 0:
@@ -112,7 +111,7 @@ One apparent benefit of this over the assertion is that we get more info out. Th
 
 When a exception is raised, for example during a function call, it will crash the program, unless that exception is *caught*. In Python, we catch exceptions by putting them inside a `try`-block. Let us for example we have a long list of values, and we want to create a corresponding list of Spheres, with radii given by those values. However, the values are sometimes negative, in which case we want the radii to be set to 0. We could then do the following
 
-```python
+```{code-cell} python3
 class Sphere(Sphere):
     def __repr__(self):
         return self.__class__.__name__ + f"({self.radius})"
@@ -200,7 +199,7 @@ There are many built in exceptions and errors that can be used to make your erro
 
 Why would you want to define your own custom exceptions? For larger projects these can be nice, as they can make it even clearer what is going wrong, or they can make sure that you are catching exactly the bug you are expecting. Say for example our earlier Sphere example, where the radius shouldn't be negative. We could raise a ValueError, but we could also create a custom exception that can be even more specific.
 
-```python
+```{code-cell} python3
 class NegativeRadiusError(Exception):
     pass
 
@@ -217,7 +216,7 @@ class Sphere:
         self.radius -= shrinkage
 ```
 
-```python
+```{code-cell} python3
 try:
     s = Sphere(2)
     s.shrink(3)
@@ -295,7 +294,7 @@ So we know what these simple computations *should* be. What we do now is impleme
 
 First, we want to check that `u + v` gives us the expected values. To check this we use assertions. We can write this test out as follows:
 
-```python
+```{code-cell} python3
 from vector import Vector3D
 
 
@@ -377,7 +376,7 @@ To make vectors comparable by their values, we need to add a `__eq__` special me
 
 
 
-```python
+```{code-cell} python3
 class Vector3D(Vector3D):
     def __eq__(self, other):
         same_x = abs(self.x - other.x) < 1e-12
@@ -390,7 +389,7 @@ In stead of asserting that the numbers are equal, we instead check that the two 
 
 When testing for equality of floating point numbers, you should always check that numbers are close in stead of strict equality. The reason is that floating point operations can lead to round off errors which can be seen in the following example
 
-```python
+```{code-cell} python3
 a = 1.2
 b = 1.0
 print(a - b)
@@ -411,7 +410,7 @@ AssertionError:
 ```
 With the equality method implemented, let's write a unit test to check if it works
 
-```python
+```{code-cell} python3
 def test_eq():
     u = Vector3D(1, 2, 0)
     assert u == Vector3D(1, 2, 0)
@@ -430,7 +429,7 @@ First note that we need to define a new vector to test with, because each unit t
 Running the tests with pytest show that things are working as expected. With the `__eq__` implemented and tested we could now write out the add test as follows
 
 
-```python
+```{code-cell} python3
 def test_add():
     u = Vector3D(1, 2, 0)
     v = Vector3D(1, -1, 3)
@@ -447,7 +446,7 @@ Let us move on and make a few more tests for the following cases:
 * $||v||^2 = 11$
 
 
-```python
+```{code-cell} python3
 def test_sub():
     """Test subtraction"""
     u = Vector3D(1, 2, 0)
@@ -525,7 +524,7 @@ test_vector.py::test_length PASSED                                              
 One last thing we often want to check for, is that an exception is actually raised given the right conditions. This can easily be implemented using something called a context manager. When testing for an exception we want to allow a specific exception to be raised, but we would also like to fail the test if that specific exception was not raised.
 To do this we create a context block using a `with` statement as be calling `pytest.raises`, `pytest` will listen for for the exception that we provided within that context block, and fail the test if we exit the block without the specific exception raised.
 
-```python
+```{code-cell} python3
 import pytest
 
 
@@ -538,7 +537,7 @@ In this case, we check that a vector $u$ plus a scalar $3$ is undefined as a Typ
 
 Let us show a different one
 
-```python
+```{code-cell} python3
 def test_no_unit_vector():
     with pytest.raises(RuntimeError):
         Vector3D(0, 0, 0).unit()
@@ -562,7 +561,7 @@ test_vector.py:79: Failed
 ```
 This means the last test failed, but the other 8 passed. The last test fails because we never added functionality that raises an exception for the zero-length vector case. Let us add this now.
 
-```python
+```{code-cell} python3
 class Vector3D(Vector3D):
     def unit(self):
         if self.length == 0:
@@ -579,7 +578,7 @@ And after adding this, our test passes!
 
 Imagine that you want to test your functions against different input. Let us take the `test_length` function we wrote above
 
-```python
+```{code-cell} python3
 def test_length():
     """Test length"""
     u = Vector3D(1, 2, 0)
@@ -595,19 +594,19 @@ Another scenario that you could imagine is if you wanted to test your code again
 Lets have a look at some ways we can deal with this.
 
 First of all, note that if we let `arg = (1, 2, 0)`, we can create a new vector as follows
-```python
+```{code-cell} python3
 arg = (1, 2, 0)
 u = Vector3D(arg[0], arg[1], arg[2])
 ```
 In fact, this is a good opportunity to show the unpacking operator in python. In this case we can actually do the following
-```python
+```{code-cell} python3
 arg = (1, 2, 0)
 u = Vector3D(*arg)
 ```
 The `*` is called an unpacking operator so that `*arg` unpacks the list so that `Vector3D(*arg)` is identical to `Vector3D(arg[0], arg[1], arg[2])` when `arg` is a list of three elements.
 
 Anyway, with this in mind we can now rewrite our tests as a for loop
-```python
+```{code-cell} python3
 def test_length_with_multiple_inputs():
     args = [(1, 2, 0), (1, -1, 3)]
     expected_values = [5, 11]
@@ -619,7 +618,7 @@ This will fix the copy-passing issue since any new examples could now just be ad
 
 Luckily, `pytest` provides a way to run all these cases in a simple way without the execution stopping if one of the tests are failing. This is called parameterized testing. The following code implements the same tests but will not stop the execution if one of the tests fail
 
-```python
+```{code-cell} python3
 import pytest
 
 
@@ -650,7 +649,7 @@ and we see now that it runs two tests.
 
 The first argument to `@pytest.mark.parametrize` is a string with the name of the arguments that should be passed to the function. The second argument is the actual input that should be passed to the function in each iteration. Here is another example
 
-```python
+```{code-cell} python3
 import pytest
 
 
@@ -708,7 +707,7 @@ Sometimes you might experience that your tests is not behaving as expected. The 
 python -m pytest -s
 ```
 and this can of course also be combined with other options for example if we add a print statement to the `test_square` function
-```python
+```{code-cell} python3
 @pytest.mark.parametrize("x, x2", [(0, 0), (1, 1), (2, 4), (3, 9)])
 def test_square_root(x, x2):
     print("\nInput = ", x, ", output = ", x2)
@@ -745,7 +744,7 @@ PASSED
 When print statements doesn't help you you can try using the built in debugger in python. If you are using python3.7 or above (which you should), then you can drop into a debugger anywhere in your code by calling the `breakpoint()` function. If
 
 For example let us try to add a breakpoint in the `test_square` function
-```python
+```{code-cell} python3
 @pytest.mark.parametrize("x, x2", [(0, 0), (1, 1), (2, 4), (3, 9)])
 def test_square_root(x, x2):
     breakpoint()

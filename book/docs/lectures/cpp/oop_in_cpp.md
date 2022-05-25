@@ -1,15 +1,13 @@
 ---
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.7.1
-  kernelspec:
-    display_name: Python 3
-    language: python
-    name: python3
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
 ---
 
 # Object-oriented Programming in C++
@@ -351,7 +349,7 @@ Defining setters and getters like this is very common in C-style languages like 
 
 In C++, functions can be *overloaded*, this means giving multiple functionalities to one function. To describe how this works, first recall that in Python, you can *redefine* a function whenever you wish:
 
-```python
+```{code-cell} python3
 def f(x):
     return 2 * x + 2
 

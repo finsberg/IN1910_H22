@@ -1,3 +1,15 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # Sorting Algorithms
 
 For the rest of this lecture, we will talk about *sorting algorithms*. Or more specifically, *comparison sorts*. Comparison sorts are sorting algorithms that work by sorting a sequence of items (letters, numbers, objects) in which the order must be worked out by comparing objects. For example, sorting a list of numbers from smallest to biggest is a comparison sort, because to find the bigger of two numbers, we compare them.
@@ -143,7 +155,7 @@ At this point, an interesting question might be what sorting algorithm the build
 
 As there are so many sorting algorithms out there, an interesting way to compare them could be to visualize how they sort their lists. This can be done in many ways, for example like shown in the Youtube video below, which shows of 15 different sorting algorithms on lists of various sizes:
 
-```python
+```{code-cell} python3
 from IPython.display import HTML
 
 HTML(
@@ -157,7 +169,7 @@ Or you can be inspired by the Romian Sapientia University, which has created and
 
 See for example their video of *insert-sort* below:
 
-```python
+```{code-cell} python3
 from IPython.display import HTML
 
 # Embed Youtube Video

@@ -1,15 +1,13 @@
 ---
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.7.1
-  kernelspec:
-    display_name: Python 3
-    language: python
-    name: python3
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
 ---
 
 # Code Style and Documentation
@@ -85,7 +83,7 @@ We will now go through and cover *some* of the rules in PEP8, but we don't cover
 
 In Python, indentation is very important to decide scopes when defining functions and making loops and tests. However, how long an indentation is optional, as long as each line is indented by the same amount of space. The most common is to use 4 spaces.
 
-```python
+```{code-cell} python3
 def is_prime(n):
     if n == 1:
         return False
@@ -110,7 +108,7 @@ PEP8 recommends sticking to actual spaces.
 When a line of code becomes very long, it will reach the end of the screen/editor. In such cases it is better to break the line yourself, instead of letting it simply run long. This is because you can then split the line in a location where it more structured and orderly.
 
 As an example we write out the following line of code
-```python
+```{code-cell} python3
 income = (
     gross_wages
     + taxable_interest
@@ -124,7 +122,7 @@ Here we have written out one long code line. In Jupyter this code line will wrap
 An issue with word wrap is that others might have different settings to you, and so there is little control where the line break will happen. If it happens at a weird location (such as the middle of a variable), the line becomes hard to read.
 
 Here you should instead split the line yourself. To do so, you can put parenthesis around the entire expression. Python will then automatically see the next line as a continuation from the first
-```python
+```{code-cell} python3
 income = (
     gross_wages
     + taxable_interest
@@ -134,7 +132,7 @@ income = (
 )
 ```
 The fact that parenthesis let's you split up your code over multiple lines is very useful also when you have very long function calls, here is an example taken from Project 1
-```python
+```{code-cell} python3
 import matplotlib.animation as animation
 
 ani = animation.FuncAnimation(
@@ -154,7 +152,7 @@ As class methods belong to the same class they often are more interconnected tha
 ### Use blank lines in functions, sparingly, to indicate logical sections.
 
 Because we use blank lines to separate different functions and methods, we should be a bit wary of using too many blank lines *within* a function or method definition, as this might make it harder to get an overview of where different function definitions start and stop. In some cases however, if a function or method have several clearly distinct logical sections, these can be separated by a line to make it clearer. In our `is_prime` example from earlier, we added a blank line between checking if 1 is a prime (which is a special case) to the more general trial-division loop.
-```python
+```{code-cell} python3
 def is_prime(n):
     if n == 1:
         return False
@@ -172,17 +170,17 @@ This is simply a setting within your editor. Saving your Python-scripts with UTF
 ### Put imports on separate lines at the top of the file
 
 We have already discussed how imports should look in a Python-file. For one, you should put them at the top of your file, and you should avoid wildcard imports. In addition, PEP8 says to never import more than one package per line, i.e., don't write
-```python
+```{code-cell} python3
 import math, numpy, scipy
 ```
 instead write
-```python
+```{code-cell} python3
 import math
 import numpy
 import scipy
 ```
 When importing specific components from a single package, you can group several imports however, so this is fine:
-```python
+```{code-cell} python3
 from math import pi, sqrt, exp
 ```
 
@@ -205,7 +203,7 @@ All classes should normally use the CapWords convention, meaning every word in t
 **Variables**
 
 Most variables should be names as we do for functions/modules, i.e., all lowercase and with underscores. As emphasized during our intro to object-oriented programming this convention makes it easy to differentiate classes from instances.
-```python
+```{code-cell} python3
 u = Vector3D(4, 2, -2)
 ```
 Note that the built-in data types break the class name convention (`tuple`, `int`, `list`, etc), but those are special cases.
@@ -277,12 +275,12 @@ As a rule of thumb, you should put on each side of binary `+` and `-`, as this s
 or
 
 * No:
-```python
+```{code-cell} python3
 def f(x):
     return a * x**2 + b * x + c
 ```
 * Yes:
-```python
+```{code-cell} python3
 def f(x):
     return a * x**2 + b * x + c
 ```
@@ -315,7 +313,7 @@ If we get lines that become longer than 79 characters, we need to break the line
 When splitting a mathematical expression over multiple lines, the natural thing to do is split the lines at the operators, so that different lines contain the different terms.
 
 Let us return to an example from earlier, where we split the line as follows
-```python
+```{code-cell} python3
 income = (
     gross_wages
     + taxable_interest
@@ -395,14 +393,14 @@ Also, a comment should not state the obvious, or explain *what* the code is doin
 
 Don't do this
 
-```python
+```{code-cell} python3
 # Increment width
 width = width + 1
 ```
 
 But this could be useful
 
-```python
+```{code-cell} python3
 # Compensate for border
 width = width + 1
 ```
@@ -428,12 +426,12 @@ When checking if a variable is or is not `None` (as is very common to do with ke
 * No: `if not foo is None:`
 
 Note also that checking if something is `None` is more strict than checking true/false. The following prints only if `foo`is *exactly* `None`:
-```python
+```{code-cell} python3
 if foo is not None:
     print("***")
 ```
 The following test however, prints if `foo` is `None`, `False`, 0, `[]`, `''`, etc.:
-```python
+```{code-cell} python3
 if foo:
     print("***")
 ```
@@ -495,7 +493,7 @@ But if you want to use a tool like Black, it is more common to configure your ch
 
 Another PEP that might be useful to know about, in addition to PEP8 (which is the code style), is PEP20, also known as the "Zen of Python". This is simply a collection of 19 simple "rules" or principles one typically want to follow to write good Python code. You can print the Zen of Python in its entirety by writing `import this`.
 
-```python
+```{code-cell} python3
 import this
 ```
 
@@ -530,7 +528,7 @@ When we think of documentation, it might be common to think of a separate user m
 
 In Python, the most important thing to have good documentation is to write good *docstrings*. Docstrings are string literals you put as the first thing in modules or function definitions. For example:
 
-```python
+```{code-cell} python3
 def factor(n):
     """Return the prime factorization of an integer."""
     if n == 1:
@@ -550,20 +548,20 @@ In this example code, the second line is the *docstring* of the function. It sor
 
 As mentioned. Docstrings are *not* comments, but strings. They do fulfill the same role as a comment, but they will also be automatically stored as a special attribute on the object called `__doc__`. For example:
 
-```python tags=[]
+```{code-cell} python3 tags=[]
 print(factor.__doc__)
 ```
 
 Similarly, when we place a docstring at the top of a module (a file), and we then import that module as a package in Python, the string will be stored as a `__doc__` attribute:
 
-```python tags=[]
+```{code-cell} python3 tags=[]
 import vector
 print(vector.__doc__)
 ```
 
 The fact that docstrings can be accessed directly as attributes means it is very easy for editors and other tools to use *code introspection* to give us more information. For example in an iPython shell, we can use `help()` or write `??` immediately behind a function or class method to read that methods docstring. Similarly, in Jupyter you can also call `help`, or press `Shift+Tab` to read the docstring of the variable your cursor is located.
 
-```python
+```{code-cell} python3
 u = vector.Vector3D(0, 4, 4)
 
 help(u.unit)

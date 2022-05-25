@@ -1,3 +1,15 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # C++ tips and tricks
 
 While it is certainly possible to write bug-free C++ in a pure text editor without any tool to guide you, most professional developers heavily on tools to help them write, compile and debug the code they are writing. In this document we will go through a few tips and tricks that will help you when developing C++ code.

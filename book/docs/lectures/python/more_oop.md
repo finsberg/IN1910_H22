@@ -1,15 +1,13 @@
 ---
-jupyter:
-  jupytext:
-    text_representation:
+jupytext:
+  formats: md:myst
+  text_representation:
       extension: .md
-      format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.7.1
-  kernelspec:
-    display_name: Python 3
-    language: python
-    name: python3
+      format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
 ---
 
 # More on Object-Oriented Programming
@@ -58,7 +56,7 @@ A general problem when introducing OOP is that the ideas are most useful for lar
 
 Here is a simple examples to illustrate the four pillars. You have probably seen similar examples previously, but we repeat it here to link it directly to the four pillars. Say we have a program that uses matrices, vectors, and matrix-vector products. Vectors and matrices are conveniently stored as numpy arrays:
 
-```python
+```{code-cell} python3
 # matrices and vectors are easily represented as numpy arrays
 import numpy as np
 
@@ -77,7 +75,7 @@ print(b)
 This is all well and good, but the code completely ignores the fact that a matrix is a well-defined and useful mathematical concept, with a strictly defined set of permitted operations. If our code was larger, and used multiple matrices, explicitly representing the abstract concept of a matrix will make the code far more readable. For that purpose, it is natural to use a class, which holds the matrix data and defines associated operations:
 
 
-```python
+```{code-cell} python3
 class Matrix:
     def __init__(self, data):
         self._data = data
@@ -104,7 +102,7 @@ One may argue that for this simple code not much has been gained, but it should 
 In our matrix example it makes sense to consider the third pillar, *inheritance*, before looking at the second. Assume that many of the matrices used in our program are diagonal. For large matrices, it is very inefficient to compute a matrix-vector products involving a diagonal matrix as if the matrix was full. To avoid unnecessary code duplication, we can introduce the diagonal matrix as a sub-class:
 
 
-```python
+```{code-cell} python3
 class MatDiag(Matrix):
     def mul(self, x):
         return np.diagonal(self._data) * x
@@ -121,7 +119,7 @@ print(b)
 
 While this class works, it is not very well-suited for large matrices, since we store a large number of zeros ($n\times n - n$, for an $n\times n$ matrix). We can create a more memory-friendly version of the `MatDiag` class, and at the same time illustrate *encapsulation*:
 
-```python
+```{code-cell} python3
 class MatDiag(Matrix):
     def __init__(self, data):
         if data.ndim == 1:
@@ -149,7 +147,7 @@ The main change to the class is that we only store the non-zero diagonal element
 
 The fourth and final pillar, *polymorphism*, can be illustrated by the following example code, where we want to solve the linear system `Ax = b`. This can of course be done both for full matrices and diagonal matrices. However, if we care about efficiency we should utilize the matrix structure, just as we did for the matrix multiplication above. The following function implements a naive solution:
 
-```python
+```{code-cell} python3
 """
 Note: intentionally bad coding style, breaks encapsulation
 """
@@ -175,7 +173,7 @@ print(A1)
 
 There are two main reasons to change this code. The first is that encapsulation is broken, since the function accesses the internal matrix data structures directly. The second one is that we use `isinstance` tests to determine the behavior. Both problems can be solved by moving the `solve` function inside the classes, and allowing the object itself to determine what function to call. The complete implementation of the classes and the function may look like:
 
-```python
+```{code-cell} python3
 class Matrix:
     def __init__(self, data):
         self._data = data
@@ -190,7 +188,7 @@ class Matrix:
         return np.matmul(np.linalg.inv(_data), b)
 ```
 
-```python
+```{code-cell} python3
 class MatDiag(Matrix):
     def __init__(self, data):
         if data.ndim == 1:
@@ -209,7 +207,7 @@ class MatDiag(Matrix):
         return b / self._data
 ```
 
-```python
+```{code-cell} python3
 def solve(A, b):
     print(b)
     return A.solve(b)
@@ -235,7 +233,7 @@ Polymorphism implemented through class hierarchies becomes *even more important 
 * **Virtual method**; an overrideable method, i.e. a method that is declared *virtual* in the base class can be overridden in subclasses. In Python all methods are virtual by default, but this is not the case for Java and C++.
 
 
-```python
+```{code-cell} python3
 # Example: multilevel inheritance
 
 
@@ -282,8 +280,8 @@ The following is true for subclasses:
 However, if a subclass wants to extend the constructor of its superclass, we might run into problems:
 
 
-```python
-class Car(object):
+```{code-cell} python3
+class Car:
     """Store information about a car"""
 
     def __init__(self, brand, model, plate_nr, color, milage):
@@ -301,7 +299,7 @@ Challenge: We want to get away without having to re-implement the whole construc
 Let us first look at the 'naive' solution:
 
 
-```python
+```{code-cell} python3
 class ElectricCar(Car):
     def __init__(self, brand, model, plate_nr, color, milage, battery):
         self.battery = battery
@@ -311,7 +309,7 @@ This would be great (if it worked), because we only need to add the new informat
 
 To get around this, we can explicitly call the superclass's init function directly.
 
-```python
+```{code-cell} python3
 class ElectricCar(Car):
     def __init__(self, brand, model, plate_nr, color, milage, battery):
         Car.__init__(self, brand, model, plate_nr, color, milage)
@@ -326,7 +324,7 @@ This way, we can use the old constructor, but add additional steps when construc
 As in earlier examples, we want to avoid hard-coding in specific class names, in case we change them later, or use inheritance. To do this, we change writing `Car.__init__` with `super().__init__`. Here, `super` is a built-in Python function that refers to the superclass, when used within a subclass. So we would do:
 
 
-```python
+```{code-cell} python3
 class ElectricCar(Car):
     def __init__(self, brand, model, plate_nr, color, milage, battery):
         super().__init__(brand, model, plate_nr, color, milage)
@@ -350,7 +348,7 @@ This is part of the behavior of Python's `super` function. The intention for thi
 A class can inherit from multiple base classes. There is a never-ending debate on whether or not this is a good idea. It may be useful in certain applications, but also tends to make class hierarchies quite complicated.
 
 
-```python
+```{code-cell} python3
 class Human(Animal):
     pass
 
@@ -379,7 +377,7 @@ The class structure clearly separates the two classes of ODE solvers, while stil
 #### Quiz 1: Which base class constructor will be called here?
 
 
-```python
+```{code-cell} python3
 class Human:
     def __init__(self):
         print("Calling Human constructor")
@@ -401,14 +399,14 @@ c1 = Cyborg()
 
 And you are unsure about the method resolution order, it is also possible to just print it (then it is clear that Human is next after Cyborg)
 
-```python
+```{code-cell} python3
 Cyborg.mro()
 ```
 
 #### Quiz 2: What will be output by the print calls?
 
 
-```python
+```{code-cell} python3
 class A(object):
     def f(self):
         return "A::f()"
@@ -450,7 +448,7 @@ However, it is possible to create variables that belong to the *class*, and not 
 For the first example, we simply keep a counter running that increases every time we create a new object of the class:
 
 
-```python
+```{code-cell} python3
 class Rabbit:
     nr_of_rabbits = 0
 
@@ -473,7 +471,7 @@ Here, `nr_of_rabbits` is a class variable, because it belongs to the class itsel
 Note that even though there is no *instance* variable called `nr_of_rabbits`, we can access it from the objects too:
 
 
-```python
+```{code-cell} python3
 print(alice.nr_of_rabbits)
 ```
 
@@ -482,7 +480,7 @@ This is because when we write `alice.nr_of_rabbits`, Python first checks for a i
 However, you should be a bit careful here, because if we try to redefine `alice.nr_of_rabbits` (or `self.nr_of_rabbits` inside the constructor), then we actually create an instance variable, rather than change the class variable. This is why we write `Rabbit.nr_of_rabbits += 1`, rather than self. Let us try the other version and see what happens:
 
 
-```python
+```{code-cell} python3
 class Rabbit:
     nr_of_rabbits = 0
 
@@ -502,11 +500,11 @@ print(alice.nr_of_rabbits)
 Obviously, this does not behave as we expect. We want `nr_of_rabbits` to be 3, since we created 3 rabbits. But we see that the class variable `Rabbit.nr_of_rabbits` reports 0 rabbits, and `alice.nr_of_rabbits`, which should just default to the class variable reports 1 rabbit!  What is actually happening here?
 
 When we write:
-```python
+```{code-cell} python3
 self.nr_of_rabbits += 1
 ```
 This is equivalent to writing
-```python
+```{code-cell} python3
 self.nr_of_rabbits = self.nr_of_rabbits + 1
 ```
 
@@ -517,7 +515,7 @@ Now, this is supposed to be stored in the variable to the left of the assignment
 Note that this happens because an integer is *immutable*. If we had a class variable that was mutable, then it would behave differently. We could for example contain all objects of a class in a list as a class variable:
 
 
-```python
+```{code-cell} python3
 class Rabbit:
     all_rabbits = []
 
@@ -542,7 +540,7 @@ In this case, writing `self.all_rabbits.append(self)` means we add the object it
 Class variables are well suited for storing parameters that are usually shared by all objects of the class. Take for instance a Pendulum class
 
 
-```python
+```{code-cell} python3
 class Pendulum:
     G = 9.81
 
@@ -553,7 +551,7 @@ class Pendulum:
 
 In this class, we can create pendulums of different lengths and masses. We can then use `self.M` and `self.L` to refer to these in calculations. Note that we can also refer to `self.G` in calculations, but this will use the class variable `G`, as the objects contain no specific G. We let `G` be a class variable, because all our pendulums typically experience the same gravity.
 
-```python
+```{code-cell} python3
 p = Pendulum(M=4, L=2)
 print(p.M)
 print(p.L)
@@ -563,7 +561,7 @@ print(p.G)
 One benefit of defining parameters that should be shared across all objects as a class variable is that it is now easy to change the parameter for all objects, those already created and those we create in the future.
 
 
-```python
+```{code-cell} python3
 Pendulum.G = 10
 print(p.G)
 ```
@@ -578,7 +576,7 @@ In addition to defining class variables, we can define class methods. Class meth
 A Python class can only have one constructor. Creating objects in different ways is achieved through factory methods:
 
 
-```python
+```{code-cell} python3
 import numpy as np
 
 
@@ -601,7 +599,7 @@ Here, we make our `Sphere` class as normal, where we create spheres by specifyin
 We can use the class method as follows:
 
 
-```python
+```{code-cell} python3
 ball = Sphere.from_volume(5000)
 print(f"Radius: {ball.radius:.1f} \t Volume: {ball.volume():.1f}")
 ```
@@ -664,7 +662,7 @@ Another kind of method, which is different from both class methods and instance 
 The static methods do not use any information about the class or object, and so *could* for all intents and purposes just be a stand-alone function. However, we like to implement it as a static method, because then the functionality is stored within the class, and makes the whole code cleaner.
 
 
-```python
+```{code-cell} python3
 from datetime import date
 
 
@@ -690,14 +688,14 @@ class Person:
 Here we have created a static method `calculate_age`, that computes the age of a person right now, given that person's birthday as a string on the form "dd.mm.yyyy". We can call this function as
 
 
-```python
+```{code-cell} python3
 print(Person.calculate_age("20.02.1975"))
 ```
 
 This function is a "stand-alone" function, it doesn't depend on any class or instance data. However, after we have created this method, we can use it in the `age` method, which returns the age of a given person-object.
 
 
-```python
+```{code-cell} python3
 p = Person("Joe Schmoe", "17.04.1983")
 print(p.age())
 
@@ -757,7 +755,7 @@ An important principle or design pattern in object oriented programming states t
 
 To illustrate the concept of composition and inheritance let us consider the `Vector` class from week 2.
 
-```python
+```{code-cell} python3
 import numpy as np
 
 
@@ -779,7 +777,7 @@ class Vector3D:
 
 Now, say we want to use the Vector as parameter in a model and attach a name to it. Then we could just create a new  class that inherits from the Vector3D class.
 
-```python
+```{code-cell} python3
 class ModelVector1(Vector3D):
     def __init__(self, name, x, y, z):
         self.name = name
@@ -804,7 +802,7 @@ This is an example of inheritance. First of all we see many calls to the methods
 
 In stead we could use composition. This means that we do not need to care about how vector is implemented.
 
-```python
+```{code-cell} python3
 # First of all we need to call the super class all the time, and second if the super class __add__ function
 # changes it will also change the behavior of the ModelVector class and we might need to change the the code.
 
@@ -835,7 +833,7 @@ print(w.name)
 
 It also makes our code reusable. Say that we now want to implement ModelMatrix. The all we need to do is to provide a matrix as the second argument. In fact the only thing that is required is that the second argument has an implementation of `__add__`, so we could also simply provide integers.
 
-```python
+```{code-cell} python3
 # And this ModelVector2 class also works with any variable that implements add
 u = ModelVector2("first value", 2)
 v = ModelVector2("second value", 4)
@@ -893,15 +891,15 @@ We access names in different namespaces using the standard *dot* notation, as in
 
 
 If we understand how Python namespaces work, the difference between the various ways we import module becomes quite clear:
-```python
+```{code-cell} python3
 import numpy
 ```
 will simply create a new namespace with the name `numpy`, containing all the variable and function names defined in the `numpy` module. The statement
-```python
+```{code-cell} python3
 import numpy as np
 ```
 does the same thing, but gives the name `np` to the new namespace we have created. Prefixing with `np.` gives access to all the names defined by the module. On the other hand, the statement
-```python
+```{code-cell} python3
 from numpy import *
 ```
 will not create a new namespace, but instead imports all the names defined by NumPy into the current, global namespace. This makes the names directly accessible without prefixing, but also creates potential for name conflicts. To clearly see the difference you can call the function `dir()` in an interactive Python window. This function returns a list of names currently available in the local namespace, and the names of all the existing namespaces. After checking the output of `dir()` import NumPy using the different approaches and call the function again.
@@ -920,7 +918,7 @@ A *scope* of a variable is defined as the part of the program where a variable n
 Variables in Python are local by default. If you define a variable inside a function, the variable does no longer exist when the function is done executing. Technically, the variable name is defined in the local namespace of the function, and this namespace is deleted when the function is done executing:
 
 
-```python
+```{code-cell} python3
 def pancake_area():
     pi = 3.14159
     r = 15
@@ -937,7 +935,7 @@ print(pancake_area())
 If a global variable with the same name exists, a new local variable will still be created inside the function. Inside a function we can access a global variable, but any attempt to modify it will create a new local variable:
 
 
-```python
+```{code-cell} python3
 pi = 3.14159
 r = 10
 
@@ -957,7 +955,7 @@ print(r)  # prints the global r
 We can override the default behavior using the keyword `global` when we define a variable:
 
 
-```python
+```{code-cell} python3
 pi = 3.14159
 r = 10
 
@@ -985,7 +983,7 @@ WARNING: The `global` keyword should hardly ever be used. Global variables are g
 The other way around, defining variables in global scope and using them inside a function is also often considered bad practice (although not quite as bad). The following example may be considered acceptable since `pi` is a global constant not likely to be changed:
 
 
-```python
+```{code-cell} python3
 pi = 3.14159
 
 
@@ -1002,7 +1000,7 @@ But in general this programming style should be avoided, since it is difficult t
 As another example, assume that your code includes a very expensive function call, and you want to count how many times this function is called in your program. This is a fairly common thing to do when profiling and optimizing a code (although there are tools to automate it, so you rarely have to write the code yourself). The following code will work:
 
 
-```python
+```{code-cell} python3
 no_function_calls = 0
 
 
@@ -1032,7 +1030,7 @@ If we leave out the line `global no_function_calls` (try it!), Python will autom
 We can access the global and local variables with the built-in functions `globals()` and `locals()`, which return dictionaries of the available names:
 
 
-```python
+```{code-cell} python3
 # print(globals()) #gives lots of output (all the names defined so far)
 # print(locals()) #same output since we are in the global scope
 
@@ -1055,7 +1053,7 @@ tiny_function()
 
 It is even possible to add variables to the global scope by simply sticking it in the globals dictionary. For example `c` is not defined, so let us put it in the `globals` dictionary
 
-```python
+```{code-cell} python3
 globals()["c"] = 0
 print(c)
 ```
@@ -1072,7 +1070,7 @@ The output from `locals()` is similar to that of `dir()`, which when called with
 If one sticks to the general coding practice of passing variables as arguments and return values, and avoiding the use of global variable, one rarely needs to think about how Python searches its namespaces or how names are transferred from one namespace to another. However, one particular example worth knowing about is known as *closure*, and is frequently used by Python programmers. Consider the example of a function that uses some parameters, which can be implemented as a class with a `__call__` special method:
 
 
-```python
+```{code-cell} python3
 class ThrowClass:
     def __init__(self, v0):
         self.v0 = v0
@@ -1093,7 +1091,7 @@ for i in range(5):
 An alternative implementation, which many will consider more "Pythonic" avoids the class concept completely:
 
 
-```python
+```{code-cell} python3
 def throw_fun(v0):
     g = 9.81
 
@@ -1116,7 +1114,7 @@ What happens here is that when the function `throw_fun` is called, it defines a 
 There is also a function called `partial` from the `functools` library which returns a partial function which some of the arguments set
 
 
-```python
+```{code-cell} python3
 from functools import partial
 
 
@@ -1140,12 +1138,12 @@ for i in range(5):
 * The functions `globals(), locals(), dir()` are useful for examining existing namespaces.
 * When a function is defined inside another function, it remembers the namespace of the outer function. This technique, called closure, can be used to create parameterized function.
 
-
+(python:exit-codes)=
 ### Exit codes
 
 In this section we will cover a topic that might seem a bit strange but will make more sense when we transition from python to C++. Imagine that you want to chain together two commands in the terminal, meaning that you for example first want to run a python program and if that completes without errors you would like to do something else. Consider the following program
 
-```python
+```{code-cell} python3
 # divide.py
 
 import sys
@@ -1212,7 +1210,7 @@ You need to provide 2 arguments
 Success!
 ```
 which is not what we want. One way to handle this is to return an exit code from the program to the `exit` method so that your program becomes
-```python
+```{code-cell} python3
 import sys
 
 

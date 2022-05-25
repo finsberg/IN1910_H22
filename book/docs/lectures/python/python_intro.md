@@ -1,15 +1,13 @@
 ---
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.2'
-      jupytext_version: 1.7.1
-  kernelspec:
-    display_name: Python 3
-    language: python
-    name: python3
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
 ---
 
 # A quick Python refresher
@@ -39,7 +37,7 @@ One element that might be confusing to those that have not used notebooks before
 In Python, as in most languages, we use `=` for assigning variables. We do not need to declare the type of the variables, this is implicit and decided by context
 
 
-```python
+```{code-cell} python3
 t = 0.5
 v0 = 2
 a = 0.2
@@ -54,7 +52,7 @@ In this case, the result of the computation is a number, and `s` becomes a name 
 
 ## Printing
 
-```python
+```{code-cell} python3
 print(s)
 ```
 
@@ -65,13 +63,13 @@ Typically we want to print out a longer message, rather than just the variable. 
 
 To use f-strings, you must place a `f` or `F` character immediately before your string. You can then use curly braces `{}` to place variables into the string as follows
 
-```python
+```{code-cell} python3
 print(f"After {t} seconds, the object has traveled {s} meters")
 ```
 
 In addition to specifying which variables are to be printed where, you can add in further information about how the variables are to be printed. You can for example specify the number of decimals to print as follows
 
-```python
+```{code-cell} python3
 print(f"After {t:.2f} seconds, the object has traveled {s:.2f} meters")
 ```
 
@@ -81,7 +79,7 @@ Here `:.2f` is used to specify two decimals, the letter f in this context is sho
 ## Rounding
 Note from the previous example that the result is a bit surprising, as 1.025 got rounded to 1.02, instead of 1.03 as you might have expected it to. This is because we are using Python3, which uses something called [*bankers' rounding*](https://en.wikipedia.org/wiki/Rounding), in which a .5 is rounded down if the preceding number is even, and up if it is odd. The same behavior is shown in the built in `round` function
 
-```python
+```{code-cell} python3
 print(round(0.5))
 print(round(1.5))
 print(round(2.5))
@@ -92,7 +90,7 @@ print(round(3.5))
 
 Python includes a large number of standard libraries and external packages. In IN1910 we will for example make use of the SciPy stack, which includes packages like numpy, scipy, matplotlib, etc. We can import packages in several ways
 
-```python
+```{code-cell} python3
 from math import *
 import scipy
 import numpy as np
@@ -102,7 +100,7 @@ from scipy.integrate import solve_ivp
 These are different examples of importing. They are all functional Python code, but they will behave slightly differently. Let us explain them all.
 
 **(Example line 1)** The first line uses what we call a *wildcard* to import everything in the `math` library. Note that while this is OK for a quick example, it is considered bad practice and should be avoided. This is because it is unclear what functions from `math` you actually intend to use, and it can overwrite variables. See for example the following example library
-```python
+```{code-cell} python3
 from numpy import *
 from math import *
 
@@ -112,7 +110,7 @@ y = sin(x)
 This code will not work, as the `sin` function will here refer to `math.sin`, which is not vectorized and so cannot work on `x`, which is an array. If you change the order of the two imports however, the code will work, because then `sin` refers to `numpy.sin`, which *is* vectorized.
 
 (**Example line 2 & 3**) It would be much better to import the two packages in their own namespace with
-```python
+```{code-cell} python3
 import math
 import numpy as np
 ```
@@ -134,7 +132,7 @@ Then finally print out the volume with a single decimal.
 * Hint: You need to either define `pi` or import it from `math`.
 * Hint: To get a neater output, you can convert the `V` variable to be in terms of liters.
 
-```python
+```{code-cell} python3
 # Fill in your code here
 ```
 
@@ -149,7 +147,7 @@ Depending on your installation, the command `python` might refer to Python 2 ins
 A lot of code editors and IDEs (integrated developer environments) also let you run Python scripts directly from the editor. If you prefer to do it this way, you should also ensure you are running Python 3 instead of 2.
 
 As you work on bigger projects, many of the Python scripts you create are not necessarily meant to be run directly, but rather imported by other scripts. A useful code structure to include then is the following statement
-```python
+```{code-cell} python3
 if __name__ == "__main__":
     ...
     # Code that is to be executed goes here
@@ -161,7 +159,7 @@ Any code that is put into an if-statement like this is executed if, and only if,
 
 In our assignment earlier, we defined four variables, all numbers. However, their data types are slightly different. The variables `t`, `a` and `s` were assigned decimal numbers, and therefore became `float` objects, while `v0` is set to an integer number, and became an `integer` object. You can check the type of a variables with the `type` command
 
-```python
+```{code-cell} python3
 print(type(t))
 print(type(v0))
 print(type(a))
@@ -194,7 +192,7 @@ Here are some of the standard variable types divided into mutable and immutable
 
 The first set of variables are *immutable* and therefore cannot change. The second type can. Let us explain what we mean by this with some examples.
 
-```python
+```{code-cell} python3
 # Integers are immutable
 a = 5
 b = a
@@ -204,7 +202,7 @@ print(f"a = {a}")
 print(f"b = {b}")
 ```
 
-```python
+```{code-cell} python3
 x = [0]
 y = x
 x.append(1)
@@ -242,26 +240,26 @@ In Python, functions are variables/objects that are *callable*, meaning we can e
 To call on a function we place round parentheses (`()`) behind the variable name. Inside the parentheses we can place function arguments. A function can take zero, one or many arguments. Some functions can also take a variable number of arguments. Take for example the built-in `round` function. This takes in a number which it rounds for us, e.g.,
 
 
-```python
+```{code-cell} python3
 round(22 / 7)
 ```
 
 However, we can use a second argument to specify the number of decimals we want to round to
 
-```python
+```{code-cell} python3
 round(22 / 7, 3)
 ```
 
 In Python we also often use something called *keyword arguments*. These are optional arguments that are named by a keyword. Take for example the `print` function, which takes whatever you want to print out as its input argument. It also has keyword arguments like `sep` and `end` which can be used to influence what characters it places between different inputs or at the end of lines. Normally different `print` calls will give new lines, as follows
 
-```python
+```{code-cell} python3
 for n in range(10):
     print(2**n)
 ```
 
 If we send in the keyword argument `end=" "` no such newline is added, instead we add a simple space after each print
 
-```python
+```{code-cell} python3
 for n in range(10):
     print(2**n, end=" ")
 ```
@@ -270,7 +268,7 @@ for n in range(10):
 
 You can define your own functions in Python using the `def` keyword. You should use the `return` keyword to specify the return-value (the output) of the function. You can choose freely how many arguments and keyword-arguments a function should have, and you can name these yourself. For any keyword argument you must specify their default value.
 
-```python
+```{code-cell} python3
 def double(x, n=1):
     for _ in range(n):
         x *= 2
@@ -279,7 +277,7 @@ def double(x, n=1):
 
 In this example we define a function that doubles its input argument. Note that we define the function with a keyword argument (`n=1`). Thus the user can either omit the second argument `n` entirely, in which case it defaults to 1, or they can specify it, to double several times in a row
 
-```python
+```{code-cell} python3
 y = 5
 print(f"{y} doubled is {double(y)}")
 print(f"{y} doubled three times is {double(y, n=3)}")
@@ -290,7 +288,7 @@ Note that calling the function returns the doubled value, it does not change the
 
 Let us show one more example of defining a function
 
-```python
+```{code-cell} python3
 import numpy as np
 
 
@@ -300,7 +298,7 @@ def roll_dice(n=1):
 
 This function uses `np.random.randint` to throw one or more dice (the name `randint` is short for *random integer*. This function takes no normal arguments, only a keyword argument. We can thus call the function with no input, in which case a single die is thrown, or we can specify that we want to throw several dice and return the sum
 
-```python
+```{code-cell} python3
 print(f"Single die: {roll_dice()}")
 print(f"Sum of three dice: {roll_dice(n=3)}")
 ```
@@ -313,7 +311,7 @@ This function is an example of a *stochastic trial*, which means the result is r
 
 Normal dice have six sides, but many other types of dice existing. In board games for example, dice with 4, 8, 12, and 20 sides are for example very common. Therefore, extend the `roll_dice` function to also use a keyword argument `d` which represents the number of faces on the dice being thrown. The keyword should default to the standard 6 sides.
 
-```python
+```{code-cell} python3
 # Fill in your code here
 ```
 
@@ -342,7 +340,7 @@ Two helpful commands to be used in loops are `continue`, which skips to the next
 
 In the following example we define a function that checks whether a given integer is a prime or not. To do this we use *trial division*, which looks for a divisor to the number $n$ in the interval $[2, n)$.
 
-```python
+```{code-cell} python3
 def is_prime(n):
     if n == 1:
         return False
@@ -358,7 +356,7 @@ This function works because as soon as a number is returned, the function ends. 
 
 Note also that as soon as the function hits a divisor, we know the number is not prime and we can immediately return the boolean `False`. As soon as the function returns, the rest of the execution halts. This is good for efficiency, as the program automatically stops looking for further divisors once one is found.
 
-```python
+```{code-cell} python3
 for i in range(1, 12):
     if is_prime(i):
         print(f"{i:2} is prime")
@@ -370,7 +368,7 @@ for i in range(1, 12):
 
 We can also use *list* comprehensions to quickly compile lists on single-lines using a for-loop syntax. Take the following example where we assemble a list of primes.
 
-```python
+```{code-cell} python3
 primes = []
 for i in range(1, 13):
     if is_prime(i):
@@ -381,7 +379,7 @@ This is the straight forward way to assemble a list. First create an empty list 
 
 However, in Python, we can also do this in a single line using list comprehension as follows
 
-```python
+```{code-cell} python3
 primes = [i for i in range(1, 13) if is_prime(i)]
 ```
 
@@ -396,7 +394,7 @@ However, list comprehensions are considered very "pythonic" and are actually fas
 
 Use a list comprehension to assemble a list of all non-primes $\leq 12$. To do this either use the `is_prime` function, or use the list `primes`.
 
-```python
+```{code-cell} python3
 # Fill in your code here
 ```
 
@@ -407,7 +405,7 @@ To built-in functions that are very useful when looping over sequences are `enum
 The function `enumerate` is useful when you want to loop over a list and also have access to the index of an element. Say for example we want to print out primes by their index, we can do that as follows
 
 
-```python
+```{code-cell} python3
 for i, prime in enumerate(primes):
     print(f"Prime nr {i+1}: {prime}")
 ```
@@ -417,7 +415,7 @@ Here we loop over the `primes` list from earlier, but because we use `enumerate`
 
 The function `zip` is useful if you want to loop over two or more sequences simultaneously. Say for example we are making a game and have a list of players and a list of the points scored for each player, then we could write out the results as follows
 
-```python
+```{code-cell} python3
 players = ["Alice", "Bob", "Charlie", "Danny"]
 points_per_player = [212, 189, 244, 231]
 
@@ -431,7 +429,7 @@ Likewise you could `zip` three or more sequences together.
 ## While Loops
 
 We have covered for loops, which iterate over some sequence. The other kind of loop is a while loop, which repeats a block of code as long as some condition is true. The syntax is as follows:
-```python
+```{code-cell} python3
 while condition:
     ...
     # <code block to be repeated>
@@ -441,7 +439,7 @@ The condition has to be some statement that can be evaluated to either True or F
 
 Assume we have a savings account with an annual interest of 3.5%. If we deposit 10000 kr to the account at the start of year 0. How many years would you need to wait before the money in the account has doubled?
 
-```python
+```{code-cell} python3
 years = 0
 interest = 1.035
 money = 10000
@@ -462,7 +460,7 @@ It is not uncommon to accidentally define while loops that never end. If you for
 
 Use a while loop to find the biggest integer $n$, such that $n^3 < 50000$.
 
-```python
+```{code-cell} python3
 # Fill in your code here
 ```
 
@@ -472,13 +470,13 @@ Plotting is a useful tool in Python. Many packages exist for plotting, but the m
 
 We will cover some more advanced use cases of matplotlib later in the course, but for now we simply cover some simple curve plots of functions. Note that it is common to import `matplotlib.pyplot` as `plt`.
 
-```python
+```{code-cell} python3
 import matplotlib.pyplot as plt
 ```
 
 The `plt.plot` command takes a list of values on the $x$-axis and a list of values on the $y$-axis, and draws a line through them. As an example we use `np.linspace` and `np.sin` to define a sine-curve:
 
-```python
+```{code-cell} python3
 x = np.linspace(0, 2 * pi, 11)
 y = np.sin(x)
 
@@ -490,7 +488,7 @@ plt.show()
 
 The curve is choppy because we have such few points, which is more obvious if we redefine the linestyle:
 
-```python
+```{code-cell} python3
 plt.plot(x, y, "o--")
 plt.xlabel("x")
 plt.ylabel("sin(x)")
@@ -499,7 +497,7 @@ plt.show()
 
 To get a smoother curve, we need to add more points, this is as easy as adding more points to the `linspace` argument. Let us also illustrate how we add another curve to the same figure
 
-```python
+```{code-cell} python3
 x = np.linspace(0, 4 * pi, 1001)
 
 plt.plot(x, np.sin(x), label="Sin")
@@ -524,7 +522,7 @@ for $y \in [0,4]$.
 
 Also add in the enveloping curves $e^{-y}$ and $-e^{-y}$ as dashed gray lines (Hint: You can add `'--'` and `color='gray'` as arguments to `plt.plot`).
 
-```python
+```{code-cell} python3
 # Fill in your code here
 ```
 
@@ -557,7 +555,7 @@ To solve the equation we first need to define all our parameters and initial con
 
 Our first task is to define our parameters and set up the time array $t$ as well as an empty solution array $u$
 
-```python
+```{code-cell} python3
 a = 0.5
 u0 = 4
 dt = 0.001
@@ -570,14 +568,14 @@ u[0] = 4
 
 Here we use `np.arange` to define the array $t \in [0, 10]$ with a step size of $\Delta t$. Then we use `np.zeros` to define an array filled with zeros of the same length as $t$. We do this because numpy arrays cannot change in size, and so we need to define it of the correct length. Note that the final code line is very important, because we need the correct $u_0$ value to compute the next value, i.e., $u_1$, which can be used to compute $u_2$ which gives us $u_3$ and so forth. The time stepping itself is given by a for loop
 
-```python
+```{code-cell} python3
 for i in range(len(u) - 1):
     u[i + 1] = (1 - a * dt) * u[i]
 ```
 
 After running this loop, `u` should contain the solution for all given time points, and we can not plot $u(t)$ to see the solution
 
-```python
+```{code-cell} python3
 plt.plot(t, u)
 plt.xlabel("time")
 plt.ylabel("u(t)")

@@ -1,3 +1,14 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 
 # Dynamic Arrays, aka, Array Lists
 
@@ -225,7 +236,7 @@ Note that if you are compiling with Microsoft's Visual C++ instead of gcc or cla
 
 In Python, it is a bit more tricky to verify, because we cannot directly access the capacity of the list. However, we can use the `sys.getsizeof` function, which returns the size of an object, in number of bytes.
 
-```python
+```{code-cell} python3
 import sys
 
 example = []

@@ -28,9 +28,10 @@ parts:
       - file: docs/lectures/python/more_oop.md
     - file: docs/lectures/git/version_control_with_git.md
     - file: docs/lectures/testing_codestyle/testing_codestyle.md
-    sections:
-    - file: docs/lectures/testing_codestyle/writing_functioning_code.md
-    - file: docs/lectures/testing_codestyle/codestyle_and_docstrings.md
+      sections:
+      - file: docs/lectures/testing_codestyle/writing_functioning_code.md
+      - file: docs/lectures/testing_codestyle/codestyle_and_docstrings.md
+      - file: docs/lectures/testing_codestyle/type_annotations.md
     - file: docs/lectures/cpp/cpp.md
       sections:
       - file: docs/lectures/cpp/intro_to_cpp.md

@@ -33,6 +33,7 @@ notebook_interface: "notebook"
 repository:
   url: https://github.com/finsberg/IN1910_H22
   path_to_book: "book"
+  branch: main
 
 launch_buttons:
   jupyterhub_url: "https://hub2.jupyterhub.uio.no"

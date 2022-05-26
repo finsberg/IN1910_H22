@@ -185,7 +185,7 @@ int main()
 }
 ```
 Now we can plot the results in python
-```{code-cell} python3
+```{code-cell} python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -269,7 +269,7 @@ print(x)
 ```
 It does not matter what the function `black_box` is or does, the output of this code will be 5. Let us try a simple example:
 
-```{code-cell} python3
+```{code-cell} python
 def black_box(x):
     x += 5
 
@@ -295,7 +295,7 @@ name: call-by-object
 
 We can go one step further in illustrating this, by printing out the id of the objects. The id is a code each object in Python gets, that will be unique and unchanged throughout its lifetime.
 
-```{code-cell} python3
+```{code-cell} python
 def black_box(x):
     print("Id of x inside function before stmt:", id(x))
     x += 5
@@ -320,7 +320,7 @@ print(x)
 ```
 In this case, the list can be changed, or it may not. Let us see a simple example:
 
-```{code-cell} python3
+```{code-cell} python
 def duplicate_list(input_list):
     input_list += input_list
 
@@ -336,7 +336,7 @@ What is happening here is again that we have two variables that reference the sa
 
 We can again check this using `id`:
 
-```{code-cell} python3
+```{code-cell} python
 def duplicate_list(input_list):
     print("Inside function, before: ", id(x))
     input_list += input_list
@@ -356,7 +356,7 @@ As you can see, there is ever only one list *object*.
 
 Say for instance we want to make a function that sorts a list of numbers, we might want the function to produce and return a brand new list, leaving the original untouched, *or*, we might want it to sort the original list in-place. Both of these approaches are reasonable, and possible. In fact, in Python, you get both of these options built in. The built-in function `sorted()` returns a sorted *copy* of the original list, while the list method `.sort()` sorts the list in-place.
 
-```{code-cell} python3
+```{code-cell} python
 x = [4, 1, 0, 5, 3, 2]
 y = sorted(x)
 
@@ -364,7 +364,7 @@ print(x)
 print(y)
 ```
 
-```{code-cell} python3
+```{code-cell} python
 x = [4, 1, 0, 5, 3, 2]
 y = x.sort()
 
@@ -376,7 +376,7 @@ Where we see that the `list.sort` method returns None, as it sorts the list in-p
 
 A general advice is to avoid using methods that mutate objects, especially in function calls. A function that that does not mutate the input arguments, so that the `duplicate_list` function should be written like this
 
-```{code-cell} python3
+```{code-cell} python
 def duplicate_list(input_list):
     return input_list + input_list
 

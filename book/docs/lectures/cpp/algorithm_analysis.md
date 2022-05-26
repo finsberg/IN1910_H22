@@ -177,7 +177,7 @@ However, it is not customary to do so. We basically want to choose a $g$ that is
 Looking back to our `find_biggest` algorithm, we found that it had a best-case of $3n$ and a worst-case of $5n-2$. However, both of these are $\mathcal{O}(n)$, so we say that our algorithm is linear. Note that this is true for the worst-, average- and best case scenarios, it is true for all scenarios. And so by using big Oh, we do not have to be so specific about our input, it is generally true.
 
 Similarly, if we are only interested in the big Oh of our algorithm, then the analysis itself becomes *a lot* simpler to perform. Looking back at the code:
-```{code-cell} python3
+```{code-cell} python
 def find_biggest(numbers):
     biggest = numbers[0]
 
@@ -191,7 +191,7 @@ We see that we need to iterate through the list, so we will be performing some s
 
 We can in fact verify this by timing it for a few input sizes
 
-```{code-cell} python3
+```{code-cell} python
 import matplotlib.pyplot as plt
 import numpy as np
 import time

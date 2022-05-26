@@ -50,16 +50,6 @@ The term *style* comes from traditional writing, where one can also follow a par
 Like with any writing, there are no hard rules about what constitutes good style, and there are different choices one can make — the important thing is to be consistent in your choices. A piece of code should have the same code style and formatting throughout.
 
 
-```{figure} fig/strunk_and_white.jpg
----
-width: 200px
-name: strunk_and_white
-alt: strunk_and_white
----
-Strunk & White's *The Elements of Style* is one of many modern English style manuals
-```
-
-
 ## Style Guides
 
 Most software in the real world is developed collaboratively, this means it is important for different programmers to agree on what code style to follow, otherwise they will end up writing code that looks fragmented and messy. Because of this, most software groups agree on a *style guide*, which guides all the programmers in the project to follow the same style. Because everyone is following the same guidelines, it's easier to collaborate.
@@ -83,7 +73,7 @@ We will now go through and cover *some* of the rules in PEP8, but we don't cover
 
 In Python, indentation is very important to decide scopes when defining functions and making loops and tests. However, how long an indentation is optional, as long as each line is indented by the same amount of space. The most common is to use 4 spaces.
 
-```{code-cell} python3
+```{code-cell} python
 def is_prime(n):
     if n == 1:
         return False
@@ -108,7 +98,7 @@ PEP8 recommends sticking to actual spaces.
 When a line of code becomes very long, it will reach the end of the screen/editor. In such cases it is better to break the line yourself, instead of letting it simply run long. This is because you can then split the line in a location where it more structured and orderly.
 
 As an example we write out the following line of code
-```{code-cell} python3
+```{code-cell} python
 income = (
     gross_wages
     + taxable_interest
@@ -122,7 +112,7 @@ Here we have written out one long code line. In Jupyter this code line will wrap
 An issue with word wrap is that others might have different settings to you, and so there is little control where the line break will happen. If it happens at a weird location (such as the middle of a variable), the line becomes hard to read.
 
 Here you should instead split the line yourself. To do so, you can put parenthesis around the entire expression. Python will then automatically see the next line as a continuation from the first
-```{code-cell} python3
+```{code-cell} python
 income = (
     gross_wages
     + taxable_interest
@@ -132,7 +122,7 @@ income = (
 )
 ```
 The fact that parenthesis let's you split up your code over multiple lines is very useful also when you have very long function calls, here is an example taken from Project 1
-```{code-cell} python3
+```{code-cell} python
 import matplotlib.animation as animation
 
 ani = animation.FuncAnimation(
@@ -152,7 +142,7 @@ As class methods belong to the same class they often are more interconnected tha
 ### Use blank lines in functions, sparingly, to indicate logical sections.
 
 Because we use blank lines to separate different functions and methods, we should be a bit wary of using too many blank lines *within* a function or method definition, as this might make it harder to get an overview of where different function definitions start and stop. In some cases however, if a function or method have several clearly distinct logical sections, these can be separated by a line to make it clearer. In our `is_prime` example from earlier, we added a blank line between checking if 1 is a prime (which is a special case) to the more general trial-division loop.
-```{code-cell} python3
+```{code-cell} python
 def is_prime(n):
     if n == 1:
         return False
@@ -170,17 +160,17 @@ This is simply a setting within your editor. Saving your Python-scripts with UTF
 ### Put imports on separate lines at the top of the file
 
 We have already discussed how imports should look in a Python-file. For one, you should put them at the top of your file, and you should avoid wildcard imports. In addition, PEP8 says to never import more than one package per line, i.e., don't write
-```{code-cell} python3
+```{code-cell} python
 import math, numpy, scipy
 ```
 instead write
-```{code-cell} python3
+```{code-cell} python
 import math
 import numpy
 import scipy
 ```
 When importing specific components from a single package, you can group several imports however, so this is fine:
-```{code-cell} python3
+```{code-cell} python
 from math import pi, sqrt, exp
 ```
 
@@ -203,7 +193,7 @@ All classes should normally use the CapWords convention, meaning every word in t
 **Variables**
 
 Most variables should be names as we do for functions/modules, i.e., all lowercase and with underscores. As emphasized during our intro to object-oriented programming this convention makes it easy to differentiate classes from instances.
-```{code-cell} python3
+```{code-cell} python
 u = Vector3D(4, 2, -2)
 ```
 Note that the built-in data types break the class name convention (`tuple`, `int`, `list`, etc), but those are special cases.
@@ -275,12 +265,12 @@ As a rule of thumb, you should put on each side of binary `+` and `-`, as this s
 or
 
 * No:
-```{code-cell} python3
+```{code-cell} python
 def f(x):
     return a * x**2 + b * x + c
 ```
 * Yes:
-```{code-cell} python3
+```{code-cell} python
 def f(x):
     return a * x**2 + b * x + c
 ```
@@ -313,7 +303,7 @@ If we get lines that become longer than 79 characters, we need to break the line
 When splitting a mathematical expression over multiple lines, the natural thing to do is split the lines at the operators, so that different lines contain the different terms.
 
 Let us return to an example from earlier, where we split the line as follows
-```{code-cell} python3
+```{code-cell} python
 income = (
     gross_wages
     + taxable_interest
@@ -393,14 +383,14 @@ Also, a comment should not state the obvious, or explain *what* the code is doin
 
 Don't do this
 
-```{code-cell} python3
+```{code-cell} python
 # Increment width
 width = width + 1
 ```
 
 But this could be useful
 
-```{code-cell} python3
+```{code-cell} python
 # Compensate for border
 width = width + 1
 ```
@@ -426,12 +416,12 @@ When checking if a variable is or is not `None` (as is very common to do with ke
 * No: `if not foo is None:`
 
 Note also that checking if something is `None` is more strict than checking true/false. The following prints only if `foo`is *exactly* `None`:
-```{code-cell} python3
+```{code-cell} python
 if foo is not None:
     print("***")
 ```
 The following test however, prints if `foo` is `None`, `False`, 0, `[]`, `''`, etc.:
-```{code-cell} python3
+```{code-cell} python
 if foo:
     print("***")
 ```
@@ -493,7 +483,7 @@ But if you want to use a tool like Black, it is more common to configure your ch
 
 Another PEP that might be useful to know about, in addition to PEP8 (which is the code style), is PEP20, also known as the "Zen of Python". This is simply a collection of 19 simple "rules" or principles one typically want to follow to write good Python code. You can print the Zen of Python in its entirety by writing `import this`.
 
-```{code-cell} python3
+```{code-cell} python
 import this
 ```
 
@@ -505,13 +495,13 @@ Poorly documented code is sadly quite common in the scientific field, and its a 
 
 
 
-### Document Design and Purpose, not mechanics
+## Document Design and Purpose, not mechanics
 
 In a perfect world, we would have time to develop extensive and perfect documentation of all software projects. However, in the real world, there is often not much time to devote to documentation. It is therefore important to spend your documentation time effectively, focus on the parts somebody *needs* to understand, namely the design and purpose of the code, as well as its inputs, outputs and adjustable parameters.
 
 Also remember that people can always read the source code itself. So the documentation doesn't need to cover what is actually happening in the code down to the smallest detail. What they need is the big-picture view of the project, some tips on how the code is used and helpful pointers on what assumptions or restrictions the code might have.
 
-### Have a good README file
+## Have a good README file
 
 The first tip we have for good documentation, is to have a proper README file in your projects code file. If you are using `git` for example, having a `README.md` file in your git repository will fulfill several important roles
 
@@ -519,7 +509,9 @@ The first tip we have for good documentation, is to have a proper README file in
 * Your README can contain information about requirements of the code, how it is installed or run and how to interpret or use the results
 * Having a `README.md` file in your repo will also automatically create a nice landing page if you have you repo on GitHub. This means it is easy to set up a nice web page to share your code with others if you need to do so.
 
-### Embed documentation within the software itself
+A good starting point for writing a README file i <https://readme.so/editor>. This page provides a template README file with several suggested sections.
+
+## Embed documentation within the software itself
 
 When we think of documentation, it might be common to think of a separate user manual, text document or a website explaining the code, such as the README-file just mentioned. However, developing the documentation separate from the code itself is not generally recommended. For one thing, when someone updates the code, it is important the documentation is updated as well. It is more likely that this happens if the two are contained in the same piece of software. This way, we are also guaranteed somebody that gets the code gets the documentation. Because of these points, it is generally better to embed the documentation of the code directly into that code. This might sound a bit weird, but in Python there is a standard way to do this, which we will cover now.
 
@@ -528,7 +520,7 @@ When we think of documentation, it might be common to think of a separate user m
 
 In Python, the most important thing to have good documentation is to write good *docstrings*. Docstrings are string literals you put as the first thing in modules or function definitions. For example:
 
-```{code-cell} python3
+```{code-cell} python
 def factor(n):
     """Return the prime factorization of an integer."""
     if n == 1:
@@ -548,20 +540,20 @@ In this example code, the second line is the *docstring* of the function. It sor
 
 As mentioned. Docstrings are *not* comments, but strings. They do fulfill the same role as a comment, but they will also be automatically stored as a special attribute on the object called `__doc__`. For example:
 
-```{code-cell} python3 tags=[]
+```{code-cell} python tags=[]
 print(factor.__doc__)
 ```
 
 Similarly, when we place a docstring at the top of a module (a file), and we then import that module as a package in Python, the string will be stored as a `__doc__` attribute:
 
-```{code-cell} python3 tags=[]
+```{code-cell} python tags=[]
 import vector
 print(vector.__doc__)
 ```
 
 The fact that docstrings can be accessed directly as attributes means it is very easy for editors and other tools to use *code introspection* to give us more information. For example in an iPython shell, we can use `help()` or write `??` immediately behind a function or class method to read that methods docstring. Similarly, in Jupyter you can also call `help`, or press `Shift+Tab` to read the docstring of the variable your cursor is located.
 
-```{code-cell} python3
+```{code-cell} python
 u = vector.Vector3D(0, 4, 4)
 
 help(u.unit)

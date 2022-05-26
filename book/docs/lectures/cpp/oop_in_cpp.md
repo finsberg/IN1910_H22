@@ -349,7 +349,7 @@ Defining setters and getters like this is very common in C-style languages like 
 
 In C++, functions can be *overloaded*, this means giving multiple functionalities to one function. To describe how this works, first recall that in Python, you can *redefine* a function whenever you wish:
 
-```{code-cell} python3
+```{code-cell} python
 def f(x):
     return 2 * x + 2
 

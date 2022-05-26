@@ -57,7 +57,7 @@ As a specific case example, we will implement a class for three dimensional vect
 
 The most fundamental method of any class is its *constructor*, which is automatically called when we create a new instance of a class. In Python, the constructor is called `__init__` (short for *initialize*). To define a 3D vector, we need to specify its three cartesian coordinates, which we call $x$, $y$, $z$.
 
-```{code-cell} python3
+```{code-cell} python
 import numpy as np
 
 
@@ -77,7 +77,7 @@ This constructor doesn't do much other than save the three coordinates as intern
 
 Next we want to be able to print out vectors, so that we can check our results. We implement this using the string special method (`__str__`). If we were just implementing this in an editor, we would just keep editing our file. In the notebook, we don't want to repeat the whole class for each cell. Instead we just extend our existing class as follows:
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __str__(self):
         return f"({self.x:g}, {self.y:g}, {self.z:g})"
@@ -94,13 +94,13 @@ Here, extending the class by writing `Vector3D(Vector3D)` works because of *inhe
 
 Our string special method works nicely and can be used to print out vectors in our code. Recall however that when printing sequences such as lists, they will still look quite rough
 
-```{code-cell} python3
+```{code-cell} python
 print([u, u])
 ```
 
 The solution to this was to add the `__repr__` method, which should provide the string we can be used to recreate the object if need be. We can add it as follows
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __repr__(self):
         return f"Vector3D({self.x}, {self.y}, {self.z})"
@@ -115,7 +115,7 @@ print(vectors)
 
 Here the vectors get written out on the form which can be used to recreate the objects with `eval`, which is exactly what we want. However, there is a small trick we can use to make the `__repr__` a bit more general, which is to use the exploit the fact that all classes in Python "know" their own name. Look at the following code
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __repr__(self):
         return f"{self.__class__.__name__}({self.x}, {self.y}, {self.z})"
@@ -135,14 +135,14 @@ The main goal of our `Vector3D` class is to automate vector arithmetic, so let u
 If we want to be able to add two vectors together, we need to add a method that defines how such an operation is to be handled. We could for example define a `add` method, and write `u.add(v)` to compute $u + v$. However, this isn't very elegant. Instead, we want to be able to write `u + v` in our code. A statement like this uses the *binary operator* `+` (binary meaning it acts on two variables/objects). For any such operators in Python, there is one or more special methods associated with it. So when you write `a + b` Python will automatically interpret this behind the scenes as `a.__add__(b)`. Let us implement this method.
 
 The result of adding two vectors together is a brand new vectors. Our `__add__` method therefore needs to create and return a new `Vector3D`-object. If this is confusing, imagine the following code snippet
-```{code-cell} python3
+```{code-cell} python
 u = Vector3D(2, 0, -2)
 v = Vector3D(2, 4, 2)
 w = u + v
 ```
 In this case, adding `u` and `v` to define `w` shouldn't change the values of `u` and `v`, but should instead create a *new vector object*, which we give the name `w`. For `w` to refer to a new object, it must be created somewhere, and we must do this inside `__add__`. The code therefore can look as follows
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __add__(self, other):
         x = self.x + other.x
@@ -160,7 +160,7 @@ print(f"{u} + {v} = {w}")
 
 This works just the way it should, and this code is perfectly fine. However, we have again hard-coded in the name of our class in the method implementation itself. It would be *even better* to do as follows
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __add__(self, other):
         x = self.x + other.x
@@ -213,7 +213,7 @@ if isinstance(other, (int, float)):
 ```
 This is how a numpy array works for example. In our case, however, we want the `Vector3D` class to represent a mathematical vector, and for these, adding a vector and a scaler together doesn't make sense because they have different dimensions. Therefore, we should throw an exception instead. Let us generalize this to throw an error if we try to add anything other than another vector object as follows:
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __add__(self, other):
         if isinstance(other, Vector3D):
@@ -245,7 +245,7 @@ You could now argue that one for example should be able to add a `Vector3D` and 
 
 Extending our class to also handle subtraction of vectors is very similar to addition, we simply use the subtraction special method instead (`__sub__`).
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __sub__(self, other):
         if isinstance(other, Vector3D):
@@ -284,7 +284,7 @@ In the expression `u - (-v)` we have *two* subtraction operators, both represent
 
 Let us now define the `__neg__` special method. As this is a unary operator, we only take in the `self` argument, and skip the `other` (as there is no "other" vector in this case)
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __neg__(self):
         return Vector3D(-self.x, -self.y, -self.z)
@@ -301,7 +301,7 @@ The code now works. First the `__neg__` method is used to compute `(-v)`, then `
 
 Another small detail you can note here is that if we had implemented our `__neg__` method *first*, then we could have relied on this when implementing `__sub__`. Check this out:
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __sub__(self, other):
         if isinstance(other, Vector3D):
@@ -330,7 +330,7 @@ $$u \times v = (x_1, y_1, z_1) \times (x_2, y_2, z_2) = (y_1z_2 - z_1y_2, z_1x_2
 An important point here is that the dot-product should return a number (i.e., `int` or `float`), while the cross product should return a new vector object. The two methods can look as follows
 
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def dot(self, other):
         return self.x * other.x + self.y * other.y + self.z * other.z
@@ -346,7 +346,7 @@ We can now use `u.dot(v)` and `u.cross(v)` in our code, which is quite a nice sy
 
 Let us decide that we want `u*v` to be interpreted as the dot product. This multiplication operator is associated with the special method `__mul__`. So we can write
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __mul__(self, other):
         """Interpret u*v as the dot product"""
@@ -355,7 +355,7 @@ class Vector3D(Vector3D):
 
 We have now "used up" the asterisk multiplication operator in Python, what syntax can we then choose for our cross product? Well, one option is to use the code syntax `u @ v` to mean the cross product. You might not have seen (or used) the `@` operator in Python code before, but it is a binary operator associated with the special method `__matmul__` (short for "matrix multiplication). It actually isn't used by any of the built in Python objects, but it is available for mathematics where we want to have access to more operators. (Note that for numpy arrays, `@` is implemented, but will correspond to the dot-product for 1D-arrays, while `*` means component-wise multiplication).
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __matmul__(self, other):
         """Interpret u @ v as the cross product"""
@@ -371,7 +371,7 @@ print(f"{u} @ {v} = {u @ v}")
 
 A useful property of the dot product is that two vectors are perpendicular if, and only if, the dot product is equal to zero ($u \cdot v = 0 \Leftrightarrow u \perp v$). Let us therefore add a `perpendicular` method, which checks if two vectors are perpendicular
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def perpendicular(self, other):
         return np.isclose(self * other, 0)
@@ -393,7 +393,7 @@ $$
 
 Then the new vector $w$ will be perpendicular to both $u$ and $v$. This can be used to test our code.
 
-```{code-cell} python3
+```{code-cell} python
 w = u @ v
 
 # Printing answer
@@ -412,14 +412,14 @@ We have now defined vector-vector multiplication, but it is also possible to mul
 
 We now want to be able to write `3*u` or `u*3` in our code to capture this mathematical operation. Let us first see what happens if we try this with our current code
 
-```{code-cell} python3
+```{code-cell} python
 print(3 * u)
 ```
 ```
 TypeError: unsupported operand type(s) for *: 'int' and 'Vector3D'
 ```
 This error tells us multiplication isn't defined between integer and vector objects. We is a bit interesting is what happens if we flip the operators, we get a different error message!
-```{code-cell} python3
+```{code-cell} python
 print(u * 3)
 ```
 ```
@@ -429,7 +429,7 @@ The second error is similar to the one we got for addition earlier. When we writ
 
 To fix this, we should rewrite our `__mul__`-method to do different things depending on if the `other` variable is a vector or a scalar. In programming, this is known as [*function overloading*](https://en.wikipedia.org/wiki/Function_overloading), which is when we define a function or method to do different things depending on context. In this case we overload the `*` operator to mean either vector-vector multiplication or vector-scalar multiplication, depending on context.
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __mul__(self, other):
         if isinstance(other, Vector3D):
@@ -466,7 +466,7 @@ Mathematically speaking, it is much more common to write $3u$ than $u\cdot 3$, a
 
 Effectively, `__rmul__` can be thought of as a "backup" method. One important thing to notice in this cascade is that the operands effectively get flipped when this backup is used. To implement `__rmul__` we can therefore simply use the `__mul__` we already implemented as follows
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def __rmul__(self, other):
         return self * other
@@ -478,7 +478,7 @@ print(2 * u)
 
 This brings up an important point about operators in programmering. While some operators are generally considered commutative in mathematics, meaning the order can be changed without changing the result ($a+b = b+a$), we see that this is not the case in Python. We could for example add different function in the `__add__`-method and in the `__radd__` method, and then `a+b` and `b+a` would behave differently. In fact, you might already know several examples of this, for example adding strings or lists together:
 
-```{code-cell} python3
+```{code-cell} python
 a = [1, 2, 3]
 b = [4, 5, 6]
 
@@ -494,7 +494,7 @@ A quick note: In Python there is a length special method (`__len__`), that is ca
 
 Let us first add the length property. To compute the length of a vector we first take the dot-product of the vector with itself and then take the square root, i.e., $|u| = \sqrt{u \cdot u}$.
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     @property
     def length(self):
@@ -509,7 +509,7 @@ Here the length-property is very easy to add, because we have already defined th
 
 Let us now make a `@length.setter` method as well, so that we can *scale* the length of the vector. When we say we scale a vector we typically mean shifting all three vectors so that the length changes while the orientation stays the same. We can therefore scale all three components by the same ratio
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     @property
     def length(self):
@@ -541,7 +541,7 @@ The last functionality we want to add is a method which automatically finds the 
 
 When we make the `.unit` method it should first create a new `Vector3D` object, as the original should be unchanged. If we make this new vector by copying the original, we know it points in the right direction, so we can then just scale the length. We can implement this as follows
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def unit(self):
         new = Vector3D(self.x, self.y, self.z)
@@ -558,7 +558,7 @@ print(f"w = {v} has a length of {v.length}")
 
 Here we create a copy by writing `Vector3D(self.x, self.y, self.z)`, which is straight-forward, and works. But there is a much simpler way to create a copy, which is to lean on our already defined `__repr__` method. Recall that `repr(u)` should give a string such that `eval(repr(u))` should recreate the original. However, note that the "recreated" vector will be a new object, but with identical values, i.e., a copy of the original
 
-```{code-cell} python3
+```{code-cell} python
 u = Vector3D(5, -3, 5)
 v = eval(repr(u))
 
@@ -569,7 +569,7 @@ print(f"Are u and v the same object? {u is v}")
 
 Here `u is v` is an operation which checks whether two objects are the *exact* same object in memory. And here we get `False`, as expected. In this case, making a copy is easy, because it is easy to make a proper `__repr__` function. For more complex classes and objects, this gets a bit trickier, then the `copy` package might help. Here we just showed how to make the copy, so let us rewrite the `.unit` method:
 
-```{code-cell} python3
+```{code-cell} python
 class Vector3D(Vector3D):
     def unit(self):
         new = eval(repr(self))
@@ -577,7 +577,7 @@ class Vector3D(Vector3D):
         return new
 ```
 
-```{code-cell} python3
+```{code-cell} python
 u = Vector3D(2, -2, 1)
 v = u.unit()
 
@@ -626,7 +626,7 @@ Because some properties vary by species, and some do not, we want to use inherit
 
 We now make the `Pokemon` class. Each time a new pokemon is generated, we must draw its individual values randomly. There are three separate stats in the game: `ATK`, `DEF` and `STA`. We implement these as properties.
 
-```{code-cell} python3
+```{code-cell} python
 import numpy as np
 
 
@@ -639,7 +639,7 @@ class Pokemon:
 
 We have no implemented a general constructor that will work for all Pokémon. When a new pokemon is created, three random stats are drawn from the range $[0, 15]$. Let us also add properties to find the total ATK, DEF and STA stats of a given Pokémon. We also add a `__str__` method for pretty printing.
 
-```{code-cell} python3
+```{code-cell} python
 class Pokemon(Pokemon):
     @property
     def ATK(self):
@@ -664,7 +664,7 @@ Two things to notice here are that
 
 Now, let us implement a few specific Pokemon types. Lets start with the two most iconic ones:
 
-```{code-cell} python3
+```{code-cell} python
 class Pikachu(Pokemon):
     BASE_ATK = 112
     BASE_DEF = 101
@@ -681,7 +681,7 @@ Here we write `Pikachu(Pokemon)`, this syntax means the class is inheriting from
 
 Now we have very easily made two distinct species of Pokemon, without having to re-implement their general behavior. Inheritance has simplified our overall code considerably.
 
-```{code-cell} python3
+```{code-cell} python
 for i in range(5):
     pokemon = Pikachu()
     print(pokemon)
@@ -695,7 +695,7 @@ for i in range(5):
 
 One last detail we want to mention is that a subclass is considered a specialized cased of its superclass. In this case, `Pikachu` and `Charizard` are specific examples of Pokémons. We can check that they are indeed considered to be Pokémons as follows
 
-```{code-cell} python3
+```{code-cell} python
 pikachu = Pikachu()
 charizard = Charizard()
 

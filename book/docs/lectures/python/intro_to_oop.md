@@ -67,7 +67,7 @@ Let us say we want to implement such a contact list for a new phone system we ar
 
 To begin with, we only want to store information about each contact, and so dictionaries would be a natural choice for this. We can use key-value pairs to store the information we want, and ignore the pieces of information we don't want. Other parts of the software system can then go in and access information from the contact dictionary as needed
 
-```{code-cell} python3
+```{code-cell} python
 contact = {"name": "Lisa", "email": "lisa@python.org", "mobile_number": "767828292"}
 
 print(contact["email"])
@@ -75,7 +75,7 @@ print(contact["email"])
 
 However, our dictionary can only store information on the contact, we cannot add new functionality. A more general way to do this would instead be to define a custom Contact-*class*. Classes are way to define new data types. That way we can create variables that are of type *contact*, instead of dictionary. The upside is that we  can choose exactly how our contact datatype should behave.
 
-```{code-cell} python3
+```{code-cell} python
 class Contact:
     def __init__(self, name, email=None, cellphone=None):
         self.name = name
@@ -86,14 +86,14 @@ class Contact:
 With this class defined, we can now create new contact object as follows
 
 
-```{code-cell} python3
+```{code-cell} python
 contact = Contact("Lisa", email="lisa@python.org", cellphone="767828292")
 print(contact.email)
 ```
 
 Our contact object is no longer a dictionary, but a `Contact`-object, a new data type we defined ourself. We can check this by writing out the type:
 
-```{code-cell} python3
+```{code-cell} python
 print(type(contact))
 ```
 
@@ -110,7 +110,7 @@ When defining a new class, you need to specify what data an object of that type 
 
 In Python we use the dot-syntax to access an objects attributes. For example
 
-```{code-cell} python3
+```{code-cell} python
 x = complex(4, 3)
 
 print(x.real)
@@ -122,7 +122,7 @@ Here we create a `complex`-type object, which represents a complex number. We ca
 
 Last we use `x.conjugate()`, and this is also a class attribute - but in this case the attribute is callable and will behave as a function. Such attributes we call *methods* in Python. In this case the method returns the complex conjugate of the object.
 
-```{code-cell} python3
+```{code-cell} python
 print(type(x.real))
 print(type(x.conjugate))
 ```
@@ -153,7 +153,7 @@ Time for another example. Let us say we are implementing some card games. Now, w
 
 We do this by implementing a `Deck` class. After having implemented our class, we can then define an instance of this class (`deck = Deck()`). Our actual game code will then be much simpler, because we can now simply call `deck.shuffle()` or `deck.draw(5)` and so on. This adds a layer of abstraction to our code, and hides away the ugly implementation details "behind the scenes". This is called *encapsulation*, and is one of the motivations for using OOP. We can say we hide the implementation, but expose an easy-to-use and easy-to-understand *interface* that is used to manipulate the object
 
-```{code-cell} python3
+```{code-cell} python
 import random
 
 
@@ -180,7 +180,7 @@ Here we implement a class that has four methods. The first method is the constru
 
 Once we have taken the time to build the `Deck`-class, we can easily create decks of cards, and use them, without having to think too much about the underlying details of the implementation. Implementing a class therefore represents adding a new layer of abstraction to our code. For example, we can now create a random 5-card poker hand as follows:
 
-```{code-cell} python3
+```{code-cell} python
 deck = Deck()
 deck.shuffle()
 
@@ -203,7 +203,7 @@ Deck.shuffle(deck)
 And so the method `Deck.shuffle`, even though it is written inside the class, actually just acts like a stand-alone function, the object is simply passed in and manipulated. And so when we define the function we call the first input-argument `self`, because this is the *object itself* (in this case `self = deck`). Note that you can, technically, call this argument something other than `self`, it is just a function argument, like any other. However, it is considered good code style to always use `self` and it will be confusing for others if you use something else. (Most languages use either "self" or "this".)
 
 So for most class methods you define, you both define the method with `self` as the first argument. And you use `self` inside the method to manipulate the data within the object. Let us look back at the `Deck.shuffle` method:
-```{code-cell} python3
+```{code-cell} python
 class Deck:
     ...
 
@@ -234,7 +234,7 @@ Special methods have specific names, so Python knows what to call. They all use 
 
 You have already seen the most important example of special methods, the constructor, or initialization special method (`__init__`). This function is called every time you define a new instance of a class.
 
-```{code-cell} python3
+```{code-cell} python
 from math import pi
 
 
@@ -252,7 +252,7 @@ print(f"And a volume of {football.volume:.0f} cm^3")
 ```
 
 Once we define a new instance of the class, the `__init__`-method is called behind the scenes. As usual, the first argument is called "self", because this will be the object itself. In addition we send in any additional arguments we need to define an object of the given class. In this example we define a sphere-object, and so we send in the radius as an argument. In our constructor we then choose to store the radius as a data attribute by writing
-```{code-cell} python3
+```{code-cell} python
 self.radius = radius
 ```
 This code line might look a bit weird, but here we are defining the instance property `football.radius`, and setting the value to be the same as the function argument (`11`). In addition to storing the radius, we have chosen to also compute the area and volume of the sphere, and store these as attributes as well.
@@ -262,7 +262,7 @@ This code line might look a bit weird, but here we are defining the instance pro
 
 If you attempt to call `print` on a custom object, you'll find that it doesn't produce output that is super helpful.
 
-```{code-cell} python3
+```{code-cell} python
 print(football)
 ```
 
@@ -274,7 +274,7 @@ To print more useful information, we can implement the string special method (`_
 
 This means: if we implement a `__str__` that returns a nicely formatted string, we can print our object exactly the way we want it.
 
-```{code-cell} python3
+```{code-cell} python
 from math import pi
 
 
@@ -298,14 +298,14 @@ On the other hand we have `__repr__`, which is meant to be unambiguous and more 
 
 The repr special method is also called when printing out elements inside a list for example, so if we write out our football inside a list, the output will be as before, despite having implemented a str-method. To fix this we would need to add a repr instead, or in addition to, the str-method.
 
-```{code-cell} python3
+```{code-cell} python
 list_of_spheres = [Sphere(0), Sphere(5), Sphere(10)]
 print(list_of_spheres)
 ```
 
 Now let us implement the `__repr__` method
 
-```{code-cell} python3
+```{code-cell} python
 from math import pi
 
 
@@ -324,7 +324,7 @@ class Sphere:
 
 Here we use a quick little trick. Because we don't really want `__repr__` and `__str__` to produce any different output, we simply let `__repr__` use the string special method by writing `self(str)`. Using methods internally when defining classes is very common, and can save us a lot of hassle
 
-```{code-cell} python3
+```{code-cell} python
 list_of_spheres = [Sphere(0), Sphere(5), Sphere(10)]
 print(list_of_spheres)
 ```
@@ -341,7 +341,7 @@ $$
 
 Here, there a three free parameters, the coefficients $a$, $b$, and $c$. We therefore let the constructor take these in. We then implement the mathematical function itself as the call special method:
 
-```{code-cell} python3
+```{code-cell} python
 class Quadratic:
     def __init__(self, a, b, c):
         self.coefficients = a, b, c
@@ -361,7 +361,7 @@ Here, when we assign `f = Quadratic(1, 2, 1)`, we are creating a new object of t
 
 We can now easily create quadratic functions and use them as normal functions:
 
-```{code-cell} python3
+```{code-cell} python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -408,7 +408,7 @@ $$
 
 Typically we compute this for a given array of values or something like that. However, for `newton` to work, we can't send in an array of values, we must send in a callable function. To create such a callable function we can create a `Derivative` class that automatically creates a callable object for $f'(x)$.
 
-```{code-cell} python3
+```{code-cell} python
 class Derivative:
     def __init__(self, f, dx=1e-6):
         if not callable(f):
@@ -426,7 +426,7 @@ Here we create the class from a given function `f`, which we double check is *ca
 
 We can now implement the derivative of any callable function as its own callable object as follows
 
-```{code-cell} python3
+```{code-cell} python
 import numpy as np
 
 f = np.sin
@@ -435,7 +435,7 @@ dfdx = Derivative(f)
 
 Here `f` represents the function $f(x) = \sin(x)$, while `dfdx` will be its derivative. Let us check if it works. As we know the derivative of $\sin(x)$ is $\cos(x)$ we can test our implementation as follows
 
-```{code-cell} python3
+```{code-cell} python
 x = 0.8281
 
 print(dfdx(x))
@@ -444,7 +444,7 @@ print(np.cos(x))
 
 With the `Derivative` class implemented, we can now easily use the `newton` method on any function, simply use  the `Derivative`-class to automatically define the derivative function, and then call Newton, as follows
 
-```{code-cell} python3
+```{code-cell} python
 from scipy.optimize import newton
 
 
@@ -460,7 +460,7 @@ print(newton(f, x0, dfdx))
 
 Here we simply used Newton's method as an example, and do note that `scipy.optimize.newton` actually doesn't need us to supply the derivative function, because if we do not supply it, it does pretty much the same as we have done behind the scenes automatically.
 
-```{code-cell} python3
+```{code-cell} python
 newton(f, x0)
 ```
 
@@ -482,7 +482,7 @@ These are just a few of many, many possible special methods you can implement. W
 
 The final topic we will cover today are what we call *properties*, which is a very handy topic to know about when implementing and using your own custom classes, and we therefore go back to our example with the sphere-class
 
-```{code-cell} python3
+```{code-cell} python
 class Sphere:
     def __init__(self, radius):
         self.radius = radius
@@ -496,7 +496,7 @@ class Sphere:
 Here we set the radius of the sphere once we create the object, and the area and volume are automatically computed. This works quite well, but it has a few issues as well. For one thing, there is nothing that prevents us from changing one of these fields directly. If we do this, the other fields do **not** change automatically
 
 
-```{code-cell} python3
+```{code-cell} python
 ball = Sphere(5)
 print(f"{ball} has a volume of {ball.volume:.0f}")
 
@@ -510,7 +510,7 @@ How big of a problem this is of course dependent on how the code is to be used. 
 
 A simple solution is to make the `area` and `volume` attributes methods instead of data fields
 
-```{code-cell} python3
+```{code-cell} python
 class Sphere:
     def __init__(self, radius):
         self.radius = radius
@@ -527,7 +527,7 @@ class Sphere:
 
 We can now update the `radius` property, and when we call the `area()` or `volume()` methods, they will recompute using the new radius
 
-```{code-cell} python3
+```{code-cell} python
 ball = Sphere(5)
 print(f"{ball} has a volume of {ball.volume():.0f}")
 
@@ -539,7 +539,7 @@ By making the `area` and `volume` attributes methods, they will always be recomp
 
 However, this implementation can also be a bit confusing. For one, radius, area and volume are simply all different properties of a Sphere, and all represented as numbers - so why should one be a number variable, and the other methods that must be called?
 
-```{code-cell} python3
+```{code-cell} python
 print(type(ball.radius))
 print(type(ball.area))
 print(type(ball.volume))
@@ -549,7 +549,7 @@ Let us therefore look at a different way to set up this class using *properties*
 
 When we add the `@property` decorator to a method in a class, that method will behave from the outside as if it is a data field, and not a method.
 
-```{code-cell} python3
+```{code-cell} python
 class Sphere:
     def __init__(self, radius):
         self.radius = radius
@@ -575,7 +575,7 @@ Here, both `Sphere.area` and `Sphere.volume` are defined in the exact same manne
 
 Using the property decorator allows us to implement a method that compiles or computes the data behind the scenes in some way, but allows the user to treat that property as a data field on the outside. We can now change the radius, and the `area` and `volume` properties will also change. The user does not have to think about this themselves.
 
-```{code-cell} python3
+```{code-cell} python
 ball = Sphere(5)
 print(f"{ball} has a volume of {ball.volume:.0f}")
 
@@ -599,7 +599,7 @@ Thus, by defining an attribute using `@property`, we have effectively made the a
 In Python, we can access class attributes directly using the dot notation, e.g., `ball.radius`, and we can also change these directly if we so desire. This is not considered bad practice if the Class is defined to do this. In many other languages however, one either cannot access attributes directly, or it is considered bad practice to access them directly. In such languages, it is often common to define "setter" and "getter" methods. Here we would define a `Sphere.get_radius` method, which would return the value of the radius, and we would define a `Sphere.set_radius` to redefine it.
 
 In Python, such setters and getters are usually not implement explicitly, but we can use the same logic. In our previous example, we defined
-```{code-cell} python3
+```{code-cell} python
 @property
 def area(self):
     return 4 * pi * self.radius**2
@@ -609,7 +609,7 @@ And this method is effectively a *getter* for the area. It isn't called `get_are
 Similarly, we can define a *setter* method for the area property using the decorator `@area.setter`. Let us show with an example
 
 
-```{code-cell} python3
+```{code-cell} python
 from math import pi, sqrt
 
 
@@ -635,7 +635,7 @@ Here we first define the `Sphere.area` property using `@property` which allows u
 
 With the `@area.setter` method defined, we can now both access `Sphere.area` *and* redefine it if we want. For example:
 
-```{code-cell} python3
+```{code-cell} python
 ball = Sphere(10)
 print(f"{ball} has an area of {ball.area:.0f}")
 
@@ -648,7 +648,7 @@ print(f"{ball} has an area of {ball.area:.0f}")
 
 So we now have a `Sphere`-class that allows us to either set the radius, and have the area automatically update, *or* we can set the surface area, and the radius automatically updates. Hopefully it is apparent why this could be useful. Another nice detail about this is we can build in some controls on the input of the setter function. Note that we in the `@area.setter` method have a check to see if the area is negative. If `Sphere.area` was a simple float attribute, we would have no way of restricting what value it was set to in this manner.
 
-```{code-cell} python3
+```{code-cell} python
 ball.area = -1
 ```
 now gives
@@ -670,7 +670,7 @@ The way we would get around this would be to store the computed values as *inter
 
 Let us show by an example (again we skip the `volume` property, which you can add yourself)
 
-```{code-cell} python3
+```{code-cell} python
 class Sphere:
     def __init__(self, radius):
         self._radius = radius

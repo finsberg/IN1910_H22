@@ -155,7 +155,7 @@ At this point, an interesting question might be what sorting algorithm the build
 
 As there are so many sorting algorithms out there, an interesting way to compare them could be to visualize how they sort their lists. This can be done in many ways, for example like shown in the Youtube video below, which shows of 15 different sorting algorithms on lists of various sizes:
 
-```{code-cell} python3
+```{code-cell} python
 from IPython.display import HTML
 
 HTML(
@@ -169,7 +169,7 @@ Or you can be inspired by the Romian Sapientia University, which has created and
 
 See for example their video of *insert-sort* below:
 
-```{code-cell} python3
+```{code-cell} python
 from IPython.display import HTML
 
 # Embed Youtube Video

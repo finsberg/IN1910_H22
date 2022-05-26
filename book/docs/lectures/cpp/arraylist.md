@@ -236,7 +236,7 @@ Note that if you are compiling with Microsoft's Visual C++ instead of gcc or cla
 
 In Python, it is a bit more tricky to verify, because we cannot directly access the capacity of the list. However, we can use the `sys.getsizeof` function, which returns the size of an object, in number of bytes.
 
-```{code-cell} python3
+```{code-cell} python
 import sys
 
 example = []

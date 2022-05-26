@@ -1,7 +1,7 @@
 
 # Build files
 book/_build
-
+.vscode
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks,visualstudiocode,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,jupyternotebooks,visualstudiocode,c++

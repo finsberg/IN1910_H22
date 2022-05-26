@@ -44,3 +44,10 @@ parts:
       - file: docs/lectures/cpp/algorithm_analysis.md
       - file: docs/lectures/cpp/linkedlists_vs_dynamicarrays.md
       - file: docs/lectures/cpp/sorting.md
+    - file: docs/lectures/stochastic_processes/stochastic_processes.md
+      sections:
+      - file: docs/lectures/stochastic_processes/random_number_generators.md
+      - file: docs/lectures/stochastic_processes/using_random_numbers.md
+      - file: docs/lectures/stochastic_processes/random_walks_and_markov_processes.md
+      - file: docs/lectures/stochastic_processes/solving_the_1D_diffusion_equation.md
+      - file: docs/lectures/stochastic_processes/markov_chains.md

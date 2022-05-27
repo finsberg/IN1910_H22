@@ -184,6 +184,7 @@ Say that we have a list numbers that we want to check which of them are prime. S
 
 ```{code-cell} python
 import concurrent.futures
+import os
 
 PRIMES = (
     13466917,
@@ -203,7 +204,7 @@ def is_prime(n):
 
 In serial we would simply loop over all the prime numbers and call the function `is_prime` on each element in the list.
 
-```{code-cell} python tags=[]
+```{code-cell} python
 import time
 
 t0 = time.time()
@@ -304,6 +305,7 @@ t1 = time.time()
 print(f'Elapsed time: {t1 - t0}')
 ```
 
+
 ### Parallel problems
 
 As mentioned before, parallelizing problems can be tricky, because in many algorithms, there is an inherent order in which operations must be carried out for things to make sense. Because of this, some problems simply cannot be parallelized, because the problem itself is inherently sequential. An example of this is solving an ODE system like the one we did in Project 1. Because we solve the ODEs by stepping one step forward in time, it is hard to split the job among different workers, because they would just have to end up waiting for each other.
@@ -365,7 +367,6 @@ The annoying part about race conditions is that the behavior of the program can 
 
 To illustrate the race conduction we make a fake database and let different threads update the same value. In order to make the race condition happen we will let the program sleep between
 
-
 ```{code-cell} python
 import time
 import concurrent.futures
@@ -407,6 +408,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
 print(f"Update finished. Ending value is {data.value}")
 ```
 
+
 In this case, the time for waiting was so low that my operating system decided to wait instead of switching thread.
 
 Note that race conditions happens because the two threads are sharing the same variable. This would not happen if we try to run this using a process pool. Why?
@@ -439,6 +441,7 @@ Any smaller or larger than this, and repeated iteration would blow up $z$.
 
 However, the Mandelbrot set is defined as any $c \in \mathcal{C}$, i.e., for any complex number. It turns out that this makes the whole problem a lot more interesting, as it leads to chaotic and fractal behavior at the boundary, meaning we can zoom in "infinitely" and still see a large amount of complexity.
 
+The experiments below are run on and IFI machine through ssh.
 
 ### Rendering the Mandelbrot set
 
@@ -460,8 +463,6 @@ We are now ready to render the Mandelbrot fractal. If this is going a little too
 The follow up blogpost is all about optimizing the computation with Python as well as implementation with c/c++:
 * [Performance in Mandelbrot Set Computation
 ](https://martin-ueding.de/posts/mandelbrot-performance/)
-
-
 
 ```{code-cell} python
 import numpy as np
@@ -487,6 +488,7 @@ def mandelbrot_pixel(c, maxiter):
     return 0
 ```
 
+
 Here the input $c$ can be a complex number. Python supports a complex type built in.
 
 We start by saying $z=0$, because this is where we start iterating, for any $c$. Then we repeatedly compute $f_c(z) = z^2 + c$ and check if $|z| > 2$. If it is, the point has "escaped", and we return the number of iterations. If we have performed all iterations and the point is still bounded, we return 0.
@@ -509,12 +511,14 @@ def mandelbrot_image(xmin, xmax, ymin, ymax, width, height, maxiter):
     return img
 ```
 
+
 Here we first use `np.linspace` to find the values of $x$ and $y$ for each pixel. Then we loop over each pixel in the image and iterate each point $c = x + i\cdot y$. To define a complex value in Python you can write `a + 1j*b`, where `1j` denotes the imaginary unit.
 
 
 Let us now call and plot out an image to see how it looks. To plot out the entire Mandelbrot, we want to plot out $x\in[-2, 0.5]$ and $y\in[-1.25, 1.25]$.
 
 ```{code-cell} python
+# This took 12 seconds
 img = mandelbrot_image(-2, 0.5, -1.25, 1.25, 1000, 1000, 80)
 ```
 
@@ -533,6 +537,7 @@ ax.imshow(img.T, cmap='hot', origin='lower')
 ax.axis('off')
 plt.show()
 ```
+
 
 The image can be further improved by rendering a longer *horizon*, but this is unimportant detail at the moment.  For now, we want to optimize and parallelize our code.
 
@@ -560,12 +565,13 @@ def benchmark(mandelbrot):
     return mandelbrot(xmin, xmax, ymin, ymax, pixels, pixels, maxiter)
 ```
 
+
 ```script magic_args="echo skipping"
 
 %timeit -n 1 -r 1 benchmark(mandelbrot_image)
 ```
 
-(This took 3 minutes 17 seconds on my laptop)
+(This took 3 minutes 36 seconds)
 
 
 ### Multiprocessing
@@ -610,18 +616,23 @@ def mandelbrot_image_mp(xmin, xmax, ymin, ymax, width, height, maxiter):
     return img
 ```
 
+```{code-cell} python
+import psutil
+psutil.cpu_count()
+```
+
+
 ```script magic_args="echo skipping"
 
 %timeit -n 1 -r 1 benchmark(mandelbrot_image_mp)
 ```
 
-(This took 47.2 seconds)
+(This took 9.7 seconds on the IFI machine which have 24 cores)
 
-
-We have now gone from 3 minutes 17 seconds, to 47.2 seconds by utilizing all the cores on our machine. Of course, these number will vary depending on the number of cores available (this computer has 6 cores).
 
 However, in this case we see a speed up of
-$$\frac{197 {\rm\ s}}{47.2 {\rm\ s}} = 4.17$$
+$$\frac{206 {\rm\ s}}{9.7 {\rm\ s}} = 21.23$$
+which is almost a perfect speed up.
 
 
 ### Vectorized numpy
@@ -649,20 +660,25 @@ def mandelbrot_numpy(xmin, xmax, ymin, ymax, width, height, maxiter):
     return img.T
 ```
 
+```{code-cell} python
+%timeit benchmark(mandelbrot_numpy)
+```
+
 ```script magic_args="echo skipping"
 
 %timeit benchmark(mandelbrot_numpy)
 ```
 
-(This took 40.0 seconds on my laptop)
+(This took 34.5 seconds on my laptop)
 
 
-We see that vectorization is about twice as fast as the parallel code
+We see that vectorization is about 6 times as fast as the naitve python implementation.
 
 
 ### JIT-compiling with Numba
 
 From last weeks lecture, we also learnt that [numba](http://numba.pydata.org/) is a tool that can automatically just-in-time compile code in Python to make it surprisingly fast. Let us try it with out code. We simply add the `numba.jit` decorators to our two function, and make no other changes to them:
+
 
 ```{code-cell} python
 import numpy as np
@@ -695,7 +711,7 @@ def mandelbrot_numba(xmin, xmax, ymin, ymax, width, height, maxiter):
 %timeit benchmark(mandelbrot_numba)
 ```
 
-(This look about 2.6 seconds)
+(This look 7.34 seconds)
 
 
 JIT compiling with numba gives a quite amazing speed up. However, let us see if we can't improve the code itself inside the functions a bit as well.
@@ -706,6 +722,7 @@ Much more importantly: computing $|z|$ requires first squaring to compute $|z|^2
 
 In addition, it turns out that avoiding the built-in complex type is better for speed, so we instead want to send in the $x$ and $y$ components separately. To iterate, we then have
 $$z^2 + c = (x + i\cdot y)^2 + (c_x + y\cdot c_y) = (x^2 - y^2 + c_x) + i\cdot(2xy + c_y).$$
+
 
 ```{code-cell} python
 import numpy as np
@@ -742,21 +759,22 @@ def mandelbrot_numba(xmin, xmax, ymin, ymax, width, height, maxiter):
 %timeit benchmark(mandelbrot_numba)
 ```
 
-(This took about 2.3 seconds)
+(This took about 2.91 seconds)
 
 
 ### Plotting out the Benchmark
 
-So far vi have gotten a considerable speed-up by going from a naive solution to JIT compiling with numba. We have gone from 3 minutes 17 seconds, to 6.34 seconds, which was a speed up of
-$$\frac{197 {\rm\ s}}{2.66 {\rm\ s}} = 74.1$$
+So far vi have gotten a considerable speed-up by going from a naive solution to JIT compiling with numba. We have gone from 3 minutes 36 seconds, to 7.34 seconds, which was a speed up of
+$$\frac{206 {\rm\ s}}{7.34 {\rm\ s}} = 28.1$$
 
-And further optimizing some of our lines reduced this further down to 2.52 seconds. For a total speedup of
+And further optimizing some of our lines reduced this further down to 2.91 seconds. For a total speedup of
 
-$$\frac{168 {\rm\ s}}{1.76 {\rm\ s}} = 111.9$$
+$$\frac{206 {\rm\ s}}{2.91 {\rm\ s}} = 70.8$$
 
 We could also have tried optimizing with Cython, but we ignore this for now. You can read about using Cython in the blogpost.
 
 Let us plot out the benchmark image rendered by our final numba variant:
+
 
 ```{code-cell} python
 img = benchmark(mandelbrot_numba)
@@ -848,9 +866,9 @@ time ./mandelbrot
 ```
 Gives
 ```
-real	0m4,171s
-user	0m4,163s
-sys     0m0,008s
+real    0m5.131s
+user    0m5.111s
+sys     0m0.006s
 ```
 Here, `real` is the "real" time that has elapsed from we click go to the program ends up finishing. This is also known as "wall time", because it is the same time as a clock on the wall would take. The `user` is the time the program has spent in "user" mode. This means, the time the actual CPU of the computer has spent running the code. Finally, the `sys` is the amount of time the system call used outside our actual C++ code.
 
@@ -867,13 +885,13 @@ We can now use `time` to take the time of 10 executions of our benchmark, and di
 
 An alternative is to use the standard Python library `os` (for operating system) to call our executable for oss. The benefit of this approach is that we can use `%timeit` like normal. Note that now `timeit` will also include the time it takes for `os` to call the code, so there is some overhead here. However, this likely won't make much for a difference unless we are timing things at the nanosecond range. For these measurements, this approach is solid.
 
-```{code-cell} python
-import os
+```script magic_args="echo skipping"
 os.system("c++ -std=c++14 mandelbrot.cpp -o mandelbrot")
 %timeit -n 1 -r 2 os.system("./mandelbrot")
 ```
 
-(Took about 3.63 seconds)
+(Took about 5.2 seconds)
+
 Our naive C++ solution is the same order of magnitude as our fastest numba solution, but slightly slower.
 
 
@@ -881,28 +899,26 @@ Before we move on to parallelizing our code. Let us first *compile it with optim
 
 Instead of picking compiler flags manually, we can compile with the flags `O1`, `O2` and `O3`, where the number gives the degree of optimization. Here, `O3`, should give the biggest speed up, but will also turn of most warnings and error handling. In the need for speed we are sacrificing some things, but using the flag `-O3` tells the compiler this is OK.
 
-```{code-cell} python
+```script magic_args="echo skipping"
 os.system("c++ -std=c++14 mandelbrot.cpp -o mandelbrot_optimized -O3")
-```
-
-```{code-cell} python
 %timeit os.system("./mandelbrot_optimized")
 ```
 
-(Took about 4.2 ms)
 
-With `O3` compiling, our code runs in 4.43 ms, i.e much faster than the numba code.
+(Took about 2.81 s)
+
+With `O3` compiling, our code runs in 2.81 seconds which is comparible to the numba solution.
 
 With gcc at least, there is one more degree of optimization, called `-Ofast`. This does the exact same as `O3` but it also adds the flag `-ffast-math`. This flag makes floating point operations much faster, but it does so by switching around these operations in a way that can change their round-off errors. Using `-Ofast` might therefore produce a different outcome, which can sometimes be very important. Strictly speaking, `-Ofast` is not IEEE compliant, so beware.
 
 With that said, let's try it!
 
-```{code-cell} python
+```script magic_args="echo skipping"
 os.system("c++ -std=c++14 mandelbrot.cpp -o mandelbrot_optimized -Ofast")
 %timeit os.system("./mandelbrot_optimized")
 ```
 
-(Took about 3.76 ms)
+(Took about 2.79 s)
 
 In this case, `Ofast` did not improve much on the `O3` optimized solution much.
 
@@ -929,40 +945,38 @@ This tells the compiler to try to use OpenMP to parallelize our for loop.
 
 When compiling with OpenMP, we also need to add the flag `-fopenmp`
 
-```{code-cell} python
-import sys
-os.system("c++ -std=c++14 mandelbrot_parallel.cpp -o mandelbrot_parallel -O3 -fopenmp")
-```
 
-```{code-cell} python
+```script magic_args="echo skipping"
+os.system("c++ -std=c++14 mandelbrot_parallel.cpp -o mandelbrot_parallel -O3 -fopenmp")
 %timeit os.system("./mandelbrot_parallel")
 ```
+(This took 264 ms)
 
-So with OpenMP, our code has gone from 1.91 seconds to 5 ms seconds, a speed-up of about about 400. We can get more information about the CPU usage with the `time` command:
+So with OpenMP, our code has gone from 2.79 seconds to 264 ms seconds, a speed-up of about about 10. We can get more information about the CPU usage with the `time` command:
 
 
 ```
 time ./mandelbrot_parallel
 
-real	0m0.288s
-user	0m2.058s
-sys	 0m0.006s
+real    0m0.247s
+user    0m3.307s
+sys     0m0.025s
 ```
 
-Here the interesting thing is that the "real" time is 0.288 seconds, which is the time we need to wait for the program to finish running, but the "user" time is about 2.05 seconds. Here the "user" time is the time used by a CPU. How can the time used by the CPU be more than the time we wait? This is because there are multiple CPU's running simultaneously, and both are racking up "user" time.
+Here the interesting thing is that the "real" time is 0.247 seconds, which is the time we need to wait for the program to finish running, but the "user" time is about 3.307 seconds. Here the "user" time is the time used by a CPU. How can the time used by the CPU be more than the time we wait? This is because there are multiple CPU's running simultaneously, and both are racking up "user" time.
 
 We can use the different program `/usr/bin/time -v` to get more information out
 ```
 /usr/bin/time -v ./mandelbrot_parallel
     Command being timed: "./mandelbrot_parallel"
-	User time (seconds): 2.02
+	User time (seconds): 3.30
 	System time (seconds): 0.00
-	Percent of CPU this job got: 709%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.28
+	Percent of CPU this job got: 1379%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.24
     ...
 ```
 On Mac you can use the command `gtime` instead after installing `gnu-time` through brew (`brew install gnu-time`).
-We have removed the next 10 or so lines because they are uninteresting. In this execution we see the job used 709% of the computers CPU, meaning it used about 7 cores.
+We have removed the next 10 or so lines because they are uninteresting. In this execution we see the job used 1379% of the computers CPU, meaning it used about 14 cores.
 
 
 
@@ -1036,13 +1050,17 @@ def mandelbrot_cppyy(xmin, xmax, ymin, ymax, width, height, maxiter):
     return np.array(output).reshape((width, height))
 ```
 
-```{code-cell} python
-img = benchmark(mandelbrot_cppyy)
-```
+When using `cppyy` is is also easy to verify that the implementation of the madelbrot function is correct by plotting it with matplotlib.
 
 ```{code-cell} python
+img = benchmark(mandelbrot_cppyy)
 plt.imshow(img)
 ```
+
+```script magic_args="echo skipping"
+%timeit benchmark(mandelbrot_cppyy)
+```
+(This took about 3 seconds which is similar to the naive C++ implementation)
 
 And we see that it is more or less identical to the first version in C++ which is what we expect. If you think this was a bit tricky, no worries. This example was meant to show that it is indeed possible, but there is a cost to be payed in terms of code complexity
 
@@ -1081,35 +1099,43 @@ def mandelbrot_parallel_numba(xmin, xmax, ymin, ymax, width, height, maxiter):
     return img
 ```
 
-```{code-cell} python
+```script magic_args="echo skipping"
 %timeit benchmark(mandelbrot_parallel_numba)
 ```
+
+(This took 230 ms)
 
 As with the C++ code, it makes more sense to parallelize the `i` loop with `prange` than the `j`-loop.
 
 
-### Bar plot
+### Bar 
 
 ```{code-cell} python
-times = [197, 47.2, 26.2, 2.66, 1.76, 3.1, 1.91, 0.292, 0.289]
-labels = ['Naive Python', 'MP', 'Numpy', 'Numba', 'Opt. Numba', 'C++', 'C++ O3', 'C++ OMP', 'Numba OMP']
+times = {
+    "Naive Python": 206, 
+    "MP": 9.7, 
+    "Numpy": 34.5, 
+    "Numba": 7.34, 
+    "Numba (opt": 2.91, 
+    "C++": 5.2, 
+    "C++ -03": 2.81, 
+    "C++ OMP": 0.264, 
+    "cppyy": 3.0,
+    "Numba OMP": 0.230,
+}
 
-plt.figure(figsize=(12, 8))
-plt.bar(range(len(times)), times)
-plt.xticks(range(len(times)), labels)
-plt.ylabel('Time (seconds)')
+fig, ax = plt.subplots(figsize=(12, 8))
+ax.bar(times.keys(), times.values())
+ax.set_ylabel('Time (seconds)')
 plt.show()
 ```
 
 Or replotted with logarithmic axis:
 
 ```{code-cell} python
-times = [197, 47.2, 26.2, 2.66, 1.76, 3.1, 1.91, 0.292, 0.289]
-labels = ['Naive Python', 'MP', 'Numpy', 'Numba', 'Opt. Numba', 'C++', 'C++ O3', 'C++ OMP', 'Numba OMP']
-
-plt.figure(figsize=(12, 8))
-plt.bar(range(len(times)), times, log=True)
-plt.xticks(range(len(times)), labels)
+fig, ax = plt.subplots(figsize=(12, 8))
+ax.bar(times.keys(), times.values(), log=True)
+ax.set_ylabel('Time (seconds)')
 plt.show()
 ```
 

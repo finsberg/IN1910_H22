@@ -334,7 +334,7 @@ Indexing an array however, can be thought of like the pages in a book. If someon
 
 Similarly, we can talk about adding/removing elements. An analogy for adding elements to a dynamic array could be a stack of books lying on a table. Adding a book to the end of the stack is very easy, you just place it on top, where there is room. However, if you want to insert the book into the bottom or middle of the pile, you would have to do a lot more work. The bigger the stack, the more work.
 
-```{figure} fig/stack_of_books.jpg
+```{figure} ../../figures/stack_of_books.jpg
 ---
 width: 150px
 name: stack-of-books
@@ -346,7 +346,7 @@ Adding or removing elements from a linked list can be though of like modifying a
 
 
 
-```{figure} fig/bike_chain.jpg
+```{figure} ../../figures/bike_chain.jpg
 ---
 width: 3000px
 name: bike-chain

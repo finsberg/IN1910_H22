@@ -4,7 +4,7 @@ The paper [*Best Practices for Scientific Computing*](http://journals.plos.org/p
 
 A movement called [*Software Carpentry*](https://software-carpentry.org/) is trying to remedy the situation by giving workshops and sharing resources for training researchers in computing and programming. As the name implies, the goal is to give researchers a set of useful *tools* and the competence and confidence to use them properly.
 
-```{figure} fig/software_carpentry.png
+```{figure} ../figures/software_carpentry.png
 ---
 width: 200px
 name: software_carpentry
@@ -44,7 +44,7 @@ Why do we choose to also include C++, and not just stick to Python? First of all
 The magazine IEEE Spectrum publishes an annual list of programming langues ranked by popularity. The [2021 list](https://spectrum.ieee.org/top-programming-languages-2021) was published 22nd of July. The top ten programming langues (by popularity) are shown in the figure below
 
 
-```{figure} fig/spectrum_ranking_2021.png
+```{figure} ../figures/spectrum_ranking_2021.png
 ---
 width: 400px
 name: spectrum_ranking

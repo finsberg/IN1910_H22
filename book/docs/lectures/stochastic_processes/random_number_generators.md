@@ -29,7 +29,7 @@ However, sitting at producing your own random numbers by rolling a die is cumber
 To emphasize the importance of random numbers, you can take a look at the book *A Million Random Digits with 100,000 Normal Deviates*, first published in 1955 by the RAND company. As the name implies, this is a book of a million random digits. The interesting thing however, is that this book was considered quite groundbreaking, as it enabled more people access to a large number of random numbers than ever before.
 
 
-```{figure} fig/RAND.png
+```{figure} ../../figures/RAND.jpg
 ---
 width: 400px
 name: RAND
@@ -79,16 +79,21 @@ One of the first examples of a computer implemented pRNG was proposed by John vo
 Now, to start generating such a sequence, we need to start somewhere. Let us say we start with the number
 
 $$X_0 = 4096.$$
+
 We can now find the next number in the sequence by first squaring:
+
 $$X_0^2 = 16777216,$$
 
 and then extracting the middle digits. Because we started with a 4-digit number, we extract the middlemost 4 digits. Meaning the next number in the sequence becomes
+
 $$X_1 = 7772.$$
 
 We can now perform another iteration, note that we now use the previous result as the point to continue from:
 
 $$X_1^2 = 60403984,$$
+
 Extracting the middlemost 4 digits now gives
+
 $$X_2 = 4039.$$
 
 Let us implement this process in Python:
@@ -144,7 +149,7 @@ We call these pRNGs *linear* generator, because this difference equation is a li
 
 Now, it's important to stress that the parameters $a$, $m$ and $c$ should not be chosen freely, but must be rather carefully selected, if we want to end up with a good pRNG. We'll return to this a bit later and explain what makes a "good" choice. For now, we take the parameters given in the book *Numerical Recipes*
 
-```{figure} fig/numerical_recipes.jpg
+```{figure} ../../figures/numerical_recipes.jpg
 ---
 width: 250px
 name: numerical_recipes
@@ -153,6 +158,7 @@ alt: numerical_recipes
 ```
 
 In numerical recipes, they propose a LCG with the parameters:
+
 $$\begin{align}
 m &= 2^{32}, \\
 a &= 1664525, \\
@@ -168,7 +174,7 @@ def next_number(current):
     return (a*current + c) % m
 
 
-X = np.empty(101, dtype=np.int)
+X = np.empty(101, dtype=int)
 X[0] = 10981
 
 for i in range(100):
@@ -214,6 +220,7 @@ for i in range(10):
 Now, the LCG we have created spits out a bunch of large integers. And it is at least hard to predict what number comes next. However, to have any use of the numbers that are outputted, we need to at least know the range of possible outcomes.
 
 To compute the next number in the sequence, we multiply the current state by $a=1664525$, and then increment it by $c=1013904223$. Both of these are massive numbers, to we would expect the state of the system to grow by quite a large margin. However, it does not grow beyond all bounds, because the last step is to take the modulo.
+
 $$X_{n+1} = aX_n + c \mod m.$$
 
 Taking the [modulo](https://en.wikipedia.org/wiki/Modulo_operation) of a number means finding the remainder after division. It is an important operation in number theory. We won't cover it in detail here, but a nice analogy for the modulo operation is a clock. A normal clock face shows numbers in the range $[0, 12)$, once it goes beyond 12, it starts back at 0. This is effectively a modulo operation. For example, 17:00 on a 24-hour clock would be $17 \ \text{mod}\ 12 = 5$ on a 12-hour clock.
@@ -221,7 +228,9 @@ Taking the [modulo](https://en.wikipedia.org/wiki/Modulo_operation) of a number 
 In our LCG, we always take the modulo with $m$. This means, just like for the clock, every time our state grows beyond $m$, it "loops back around. Thus, we are guaranteed that any number output by our LCG will be a number in the range:
 
 $$[0, m),$$
+
 or for our given choice of parameters:
+
 $$[0, 2^{32}) = [0, 4294967296).$$
 
 Now. This gives a range for possible values our LCG potentially can output. Are we guaranteed that every single integer in this range can, and will, be output? No, not in general no, but let us assume that this is the case.  The range $[0, 2^{32})$ includes exactly $2^{32}$ integers, so if all possible values in this range are possible, or LCG can then output $2^{32}$ different outcomes. For our LCG to be considered statistically random, we would want all of these outcomes to be equally likely.
@@ -287,7 +296,7 @@ $$2^{32} =4294967296,$$
 
 Pigeons into 100 pigeonholes, there is no way to get an equal number of pigeons into each hole.
 
-```{figure} fig/TooManyPigeons.jpg
+```{figure} ../../figures/TooManyPigeons.jpg
 ---
 width: 300px
 name: TooManyPigeons
@@ -407,7 +416,7 @@ for i in range(13):
 
 Look closely at this sequence. We have seeded our pRNG with the seed value of $6$, when we iterate through and produce new numbers, we eventually end back up at the value 6. From that point onwards, the sequence just repeats itself in exactly the same manner. This is a huge problem, because an important quality of *statistically random* is that numbers are uncorrelated, and we are now getting big correlations in our datasets.
 
-```{figure} fig/xkcd_221.png
+```{figure} ../../figures/xkcd_221.png
 ---
 width: 400px
 name: xkcd_221
@@ -454,7 +463,7 @@ Now, looking at these numbers. They look to be the same as the ones produced by 
 The "spectral test" in this regard refers to test LCGs, such as randu. If we use our pRNG to draw random points in a unit cube, if our pRNG is behaving as it should, these points will spread out uniformly in the cube, but if there is correlation between the different samples produced by the pRNG, we will see patterns forming in these random points. For most pRNGs we have to move to high dimensions before we can see these patterns, but for RANDU they show up even in 3D.
 
 
-```{figure} fig/randu_planes.png
+```{figure} ../../figures/randu_planes.png
 ---
 width: 700px
 name: randu_planes
@@ -500,7 +509,7 @@ Most of the largest Mersenne primes are found by a collaboration known as the [G
 
 The Electronic Frontier Foundation has traditionally given out large cash prizes to whoever breaks a big milestone, such as the first prime to pass one million, and ten million digits. The next prize is $150,000 to whoever finds the first prime with 100 million digits or more. It wouldn't be unreasonable to assume the GIMPS will be the first to find this number.
 
-```{figure} fig/largest_primes.png
+```{figure} ../../figures/largest_primes.png
 ---
 width: 500px
 name: largest_primes
@@ -674,7 +683,7 @@ The following talk by one of the Visual C++ developers is a good introduction to
 * https://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful
 
 ```{code-cell} python
-from IPython.display import HTML
+from IPython.display import YouTubeVideo
 
-HTML('<iframe src="https://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>')
+YouTubeVideo("LDPMpc-ENqY")
 ```

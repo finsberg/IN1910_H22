@@ -28,7 +28,7 @@ At UiO, the course [IN2010 – Algorithms and Data Structures](https://www.uio.n
 
 As mentioned, there are also hundreds of books on this subject, some probably better than others. Not only are there many to choose from, there are probably several to choose from dedicated for each programming language you might want to use. We will recommend the book used by IN2010, [*Algorithm Design and Application* by Goodrich and Tamassia](https://www.wiley.com/en-us/Algorithm+Design+and+Applications-p-9781118335918) as that is probably the best choice if you want to get a dedicated book and might be taking IN2010 in the future.
 
-```{figure} fig/goodrich_and_tamissa.jpg
+```{figure} ../../figures/goodrich_and_tamissa.jpg
 ---
 width: 175px
 name: goodrich-and-tamissa
@@ -53,7 +53,7 @@ An example of an abstract data type is the [list ADT](https://en.wikipedia.org/w
 
 Note that if we want to implement to specific ADT, say for example a list, there will often be many different underlying data structures we can choose when we implement it. In the case of the list, dynamic arrays would be a natural choice, as we have already seen. Another option would be *linked lists*, a data structure we will cover in this lecture.
 
-```{figure} fig/data_structure_vs_adt.png
+```{figure} ../../figures/data_structure_vs_adt.png
 ---
 width: 400px
 name: data-structure-vs-adt
@@ -70,7 +70,7 @@ We now turn to look at linked lists, which is an alternative data structure to d
 A node object stores the value of the element itself, but it also contains a pointer to another node. We can use this pointer to *link* different nodes to each other and create a *linked list*. In this lecture we will only consider lists that store *integers*. However, the value field of the nodes could simply be changed to store any kind of object. In C++, it would be best to use *templating* to define a single list class that can contain any type of data, but we disregard this here to keep things as simple as possible.
 
 
-```{figure} fig/single_node.png
+```{figure} ../../figures/single_node.png
 ---
 width: 175px
 name: single-node
@@ -81,7 +81,7 @@ A single node object.
 When link a series of nodes, they form a linked list. We let the list end by having the final node point at a nullptr. In Figure 3, we have a chain of linked nodes, which would correspond to a list `[47, 3, 12, 99, 23]`.
 
 
-```{figure} fig/node_chain.png
+```{figure} ../../figures/node_chain.png
 ---
 width: 800px
 name: node-chain
@@ -94,7 +94,7 @@ To simplify our drawings of linked list, we change to drawing our nodes as simpl
 
 
 
-```{figure} fig/simplified_node_chain.png
+```{figure} ../../figures/simplified_node_chain.png
 ---
 width: 800px
 name: simplified-node-chain
@@ -411,7 +411,7 @@ If the different insert methods: `append`, `push_front` and `insert` got you con
 
 We draw the three situations below. If you are still confused, we recommend you draw up a linked list, and then try to insert elements by drawing in new nodes and moving pointers around yourself.
 
-```{figure} fig/insert_linked_list.png
+```{figure} ../../figures/insert_linked_list.png
 ---
 width: 250px
 name: insert-linked-list

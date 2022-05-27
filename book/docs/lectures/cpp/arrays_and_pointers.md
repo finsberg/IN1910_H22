@@ -197,7 +197,7 @@ ax.legend()
 plt.show()
 ```
 
-```{figure} fig/solving_ode_example.png
+```{figure} ../../figures/solving_ode_example.png
 ---
 height: 300px
 name: solve-ode
@@ -285,7 +285,7 @@ In Python, variables are references to underlying objects. And when we call the 
 
 Let us draw the situation:
 
-```{figure} fig/call_by_object.png
+```{figure} ../../figures/call_by_object.png
 ---
 width: 300px
 name: call-by-object
@@ -699,7 +699,7 @@ Here, `a` is an integer variable, and `b` a reference variable to `a`. Similarly
 
 Whereas `b` is more or less just an alias, or alternative name, for `a`, the pointer `y` is more of a variable in its own right, that contains a value with the address to `x`. For one, we can create a pointer variable that doesn't point at anything, which we do in `z`, recall that this is not possible for a reference.
 
-```{figure} fig/ref_vs_pointer.png
+```{figure} ../../figures/ref_vs_pointer.png
 ---
 width: 400px
 name: ref-vs-pointer

@@ -37,7 +37,7 @@ Object-oriented programming is a way of solving problems, or building software, 
 Object-oriented programming was invented in Norway by Ole-Johan Dahl and Kristen Nygaard in 1967. They made a new programming language, and called the first object-oriented language *Simula*. While Simula was revolutionary and historically an important language, it didn't see widespread adoption. Inspired by Simula, the language *Smalltalk* came on the scene in 1972 and saw a wider use, pushing the use of OOP. Smalltalk still sees some use today, mainly as a means of teaching OOP and introductory programming. In 1983 *C++* arrived on the scene, and can be described as the first "industrial" object-oriented language. C++ was invented by Bjarne Stroustrup. He thought Simula had some nice features for large software development, but considered it to be to slow to be practical. He therefore started developing *"C with classes"*, which would eventually become C++.
 
 
-```{figure} fig/oop_drake_meme.png
+```{figure} ../../figures/oop_drake_meme.png
 ---
 width: 300px
 name: oop_drake_meme

@@ -13,7 +13,8 @@ kernelspec:
 # Solving the 1D Diffusion Equation using Finite Differences
 
 
-In [Lecture 19](L19_random_walks_and_markov_processes.ipynb) we looked at random walks, and we finished that lecture by showing how we can go from a discrete problem to a continuous partial differential equation called the Diffusion Equation.
+In [Random Walks](random_walks_and_markov_processes.md) we looked at random walks, and we finished that lecture by showing how we can go from a discrete problem to a continuous partial differential equation called the Diffusion Equation.
+
 $$\frac{\partial c}{\partial t} = D \frac{\partial^2 c}{\partial x^2}\nabla^2 c.$$
 
 In this notebook, we will briefly look at how we can solve this equation numerically, and look at some solutions with different initial conditions and different boundary conditions. Most of the material here is presented as supplementary material, and is not considered part of IN1910's curriculum.
@@ -54,6 +55,7 @@ This is again found from truncating the Taylor series, but this time the error i
 ### Finding our computational stencil
 
 Our numerical expression is now
+
 $$\frac{c_{i, j+1} - c_{i, j}}{\Delta t} = D\frac{c_{i+1, j} - 2 c_{i, j} + c_{i-1, j}}{\Delta x^2}.$$
 
 We can massage this expression even further. By shuffling around some terms, we get
@@ -65,13 +67,16 @@ Remember that $D$, $\Delta t$ and $\Delta x$ are all constants, and so we can al
 $$\alpha \equiv D\frac{\Delta t}{\Delta x^2},$$
 
 which gives us the equation
+
 $$c_{i, j+1} = c_{i, j} + \alpha\big(c_{i+1, j} - 2 c_{i, j} + c_{i-1, j}\big),$$
+
 or
+
 $$c_{i, j+1} = \alpha c_{i+1, j} - (1 - 2\alpha) c_{i, j} + \alpha c_{i-1, j}.$$
 
 Such an equation is sometimes shown as a *computational stencil*
 
-```{figure} fig/computational_stencil.png
+```{figure} ../../figures/computational_stencil.png
 ---
 width: 500px
 name: computational_stencil

@@ -281,7 +281,7 @@ When I compile and run my doomsday.cpp program, the memory use of the computer s
 
 
 
-```{figure} fig/armageddon.png
+```{figure} ../../figures/armageddon.png
 ---
 width: 100px
 name: armageddon

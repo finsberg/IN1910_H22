@@ -365,12 +365,12 @@ c1 = Cyborg()
 ```
 
 To consider a more useful example, consider the `ODESolver` hierarchy introduced in Langtangen's *A primer on scientific programming with Python*:
-![ODESolver.png](fig/ODESolver.png)
+![ODESolver.png](../../figures/ODESolver.png)
 
 This is a small class hierarchy of ODE solvers, which makes sense because there is clearly an "is-a" relationship between the sub-classes and the base class. However, one of the three solver sub-classes, the `BackwardEuler`, is of a different nature than the others, and requires a separate class or module `Newton`, for solving non-linear algebraic equations. While there is nothing wrong with this solution, an alternative approach would be to put this code in a separate base class, and have the `BackwardEuler` class inherit from this.
 
 Such a class hierarchy makes more sense if we include a larger collection of solvers, for instance including both methods of the *Runge-Kutta type* and so-called *multi-step methods*. Both of these classes of methods have both explicit and implicit versions, and although the methods themselves are quite different, the implicit methods rely on similar tools for solving non-linear algebraic equations. An example class hierarchy may look like this:
-![ODE_hierarchy.png](fig/ODE_hierarchy.png)
+![ODE_hierarchy.png](../../figures/ODE_hierarchy.png)
 
 The class structure clearly separates the two classes of ODE solvers, while still allowing both types of implicit methods to inherit from the same base class. The hierarchy also makes sense because it preserves the "is-a" relationships; the solver `BDF` is a multi-step method, and it is also an Implicit method, as reflected in the hierarchy. While this is clearly not the only way this could be implemented, multiple inheritance in this case provides a logical and well-structured hierarchy, which also maximizes code reuse.
 

@@ -863,7 +863,7 @@ There is a famous logic puzzle that illustrates confirmation bias well, called t
 **Problem:** Suppose you have a deck of cards, where each card has a letter on one side, and a number on the other. On the table in front of you, there are 4 cards, shown below. We now propose the following hypothesis: *"If a card has a vowel on one side, then the other side is an even number."*. Which cards are worthwhile to flip over to test this hypothesis?
 
 
-```{figure} fig/four_card_problem.png
+```{figure} ../../figures/four_card_problem.png
 ---
 width: 400px
 name: four-card-problem
@@ -881,7 +881,7 @@ Wason's logic puzzle is a good illustration of confirmation bias. Most people wh
 #### Let's end on some humor
 
 
-```{figure} fig/qa_engineer.png
+```{figure} ../../figures/qa_engineer.png
 ---
 width: 400px
 name: qa-engineer

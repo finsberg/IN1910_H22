@@ -375,7 +375,7 @@ When we compiling multiple files we can still only have one and only one `main` 
 Before moving along we need to talk about the two steps needed to go from a source file (i.e the code we write in the file ending with a `.cpp`) to an executable file (typically a `.out` file or a `.exe` file). These two steps are called *compilation* and *linking*. Each source file is first compiled to object files and then the object files are linked together to form the executable.
 
 
-```{figure} fig/compilation_linking.png
+```{figure} ../../figures/compilation_linking.png
 ---
 width: 600px
 name: compilation-linking
@@ -403,7 +403,7 @@ and then link the two files together
 ```
 c++ sort.o test_sort.o --std=c++11 -o sort
 ```
-```{figure} fig/compilation_linking_example.png
+```{figure} ../../figures/compilation_linking_example.png
 ---
 width: 600px
 name: compilation-linking-example

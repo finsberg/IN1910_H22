@@ -65,6 +65,8 @@ getitem
 getsizeof
 Goldwasser
 Graphviz
+grensesnitt
+gruppelærer
 guttag
 heapsort
 henriknf
@@ -120,12 +122,14 @@ ndim
 newx
 newy
 nojekyll
+norsk
 nullptr
 numba
 numpy
 Nygaard
 ofstream
 Okken
+ostehøvel
 OTBS
 overrideable
 pdbpp
@@ -137,8 +141,8 @@ pkgs
 plotly
 Plotly
 pluggy
-Pokémons
 pointee
+Pokémons
 posix
 progit
 projecteuler

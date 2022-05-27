@@ -26,7 +26,7 @@ A random walk is a process where we follow some object taking *random steps*. Th
 
 A random walk can refer to many different processes, but let us start of with perhaps the simplest of them all, a 1D random walk on a regular grid. Assume some walker starts of at $x=0$. Now it takes steps to the left or right at random, with equal probability.
 
-```{figure} fig/1D_walk.png
+```{figure} ../../figures/1D_walk.png
 ---
 width: 600px
 name: 1D_walk
@@ -640,4 +640,4 @@ But this pde can be found by taking the limit of a 3D random walker in exactly t
 
 What is very interesting about what we have just done, is that we have gone from a discrete, numerically solvable problem, into a continuous partial differential equation. This is the opposite process of what we are used to dealing with when we are looking at numerics!
 
-If we want to solve the diffusion equation numerically, we have to discretize the equation again, and move back to the effective 1D walker. If you want to read how that can be done, take a look at this supplemental notebook: [*Solving the 1D Diffusion Equation*](S19_solving_the_1D_diffusion_equation.ipynb).
+If we want to solve the diffusion equation numerically, we have to discretize the equation again, and move back to the effective 1D walker. If you want to read how that can be done, take a look at this supplemental notebook: [*Solving the 1D Diffusion Equation*](solving_the_1D_diffusion_equation.md).

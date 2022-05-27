@@ -10,7 +10,7 @@ In addition to the lecture notes, we will give references to external teaching m
 
 As a good reference on Python for scientific programming, we recommend *A Primer on Scientific Programming with Python, Fifth Edition av Hans Petter Langtangen*, which many of you taking the course probably already have already. If you do not, you are not required to acquire it.
 
-```{figure} fig/langtangen.jpg
+```{figure} ../figures/langtangen.jpg
 ---
 width: 110px
 name: langtangen

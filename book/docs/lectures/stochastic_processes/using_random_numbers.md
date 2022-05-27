@@ -335,11 +335,11 @@ Be a bit careful however, as drawing multiple samples automatically uses replace
 Let us look at an example. If we have a bag that contains two red, and two blue balls in it. If we draw two balls at random from this bag. What is the chance that we get one of each color?
 
 
-```{figure} fig/four_ball.png
+```{figure} ../../figures/four_balls.png
 ---
 width: 300px
-name: four_ball
-alt: four_ball
+name: four_balls
+alt: four_balls
 ---
 ```
 
@@ -496,7 +496,7 @@ While this example is fairly simple, it illustrates how *easy* it is to get to t
 
 The [*Monty Hall Problem*](https://en.wikipedia.org/wiki/Monty_Hall_problem) is a famous brain teaser that lead to a huge public debate in the US in 1990. The  problem, as it was originally states, is as follows:
 
-```{figure} fig/doors.png
+```{figure} ../../figures/doors.png
 ---
 width: 400px
 name: doors
@@ -508,7 +508,7 @@ alt: doors
 > Suppose you’re on a game show, and you’re given the choice of three doors. Behind one door is a car, behind the others, goats. You pick a door, say #1, and the host, who knows what’s behind the doors, opens another door, say #3, which has a goat. He says to you, "Do you want to pick door #2?" Is it to your advantage to switch your choice of doors?
 
 
-```{figure} fig/doors_open.png
+```{figure} ../../figures/doors_open.png
 ---
 width: 500px
 name: doors_open
@@ -578,7 +578,7 @@ print(f"Won {wins} games ({wins/N:.1%})")
 
 Imagine we are blindly throwing darts at the following dartboard
 
-```{figure} fig/dartboard.png
+```{figure} ../../figures/dartboard.png
 ---
 width: 300px
 name: dartboard

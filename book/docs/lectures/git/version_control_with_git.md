@@ -29,7 +29,7 @@ If you want a more interactive tool, you can also check out <https://learngitbra
 
 If you want to go more in depth, or have a more extensive reference work, the book *Pro Git* by Scott Chacon and Ben Straub is released under a [Creative Commons BY-NC-SA3.0 license](https://creativecommons.org/licenses/by-nc-sa/3.0/?utm_source=www.domtail.com), meaning you can download it for free. The 2. edition was released in 2014, and on the book's website you can download it as a pdf as well as some common e-book formats (epub, mobi). The book itself is very extensive, being over 500 pages. However, it starts of fairly easy, and goes into more technical details towards the end, so reading the first few chapters can still be a good introduction to git.
 
-```{figure} fig/progit.png
+```{figure} ../../figures/progit.png
 ---
 width: 300px
 name: progit
@@ -48,7 +48,7 @@ At this point we should stress that these resources are simply offered as an alt
 Imagine you have a new software assignment, with a three week deadline. You start working and things are progressing nicely, things are working well and you are happy with your code. Entering the last week, all you have left is to refactor your code and add some small final changes. However, in this process, things suddenly *stop* working. What happened, and what do you do? Some change you did while refactoring probably messed something up, but you cannot undo everything you have changed, can you? This is just one case where *version control* would be useful. Giving you the option to "go back in time" in your code.
 
 
-```{figure} fig/phd_final.gif
+```{figure} ../../figures/phd_final.gif
 ---
 height: 300px
 name: phd-final
@@ -79,7 +79,7 @@ Some benefits of version control are
 A VCS is any framework that allows you to keep track of your project over time, and stores revisions. The simplest form is a local one, where the entire file history is stored locally on your computer or network.
 
 
-```{figure} fig/local_vcs.png
+```{figure} ../../figures/local_vcs.png
 ---
 width: 300px
 name: local-vcs
@@ -92,7 +92,7 @@ There are two problems with using a local VCS. The first is that there is no bac
 
 One way to deal with these challenges is to use a *centralized* server to keep track of the version history. Different users can read out specific versions of files, work on the code and upload their changes to the server. This makes collaboration between programmers easy. Admins and team leaders can also monitor the server and give people the rights to alter the code they are working on. It also has the benefit that if any persons laptop or computer crashes, it doesn't impact the whole system, only their last changes they haven't uploaded yet. However, the central server is still a single point of failure, and should be properly backed up—and if the server is down for a while due to maintenance or issues, working becomes hard for the team, and efficiency drops.
 
-```{figure} fig/centralized_vcs.png
+```{figure} ../../figures/centralized_vcs.png
 ---
 width: 300px
 name: centralized-vcs
@@ -103,7 +103,7 @@ A centralized VCS. Source: Chacon & Straub, ProGit (2014)
 
 The kind of VCS we will be using is called a *distributed* VCS. Like the centralized system, we will also interact with an external server to do backups and collaboration. The difference is that with the distributed VCS, every user stores a complete copy of the entire project history. This gives additional safety, as every user has a complete backup. It also gives efficiency, as users can access the whole project history, even offline, and only have to push or pull the changes in code. The only downside is use of space, as we are storing the same information multiple places. However, most software projects take little space, and so this is of little issue.
 
-```{figure} fig/distributed_vcs.png
+```{figure} ../../figures/distributed_vcs.png
 ---
 width: 300px
 name: distributed-vcs
@@ -126,7 +126,7 @@ One reason Git grew into popularity so fast was that it was precisely that, *fas
 When you work with Git, you will edit and work with your files as normal. At regular intervals however, you make *commits*. These commits are "snapshots" of your project files that will be stored in the projects history. Over time you get a long chain of these commits. When looking at your project through your normal file tracker or text editor, you only see your current version of the software. To store the history, Git creates a *hidden* `.git`-directory. You should ignore this hidden directory and all its files, and never access or edit them manually, as this will mostly break your version control. If you want to look at or access older commits, you do some simple git-commands.
 
 
-```{figure} fig/snapshot_filestream.png
+```{figure} ../../figures/snapshot_filestream.png
 ---
 width: 500px
 name: snapshot-filestream
@@ -200,7 +200,7 @@ Note that we are creating an empty repository here. If you already have a projec
 An alternative is to make it through Github. In which case, you just go onto Github. Click the `+` sign and choose "New Repository". You will come to a page that looks like the following:
 
 
-```{figure} fig/repo_creation.png
+```{figure} ../../figures/repo_creation.png
 ---
 width: 500px
 name: repo-creation
@@ -227,7 +227,7 @@ We now have a folder called `euler`. We can treat this as a completely normal fo
 
 When you want to include new files into your project history through a commit, you first have to *add* them, this is also known as "staging" the files or changes. When you do a commit command, all staged changes are now added to the project history.
 
-```{figure} fig/three_states.png
+```{figure} ../../figures/three_states.png
 ---
 width: 400px
 name: three-states
@@ -379,7 +379,7 @@ And you will be prompted for your username and password. This ensures no one els
 Pushing is important, because it is what ensures there is an external backup of your project. If you only do commits, and no pushing, and your computer is lost or broken, there goes all your hard work. If you have committed *and* pushed it, then you have a backup you can clone to a different machine. In addition, if you are sharing your code with others, then they will only get the changes you have made once you have pushed it. Because of these two things, we push often. You don't have to push after every single commit, but it is a good habit to push at least at the end of every coding session.
 
 
-```{figure} fig/in_case_of_fire.png
+```{figure} ../../figures/in_case_of_fire.png
 ---
 width: 250px
 name: in-case-of-fire
@@ -421,7 +421,7 @@ So far we have seen how we can *clone* a repository from Github. When we do this
 
 When you clone somebody else's repository, you can make local changes to it, but you won't be able to push any of those changes back to their online repository. This makes sense, it wouldn't work very well sharing code openly, if anybody could start messing with that code. However, you can instead link your local repository to a new public repository which you own. We call this process *forking*, and it works quite well. If you find some openly available software project you want to build on or modify in some way, you just make your own personal fork of it. Github makes it very easy to fork any repository, if you are logged in and looking at a repository, there is a "Fork" button, which automatically creates a new repository on your user from the other one, which you can then clone down to your local machine.
 
-```{figure} fig/github_forking.png
+```{figure} ../../figures/github_forking.png
 ---
 width: 400px
 name: forking
@@ -445,7 +445,7 @@ git branch <new_branch_name>
 ```
 Let's say we make one called `testing` for example. The situation is now as shown below:
 
-```{figure} fig/making_a_branch.png
+```{figure} ../../figures/making_a_branch.png
 ---
 width: 300px
 name: making-a-branch
@@ -460,7 +460,7 @@ git checkout <branch_name>
 ```
 Note that branches can diverge in commits, this is sort of the whole point of branches. We can then jump between the branches using `checkout` as needed.
 
-```{figure} fig/branching.png
+```{figure} ../../figures/branching.png
 ---
 width: 300px
 name: branch
@@ -471,7 +471,7 @@ Source: Chacon & Straub, ProGit (2014)
 
 Say we have made a branch to develop a cool new feature without disrupting the master branch others are also working on. Once we are happy with our code, we need to *merge* our branch back into the master branch.
 
-```{figure} fig/merging.png
+```{figure} ../../figures/merging.png
 ---
 width: 300px
 name: merge
@@ -529,7 +529,7 @@ git commit --amend
 The bigger a software project, the more important good commits and messages are. For assignments in this course, they are probably not that important, but we are trying to learn good practices, and so you should strive to make at least decent commits.
 
 
-```{figure} fig/xkcd1296_commit_messages.png
+```{figure} ../../figures/xkcd1296_commit_messages.png
 ---
 width: 500px
 name: xdcd-git

@@ -17,7 +17,7 @@ A Markov process is any stochastic process where the probabilities of the system
 Markov processes are analogous to difference or differential equations, because the current state of the system is what decides how the system will continue to develop over time. A Markov model is therefore like a stochastic differential equation.
 
 
-```{figure} fig/markov_chain.png
+```{figure} ../../figures/markov_chain.png
 ---
 width: 500px
 name: markov_chain
@@ -48,7 +48,7 @@ np.random.seed(123456789)
 The Ehrenfest experiment is an example of a Markov chain. In this experiment, imagine you have two urns, with $m$ balls spread between the two urns. For every iteration, you pick one ball at random, and then move it from the urn it is currently in, to the other one.
 
 
-```{figure} fig/ehrenfest.png
+```{figure} ../../figures/ehrenfest.png
 ---
 width: 300px
 name: ehrenfest
@@ -443,7 +443,7 @@ To understand excitable cells in the body, such as neurons in your brain, or you
 These ion channels are huge macromolecules that can shape and distort to enter into different conformational shapes. Some of these shapes allow for ions to pass through, like a tunnel, while other shapes are closed, not allowing any ion transport through. Through a combination of chemistry and physics we can set up elaborate models for how these ion channels open and close. These models are example of Markov models, as the ion channels will be in any number of given states:
 
 
-```{figure} fig/ion_channel_markov_model.jpg
+```{figure} ../../figures/ion_channel_markov_model.jpg
 ---
 width: 600px
 name: ion_channel_markov_model

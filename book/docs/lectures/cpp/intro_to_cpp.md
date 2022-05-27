@@ -87,7 +87,7 @@ Next we define a function named `main`. In C++, we have to define a *main functi
 We write `int main()` because our function *returns an integer* (i.e an exit code see {ref}`python:exit-codes`), is named *main*, and takes no input. The contents of our function go between two curly braces (`{` `}`).
 
 
-```{figure} fig/function_declaration.png
+```{figure} ../../figures/function_declaration.png
 ---
 width: 300px
 name: function_declaration

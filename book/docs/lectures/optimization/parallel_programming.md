@@ -10,6 +10,7 @@ kernelspec:
   name: python3
 ---
 
+
 # Parallel Programming
 
 So far we have discussed how to make programs faster by *optimizing* them. But there is an even simpler solution to making things run faster: simply run them on a faster computer! While this suggestion is made half in jest, there is  no doubt that the computational power of computer hardware has grown exponentially over the last 30 years, and these new, faster computers allow us to do computations that were impossible to even conceive of in the past.
@@ -19,7 +20,7 @@ Today, for reasons we will explain shortly, running large computations require s
 While we won't have time to teach you too much parallel programming in this course, we will try to give you a sense of the importance and an appreciation of some of the possibilities. We will also show you some small tools you can use to improve your Python and C++ programs using parallelization without it being too much of a hazel.
 
 
-### Moore's Law
+## Moore's Law
 
 Moore's law is the name given to a statement by Gordon Moore in a 1965 paper, that observed that the number of transistors on dense integrated chips like a computer central processing unit (CPU) seemed to be doubling each every second year.
 
@@ -61,7 +62,7 @@ A straight line in a logarithmic plot is an exponential curve. This becomes read
 The exponential growth seen in Moore's law means we have seen an incredible growth in computational capacity in the last 50 years.
 
 
-### Frequency Scaling
+## Frequency Scaling
 
 In addition to the transistor count, the *clock rate* of a CPU is important. To run a program, a computer needs to finish a set of instructions or computations. The faster the rate it does those computations, the faster the program finishes. This can be written out as
 
@@ -85,7 +86,7 @@ where $P$ is power consumption, $C$ is the capacitance being switched per clock 
 Traditionally CPUs are cooled by a metal *heat sink* connected to a fan or liquid cooling system. What hardware producers were seeing was that if they desired to increase the frequencies of processors even more then would need to radically change how CPUs were cooled. It simply isn't physically possible to ramp much higher on the current designs.
 
 
-### The emergence of multi-core processors
+## The emergence of multi-core processors
 
 So over at least the last 40 years, processors have gotten exponentially more powerful due to higher transistor counts (Moore's law) and due to frequency scaling. In 2004, frequency scaling of processors more or less stopped, but Moore's law is still going strong, although it is starting to slow down a bit and is expected to end in the last decade or so.
 
@@ -105,7 +106,7 @@ Image created by [Karl Rupp](https://www.karlrupp.net/2018/02/42-years-of-microp
 What this means is that while single processors have gotten exponentially more powerful over the last 40 years, this trend is stopping. The increased performance we see out of new hardware emerging now is due to having multiple cores. This means, if we want to capitalize on new, faster hardware, we need to effectively use multiple CPU's.
 
 
-### Sequential vs Parallel programs
+## Sequential vs Parallel programs
 
 Normal code you are used to write, be it in Python or C++, is *sequential*. This means that all the statements you write occur after each other, one by one. This is the way we are used to write and think about programs, and there is an inherent logic to the *order* of the statements. In some cases a few lines can be swapped around without changing the behavior of the code, but this is definitely not true in general.
 
@@ -113,7 +114,7 @@ Because of this, when we run a normal C++ or Python program, our computer will o
 
 If we want to have multiple cores running our code, we need to write our code in a fundamentally different way to create a *parallel* program where the problem itself can be split among different cores, or "workers". Writing parallel code is a big topic that we don't have time to tackle properly, but we will briefly discuss some issues and show some simple examples of how we can parallelize C++ and Python code.
 
-### A real parallel problem
+## A real parallel problem
 
 In 2016 the world champion in chess, Magnus Carlsen played against 70 opponents simultaneously in Hamburg. We can imagine that we have been told to write a computer program that will instruct Magnus on how he should play in order to finish within the least amount of time. Suppose the following
 
@@ -133,17 +134,17 @@ alt: ../../figures/magnus_carlsen.jpg
 We will now go through different solution strategies which illustrates different ways parallelism.
 
 
-#### The sequential program
+### The sequential program
 
 Before you took this course you didn't know anything about the parallel programming, and there you wrote a sequential program, where Magnus plays against one opponent at the time and when the game is over he moves to the next opponent. In this case Magnus would use $(10 + 50)$ seconds $\times $ $30$ moves $\times$ $70$ opponents $= 126000 $ seconds = $35$ hours.
 
-#### Don't wait
+### Don't wait
 Of course, Magnus Carlsen didn't spend 35 hours on this game. The way Magnus Carlsen would play is as follows: He goes to the first opponent, use 10 seconds to make his move and goes directly to the next opponent. After making a move against all the 70 opponents there is $10 \times 70 = 700$ seconds $=$ $11.67$ minutes since he started at the first opponents. The first opponent only used 50 seconds to make his/her move so Magnus doesn't need to wait and can therefore continue in the same manner. In total he would now spend $10$ seconds $\times $ $70$ opponents $\times$  $30$ moves  $= 21000 $ seconds = $5$ hours and $50$ minutes.
 
-#### Created copies of Magnus
+### Created copies of Magnus
 Now say that you want utilize all the processors you have on your computer to solve this problem, and imagine that we have a 7 core machine available. This would be analogous to make 7 copies of Magnus Carlsen, each running the sequential program. Now we can distribute 10 opponents to each copy and therefore solve the problem in $\frac{35}{7} = 5$ hours.
 
-#### The multi-core + multi-threaded approach
+### The multi-core + multi-threaded approach
 At this point you might realize that by combining the multi-threaded and multi-core approach we could event go faster. In fact, by running each core multithreaded Magnus can finish all the 70 games in only $50$ minutes.
 
 ## I/O Bounded vs CPU bounded problems
@@ -220,7 +221,7 @@ One thing to notice is that when we loop over the list of primes, the code that 
 
 If you have a loop where the code that is executed in each iteration can be refactored into a separate function and the only thing that is changing is the input, chances are high that the for loop can be parallelized.
 
-#### The `map` function
+### The `map` function
 When you are in a situation where you have a for loop and everything inside the loop can be refactored out to a function, there is another function called `map` which be used instead of the loop. `map` takes a function as the first argument, and a list with arguments to the function as the second argument and applies the function to each element in the list.
 
 The `map` function is central in many functional programming languages such as [Haskell](https://www.haskell.org), where loops does not exists.
@@ -247,7 +248,6 @@ with open("is_prime.py", "w") as f:
             if n % i == 0:
                 return False
         return True"""))
-
 ```
 
 ```{code-cell} python
@@ -304,7 +304,6 @@ fun(PRIMES)
 t1 = time.time()
 print(f'Elapsed time: {t1 - t0}')
 ```
-
 
 ### Parallel problems
 
@@ -408,7 +407,6 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
 print(f"Update finished. Ending value is {data.value}")
 ```
 
-
 In this case, the time for waiting was so low that my operating system decided to wait instead of switching thread.
 
 Note that race conditions happens because the two threads are sharing the same variable. This would not happen if we try to run this using a process pool. Why?
@@ -488,7 +486,6 @@ def mandelbrot_pixel(c, maxiter):
     return 0
 ```
 
-
 Here the input $c$ can be a complex number. Python supports a complex type built in.
 
 We start by saying $z=0$, because this is where we start iterating, for any $c$. Then we repeatedly compute $f_c(z) = z^2 + c$ and check if $|z| > 2$. If it is, the point has "escaped", and we return the number of iterations. If we have performed all iterations and the point is still bounded, we return 0.
@@ -510,7 +507,6 @@ def mandelbrot_image(xmin, xmax, ymin, ymax, width, height, maxiter):
 
     return img
 ```
-
 
 Here we first use `np.linspace` to find the values of $x$ and $y$ for each pixel. Then we loop over each pixel in the image and iterate each point $c = x + i\cdot y$. To define a complex value in Python you can write `a + 1j*b`, where `1j` denotes the imaginary unit.
 
@@ -538,7 +534,6 @@ ax.axis('off')
 plt.show()
 ```
 
-
 The image can be further improved by rendering a longer *horizon*, but this is unimportant detail at the moment.  For now, we want to optimize and parallelize our code.
 
 
@@ -565,8 +560,7 @@ def benchmark(mandelbrot):
     return mandelbrot(xmin, xmax, ymin, ymax, pixels, pixels, maxiter)
 ```
 
-
-```script magic_args="echo skipping"
+```
 
 %timeit -n 1 -r 1 benchmark(mandelbrot_image)
 ```
@@ -621,8 +615,7 @@ import psutil
 psutil.cpu_count()
 ```
 
-
-```script magic_args="echo skipping"
+```
 
 %timeit -n 1 -r 1 benchmark(mandelbrot_image_mp)
 ```
@@ -660,11 +653,7 @@ def mandelbrot_numpy(xmin, xmax, ymin, ymax, width, height, maxiter):
     return img.T
 ```
 
-```{code-cell} python
-%timeit benchmark(mandelbrot_numpy)
 ```
-
-```script magic_args="echo skipping"
 
 %timeit benchmark(mandelbrot_numpy)
 ```
@@ -672,13 +661,12 @@ def mandelbrot_numpy(xmin, xmax, ymin, ymax, width, height, maxiter):
 (This took 34.5 seconds on my laptop)
 
 
-We see that vectorization is about 6 times as fast as the naitve python implementation.
+We see that vectorization is about 6 times as fast as the native python implementation.
 
 
 ### JIT-compiling with Numba
 
 From last weeks lecture, we also learnt that [numba](http://numba.pydata.org/) is a tool that can automatically just-in-time compile code in Python to make it surprisingly fast. Let us try it with out code. We simply add the `numba.jit` decorators to our two function, and make no other changes to them:
-
 
 ```{code-cell} python
 import numpy as np
@@ -706,7 +694,7 @@ def mandelbrot_numba(xmin, xmax, ymin, ymax, width, height, maxiter):
     return img
 ```
 
-```script magic_args="echo skipping"
+```
 
 %timeit benchmark(mandelbrot_numba)
 ```
@@ -722,7 +710,6 @@ Much more importantly: computing $|z|$ requires first squaring to compute $|z|^2
 
 In addition, it turns out that avoiding the built-in complex type is better for speed, so we instead want to send in the $x$ and $y$ components separately. To iterate, we then have
 $$z^2 + c = (x + i\cdot y)^2 + (c_x + y\cdot c_y) = (x^2 - y^2 + c_x) + i\cdot(2xy + c_y).$$
-
 
 ```{code-cell} python
 import numpy as np
@@ -754,7 +741,7 @@ def mandelbrot_numba(xmin, xmax, ymin, ymax, width, height, maxiter):
     return img
 ```
 
-```script magic_args="echo skipping"
+```
 
 %timeit benchmark(mandelbrot_numba)
 ```
@@ -774,7 +761,6 @@ $$\frac{206 {\rm\ s}}{2.91 {\rm\ s}} = 70.8$$
 We could also have tried optimizing with Cython, but we ignore this for now. You can read about using Cython in the blogpost.
 
 Let us plot out the benchmark image rendered by our final numba variant:
-
 
 ```{code-cell} python
 img = benchmark(mandelbrot_numba)
@@ -885,7 +871,7 @@ We can now use `time` to take the time of 10 executions of our benchmark, and di
 
 An alternative is to use the standard Python library `os` (for operating system) to call our executable for oss. The benefit of this approach is that we can use `%timeit` like normal. Note that now `timeit` will also include the time it takes for `os` to call the code, so there is some overhead here. However, this likely won't make much for a difference unless we are timing things at the nanosecond range. For these measurements, this approach is solid.
 
-```script magic_args="echo skipping"
+```
 os.system("c++ -std=c++14 mandelbrot.cpp -o mandelbrot")
 %timeit -n 1 -r 2 os.system("./mandelbrot")
 ```
@@ -899,7 +885,7 @@ Before we move on to parallelizing our code. Let us first *compile it with optim
 
 Instead of picking compiler flags manually, we can compile with the flags `O1`, `O2` and `O3`, where the number gives the degree of optimization. Here, `O3`, should give the biggest speed up, but will also turn of most warnings and error handling. In the need for speed we are sacrificing some things, but using the flag `-O3` tells the compiler this is OK.
 
-```script magic_args="echo skipping"
+```
 os.system("c++ -std=c++14 mandelbrot.cpp -o mandelbrot_optimized -O3")
 %timeit os.system("./mandelbrot_optimized")
 ```
@@ -907,13 +893,13 @@ os.system("c++ -std=c++14 mandelbrot.cpp -o mandelbrot_optimized -O3")
 
 (Took about 2.81 s)
 
-With `O3` compiling, our code runs in 2.81 seconds which is comparible to the numba solution.
+With `O3` compiling, our code runs in 2.81 seconds which is comparable to the numba solution.
 
 With gcc at least, there is one more degree of optimization, called `-Ofast`. This does the exact same as `O3` but it also adds the flag `-ffast-math`. This flag makes floating point operations much faster, but it does so by switching around these operations in a way that can change their round-off errors. Using `-Ofast` might therefore produce a different outcome, which can sometimes be very important. Strictly speaking, `-Ofast` is not IEEE compliant, so beware.
 
 With that said, let's try it!
 
-```script magic_args="echo skipping"
+```
 os.system("c++ -std=c++14 mandelbrot.cpp -o mandelbrot_optimized -Ofast")
 %timeit os.system("./mandelbrot_optimized")
 ```
@@ -946,7 +932,7 @@ This tells the compiler to try to use OpenMP to parallelize our for loop.
 When compiling with OpenMP, we also need to add the flag `-fopenmp`
 
 
-```script magic_args="echo skipping"
+```
 os.system("c++ -std=c++14 mandelbrot_parallel.cpp -o mandelbrot_parallel -O3 -fopenmp")
 %timeit os.system("./mandelbrot_parallel")
 ```
@@ -990,7 +976,6 @@ The important point being: The higher the level we parallelize at, the better it
 
 
 When learning about mixed programming we also learned that we can create bindings between python and C++ using `cppyy`, and that once you have the C++ code in place it is fairly simple to write the binding. In this case we could write something like
-
 
 ```{code-cell} python
 import cppyy
@@ -1050,14 +1035,14 @@ def mandelbrot_cppyy(xmin, xmax, ymin, ymax, width, height, maxiter):
     return np.array(output).reshape((width, height))
 ```
 
-When using `cppyy` is is also easy to verify that the implementation of the madelbrot function is correct by plotting it with matplotlib.
+When using `cppyy` is is also easy to verify that the implementation of the mandelbrot function is correct by plotting it with matplotlib.
 
 ```{code-cell} python
 img = benchmark(mandelbrot_cppyy)
 plt.imshow(img)
 ```
 
-```script magic_args="echo skipping"
+```
 %timeit benchmark(mandelbrot_cppyy)
 ```
 (This took about 3 seconds which is similar to the naive C++ implementation)
@@ -1099,7 +1084,7 @@ def mandelbrot_parallel_numba(xmin, xmax, ymin, ymax, width, height, maxiter):
     return img
 ```
 
-```script magic_args="echo skipping"
+```
 %timeit benchmark(mandelbrot_parallel_numba)
 ```
 
@@ -1108,18 +1093,18 @@ def mandelbrot_parallel_numba(xmin, xmax, ymin, ymax, width, height, maxiter):
 As with the C++ code, it makes more sense to parallelize the `i` loop with `prange` than the `j`-loop.
 
 
-### Bar 
+### Bar
 
 ```{code-cell} python
 times = {
-    "Naive Python": 206, 
-    "MP": 9.7, 
-    "Numpy": 34.5, 
-    "Numba": 7.34, 
-    "Numba (opt": 2.91, 
-    "C++": 5.2, 
-    "C++ -03": 2.81, 
-    "C++ OMP": 0.264, 
+    "Naive Python": 206,
+    "MP": 9.7,
+    "Numpy": 34.5,
+    "Numba": 7.34,
+    "Numba (opt": 2.91,
+    "C++": 5.2,
+    "C++ -03": 2.81,
+    "C++ OMP": 0.264,
     "cppyy": 3.0,
     "Numba OMP": 0.230,
 }

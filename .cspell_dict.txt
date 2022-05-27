@@ -213,6 +213,7 @@ projecteuler
 pseudocode
 Pseudorandomness
 pstats
+psutil
 pybind
 pycache
 pycon

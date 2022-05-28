@@ -414,6 +414,10 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 ```
 So we can see that line 22, increment the position itself, takes up 81.7% of the time it takes to use the `step()` method. Perhaps we can improve this by vectorizing with numpy? Appending the elements to the history takes 20% of the time, which is also a considerable amount. Perhaps it would be better to initialize an empty array and then just update the elements?
 
+(software-optimization:memory-optimization)=
+## Memory optimization
+One of the main optimizations that was added to the python language in the transition from python 2 to python 3 was that
+
 
 ## Taking a step back: The Rules of Optimization
 
@@ -427,6 +431,7 @@ This is summarized by what is called the [*rules of optimization*](http://wiki.c
 1. The first rule of optimization: Don't do it.
 2. The second rule of optimization: Don't do it... yet.
 3. The third rule of optimization: Profile before optimizing!
+
 
 
 ### The root of all evil

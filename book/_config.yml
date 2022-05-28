@@ -36,7 +36,9 @@ repository:
   branch: gh-pages
 
 launch_buttons:
+  notebook_interface: "classic"
   jupyterhub_url: "https://hub2.jupyterhub.uio.no"
+  binderhub_url: "https://mybinder.org"
   thebe: true
 
 latex:

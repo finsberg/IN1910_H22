@@ -141,7 +141,9 @@ Regardless of which style of import you use, import statements should always app
 ### Exercise 1: Your turn
 
 The radius of a standard size football is 11 cm. Write code that defines this radius as the variable `R`, the computes the volume of the football according to the following formula
+
 $$V = \frac{4\pi R^3}{3}.$$
+
 Then finally print out the volume with a single decimal.
 
 * Hint: You need to either define `pi` or import it from `math`.
@@ -160,6 +162,8 @@ python3 find_volume.py
 Depending on your installation, the command `python` might refer to Python 2 instead of 3, which is why we write `python3`.
 
 A lot of code editors and IDEs (integrated developer environments) also let you run Python scripts directly from the editor. If you prefer to do it this way, you should also ensure you are running Python 3 instead of 2.
+
+Note also that we will assume that you are using python version 3.8 or newer in this course, so some of the code might not working even if you are using python 3. However, most of the code will be compatible with all versions of python.
 
 As you work on bigger projects, many of the Python scripts you create are not necessarily meant to be run directly, but rather imported by other scripts. A useful code structure to include then is the following statement
 ```{code-cell} python
@@ -217,12 +221,20 @@ print(f"a = {a}")
 print(f"b = {b}")
 ```
 
+Here we could also use a slightly newer syntax for printing the variables
+
+```{code-cell} python
+print(f"{a=}")
+# or with space
+print(f"{b = }")
+```
+
 ```{code-cell} python
 x = [0]
 y = x
 x.append(1)
-print(f"x = {x}")
-print(f"y = {y}")
+print(f"{x = }")
+print(f"{y = }")
 ```
 
 These two example show fundamentally different behavior. In both cases we first define one variable, then we make a "copy" of the first variable, by assigning `b = a` and `y = x`. We then change the original and print out both variables.
@@ -348,7 +360,17 @@ for i in range(10):
 ```
 Note that in Python3, the range is different from in Python2, in that it is a iterable `range`-object, and not a list, which gives it much better memory performance. If you want a list of integers, simply cast the `range`-object to a list: `list(range(10))`
 
-Two helpful commands to be used in loops are `continue`, which skips to the next iteration of the loop, and `break`, which breaks the remaining iterations.
+Two helpful commands to be used in loops are `continue`, which skips to the next iteration of the loop, and `break`, which breaks the remaining iterations, for example
+
+```{code-cell} python
+for i in range(10):
+    if i % 2 == 0:
+        # i is divisible by 2
+        continue
+    print(i)
+    if i > 6:
+        break
+```
 
 
 **Example: Using a for-loop to check whether a number is prime**
@@ -388,6 +410,7 @@ primes = []
 for i in range(1, 13):
     if is_prime(i):
         primes.append(i)
+print(primes)
 ```
 
 This is the straight forward way to assemble a list. First create an empty list variable, then build it element by element by appending.
@@ -396,14 +419,14 @@ However, in Python, we can also do this in a single line using list comprehensio
 
 ```{code-cell} python
 primes = [i for i in range(1, 13) if is_prime(i)]
+print(primes)
 ```
 
 Now, to be clear. Doing something in the least amount of code lines is rarely a goal in and of itself. And more compact code can often be considered less readable and should in certain cases often be avoided.
 
 However, list comprehensions are considered very "pythonic" and are actually faster than using a loops and appending. As such they are very useful, and you shouldn't hesitate to use list comprehensions were applicable (and similarly dictionary comprehensions).
 
-
-
+One think to note is that in list comprehension we use square brackets `[]`. However it is also possible to obtain a similar behavior using parenthesis `()`, but the results is not a list but something called a generator expression. We will talk more about this [later in the course](software-optimization:memory-optimization)
 
 ### Exercise 3: Your turn
 

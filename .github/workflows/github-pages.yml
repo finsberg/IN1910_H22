@@ -21,7 +21,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/_build/html
+          publish_dir: ./book/_build/html
 
       - name: Deploy to github pages at UiO
         uses: cpina/github-action-push-to-another-repository@devel

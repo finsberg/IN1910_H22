@@ -35,13 +35,15 @@ In IN1910, we will return to these practices and try to reflect on how to implem
 
 In 1910 is a continuation of IN1900, and will primarily be using Python. However, we will also be introducing a second language: C++.
 
-Python is a modern, object-oriented programming language. It has a clear, readable syntax, making it easy to learn, and easy to write understandable, maintainable, and shareable code. It also has a good standard library and plenty of extensions for scientific computing. It is also open source. All of this points to Python being a good language for scientific computing. A language that is fairly comparable to Python for some scientific applications is Matlab, but we will also dive deeper into object-oriented programming and other concepts in computer science that are not that well covered by Matlab. Besides, Python has a syntax fairly similar to Matlab, and so learning Python well will equip you to handle Matlab at a later point. We opt to go for Python 3, hopefully you have already taken the move over to 3 yourself, but if you are used to 2.7, don't worry, the differences are minor.
+Python is a modern, object-oriented programming language. It has a clear, readable syntax, making it easy to learn, and easy to write understandable, maintainable, and shareable code. It also has a good standard library and plenty of extensions for scientific computing. It is also open source. All of this points to Python being a good language for scientific computing. Another popular language for scientific computing that has gain a lot of attraction the recent years is Julia. Julia would definitely also be a suitable language of choice for this course, however we believe Python is more applicable to a larger group of developer especially within the field of data science and machine learning.
 
-Note that we do expect students taking IN1900 to be fairly familiar with Python. If you are not, you should expect to put in more work during the first few weeks of the course. Here, Langtangen is a good resource to use.
+We also will dive deeper into object-oriented programming and other concepts in computer science that are not that well covered by Julia. Besides, Python has a syntax fairly similar to Julia, and so learning Python well will equip you to handle Julia at a later point.
+
+Note that we do expect students taking IN1900 to be fairly familiar with Python. If you are not, you should expect to put in more work during the first few weeks of the course. Here, [the book from Langtangen](https://link.springer.com/book/10.1007%2F978-3-662-49887-3) is a good resource to use.
 
 Why do we choose to also include C++, and not just stick to Python? First of all, learning a second language is very helpful on its own. As it helps you generalize programming concepts and not get to attached to a single way of writing code. C++ is a very popular language, and so the chances you will meet or use the language later is high. It is also low-level, compared to Python, which is high-level, and so they have different areas of use. Knowing C++ let's us write more efficient and faster code than Python, with drawbacks we will get back to later. Lastly, C++ is based on C, the most used programming language in the world, and many other languages are inspired heavily on C. Knowing C++ will therefore make using other languages a lot easier (C, Java, C#, objective-C, javascript, etc). Python on the other hand, has a syntax that is quite different from these, and so knowing *only* Python can be restrictive for working with code in other languages.
 
-The magazine IEEE Spectrum publishes an annual list of programming langues ranked by popularity. The [2021 list](https://spectrum.ieee.org/top-programming-languages-2021) was published 22nd of July. The top ten programming langues (by popularity) are shown in the figure below
+The magazine IEEE Spectrum publishes an annual list of programming langues ranked by popularity. The top ten programming langues (by popularity) are shown in the figure below
 
 
 ```{figure} ../figures/spectrum_ranking_2021.png
@@ -50,7 +52,7 @@ width: 400px
 name: spectrum_ranking
 alt: spectrum_ranking
 ---
-Top programming languages for 2021.
+Top programming languages for [2021](https://spectrum.ieee.org/top-programming-languages-2021)
 ```
 
 The symbols indicate what people often use the langues for, with the globe meaning web, the cellphone mobile, the screen desktop and scientific applications, and the chip embedded applications.

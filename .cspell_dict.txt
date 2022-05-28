@@ -70,6 +70,7 @@ dfdx
 discretize
 discretizing
 displaystyle
+Dmitrović
 docstrings
 doctest
 Doxyfile
@@ -123,6 +124,7 @@ Johan
 jupyterhub
 jupyterlab
 jupytext
+jupyterbook
 jvbrink
 Kac's
 Kerievsky
@@ -136,6 +138,7 @@ libstdc
 linalg
 linestyle
 linewidth
+Linge
 linkedlists
 linspace
 lldb
@@ -249,6 +252,7 @@ setrecursionlimit
 setw
 SIGSEGV
 Simula
+Slobodan
 Snakemake
 snakeviz
 srand
@@ -262,6 +266,7 @@ Structs
 strunk
 substack
 Sundnes
+Svein
 sympy
 Takuji
 Tamassia

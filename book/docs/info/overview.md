@@ -4,9 +4,9 @@ This page gives an overview of the topics for each week of the course, as well a
 
 ## Lectures
 
-There are two lectures each week (with the exception of Week X), at
-* TBW
-* TBW
+There are two lectures each week (with the exception of Week 41 due to midsemester exams), at
+* Wednesdays 08.15 - 10.00
+* Fridays 12.15-14.00
 
 Lectures are held physically in OJD Simula as well as digitally on Zoom. In addition we will record the Zoom lecture (i.e., screen grab + audio) and upload to the course website. Please note that the format of lectures can change during the semester due to the pandemic situation. Please pay attention to messages given on the course website.
 
@@ -16,7 +16,7 @@ Note that the lecture notes might get minor updates and revisions as the semeste
 
 Most weeks we have weekly exercises that are not mandatory, but strongly recommended. They cover topics covered in the lectures, and often lead up to the project work.
 
-There are weekly group sessions where you get help with both the weekly exercises, as well sa project work from a teaching assistant/gruppelærer. Everyone is assigned to a given group and you can only attend the group session to which you belong. To find the time and location of your group, see https://www.uio.no/studier/emner/matnat/ifi/IN1910/h22/timeplan. In addition to the physical group sessions, there is a weekly digital group session where anyone who wants to can join. The weekly digital group is help on Fridays at TBD at the following Zoom link: (Link to be added later).
+There are weekly group sessions where you get help with both the weekly exercises, as well sa project work from a teaching assistant/gruppelærer. Everyone is assigned to a given group and you can only attend the group session to which you belong. To find the time and location of your group, see https://www.uio.no/studier/emner/matnat/ifi/IN1910/h22/timeplan.
 
 
 ### Week by week overview

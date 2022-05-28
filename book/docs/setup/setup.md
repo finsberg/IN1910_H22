@@ -69,16 +69,14 @@ You need to first install Git locally on your laptop. Next you need to make sure
 
 When working with code development you need a proper code editor.
 Some popular choices includes
-  - [Visual Studio Code](https://code.visualstudio.com) (This is the one that will be used by Henrik in the lectures)
-  - [Sublime Text](https://www.sublimetext.com)  (This is the one that will be used by Jonas in the lectures)
+  - [Visual Studio Code](https://code.visualstudio.com) (This is the one that will be used by in lectures)
+  - [Sublime Text](https://www.sublimetext.com)
   - [Atom](https://atom.io)
   - [Emacs](https://www.gnu.org/software/emacs/)
   - [Vim](https://www.vim.org/download.php)
 
 For a more extensive list, please checkout the [Stackoverflow survey from 2021](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment)
 
-### Which editors will the teachers use?
-Henrik will be using Visual Studio Code, while Jonas will be using Sublime Text.
 
 ## C++
 Please see the [C++ installation guide](cpp_compiler.md)

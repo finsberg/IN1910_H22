@@ -22,9 +22,24 @@ If this refresher is not sufficient for your needs, we can recommend *Introducti
 Another, more extensive, resource you can use is *A Primer on Scientific Programming with Python* by Langtangen.
 
 
-## A short note on on Jupyter Notebooks
+## This book is interactive!
 
-This document, and most of the others in IN1910, are written in Jupyter Notebooks. This is a tool that allows for combining traditional text with code that is executable. Previously known as IPython notebooks, the name was changed to reflect that it works with many different languages. The name Jupyter comes from "Julia, Python and R", which are three programming languages that work with the software. Jupyter has grown into a popular tool for scientific programming, both for teaching and development.
+This document and the rest of course material is written using [jupyterbook](https://jupyterbook.org). All of the content is written in a format called [Myst Markdown](https://myst-parser.readthedocs.io/en/latest/) that can be translated to jupyter notebooks. If you take a look at the top of the page you will see an icon of a space rocket, and hovering over this will show three options; "Binder", "JupyterHub" and "Live code".
+
+```{figure} ../figures/jupyterbook.png
+---
+width: 150px
+name: jupyterbook
+alt: jupyterbook
+---
+```
+
+Clicking on "Binder" or "JupyterHub" will open this page in a jupyter notebook. We recommend you use "JupyterHub" because this will run you code on dedicated servers at UiO which will be more performant. If you click on "Live code", then that will first spin up a server (which will take a minute), and the the code cells on this page will become interactive and allow you to change an run the cells without leaving the page.
+
+
+
+### A note about jupyter notebooks
+A jupyter notebook is a tool that allows for combining traditional text with code that is executable. Previously known as IPython notebooks, the name was changed to reflect that it works with many different languages. The name Jupyter comes from "Julia, Python and R", which are three programming languages that work with the software. Jupyter has grown into a popular tool for scientific programming, both for teaching and development.
 
 You are not required to become proficient at using or writing notebooks in this course, and you are free to simply read the documents and do all your own coding in your preferred text editor. However, Jupyter is a nice tool to know, so feel free to also make your own notebooks, or to solve the weekly exercises in Jupyter. Note also that if you open the lecture notes in notebooks you will be able to play around with code and concepts as you are reading the notes, which can be a big help.
 

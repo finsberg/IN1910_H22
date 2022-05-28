@@ -1,0 +1,1150 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solving the 1D Diffusion Equation using Finite Differences &#8212; IN1910 - Programming with Scientific Applications</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Markov processes and Markov chains" href="markov_chains.html" />
+    <link rel="prev" title="Random Walks" href="random_walks_and_markov_processes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IN1910 - Programming with Scientific Applications</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../README.html">
+   IN1910 – Programming with Scientific Applications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  General information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/overview.html">
+   Overview of lectures and exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/curriculum.html">
+   Curriculum
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/motivation.html">
+   The motivation behind IN1910
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/exam.html">
+   Project Work, Grading and Exam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/help.html">
+   Getting help or giving feedback
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/dictionary.html">
+   Dictionary
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Setting up your computer for IN1910
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/setup.html">
+   Installation instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/cpp_compiler.html">
+   Installing a C++ compiler
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lecture videos
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../videos/videos_H21.html">
+   Lecture videos from H21
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../videos/videos_H20.html">
+   Lecture videos from H20
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../videos/videos_H19.html">
+   Lecture videos from H19
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/python_intro.html">
+   A quick Python refresher
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python/python_oop.html">
+   Object-oriented programming in Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/intro_to_oop.html">
+     Introduction to Object-Oriented Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/classes_methods_decorators.html">
+     Creating classes in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/more_oop.html">
+     More on Object-Oriented Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../git/version_control_with_git.html">
+   Version Control with Git
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../testing_codestyle/testing_codestyle.html">
+   Testing and Code style
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../testing_codestyle/writing_functioning_code.html">
+     Writing Reliable Software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../testing_codestyle/codestyle_and_docstrings.html">
+     Code Style and Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../testing_codestyle/type_annotations.html">
+     Type annotations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cpp/cpp.html">
+   C++
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/intro_to_cpp.html">
+     An introduction to C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/arrays_and_pointers.html">
+     Arrays, Memory and Pointers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/oop_in_cpp.html">
+     Object-oriented Programming in C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/dynamic_allocation.html">
+     More on pointers and arrays and dynamic allocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/cpptools.html">
+     C++ tips and tricks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/arraylist.html">
+     Dynamic Arrays, aka, Array Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/linked_lists.html">
+     Linked Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/algorithm_analysis.html">
+     Algorithm Analysis and Big Oh Notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/linkedlists_vs_dynamicarrays.html">
+     Comparing Linked Lists and Dynamic Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/sorting.html">
+     Sorting Algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="stochastic_processes.html">
+   Stochastic processes
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_number_generators.html">
+     Random Number Generators and Seeding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="using_random_numbers.html">
+     Using Random Numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_walks_and_markov_processes.html">
+     Random Walks
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Solving the 1D Diffusion Equation using Finite Differences
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="markov_chains.html">
+     Markov processes and Markov chains
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../optimization/optimization.html">
+   Software optimization and parallelism
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optimization/software_optimization.html">
+     Software Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optimization/optimization_and_mixed_programming.html">
+     Optimization and Mixed Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optimization/parallel_programming.html">
+     Parallel Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../summary/course_summary.html">
+   Course Summary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <a href="https://www.uio.no/studier/emner/matnat/ifi/IN1910/h22/index.html">Course homepage at UiO</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../../../_sources/docs/lectures/stochastic_processes/solving_the_1D_diffusion_equation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/docs/lectures/stochastic_processes/solving_the_1D_diffusion_equation.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/finsberg/IN1910_H22/issues/new?title=Issue%20on%20page%20%2Fdocs/lectures/stochastic_processes/solving_the_1D_diffusion_equation.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/finsberg/IN1910_H22/main?urlpath=tree/book/docs/lectures/stochastic_processes/solving_the_1D_diffusion_equation.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://hub2.jupyterhub.uio.no/hub/user-redirect/git-pull?repo=https://github.com/finsberg/IN1910_H22&urlpath=tree/IN1910_H22/book/docs/lectures/stochastic_processes/solving_the_1D_diffusion_equation.md&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../../../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-the-diffusion-equation-using-finite-differences">
+   Solving the Diffusion Equation using Finite Differences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#approximating-the-spatial-derivative">
+     Approximating the spatial derivative
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-our-computational-stencil">
+     Finding our computational stencil
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#explicit-vs-implicit">
+     Explicit vs Implicit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#handling-the-boundaries">
+     Handling the boundaries
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementing-the-solver">
+   Implementing the Solver
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-note-on-stability">
+     A note on stability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-1-an-initial-concentration-spike">
+   System 1: An initial concentration spike
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-boundaries">
+     Open boundaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reflective-boundaries">
+     Reflective boundaries
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-2-transport-across-the-synaptic-cleft">
+   System 2 - Transport across the synaptic cleft
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steady-state-solution">
+     Steady State Solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shutting-of-the-source">
+     Shutting of the source
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Solving the 1D Diffusion Equation using Finite Differences</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-the-diffusion-equation-using-finite-differences">
+   Solving the Diffusion Equation using Finite Differences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#approximating-the-spatial-derivative">
+     Approximating the spatial derivative
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-our-computational-stencil">
+     Finding our computational stencil
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#explicit-vs-implicit">
+     Explicit vs Implicit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#handling-the-boundaries">
+     Handling the boundaries
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementing-the-solver">
+   Implementing the Solver
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-note-on-stability">
+     A note on stability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-1-an-initial-concentration-spike">
+   System 1: An initial concentration spike
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-boundaries">
+     Open boundaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reflective-boundaries">
+     Reflective boundaries
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-2-transport-across-the-synaptic-cleft">
+   System 2 - Transport across the synaptic cleft
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steady-state-solution">
+     Steady State Solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shutting-of-the-source">
+     Shutting of the source
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="solving-the-1d-diffusion-equation-using-finite-differences">
+<h1>Solving the 1D Diffusion Equation using Finite Differences<a class="headerlink" href="#solving-the-1d-diffusion-equation-using-finite-differences" title="Permalink to this headline">¶</a></h1>
+<p>In <a class="reference internal" href="random_walks_and_markov_processes.html"><span class="doc std std-doc">Random Walks</span></a> we looked at random walks, and we finished that lecture by showing how we can go from a discrete problem to a continuous partial differential equation called the Diffusion Equation.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial c}{\partial t} = D \frac{\partial^2 c}{\partial x^2}\nabla^2 c.\]</div>
+<p>In this notebook, we will briefly look at how we can solve this equation numerically, and look at some solutions with different initial conditions and different boundary conditions. Most of the material here is presented as supplementary material, and is not considered part of IN1910’s curriculum.</p>
+<div class="section" id="solving-the-diffusion-equation-using-finite-differences">
+<h2>Solving the Diffusion Equation using Finite Differences<a class="headerlink" href="#solving-the-diffusion-equation-using-finite-differences" title="Permalink to this headline">¶</a></h2>
+<p>A popular strategy for solving both ODEs and PDEs is discretizing them so that we only solve them at regular intervals, which we call <em>mesh points</em>. We can then approximate the derivatives with ‘finite’ differences, as opposed to the infinitesimal limit they actually represent.</p>
+<p>Normally, this process is called <em>discretizing</em> the continuous differential equations. Somewhat ironic is it that this is the exact opposite process of what we did to find our PDE in the first place!</p>
+<p>We denote the solution we are looking for by <span class="math notranslate nohighlight">\(c(x,t)\)</span>, because it can be seen as the <em>concentration</em> of some particles at a given location <span class="math notranslate nohighlight">\(x\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>. For example the concentration of oxygen in a room.</p>
+<p>We discretize using a given step length <span class="math notranslate nohighlight">\(\Delta x\)</span> in space, and a given time step <span class="math notranslate nohighlight">\(\Delta t\)</span> in time, thus we will only solve for the concentration at points</p>
+<div class="math notranslate nohighlight">
+\[c(x_i, t_j), \qquad x_i \equiv i\cdot \Delta x, \qquad t_j = j\cdot \Delta t,\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are integers. To simplify writing, we define the shorthand</p>
+<div class="math notranslate nohighlight">
+\[c_{i, j} \equiv c(x_i, t_j).\]</div>
+<p>We can now start to approximate the derivatives. This can be done in many ways, but the most straight forward is using only the first terms of the Taylor series. This leads to the expression we found in L19</p>
+<div class="math notranslate nohighlight">
+\[\frac{c_{i, j+1} - c_{i, j}}{\Delta t} = D\frac{c_{i+1, j} - 2 c_{i, j} + c_{i-1, j}}{\Delta x^2}.\]</div>
+<p>Note however, that here we use a 1. order finite difference approximation in time, but a 2. order finite difference order in space. This means we should pick <span class="math notranslate nohighlight">\(\Delta t \leq \Delta x.\)</span></p>
+<div class="section" id="approximating-the-spatial-derivative">
+<h3>Approximating the spatial derivative<a class="headerlink" href="#approximating-the-spatial-derivative" title="Permalink to this headline">¶</a></h3>
+<p>For the spatial derivative, we use a 2. order central difference approximation</p>
+<div class="math notranslate nohighlight">
+\[\bigg(\frac{\partial^2 c}{\partial x^2}\bigg)_{i, j} \approx \frac{c_{i+1, j} - 2 c_{i, j} + c_{i-1, j}}{\Delta x^2}.\]</div>
+<p>This is again found from truncating the Taylor series, but this time the error is <span class="math notranslate nohighlight">\(\mathcal{O}(\Delta x^2)\)</span>, meaning the solver will be a bit more forgiving to the second-order spatial step length, compared to the first-order time step. This means we should pick <span class="math notranslate nohighlight">\(\Delta t &lt; \Delta x\)</span>.</p>
+</div>
+<div class="section" id="finding-our-computational-stencil">
+<h3>Finding our computational stencil<a class="headerlink" href="#finding-our-computational-stencil" title="Permalink to this headline">¶</a></h3>
+<p>Our numerical expression is now</p>
+<div class="math notranslate nohighlight">
+\[\frac{c_{i, j+1} - c_{i, j}}{\Delta t} = D\frac{c_{i+1, j} - 2 c_{i, j} + c_{i-1, j}}{\Delta x^2}.\]</div>
+<p>We can massage this expression even further. By shuffling around some terms, we get</p>
+<div class="math notranslate nohighlight">
+\[c_{i, j+1} = c_{i, j} + D\frac{\Delta t}{\Delta x^2}\big(c_{i+1, j} - 2 c_{i, j} + c_{i-1, j}\big).\]</div>
+<p>Remember that <span class="math notranslate nohighlight">\(D\)</span>, <span class="math notranslate nohighlight">\(\Delta t\)</span> and <span class="math notranslate nohighlight">\(\Delta x\)</span> are all constants, and so we can also introduce a new constant to simplify further:</p>
+<div class="math notranslate nohighlight">
+\[\alpha \equiv D\frac{\Delta t}{\Delta x^2},\]</div>
+<p>which gives us the equation</p>
+<div class="math notranslate nohighlight">
+\[c_{i, j+1} = c_{i, j} + \alpha\big(c_{i+1, j} - 2 c_{i, j} + c_{i-1, j}\big),\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[c_{i, j+1} = \alpha c_{i+1, j} - (1 - 2\alpha) c_{i, j} + \alpha c_{i-1, j}.\]</div>
+<p>Such an equation is sometimes shown as a <em>computational stencil</em></p>
+<div class="figure align-default" id="computational-stencil">
+<a class="reference internal image-reference" href="../../../_images/computational_stencil.png"><img alt="computational_stencil" src="../../../_images/computational_stencil.png" style="width: 500px;" /></a>
+</div>
+<p>Looking at the equation or the stencil, we see that we compute the concentration at the ‘next’ time step <span class="math notranslate nohighlight">\(t_{j+1}\)</span>, based on the values at the ‘current’ time step <span class="math notranslate nohighlight">\(t_j\)</span>, based on the three closest points in space <span class="math notranslate nohighlight">\(x_{i-1}\)</span>, <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_{i+1}\)</span>.</p>
+</div>
+<div class="section" id="explicit-vs-implicit">
+<h3>Explicit vs Implicit<a class="headerlink" href="#explicit-vs-implicit" title="Permalink to this headline">¶</a></h3>
+<p>Note that our computational stencil only involves a single ‘next’ time step, we call this an <em>explicit</em> scheme, as it explicitly states how to compute the new values. The opposite would be an implicit scheme, where for each time step the solver must solve a set of equations algebraically to find the new values. Simply put, explicit schemes are a lot easier to implement and solve. The downside is that explicit schemes can sometimes be unstable, and we need to be a bit more careful with our computational resolution and such with explicit schemes. Some implicit schemes, such as the <em>backward</em> Euler scheme, are much more stable, and can handle a wider variety of parameters and resolutions.</p>
+</div>
+<div class="section" id="handling-the-boundaries">
+<h3>Handling the boundaries<a class="headerlink" href="#handling-the-boundaries" title="Permalink to this headline">¶</a></h3>
+<p>Looking at the stencil, we notice there will be an issue at the boundaries of the domain. To calculate the point at the edge of the boundary, <span class="math notranslate nohighlight">\(u_{0, j+1}\)</span>, we need to know <span class="math notranslate nohighlight">\(u_{-1, j+1}\)</span>, which doesn’t exist! To get around this problem, we need to specify boundary conditions.</p>
+<p>The simplest boundary conditions are the <em>Dirichlet</em> conditions, also known as a concentration clamp. This simply forces the solution to have certain values at the boundary, and thus, we don’t need to actually compute them, we can just set them to their clamped values: <span class="math notranslate nohighlight">\(u(0, t) = u_0\)</span> and <span class="math notranslate nohighlight">\(u(L, t) = u_L\)</span>.</p>
+<p>The other common form of boundary conditions are the <em>Neumann</em> conditions. With these, it is the flux over the boundary that is clamped, and not the concentration itself. Most commonly, the flux is set to 0, meaning no concentration can every cross the boundary. This specific condition is often referred to as a ‘no-flow’ or ‘reflective’ boundary. To implement this condition, we pretend that that the points immediately outside the boundary, such as <span class="math notranslate nohighlight">\(u_{-1, j}\)</span> exists, and set these imaginary ‘ghost points’ equal to the value at the boundary. As a diffusion flux is driven by a concentration difference, by setting <span class="math notranslate nohighlight">\(u_{-1,j} = u_{0,j}\)</span>, the math itself will make sure no flux occurs across the boundary.</p>
+</div>
+</div>
+<div class="section" id="implementing-the-solver">
+<h2>Implementing the Solver<a class="headerlink" href="#implementing-the-solver" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have gone through the mathematical basis, we are ready to implement everything. We start by importing everything we need.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span><span class="p">,</span> <span class="n">rc</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="a-note-on-stability">
+<h3>A note on stability<a class="headerlink" href="#a-note-on-stability" title="Permalink to this headline">¶</a></h3>
+<p>Here we have chosen to use a forward Euler scheme because it is easy to describe briefly. It is also very easy to implement, thanks to it being an explicit scheme. However, it does have quite a larger error, but more important is that it is <em>unstable</em>, meaning it will produce a completely wrong answer to the equation for certain parameters. Mathematical analysis shows that the <em>stability</em> criterion for this scheme is:</p>
+<div class="math notranslate nohighlight">
+\[\alpha \leq 0.5 \qquad \Leftrightarrow \qquad \Delta t ≤ \frac{\Delta x^2}{2D}.\]</div>
+<p>Because of this, we will use <span class="math notranslate nohighlight">\(D=5\)</span>, <span class="math notranslate nohighlight">\(\Delta x = 0.5\)</span> and <span class="math notranslate nohighlight">\(\Delta t = 0.02\)</span> for all our simulations, giving <span class="math notranslate nohighlight">\(\alpha = 0.4\)</span>, ensuring stability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.020</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">D</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="o">/</span><span class="n">dx</span>
+
+<span class="c1"># Double check stability</span>
+<span class="k">if</span> <span class="n">alpha</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The scheme is not stable with the chosen parameters.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now implement a function we can call to update our solution by one time step. We cannot solve for the boundaries, as it is system-specific how we handle those, so the function we implement will only update the internal points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A function that iterates the solution one step in time.</span>
+<span class="sd">    Note: This function does not enforce any boundary conditions.&quot;&quot;&quot;</span>
+    <span class="n">up</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">u</span><span class="p">[:]</span>
+    <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">up</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">up</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">up</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With the <code class="docutils literal notranslate"><span class="pre">step</span></code> function defined, we are ready to solve specific systems.</p>
+</div>
+</div>
+<div class="section" id="system-1-an-initial-concentration-spike">
+<h2>System 1: An initial concentration spike<a class="headerlink" href="#system-1-an-initial-concentration-spike" title="Permalink to this headline">¶</a></h2>
+<p>The first system we will look at is what happens to an initial spike of concentration in the middle of a domain. First we will let the domain have open boundaries, so that the concentration can escape from the box, and then we change to reflective boundaries, so that nothing can escape from the box.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the spatial mesh</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="o">+</span><span class="n">dx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Set up arrays to hold the solution at the current and previous time steps</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">up</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="open-boundaries">
+<h3>Open boundaries<a class="headerlink" href="#open-boundaries" title="Permalink to this headline">¶</a></h3>
+<p>First we will let the domain have open boundaries, so that the concentration can escape from the box</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+
+<span class="c1"># Set up initial condition</span>
+<span class="n">u</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">();</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">));</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="c1"># Calculate solution for next time step</span>
+    <span class="n">step</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Update plot</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">line</span><span class="p">,)</span>
+
+<span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                               <span class="n">frames</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+
+<span class="nn">File /venv/lib/python3.10/site-packages/matplotlib/animation.py:1264,</span> in <span class="ni">Animation.to_html5_video</span><span class="nt">(self, embed_limit)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1261</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s2">&quot;temp.m4v&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1262</span> <span class="c1"># We create a writer manually so that we can get the</span>
+<span class="g g-Whitespace">   </span><span class="mi">1263</span> <span class="c1"># appropriate size for the tag</span>
+<span class="ne">-&gt; </span><span class="mi">1264</span> <span class="n">Writer</span> <span class="o">=</span> <span class="n">writers</span><span class="p">[</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.writer&#39;</span><span class="p">]]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1265</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">Writer</span><span class="p">(</span><span class="n">codec</span><span class="o">=</span><span class="s1">&#39;h264&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1266</span>                 <span class="n">bitrate</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.bitrate&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1267</span>                 <span class="n">fps</span><span class="o">=</span><span class="mf">1000.</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_interval</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1268</span> <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
+
+<span class="nn">File /venv/lib/python3.10/site-packages/matplotlib/animation.py:151,</span> in <span class="ni">MovieWriterRegistry.__getitem__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_available</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">150</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registered</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">151</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Requested MovieWriter (</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">) not available&quot;</span><span class="p">)</span>
+
+<span class="ne">RuntimeError</span>: Requested MovieWriter (ffmpeg) not available
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reflective-boundaries">
+<h3>Reflective boundaries<a class="headerlink" href="#reflective-boundaries" title="Permalink to this headline">¶</a></h3>
+<p>We now change to no-flow boundaries, so that nothing can escape from the box.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+
+<span class="c1"># Set up initial condition</span>
+<span class="n">u</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="c1"># Set up plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">();</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">));</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="c1"># Calculate solution for next time step</span>
+    <span class="n">step</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">up</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">up</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">up</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">up</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="c1"># Update plot</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">line</span><span class="p">,)</span>
+
+<span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                               <span class="n">frames</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/venv/lib/python3.10/site-packages/matplotlib/animation.py:887: UserWarning: Animation was deleted without rendering anything. This is most likely not intended. To prevent deletion, assign the Animation to a variable, e.g. `anim`, that exists until you have outputted the Animation using `plt.show()` or `anim.save()`.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+
+<span class="nn">File /venv/lib/python3.10/site-packages/matplotlib/animation.py:1264,</span> in <span class="ni">Animation.to_html5_video</span><span class="nt">(self, embed_limit)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1261</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s2">&quot;temp.m4v&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1262</span> <span class="c1"># We create a writer manually so that we can get the</span>
+<span class="g g-Whitespace">   </span><span class="mi">1263</span> <span class="c1"># appropriate size for the tag</span>
+<span class="ne">-&gt; </span><span class="mi">1264</span> <span class="n">Writer</span> <span class="o">=</span> <span class="n">writers</span><span class="p">[</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.writer&#39;</span><span class="p">]]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1265</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">Writer</span><span class="p">(</span><span class="n">codec</span><span class="o">=</span><span class="s1">&#39;h264&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1266</span>                 <span class="n">bitrate</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.bitrate&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1267</span>                 <span class="n">fps</span><span class="o">=</span><span class="mf">1000.</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_interval</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1268</span> <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
+
+<span class="nn">File /venv/lib/python3.10/site-packages/matplotlib/animation.py:151,</span> in <span class="ni">MovieWriterRegistry.__getitem__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_available</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">150</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registered</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">151</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Requested MovieWriter (</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">) not available&quot;</span><span class="p">)</span>
+
+<span class="ne">RuntimeError</span>: Requested MovieWriter (ffmpeg) not available
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="system-2-transport-across-the-synaptic-cleft">
+<h2>System 2 - Transport across the synaptic cleft<a class="headerlink" href="#system-2-transport-across-the-synaptic-cleft" title="Permalink to this headline">¶</a></h2>
+<p>For our second system, we will look at the diffusive transport of neurotransmitters across a synapse. When a signal is to be sent from one neuron to another, an action potential in the pre-synaptic membrane causes the release of neurotransmitter molecules into the synaptic cleft between the cells.</p>
+<p>To model this system, we assume the concentration to be zero initially. At time <span class="math notranslate nohighlight">\(t=0\)</span> the pre-synaptic side, which we place on the left, starts releasing neurotransmitters. For simplicity sake, we implement this as a concentration clamp <span class="math notranslate nohighlight">\(u(0, t) = C\)</span>, which can be thought of as the release of neurotransmitters as being some sort of equilibrium process. At the other side of the synapse, the neurotransmitters will be absorbed. Let us assume, again for simplicity, that this absorption occurs so rapidly that we can assume there is never any unabsorbed neurotransmitters at this point. This means we can use another concentration clamp of <span class="math notranslate nohighlight">\(u(L, t)=0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+
+<span class="c1"># Pre-synaptic concentration</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Set up initial condition</span>
+<span class="n">u</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">();</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">));</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">C</span><span class="p">));</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="c1"># Calculate solution for next time step</span>
+    <span class="n">step</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span>
+    <span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Update plot</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">line</span><span class="p">,)</span>
+
+<span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                               <span class="n">frames</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="nn">Input In [10],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+
+<span class="nn">File /venv/lib/python3.10/site-packages/matplotlib/animation.py:1264,</span> in <span class="ni">Animation.to_html5_video</span><span class="nt">(self, embed_limit)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1261</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s2">&quot;temp.m4v&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1262</span> <span class="c1"># We create a writer manually so that we can get the</span>
+<span class="g g-Whitespace">   </span><span class="mi">1263</span> <span class="c1"># appropriate size for the tag</span>
+<span class="ne">-&gt; </span><span class="mi">1264</span> <span class="n">Writer</span> <span class="o">=</span> <span class="n">writers</span><span class="p">[</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.writer&#39;</span><span class="p">]]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1265</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">Writer</span><span class="p">(</span><span class="n">codec</span><span class="o">=</span><span class="s1">&#39;h264&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1266</span>                 <span class="n">bitrate</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.bitrate&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1267</span>                 <span class="n">fps</span><span class="o">=</span><span class="mf">1000.</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_interval</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1268</span> <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
+
+<span class="nn">File /venv/lib/python3.10/site-packages/matplotlib/animation.py:151,</span> in <span class="ni">MovieWriterRegistry.__getitem__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_available</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">150</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registered</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">151</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Requested MovieWriter (</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">) not available&quot;</span><span class="p">)</span>
+
+<span class="ne">RuntimeError</span>: Requested MovieWriter (ffmpeg) not available
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="steady-state-solution">
+<h3>Steady State Solution<a class="headerlink" href="#steady-state-solution" title="Permalink to this headline">¶</a></h3>
+<p>We see that eventually, the solution hits a pseudo steady-state, where the solution is no longer changing. This is because the solution has become a linear solution, <span class="math notranslate nohighlight">\(c=Ax + b\)</span> which means that
+$<span class="math notranslate nohighlight">\(\frac{\partial c}{\partial x} = A, \qquad \frac{\partial^2 c}{\partial x^2} = 0 \quad \Rightarrow \quad \frac{\partial c}{\partial t} = 0.\)</span>$</p>
+<p>We call such a situation a <em>pseudo</em> steady state, because it looks like nothing is changing, but there is a constant flux of neurotransmitter molecules through the cleft.</p>
+<p>We could have found this steady state solution analytical the diffusion equation, using the fact that it is unchanging in time</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial c}{\partial t} = 0 = D\frac{\partial^2 c}{\partial x^2},\]</div>
+<p>giving
+$<span class="math notranslate nohighlight">\(\frac{\partial^2 c}{\partial x^2} = 0 \Rightarrow c = Ax + B.\)</span>$</p>
+<p>Adding in the boundary conditions of <span class="math notranslate nohighlight">\(c(0) = C\)</span> and <span class="math notranslate nohighlight">\(c(L) = 0\)</span> gives
+$<span class="math notranslate nohighlight">\(c(x, \infty) = C\bigg(1 - \frac{x}{L}\bigg).\)</span>$</p>
+<p>Interestingly enough, the steady state solution doesn’t depend on the diffusion coefficient, <span class="math notranslate nohighlight">\(D\)</span>, at all! The diffusion coefficient decides how fast the system reaches the steady state however. And will enter into the net transport of neurotransmitters through Ficks law: <span class="math notranslate nohighlight">\(J = -D \nabla c = CD/L\)</span>.</p>
+</div>
+<div class="section" id="shutting-of-the-source">
+<h3>Shutting of the source<a class="headerlink" href="#shutting-of-the-source" title="Permalink to this headline">¶</a></h3>
+<p>Let us now assume that the system has had enough time to reach steady state. Eventually the release event will stop, which we model by changing the concentration clamp on the left to a no-flow boundary instead. We assume the right hand side keeps absorbing molecules.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+
+<span class="c1"># Set up initial condition</span>
+<span class="n">u</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">C</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">L</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">();</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">));</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">C</span><span class="p">));</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="c1"># Calculate solution for next time step</span>
+    <span class="n">step</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">up</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">up</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Update plot</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">line</span><span class="p">,)</span>
+
+<span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                               <span class="n">frames</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+
+<span class="nn">File /venv/lib/python3.10/site-packages/matplotlib/animation.py:1264,</span> in <span class="ni">Animation.to_html5_video</span><span class="nt">(self, embed_limit)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1261</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s2">&quot;temp.m4v&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1262</span> <span class="c1"># We create a writer manually so that we can get the</span>
+<span class="g g-Whitespace">   </span><span class="mi">1263</span> <span class="c1"># appropriate size for the tag</span>
+<span class="ne">-&gt; </span><span class="mi">1264</span> <span class="n">Writer</span> <span class="o">=</span> <span class="n">writers</span><span class="p">[</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.writer&#39;</span><span class="p">]]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1265</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">Writer</span><span class="p">(</span><span class="n">codec</span><span class="o">=</span><span class="s1">&#39;h264&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1266</span>                 <span class="n">bitrate</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.bitrate&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1267</span>                 <span class="n">fps</span><span class="o">=</span><span class="mf">1000.</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_interval</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1268</span> <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
+
+<span class="nn">File /venv/lib/python3.10/site-packages/matplotlib/animation.py:151,</span> in <span class="ni">MovieWriterRegistry.__getitem__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_available</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">150</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registered</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">151</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Requested MovieWriter (</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">) not available&quot;</span><span class="p">)</span>
+
+<span class="ne">RuntimeError</span>: Requested MovieWriter (ffmpeg) not available
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "finsberg/IN1910_H22",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/lectures/stochastic_processes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="random_walks_and_markov_processes.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Random Walks</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="markov_chains.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Markov processes and Markov chains</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jonas van den Brink, Henrik Finsberg, Kristian G. Hustad, and Joakim Sundnes<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

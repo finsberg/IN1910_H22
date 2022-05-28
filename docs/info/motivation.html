@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The motivation behind IN1910 &#8212; IN1910 - Programming with Scientific Applications</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Project Work, Grading and Exam" href="exam.html" />
+    <link rel="prev" title="Curriculum" href="curriculum.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IN1910 - Programming with Scientific Applications</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   IN1910 – Programming with Scientific Applications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  General information
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview of lectures and exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="curriculum.html">
+   Curriculum
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The motivation behind IN1910
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exam.html">
+   Project Work, Grading and Exam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="help.html">
+   Getting help or giving feedback
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dictionary.html">
+   Dictionary
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Setting up your computer for IN1910
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup/setup.html">
+   Installation instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup/cpp_compiler.html">
+   Installing a C++ compiler
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lecture videos
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../videos/videos_H21.html">
+   Lecture videos from H21
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../videos/videos_H20.html">
+   Lecture videos from H20
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../videos/videos_H19.html">
+   Lecture videos from H19
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/python/python_intro.html">
+   A quick Python refresher
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/python/python_oop.html">
+   Object-oriented programming in Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/python/intro_to_oop.html">
+     Introduction to Object-Oriented Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/python/classes_methods_decorators.html">
+     Creating classes in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/python/more_oop.html">
+     More on Object-Oriented Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/git/version_control_with_git.html">
+   Version Control with Git
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/testing_codestyle/testing_codestyle.html">
+   Testing and Code style
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/testing_codestyle/writing_functioning_code.html">
+     Writing Reliable Software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/testing_codestyle/codestyle_and_docstrings.html">
+     Code Style and Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/testing_codestyle/type_annotations.html">
+     Type annotations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/cpp/cpp.html">
+   C++
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/intro_to_cpp.html">
+     An introduction to C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/arrays_and_pointers.html">
+     Arrays, Memory and Pointers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/oop_in_cpp.html">
+     Object-oriented Programming in C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/dynamic_allocation.html">
+     More on pointers and arrays and dynamic allocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/cpptools.html">
+     C++ tips and tricks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/arraylist.html">
+     Dynamic Arrays, aka, Array Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/linked_lists.html">
+     Linked Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/algorithm_analysis.html">
+     Algorithm Analysis and Big Oh Notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/linkedlists_vs_dynamicarrays.html">
+     Comparing Linked Lists and Dynamic Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/sorting.html">
+     Sorting Algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/stochastic_processes/stochastic_processes.html">
+   Stochastic processes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/stochastic_processes/random_number_generators.html">
+     Random Number Generators and Seeding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/stochastic_processes/using_random_numbers.html">
+     Using Random Numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/stochastic_processes/random_walks_and_markov_processes.html">
+     Random Walks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/stochastic_processes/solving_the_1D_diffusion_equation.html">
+     Solving the 1D Diffusion Equation using Finite Differences
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/stochastic_processes/markov_chains.html">
+     Markov processes and Markov chains
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/optimization/optimization.html">
+   Software optimization and parallelism
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/optimization/software_optimization.html">
+     Software Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/optimization/optimization_and_mixed_programming.html">
+     Optimization and Mixed Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/optimization/parallel_programming.html">
+     Parallel Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/summary/course_summary.html">
+   Course Summary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <a href="https://www.uio.no/studier/emner/matnat/ifi/IN1910/h22/index.html">Course homepage at UiO</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/info/motivation.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/finsberg/IN1910_H22/issues/new?title=Issue%20on%20page%20%2Fdocs/info/motivation.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#best-practices">
+   Best Practices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#languages-in-1910">
+   Languages in 1910
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The motivation behind IN1910</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#best-practices">
+   Best Practices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#languages-in-1910">
+   Languages in 1910
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="the-motivation-behind-in1910">
+<h1>The motivation behind IN1910<a class="headerlink" href="#the-motivation-behind-in1910" title="Permalink to this headline">¶</a></h1>
+<p>The paper <a class="reference external" href="http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745"><em>Best Practices for Scientific Computing</em></a> by Wilson, et al, discusses the need for better practices in the field of scientific computing. They quote recent studies that show scientists typically use 30% or more of their time developing software, but that 90% or more are primarily self-taught. As a result, most are not properly trained in the use of good tools and practices.</p>
+<p>A movement called <a class="reference external" href="https://software-carpentry.org/"><em>Software Carpentry</em></a> is trying to remedy the situation by giving workshops and sharing resources for training researchers in computing and programming. As the name implies, the goal is to give researchers a set of useful <em>tools</em> and the competence and confidence to use them properly.</p>
+<div class="figure align-default" id="software-carpentry">
+<a class="reference internal image-reference" href="../../_images/software_carpentry.png"><img alt="software_carpentry" src="../../_images/software_carpentry.png" style="width: 200px;" /></a>
+</div>
+<p>IN1910 aims to do the same thing. We do not just want to teach you how to code up scientific applications, but we want to give you a set of important tools and practices to program in an efficient manner that leads to more reliable and maintainable code. We will therefore spend time during the course to cover tools such as version control and focus on testing and documenting code.</p>
+<div class="section" id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this headline">¶</a></h2>
+<p>The paper by Wilson et al goes through and identifies what they think are the most important aspects of scientific computing. Their best practices are outlined as 8 major points.</p>
+<ol class="simple">
+<li><p>Write programs for people, not computers</p></li>
+<li><p>Let the computer do the work</p></li>
+<li><p>Make incremental changes</p></li>
+<li><p>Don’t repeat yourself (or others)</p></li>
+<li><p>Plan for mistakes</p></li>
+<li><p>Optimize code only after it works correctly</p></li>
+<li><p>Document design and purpose, not mechanics</p></li>
+<li><p>Collaborate</p></li>
+</ol>
+<p>In IN1910, we will return to these practices and try to reflect on how to implement them in our workflow and code.</p>
+</div>
+<div class="section" id="languages-in-1910">
+<h2>Languages in 1910<a class="headerlink" href="#languages-in-1910" title="Permalink to this headline">¶</a></h2>
+<p>In 1910 is a continuation of IN1900, and will primarily be using Python. However, we will also be introducing a second language: C++.</p>
+<p>Python is a modern, object-oriented programming language. It has a clear, readable syntax, making it easy to learn, and easy to write understandable, maintainable, and shareable code. It also has a good standard library and plenty of extensions for scientific computing. It is also open source. All of this points to Python being a good language for scientific computing. Another popular language for scientific computing that has gain a lot of attraction the recent years is Julia. Julia would definitely also be a suitable language of choice for this course, however we believe Python is more applicable to a larger group of developer especially within the field of data science and machine learning.</p>
+<p>We also will dive deeper into object-oriented programming and other concepts in computer science that are not that well covered by Julia. Besides, Python has a syntax fairly similar to Julia, and so learning Python well will equip you to handle Julia at a later point.</p>
+<p>Note that we do expect students taking IN1900 to be fairly familiar with Python. If you are not, you should expect to put in more work during the first few weeks of the course. Here, <a class="reference external" href="https://link.springer.com/book/10.1007%2F978-3-662-49887-3">the book from Langtangen</a> is a good resource to use.</p>
+<p>Why do we choose to also include C++, and not just stick to Python? First of all, learning a second language is very helpful on its own. As it helps you generalize programming concepts and not get to attached to a single way of writing code. C++ is a very popular language, and so the chances you will meet or use the language later is high. It is also low-level, compared to Python, which is high-level, and so they have different areas of use. Knowing C++ let’s us write more efficient and faster code than Python, with drawbacks we will get back to later. Lastly, C++ is based on C, the most used programming language in the world, and many other languages are inspired heavily on C. Knowing C++ will therefore make using other languages a lot easier (C, Java, C#, objective-C, javascript, etc). Python on the other hand, has a syntax that is quite different from these, and so knowing <em>only</em> Python can be restrictive for working with code in other languages.</p>
+<p>The magazine IEEE Spectrum publishes an annual list of programming langues ranked by popularity. The top ten programming langues (by popularity) are shown in the figure below</p>
+<div class="figure align-default" id="spectrum-ranking">
+<a class="reference internal image-reference" href="../../_images/spectrum_ranking_2021.png"><img alt="spectrum_ranking" src="../../_images/spectrum_ranking_2021.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Top programming languages for <a class="reference external" href="https://spectrum.ieee.org/top-programming-languages-2021">2021</a></span><a class="headerlink" href="#spectrum-ranking" title="Permalink to this image">¶</a></p>
+</div>
+<p>The symbols indicate what people often use the langues for, with the globe meaning web, the cellphone mobile, the screen desktop and scientific applications, and the chip embedded applications.</p>
+<p>The spectrum ranking is just one of many rankings, and it doesn’t necessarily mean that much. The main reason we bring it up is to point out that knowing Python and a bit of C++ will most likely be very useful if you continue doing <em>any</em> kind of programming in your future, be it scientific or other.</p>
+<p>Another annual review is the <a class="reference external" href="https://insights.stackoverflow.com/survey/2021#most-loved-dreaded-and-wanted-language-want">Stack overflow developer survey</a> which shows that python is the most wanted language in 2021.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "finsberg/IN1910_H22",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/info"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="curriculum.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Curriculum</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="exam.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Project Work, Grading and Exam</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jonas van den Brink, Henrik Finsberg, Kristian G. Hustad, and Joakim Sundnes<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

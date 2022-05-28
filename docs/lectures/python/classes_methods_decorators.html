@@ -1,0 +1,1757 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating classes in Python &#8212; IN1910 - Programming with Scientific Applications</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="More on Object-Oriented Programming" href="more_oop.html" />
+    <link rel="prev" title="Introduction to Object-Oriented Programming" href="intro_to_oop.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IN1910 - Programming with Scientific Applications</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../README.html">
+   IN1910 – Programming with Scientific Applications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  General information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/overview.html">
+   Overview of lectures and exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/curriculum.html">
+   Curriculum
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/motivation.html">
+   The motivation behind IN1910
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/exam.html">
+   Project Work, Grading and Exam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/help.html">
+   Getting help or giving feedback
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/dictionary.html">
+   Dictionary
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Setting up your computer for IN1910
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/setup.html">
+   Installation instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/cpp_compiler.html">
+   Installing a C++ compiler
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lecture videos
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../videos/videos_H21.html">
+   Lecture videos from H21
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../videos/videos_H20.html">
+   Lecture videos from H20
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../videos/videos_H19.html">
+   Lecture videos from H19
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_intro.html">
+   A quick Python refresher
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="python_oop.html">
+   Object-oriented programming in Python
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro_to_oop.html">
+     Introduction to Object-Oriented Programming
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Creating classes in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="more_oop.html">
+     More on Object-Oriented Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../git/version_control_with_git.html">
+   Version Control with Git
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../testing_codestyle/testing_codestyle.html">
+   Testing and Code style
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../testing_codestyle/writing_functioning_code.html">
+     Writing Reliable Software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../testing_codestyle/codestyle_and_docstrings.html">
+     Code Style and Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../testing_codestyle/type_annotations.html">
+     Type annotations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cpp/cpp.html">
+   C++
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/intro_to_cpp.html">
+     An introduction to C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/arrays_and_pointers.html">
+     Arrays, Memory and Pointers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/oop_in_cpp.html">
+     Object-oriented Programming in C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/dynamic_allocation.html">
+     More on pointers and arrays and dynamic allocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/cpptools.html">
+     C++ tips and tricks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/arraylist.html">
+     Dynamic Arrays, aka, Array Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/linked_lists.html">
+     Linked Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/algorithm_analysis.html">
+     Algorithm Analysis and Big Oh Notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/linkedlists_vs_dynamicarrays.html">
+     Comparing Linked Lists and Dynamic Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/sorting.html">
+     Sorting Algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../stochastic_processes/stochastic_processes.html">
+   Stochastic processes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stochastic_processes/random_number_generators.html">
+     Random Number Generators and Seeding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stochastic_processes/using_random_numbers.html">
+     Using Random Numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stochastic_processes/random_walks_and_markov_processes.html">
+     Random Walks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stochastic_processes/solving_the_1D_diffusion_equation.html">
+     Solving the 1D Diffusion Equation using Finite Differences
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stochastic_processes/markov_chains.html">
+     Markov processes and Markov chains
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../optimization/optimization.html">
+   Software optimization and parallelism
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optimization/software_optimization.html">
+     Software Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optimization/optimization_and_mixed_programming.html">
+     Optimization and Mixed Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optimization/parallel_programming.html">
+     Parallel Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../summary/course_summary.html">
+   Course Summary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <a href="https://www.uio.no/studier/emner/matnat/ifi/IN1910/h22/index.html">Course homepage at UiO</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../../../_sources/docs/lectures/python/classes_methods_decorators.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/docs/lectures/python/classes_methods_decorators.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/finsberg/IN1910_H22/issues/new?title=Issue%20on%20page%20%2Fdocs/lectures/python/classes_methods_decorators.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/finsberg/IN1910_H22/main?urlpath=tree/book/docs/lectures/python/classes_methods_decorators.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://hub2.jupyterhub.uio.no/hub/user-redirect/git-pull?repo=https://github.com/finsberg/IN1910_H22&urlpath=tree/IN1910_H22/book/docs/lectures/python/classes_methods_decorators.md&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../../../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recap-of-object-oriented-programming-so-far">
+   Recap of Object-Oriented Programming so far
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-objects">
+     What are Objects?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-classes">
+     What are Classes?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#attributes">
+     Attributes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#special-methods">
+     Special Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-3d-vector-class">
+   A 3D vector class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-constructor-init">
+     The constructor (
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __init__
+      </span>
+     </code>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pretty-printing">
+     Pretty printing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-repr-method">
+     The repr method
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vector-arithmetic">
+   Vector Arithmetic
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#addition">
+     Addition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-and-other">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       self
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       other
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-scalar-addition">
+     Vector-scalar addition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subtraction">
+     Subtraction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-unary-negative-operator-aka-minus">
+     The unary negative operator (aka “minus”)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiplying-vectors">
+     Multiplying vectors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scalar-multiplication">
+     Scalar multiplication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-properties-to-our-class-length">
+     Adding ‘properties’ to our class (Length)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#other-special-methods">
+       Other Special methods
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#short-introduction-to-inheritance">
+   Short introduction to inheritance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-pokemon-go">
+     Example: Pokémon Go
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Creating classes in Python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recap-of-object-oriented-programming-so-far">
+   Recap of Object-Oriented Programming so far
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-objects">
+     What are Objects?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-classes">
+     What are Classes?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#attributes">
+     Attributes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#special-methods">
+     Special Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-3d-vector-class">
+   A 3D vector class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-constructor-init">
+     The constructor (
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __init__
+      </span>
+     </code>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pretty-printing">
+     Pretty printing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-repr-method">
+     The repr method
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vector-arithmetic">
+   Vector Arithmetic
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#addition">
+     Addition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-and-other">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       self
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       other
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-scalar-addition">
+     Vector-scalar addition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subtraction">
+     Subtraction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-unary-negative-operator-aka-minus">
+     The unary negative operator (aka “minus”)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiplying-vectors">
+     Multiplying vectors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scalar-multiplication">
+     Scalar multiplication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-properties-to-our-class-length">
+     Adding ‘properties’ to our class (Length)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#other-special-methods">
+       Other Special methods
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#short-introduction-to-inheritance">
+   Short introduction to inheritance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-pokemon-go">
+     Example: Pokémon Go
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="creating-classes-in-python">
+<h1>Creating classes in Python<a class="headerlink" href="#creating-classes-in-python" title="Permalink to this headline">¶</a></h1>
+<p>In the previous lecture we started to cover object-oriented programming (OOP) in Python. A big component of OOP is to define your own custom data types or <em>classes</em>. Today we will we continue on this topic and focus on how to design and implement classes in Python. We start with a quick recap of the last lecture, then cover some new special methods and finish up by briefly discussing <em>inheritance</em>, a useful topic to know about when designing classes.</p>
+<div class="section" id="recap-of-object-oriented-programming-so-far">
+<h2>Recap of Object-Oriented Programming so far<a class="headerlink" href="#recap-of-object-oriented-programming-so-far" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-are-objects">
+<h3>What are Objects?<a class="headerlink" href="#what-are-objects" title="Permalink to this headline">¶</a></h3>
+<p>Last week we introduced object-oriented programming, a paradigm where we design programs and code from a basis of <em>objects</em>. In Python, all variables are objects and all objects are characterized by</p>
+<ul class="simple">
+<li><p>Their <em>object type</em>, which defines how the object behaves and interacts with other objects</p></li>
+<li><p>Their <em>data</em>. Different objects contain different types of data, some contain a single value (like a <code class="docutils literal notranslate"><span class="pre">float</span></code> object) while others contain a large number of values (like a <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">dictionary</span></code> or <code class="docutils literal notranslate"><span class="pre">set</span></code>).</p></li>
+</ul>
+</div>
+<div class="section" id="what-are-classes">
+<h3>What are Classes?<a class="headerlink" href="#what-are-classes" title="Permalink to this headline">¶</a></h3>
+<p>We can define new object <em>types</em> by defining <em>classes</em> in Python using the <code class="docutils literal notranslate"><span class="pre">class</span></code> keyword. A class is the definition of a new object type. After we have created a class, we can create new objects of that class, which are called <em>instances</em>.</p>
+<ul class="simple">
+<li><p>A class is the definition of a new object type</p></li>
+<li><p>An <em>instance</em> is a object of a given class</p></li>
+</ul>
+<p>To use an example, in this lecture we will define a <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code> class, which represents a vector in 3D space. This is a general class. After implementing this class, we can then define specific vectors with specific coordinates/values using <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">=</span> <span class="pre">Vector3D(2,</span> <span class="pre">2,</span> <span class="pre">0)</span></code>, and here <code class="docutils literal notranslate"><span class="pre">u</span></code> would be an <em>instance</em> of the <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code> class.</p>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<p>A class, and by extension its instances, are defined by its attributes. We can group all attributes into two main categories:</p>
+<ul class="simple">
+<li><p>Data fields contain specific information (e.g., <code class="docutils literal notranslate"><span class="pre">booleans</span></code>, <code class="docutils literal notranslate"><span class="pre">floats</span></code>, <code class="docutils literal notranslate"><span class="pre">strings</span></code>, <code class="docutils literal notranslate"><span class="pre">floats</span></code>, etc)</p></li>
+<li><p>Methods are callable functions we can use to interact with the object</p></li>
+</ul>
+</div>
+<div class="section" id="special-methods">
+<h3>Special Methods<a class="headerlink" href="#special-methods" title="Permalink to this headline">¶</a></h3>
+<p>In Python, there are a series of <em>special methods</em> we can implement to automate many behaviors. We covered some of these last time, and will cover a lot more today. Last time we covered the following special methods</p>
+<ul class="simple">
+<li><p>The constructor, <code class="docutils literal notranslate"><span class="pre">__init__</span></code></p></li>
+<li><p>The string and representation methods, <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">__call__</span></code> special method, which makes objects callable (very useful for representing functions!)</p></li>
+</ul>
+<p>In addition we covered the <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> decorator, which can be used to define custom properties in a class. This is easiest to explain with examples, so let us come back to this later in this lecture.</p>
+</div>
+</div>
+<div class="section" id="a-3d-vector-class">
+<h2>A 3D vector class<a class="headerlink" href="#a-3d-vector-class" title="Permalink to this headline">¶</a></h2>
+<p>The main component of this lecture will revolve around implementing a specific class. By adding more and more functionality to this class, we illustrate different special methods and possibilities in Python and how these work.</p>
+<p>As a specific case example, we will implement a class for three dimensional vectors <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code>. We want objects of this class to behave mathematically as vectors, and we will add functionality to do vector arithmetic.</p>
+<div class="section" id="the-constructor-init">
+<h3>The constructor (<code class="docutils literal notranslate"><span class="pre">__init__</span></code>)<a class="headerlink" href="#the-constructor-init" title="Permalink to this headline">¶</a></h3>
+<p>The most fundamental method of any class is its <em>constructor</em>, which is automatically called when we create a new instance of a class. In Python, the constructor is called <code class="docutils literal notranslate"><span class="pre">__init__</span></code> (short for <em>initialize</em>). To define a 3D vector, we need to specify its three cartesian coordinates, which we call <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="k">class</span> <span class="nc">Vector3D</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A class representing 3D cartesian vectors&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This constructor doesn’t do much other than save the three coordinates as internal attributes. This is necessary so that the object remembers its coordinates and can use them later. The string on line 4 is an example of a <em>docstring</em>, which we will describe in more detail next week. If you have not seen such strings before, simply think of it as a comment for now.</p>
+</div>
+<div class="section" id="pretty-printing">
+<h3>Pretty printing<a class="headerlink" href="#pretty-printing" title="Permalink to this headline">¶</a></h3>
+<p>Next we want to be able to print out vectors, so that we can check our results. We implement this using the string special method (<code class="docutils literal notranslate"><span class="pre">__str__</span></code>). If we were just implementing this in an editor, we would just keep editing our file. In the notebook, we don’t want to repeat the whole class for each cell. Instead we just extend our existing class as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, 4, -2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, extending the class by writing <code class="docutils literal notranslate"><span class="pre">Vector3D(Vector3D)</span></code> works because of <em>inheritance</em>, as we will explain later. For now, you can think of it as adding code to the existing class. Note however, that any vectors defined before we extend the class will <em>not</em> be updated. So in the notebook we must remember to define new vector instances when we want to test our code.</p>
+</div>
+<div class="section" id="the-repr-method">
+<h3>The repr method<a class="headerlink" href="#the-repr-method" title="Permalink to this headline">¶</a></h3>
+<p>Our string special method works nicely and can be used to print out vectors in our code. Recall however that when printing sequences such as lists, they will still look quite rough</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;__main__.Vector3D object at 0x7f2b3708d0c0&gt;, &lt;__main__.Vector3D object at 0x7f2b3708d0c0&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The solution to this was to add the <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> method, which should provide the string we can be used to recreate the object if need be. We can add it as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Vector3D(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">vectors</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vectors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Vector3D(0, 4, -2), Vector3D(3, 0, 1)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here the vectors get written out on the form which can be used to recreate the objects with <code class="docutils literal notranslate"><span class="pre">eval</span></code>, which is exactly what we want. However, there is a small trick we can use to make the <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> a bit more general, which is to use the exploit the fact that all classes in Python “know” their own name. Look at the following code</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="si">}</span><span class="s2">)&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So instead of writing the name <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code> directly into the code (known as “hard coding” it), we use the variable <code class="docutils literal notranslate"><span class="pre">self.__class__.__name__</span></code> to refer to the name. This variable exists for any object automatically.</p>
+<p>What is the benefit of doing this? Well, if we later want to change the <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code> name to something else, the method will update automatically. Secondly, and perhaps more important is that we can also use <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code> to create new classes through inheritance, and then we want the new classes to automatically have <code class="docutils literal notranslate"><span class="pre">repr</span></code> referring to their own class, not their parent class.</p>
+</div>
+</div>
+<div class="section" id="vector-arithmetic">
+<h2>Vector Arithmetic<a class="headerlink" href="#vector-arithmetic" title="Permalink to this headline">¶</a></h2>
+<p>The main goal of our <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code> class is to automate vector arithmetic, so let us extend our class to handle this. We start by focusing on addition and subtraction</p>
+<div class="section" id="addition">
+<h3>Addition<a class="headerlink" href="#addition" title="Permalink to this headline">¶</a></h3>
+<p>If we want to be able to add two vectors together, we need to add a method that defines how such an operation is to be handled. We could for example define a <code class="docutils literal notranslate"><span class="pre">add</span></code> method, and write <code class="docutils literal notranslate"><span class="pre">u.add(v)</span></code> to compute <span class="math notranslate nohighlight">\(u + v\)</span>. However, this isn’t very elegant. Instead, we want to be able to write <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">+</span> <span class="pre">v</span></code> in our code. A statement like this uses the <em>binary operator</em> <code class="docutils literal notranslate"><span class="pre">+</span></code> (binary meaning it acts on two variables/objects). For any such operators in Python, there is one or more special methods associated with it. So when you write <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code> Python will automatically interpret this behind the scenes as <code class="docutils literal notranslate"><span class="pre">a.__add__(b)</span></code>. Let us implement this method.</p>
+<p>The result of adding two vectors together is a brand new vectors. Our <code class="docutils literal notranslate"><span class="pre">__add__</span></code> method therefore needs to create and return a new <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code>-object. If this is confusing, imagine the following code snippet</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">w</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;Vector3D&#39; and &#39;Vector3D&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, adding <code class="docutils literal notranslate"><span class="pre">u</span></code> and <code class="docutils literal notranslate"><span class="pre">v</span></code> to define <code class="docutils literal notranslate"><span class="pre">w</span></code> shouldn’t change the values of <code class="docutils literal notranslate"><span class="pre">u</span></code> and <code class="docutils literal notranslate"><span class="pre">v</span></code>, but should instead create a <em>new vector object</em>, which we give the name <code class="docutils literal notranslate"><span class="pre">w</span></code>. For <code class="docutils literal notranslate"><span class="pre">w</span></code> to refer to a new object, it must be created somewhere, and we must do this inside <code class="docutils literal notranslate"><span class="pre">__add__</span></code>. The code therefore can look as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span>
+        <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 0, -2) + (2, 4, 2) = (4, 4, 0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This works just the way it should, and this code is perfectly fine. However, we have again hard-coded in the name of our class in the method implementation itself. It would be <em>even better</em> to do as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 0, -2) + (2, 4, 2) = (4, 4, 0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This makes our code more general and better suited for extending in the future.</p>
+</div>
+<div class="section" id="self-and-other">
+<h3><code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code><a class="headerlink" href="#self-and-other" title="Permalink to this headline">¶</a></h3>
+<p>We just defined our addition method with the statement <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">__add__(self,</span> <span class="pre">other)</span></code>, which can be a bit confusing.  To better understand this, it can be helpful to first understand why there must be two arguments. This is because we are talking about <em>binary</em> addition, meaning two things are added together. When we write <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code>, these two objects are being added, so <code class="docutils literal notranslate"><span class="pre">self</span></code> will refer to <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code> will refer to <code class="docutils literal notranslate"><span class="pre">b</span></code>. This can become more clear if we realize what calls are being made behind the scenes:</p>
+<ol class="simple">
+<li><p>We write: <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code></p></li>
+<li><p>Which Python interprets as: <code class="docutils literal notranslate"><span class="pre">a.__add__(b)</span></code></p></li>
+<li><p>Which in turn actually means: <code class="docutils literal notranslate"><span class="pre">Vector3D.__add__(a,</span> <span class="pre">b)</span></code></p></li>
+</ol>
+<p>So in the method we have written, which has the signature <code class="docutils literal notranslate"><span class="pre">__add__(self,</span> <span class="pre">other)</span></code>, we see that <code class="docutils literal notranslate"><span class="pre">a</span></code> is the self, and <code class="docutils literal notranslate"><span class="pre">b</span></code> is the other.</p>
+<p>The use of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code> can be a tricky concept to wrap your head around, but it is fundamental to mastering classes, so it is very worth the time to take time to properly digest this material.</p>
+<p>Please note however that the names <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code> are <em>not</em> reserved keywords in Python, and it is possible to pick other names for these variables. However, <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code> are very commonly used, and can be considered strict conventions. We therefore recommend you stick to these unless you have a good reason to deviate.</p>
+</div>
+<div class="section" id="vector-scalar-addition">
+<h3>Vector-scalar addition<a class="headerlink" href="#vector-scalar-addition" title="Permalink to this headline">¶</a></h3>
+<p>We have added a method to add two vectors together, so we can write <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">+</span> <span class="pre">v</span></code>. What happens if we try to add a vector and an integer <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">+</span> <span class="pre">1</span></code>?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can an error: <code class="docutils literal notranslate"><span class="pre">AttributeError:</span> <span class="pre">'int'</span> <span class="pre">object</span> <span class="pre">has</span> <span class="pre">no</span> <span class="pre">attribute</span> <span class="pre">'x'</span></code>.</p>
+<p>This error happens because our <code class="docutils literal notranslate"><span class="pre">other</span></code>-object in this case is no longer a <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code>-object, but an <code class="docutils literal notranslate"><span class="pre">int</span></code>. Here we get an <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> because we try to use <code class="docutils literal notranslate"><span class="pre">other.x</span></code>, but the integer has no <code class="docutils literal notranslate"><span class="pre">.x</span></code> attribute to access. In this case, we should actually be checking what type <code class="docutils literal notranslate"><span class="pre">other</span></code> and treat it differently depending on its type. We know <code class="docutils literal notranslate"><span class="pre">self</span></code> is a <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code>, so we don’t need to check this.</p>
+<p>Now, what behavior do we want if actually try to add an integer? We could either say we add the number to each component separately, so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">other</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">other</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">+=</span> <span class="n">other</span>
+</pre></div>
+</div>
+<p>This is how a numpy array works for example. In our case, however, we want the <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code> class to represent a mathematical vector, and for these, adding a vector and a scaler together doesn’t make sense because they have different dimensions. Therefore, we should throw an exception instead. Let us generalize this to throw an error if we try to add anything other than another vector object as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span>
+            <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+            <span class="c1"># or return self.__class__(x, y, z)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cannot add vector and </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">u</span> <span class="o">+</span> <span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="mi">1</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">u</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="mi">1</span><span class="si">}</span><span class="s2"> gives &#39;TypeError: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 0, -2) + (2, 4, 2) = (4, 4, 0)
+(2, 0, -2) + 1 gives &#39;TypeError: cannot add vector and &lt;class &#39;int&#39;&gt;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>You could now argue that one for example should be able to add a <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code> and a list of three numbers, e.g., <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">+</span> <span class="pre">[1,</span> <span class="pre">3,</span> <span class="pre">1]</span></code>. You can try to extend the <code class="docutils literal notranslate"><span class="pre">__add__</span></code> method to account for such a possibility if you want. For now, we move on to other operations.</p>
+</div>
+<div class="section" id="subtraction">
+<h3>Subtraction<a class="headerlink" href="#subtraction" title="Permalink to this headline">¶</a></h3>
+<p>Extending our class to also handle subtraction of vectors is very similar to addition, we simply use the subtraction special method instead (<code class="docutils literal notranslate"><span class="pre">__sub__</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span>
+            <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+            <span class="c1"># or return self.__class__(x, y, z)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cannot subtract vector and </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">u</span> <span class="o">-</span> <span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">u</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="si">}</span><span class="s2"> gives &#39;TypeError: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 0, -2) - (2, 4, 2) = (0, -4, -4)
+(2, 0, -2) - 0.5 gives &#39;TypeError: cannot add vector and &lt;class &#39;float&#39;&gt;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-unary-negative-operator-aka-minus">
+<h3>The unary negative operator (aka “minus”)<a class="headerlink" href="#the-unary-negative-operator-aka-minus" title="Permalink to this headline">¶</a></h3>
+<p>We have now defined and implemented what <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">+</span> <span class="pre">v</span></code> and <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">-</span> <span class="pre">v</span></code> means for our vectors. From mathematics, we know that <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">-</span> <span class="pre">(-v)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">+</span> <span class="pre">v</span></code>, but will Python understand this? If we were doing test-driven development (such as in Project 0), this would be a good example of a new test to add.</p>
+<p>If you try yourself, you will see that the operation <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">-</span> <span class="pre">(-v)</span></code> does <em>not</em> work, but instead throws the following error message</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">TypeError</span><span class="p">:</span> <span class="n">bad</span> <span class="n">operand</span> <span class="nb">type</span> <span class="k">for</span> <span class="n">unary</span> <span class="o">-</span><span class="p">:</span> <span class="s1">&#39;Vector3D&#39;</span>
+</pre></div>
+</div>
+<p>This can be a confusing message, so let us break it down for you.</p>
+<p>In the expression <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">-</span> <span class="pre">(-v)</span></code> we have <em>two</em> subtraction operators, both represented by <code class="docutils literal notranslate"><span class="pre">-</span></code>. The first one is the normal binary subtraction which acts on the two variables <code class="docutils literal notranslate"><span class="pre">u</span></code> and <code class="docutils literal notranslate"><span class="pre">(-v)</span></code>. This corresponds to <code class="docutils literal notranslate"><span class="pre">__sub__</span></code> which we have already added. The second subtraction however, in <code class="docutils literal notranslate"><span class="pre">(-v)</span></code> does not act on two variables and so is instead a <em>unary subtraction</em> (unary meaning “acting on one operand”). This operation is coupled to the special method <code class="docutils literal notranslate"><span class="pre">__neg__</span></code> (for negative). When Python interprets our code it must first resolve the parentheses and compute the negative of <code class="docutils literal notranslate"><span class="pre">v</span></code>, and we have not defined how this is done for our class, which is why we get the error message “bad operand type for unary -“.</p>
+<p>Let us now define the <code class="docutils literal notranslate"><span class="pre">__neg__</span></code> special method. As this is a unary operator, we only take in the <code class="docutils literal notranslate"><span class="pre">self</span></code> argument, and skip the <code class="docutils literal notranslate"><span class="pre">other</span></code> (as there is no “other” vector in this case)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+        <span class="c1"># or return self.__class__(-self.x, -self.y, -self.z)</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> - (-</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">u</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 0, -2) - (-(2, 4, 2)) = (4, 4, 0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code now works. First the <code class="docutils literal notranslate"><span class="pre">__neg__</span></code> method is used to compute <code class="docutils literal notranslate"><span class="pre">(-v)</span></code>, then <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">-</span> <span class="pre">(-v)</span></code> is computed using <code class="docutils literal notranslate"><span class="pre">__sub__</span></code>.</p>
+<p>Another small detail you can note here is that if we had implemented our <code class="docutils literal notranslate"><span class="pre">__neg__</span></code> method <em>first</em>, then we could have relied on this when implementing <code class="docutils literal notranslate"><span class="pre">__sub__</span></code>. Check this out:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cannot subtract vector and </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">u</span> <span class="o">-</span> <span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 0, -2) - (2, 4, 2) = (0, -4, -4)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This <code class="docutils literal notranslate"><span class="pre">__sub__</span></code> method behaves just as before, but the implementation now relies on <code class="docutils literal notranslate"><span class="pre">__neg__</span></code> (and <code class="docutils literal notranslate"><span class="pre">__add__</span></code>) by saying that <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">-</span> <span class="pre">v</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">+</span> <span class="pre">(-v)</span></code>. Tricks like these can be nice when implementing arithmetic methods.</p>
+</div>
+<div class="section" id="multiplying-vectors">
+<h3>Multiplying vectors<a class="headerlink" href="#multiplying-vectors" title="Permalink to this headline">¶</a></h3>
+<p>We now want to add functionality for multiplying vectors. For 3D vectors, several type of multiplication exists. We want to be able to do both the dot product, and the cross product. Let us implement these as normal methods (not special methods) first. Just to remind you, the two multiplications are defined as follows</p>
+<div class="math notranslate nohighlight">
+\[u \cdot v = (x_1, y_1, z_1) \cdot (x_2, y_2, z_2) = x_1x_2 + y_1y_2 + z_1z_2.\]</div>
+<div class="math notranslate nohighlight">
+\[u \times v = (x_1, y_1, z_1) \times (x_2, y_2, z_2) = (y_1z_2 - z_1y_2, z_1x_2 - x_1z_2, x_1y_2 - y_1x_2).\]</div>
+<p>An important point here is that the dot-product should return a number (i.e., <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code>), while the cross product should return a new vector object. The two methods can look as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span>
+
+    <span class="k">def</span> <span class="nf">cross</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span>
+        <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now use <code class="docutils literal notranslate"><span class="pre">u.dot(v)</span></code> and <code class="docutils literal notranslate"><span class="pre">u.cross(v)</span></code> in our code, which is quite a nice syntax as it spells our exactly what kind of vector multiplication we are computing. We can of course <em>also</em> add them as special methods if we want, in fact it is quite easy because we can simply call the <code class="docutils literal notranslate"><span class="pre">dot</span></code> and <code class="docutils literal notranslate"><span class="pre">cross</span></code> methods (this is called “aliasing”)</p>
+<p>Let us decide that we want <code class="docutils literal notranslate"><span class="pre">u*v</span></code> to be interpreted as the dot product. This multiplication operator is associated with the special method <code class="docutils literal notranslate"><span class="pre">__mul__</span></code>. So we can write</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Interpret u*v as the dot product&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have now “used up” the asterisk multiplication operator in Python, what syntax can we then choose for our cross product? Well, one option is to use the code syntax <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">&#64;</span> <span class="pre">v</span></code> to mean the cross product. You might not have seen (or used) the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator in Python code before, but it is a binary operator associated with the special method <code class="docutils literal notranslate"><span class="pre">__matmul__</span></code> (short for “matrix multiplication). It actually isn’t used by any of the built in Python objects, but it is available for mathematics where we want to have access to more operators. (Note that for numpy arrays, <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> is implemented, but will correspond to the dot-product for 1D-arrays, while <code class="docutils literal notranslate"><span class="pre">*</span></code> means component-wise multiplication).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__matmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Interpret u @ v as the cross product&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> * </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">u</span> <span class="o">*</span> <span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> @ </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">u</span> <span class="o">@</span> <span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, -1, 0) * (1, 4, 2) = -3
+(1, -1, 0) @ (1, 4, 2) = (-2, -2, 5)
+</pre></div>
+</div>
+</div>
+</div>
+<p>A useful property of the dot product is that two vectors are perpendicular if, and only if, the dot product is equal to zero (<span class="math notranslate nohighlight">\(u \cdot v = 0 \Leftrightarrow u \perp v\)</span>). Let us therefore add a <code class="docutils literal notranslate"><span class="pre">perpendicular</span></code> method, which checks if two vectors are perpendicular</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">perpendicular</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span> <span class="o">*</span> <span class="n">other</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">perpendicular</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we use <code class="docutils literal notranslate"><span class="pre">np.isclose</span></code> because the coordinates of the vectors can easily be <code class="docutils literal notranslate"><span class="pre">floats</span></code>, and comparing floating points to zero is a common pitfall due to floating point errors.</p>
+<p>From linear algebra you can prove that if you define a vector as the cross product of two vectors, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+w = u \times v
+\]</div>
+<p>Then the new vector <span class="math notranslate nohighlight">\(w\)</span> will be perpendicular to both <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>. This can be used to test our code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">u</span> <span class="o">@</span> <span class="n">v</span>
+
+<span class="c1"># Printing answer</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is u ⊥ v? </span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">perpendicular</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is w ⊥ u? </span><span class="si">{</span><span class="n">w</span><span class="o">.</span><span class="n">perpendicular</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is w ⊥ v? </span><span class="si">{</span><span class="n">w</span><span class="o">.</span><span class="n">perpendicular</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Asserting answer</span>
+<span class="k">assert</span> <span class="n">w</span><span class="o">.</span><span class="n">perpendicular</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">w</span><span class="o">.</span><span class="n">perpendicular</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Is u ⊥ v? False
+Is w ⊥ u? True
+Is w ⊥ v? True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="scalar-multiplication">
+<h3>Scalar multiplication<a class="headerlink" href="#scalar-multiplication" title="Permalink to this headline">¶</a></h3>
+<p>We have now defined vector-vector multiplication, but it is also possible to multiply vectors by scalers (i.e., numbers). We can for example compute <span class="math notranslate nohighlight">\(3u\)</span>, which corresponds to multiplying each component of the vector by the number 3 separately.</p>
+<p>We now want to be able to write <code class="docutils literal notranslate"><span class="pre">3*u</span></code> or <code class="docutils literal notranslate"><span class="pre">u*3</span></code> in our code to capture this mathematical operation. Let us first see what happens if we try this with our current code</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [18],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for *: &#39;int&#39; and &#39;Vector3D&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">*</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span> <span class="ow">and</span> <span class="s1">&#39;Vector3D&#39;</span>
+</pre></div>
+</div>
+<p>This error tells us multiplication isn’t defined between integer and vector objects. We is a bit interesting is what happens if we flip the operators, we get a different error message!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [19],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="nn">Input In [14],</span> in <span class="ni">Vector3D.__mul__</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="sd">&quot;&quot;&quot;Interpret u*v as the dot product&quot;&quot;&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+<span class="nn">Input In [13],</span> in <span class="ni">Vector3D.dot</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;x&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;x&#39;</span>
+</pre></div>
+</div>
+<p>The second error is similar to the one we got for addition earlier. When we write <code class="docutils literal notranslate"><span class="pre">u*3</span></code>, this is interpreted as <code class="docutils literal notranslate"><span class="pre">u.__mul__(3)</span></code>, which in turn is <code class="docutils literal notranslate"><span class="pre">Vector3D.__mul__(u,</span> <span class="pre">3)</span></code>, and so <code class="docutils literal notranslate"><span class="pre">self</span></code> is <code class="docutils literal notranslate"><span class="pre">u</span></code> is <code class="docutils literal notranslate"><span class="pre">other</span></code>. Because we defined <code class="docutils literal notranslate"><span class="pre">__mul__</span></code> to be the dot-product we try to use <code class="docutils literal notranslate"><span class="pre">other.x</span></code> which is then <code class="docutils literal notranslate"><span class="pre">3.x</span></code> which doesn’t exist. Let us fix this first, and then get back to the first error message after.</p>
+<p>To fix this, we should rewrite our <code class="docutils literal notranslate"><span class="pre">__mul__</span></code>-method to do different things depending on if the <code class="docutils literal notranslate"><span class="pre">other</span></code> variable is a vector or a scalar. In programming, this is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Function_overloading"><em>function overloading</em></a>, which is when we define a function or method to do different things depending on context. In this case we overload the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator to mean either vector-vector multiplication or vector-scalar multiplication, depending on context.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">):</span>
+            <span class="c1"># Vector-vector multiplication</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="c1"># Vector-scalar multiplication</span>
+            <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">*</span> <span class="n">other</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Unknown</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cannot multiply vector and </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;u = </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;3*u = </span><span class="si">{</span><span class="n">u</span><span class="o">*</span><span class="mi">3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;u*u = </span><span class="si">{</span><span class="n">u</span><span class="o">*</span><span class="n">u</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u = (1, -1, 0)
+3*u = (3, -3, 0)
+u*u = 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now see that we can compute <code class="docutils literal notranslate"><span class="pre">u*3</span></code>, and we also check that we can compute the dot-product as before. You should always recheck that you haven’t broken old functionality when you go back and change a function or method—if you have implemented proper tests, this will automatically get checked when you run <code class="docutils literal notranslate"><span class="pre">pytest</span></code>. Here we have to do it manually.</p>
+<p>From our implementation of <code class="docutils literal notranslate"><span class="pre">__mul__</span></code>, we now check the second operand and choose the right behavior from this. But what about for <code class="docutils literal notranslate"><span class="pre">3*u</span></code>? If you now try, this still throws a <code class="docutils literal notranslate"><span class="pre">TypeError:</span> <span class="pre">unsupported</span> <span class="pre">operand</span> <span class="pre">type(s)</span> <span class="pre">for</span> <span class="pre">*:</span> <span class="pre">for</span> <span class="pre">'int'</span> <span class="pre">and</span> <span class="pre">'Vector3D'</span></code>. So <code class="docutils literal notranslate"><span class="pre">u*3</span></code> does work, but <code class="docutils literal notranslate"><span class="pre">3*u</span></code> does not. Let us try to understand why one works and the other fails. When we write these statements, they are interpreted as follows</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">3*u</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">3.__mul__(u)</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">int.__mul__(3,</span> <span class="pre">u)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">u*3</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">u.__mul__(3)</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Vector3D.__mul__(u,</span> <span class="pre">3)</span></code></p></li>
+</ul>
+<p>So, the major point is that it is the operand to the left of the multiplication sign (<code class="docutils literal notranslate"><span class="pre">*</span></code>) which decides which class’s <code class="docutils literal notranslate"><span class="pre">__mul__</span></code> method is called. So in <code class="docutils literal notranslate"><span class="pre">3*u</span></code> it isn’t our method that is used at all, but <code class="docutils literal notranslate"><span class="pre">int</span></code>’s. And the built-in <code class="docutils literal notranslate"><span class="pre">int</span></code> hasn’t been written to interact with our custom class.</p>
+<p>Mathematically speaking, it is much more common to write <span class="math notranslate nohighlight">\(3u\)</span> than <span class="math notranslate nohighlight">\(u\cdot 3\)</span>, and so saying we should just write <code class="docutils literal notranslate"><span class="pre">u*3</span></code> in our code is not satisfactory. So what can we do? It turns out this problem is so common that Python has a built-in work around in the form of the special method called <code class="docutils literal notranslate"><span class="pre">__rmul__</span></code> (for right multiply). This method is called automatically if the first operands <code class="docutils literal notranslate"><span class="pre">__mul__</span></code> throws an error. So if we implement <code class="docutils literal notranslate"><span class="pre">__rmul__</span></code> we get the following cascade</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">3*u</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">3.__mul__(u)</span></code> -&gt; Throws an error -&gt; <code class="docutils literal notranslate"><span class="pre">u.__rmul__(3)</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Vector3D.__rmul__(u,</span> <span class="pre">3)</span></code></p></li>
+</ul>
+<p>Effectively, <code class="docutils literal notranslate"><span class="pre">__rmul__</span></code> can be thought of as a “backup” method. One important thing to notice in this cascade is that the operands effectively get flipped when this backup is used. To implement <code class="docutils literal notranslate"><span class="pre">__rmul__</span></code> we can therefore simply use the <code class="docutils literal notranslate"><span class="pre">__mul__</span></code> we already implemented as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">other</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8, -12, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This brings up an important point about operators in programmering. While some operators are generally considered commutative in mathematics, meaning the order can be changed without changing the result (<span class="math notranslate nohighlight">\(a+b = b+a\)</span>), we see that this is not the case in Python. We could for example add different function in the <code class="docutils literal notranslate"><span class="pre">__add__</span></code>-method and in the <code class="docutils literal notranslate"><span class="pre">__radd__</span></code> method, and then <code class="docutils literal notranslate"><span class="pre">a+b</span></code> and <code class="docutils literal notranslate"><span class="pre">b+a</span></code> would behave differently. In fact, you might already know several examples of this, for example adding strings or lists together:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6]
+[4, 5, 6, 1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-properties-to-our-class-length">
+<h3>Adding ‘properties’ to our class (Length)<a class="headerlink" href="#adding-properties-to-our-class-length" title="Permalink to this headline">¶</a></h3>
+<p>Often we are interested in the length of a vector, or we want a unit vector with the same orientation as a given vector, let us add this as well. Let us now use Python-properties to do this, which we introduced in the previous lecture. The main point was that there were decorators we could use (<code class="docutils literal notranslate"><span class="pre">&#64;property</span></code>).</p>
+<p>A quick note: In Python there is a length special method (<code class="docutils literal notranslate"><span class="pre">__len__</span></code>), that is called by Python when we write <code class="docutils literal notranslate"><span class="pre">len(u)</span></code>. This is typically meant for sequences such as lists where the length equals the number of elements. Because of this, the <code class="docutils literal notranslate"><span class="pre">__len__</span></code> method <em>has</em> to return an integer. For our case, a general vector often has a decimal length, and so the <code class="docutils literal notranslate"><span class="pre">__len__</span></code> method wouldn’t work. Which is why we use a property instead.</p>
+<p>Let us first add the length property. To compute the length of a vector we first take the dot-product of the vector with itself and then take the square root, i.e., <span class="math notranslate nohighlight">\(|u| = \sqrt{u \cdot u}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span> <span class="o">*</span> <span class="bp">self</span><span class="p">)</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> has a length of </span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">length</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, -2, 1) has a length of 3.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here the length-property is very easy to add, because we have already defined the dot product for a vector in <code class="docutils literal notranslate"><span class="pre">__mul__</span></code>, so we can simply write <code class="docutils literal notranslate"><span class="pre">sqrt(self*self)</span></code> and the dot product is computed. Recall that the <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> makes it so the method looks like a <code class="docutils literal notranslate"><span class="pre">float</span></code> variable from the outside, so we write <code class="docutils literal notranslate"><span class="pre">u.length</span></code> instead of <code class="docutils literal notranslate"><span class="pre">u.length()</span></code>.</p>
+<p>Let us now make a <code class="docutils literal notranslate"><span class="pre">&#64;length.setter</span></code> method as well, so that we can <em>scale</em> the length of the vector. When we say we scale a vector we typically mean shifting all three vectors so that the length changes while the orientation stays the same. We can therefore scale all three components by the same ratio</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span> <span class="o">*</span> <span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@length</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_length</span><span class="p">):</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="n">new_length</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*=</span> <span class="n">ratio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*=</span> <span class="n">ratio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">*=</span> <span class="n">ratio</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> has a length of </span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">length</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Rescale u</span>
+<span class="n">u</span><span class="o">.</span><span class="n">length</span> <span class="o">*=</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> has a length of </span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">length</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, -2, 1) has a length of 3.0
+(4, -4, 2) has a length of 6.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>So we see we can double the length of the vector, which automatically scales each component the appropriate amount.</p>
+<p><strong>Unit vector</strong></p>
+<p>The last functionality we want to add is a method which automatically finds the unit vector for a given vector. So if <code class="docutils literal notranslate"><span class="pre">u</span></code> is a vector, <code class="docutils literal notranslate"><span class="pre">u.unit()</span></code> will be a new vector that points in the same direction as <code class="docutils literal notranslate"><span class="pre">u</span></code>, but has a length of 1.</p>
+<p>When we make the <code class="docutils literal notranslate"><span class="pre">.unit</span></code> method it should first create a new <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code> object, as the original should be unchanged. If we make this new vector by copying the original, we know it points in the right direction, so we can then just scale the length. We can implement this as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+        <span class="n">new</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">new</span>
+
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;u = </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> has a length of </span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">length</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;w = </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> has a length of </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">length</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u = (2, -2, 1) has a length of 3.0
+w = (0.666667, -0.666667, 0.333333) has a length of 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we create a copy by writing <code class="docutils literal notranslate"><span class="pre">Vector3D(self.x,</span> <span class="pre">self.y,</span> <span class="pre">self.z)</span></code>, which is straight-forward, and works. But there is a much simpler way to create a copy, which is to lean on our already defined <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> method. Recall that <code class="docutils literal notranslate"><span class="pre">repr(u)</span></code> should give a string such that <code class="docutils literal notranslate"><span class="pre">eval(repr(u))</span></code> should recreate the original. However, note that the “recreated” vector will be a new object, but with identical values, i.e., a copy of the original</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;u = </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;v = </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Are u and v the same object? </span><span class="si">{</span><span class="n">u</span> <span class="ow">is</span> <span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u = (5, -3, 5)
+v = (5, -3, 5)
+Are u and v the same object? False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">is</span> <span class="pre">v</span></code> is an operation which checks whether two objects are the <em>exact</em> same object in memory. And here we get <code class="docutils literal notranslate"><span class="pre">False</span></code>, as expected. In this case, making a copy is easy, because it is easy to make a proper <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> function. For more complex classes and objects, this gets a bit trickier, then the <code class="docutils literal notranslate"><span class="pre">copy</span></code> package might help. Here we just showed how to make the copy, so let us rewrite the <code class="docutils literal notranslate"><span class="pre">.unit</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="n">new</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;u = </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2"> has a length of </span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">length</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;v = </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> has a length of </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">length</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u = (2, -2, 1) has a length of 3.0
+v = (0.666667, -0.666667, 0.333333) has a length of 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="other-special-methods">
+<h4>Other Special methods<a class="headerlink" href="#other-special-methods" title="Permalink to this headline">¶</a></h4>
+<p>Here we have shown different special methods, but there are plenty left to cover. Virtually any possible behavior of an object can be decided through good use of special methods. For a more detailed walkthrough, see <a class="reference external" href="https://rszalski.github.io/magicmethods/">this guide</a>.</p>
+<p>Here are some that might be of special interest:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__eq__</span></code>, for defining when two objects should be considered equal (What does <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></code> mean?).</p></li>
+<li><p>You can also define <code class="docutils literal notranslate"><span class="pre">__lt__</span></code> (less than, <span class="math notranslate nohighlight">\(&lt;\)</span>), <code class="docutils literal notranslate"><span class="pre">le</span></code> (less or equal, <span class="math notranslate nohighlight">\(\le\)</span>) and so on. If you implement all the six comparison operators it is typically called <em>rich comparisons</em> and it will make your objects automatically sortable with <code class="docutils literal notranslate"><span class="pre">sort()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__bool__</span></code> defines what <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x:</span></code> means for our object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__abs__</span></code> defines what <code class="docutils literal notranslate"><span class="pre">abs(x)</span></code> means</p></li>
+<li><p>We can also implement <code class="docutils literal notranslate"><span class="pre">lt</span></code>, <code class="docutils literal notranslate"><span class="pre">le</span></code>, <code class="docutils literal notranslate"><span class="pre">gt</span></code>, <code class="docutils literal notranslate"><span class="pre">ge</span></code>, <code class="docutils literal notranslate"><span class="pre">ne</span></code> for <span class="math notranslate nohighlight">\(\lt, \le, \gt, \ge, \ne\)</span>. Implementing all of these is called <em>rich comparisons</em>, and automatically makes our objects sortable with <code class="docutils literal notranslate"><span class="pre">sort()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__bool__</span></code> defines what <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x:</span></code> means for our object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__abs__</span></code>, defines what <code class="docutils literal notranslate"><span class="pre">abs(x)</span></code> means. For <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code> we could for example define it so that <code class="docutils literal notranslate"><span class="pre">abs(u)</span></code> returns <code class="docutils literal notranslate"><span class="pre">u.length</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> and <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code> can be used to make our object indexable, i.e., define what <code class="docutils literal notranslate"><span class="pre">x[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">x[1]</span></code> and so on means</p></li>
+<li><p>(<strong>Advanced</strong>) <code class="docutils literal notranslate"><span class="pre">__hash__</span></code> makes it possible to compute a <a class="reference external" href="https://www.programiz.com/python-programming/methods/built-in/hash">hash value</a> from your object with <code class="docutils literal notranslate"><span class="pre">hash(u)</span></code>. This is needed if you want to use your object as a key in a dictionary.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="short-introduction-to-inheritance">
+<h2>Short introduction to inheritance<a class="headerlink" href="#short-introduction-to-inheritance" title="Permalink to this headline">¶</a></h2>
+<p>For the last portion of this lecture, we will give a very brief introduction to <em>inheritance</em>, which we will come back to in more detail next week. For now we will just one simple example.</p>
+<p>Inheritance is a term we use to describe how we can use one class to build another. In Python we let a class inherit from another when we define it. When we do this, the <em>parent</em> class gives its functionality, i.e., all its attributes to the newly created class, typically called the <em>daughter</em> class. Instead of saying parent/child, one can also say superclass and subclass.</p>
+<p>When we create a class through inheritance we start with a class that has all the attributes of its parent, but we can extend this by implementing new methods to add on, or we can overwrite existing methods to change how they work. In general we make a subclass to specialize a class. So the parent/superclass will be a more <em>general</em> case, while the subclass will be more specialized/specific.</p>
+<p>Let us look at a somewhat silly example, taken from the mobile game Pokémon Go. If you’ve haven’t played that game, the example is hopefully still easy to follow. Either way, the details about the specific calculations we implement are not the important point here, try to focus more about the big picture, and focus on how we implement the class and use inheritance in this case.</p>
+<div class="section" id="example-pokemon-go">
+<h3>Example: Pokémon Go<a class="headerlink" href="#example-pokemon-go" title="Permalink to this headline">¶</a></h3>
+<p>In the game Pokémon Go, the goal is for the players to catch different <em>Pokémons</em> (pocket monsters). Many different types of Pokémon exist, some common, some rare. Each Pokémon you catch have different stats and, at least in principle, players want to catch Pokémons with good stats, i.e., high numbers.</p>
+<p>As you walk around, the game generates random Pokémon that can be found, and it also randomizes its stats. And we will now implement a code that replicates this.</p>
+<p>The stats of a specific Pokémon is dependent on its species/type, because each species has specific base stats. In addition each individual Pokémon caught has a randomized bonus to its stat, called the <em>individual value</em>. These individual values are random numbers between 0 and 15 for all pokemon, regardless of species.</p>
+<p>Because some properties vary by species, and some do not, we want to use inheritance. We now want to create a <code class="docutils literal notranslate"><span class="pre">Pokemon</span></code> superclass that has all functionality that is general to all <code class="docutils literal notranslate"><span class="pre">Pokemon</span></code>, and then we can implement specific species as subclasses afterwards.</p>
+<p>We now make the <code class="docutils literal notranslate"><span class="pre">Pokemon</span></code> class. Each time a new pokemon is generated, we must draw its individual values randomly. There are three separate stats in the game: <code class="docutils literal notranslate"><span class="pre">ATK</span></code>, <code class="docutils literal notranslate"><span class="pre">DEF</span></code> and <code class="docutils literal notranslate"><span class="pre">STA</span></code>. We implement these as properties.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="k">class</span> <span class="nc">Pokemon</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">IV_ATK</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">IV_STA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">IV_DEF</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have no implemented a general constructor that will work for all Pokémon. When a new pokemon is created, three random stats are drawn from the range <span class="math notranslate nohighlight">\([0, 15]\)</span>. Let us also add properties to find the total ATK, DEF and STA stats of a given Pokémon. We also add a <code class="docutils literal notranslate"><span class="pre">__str__</span></code> method for pretty printing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pokemon</span><span class="p">(</span><span class="n">Pokemon</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ATK</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">BASE_ATK</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">IV_ATK</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">DEF</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">BASE_DEF</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">IV_DEF</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">STA</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">BASE_STA</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">IV_STA</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ATK</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">DEF</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">STA</span><span class="si">}</span><span class="s2">)&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Two things to notice here are that</p>
+<ol class="simple">
+<li><p>We use the variables <code class="docutils literal notranslate"><span class="pre">self.BASE_ATK</span></code> and so on. These are not defined anywhere! If you thus try to create a general “Pokemon” and check its stats, you will get an error message. This is intentional, as the general <code class="docutils literal notranslate"><span class="pre">Pokemon</span></code> class is not created to be used directly, only to be inherited from. Such classes are quite common in programming and are typically called <em>abstract classes</em></p></li>
+<li><p>Note that we in the <code class="docutils literal notranslate"><span class="pre">str</span></code> special method use the <code class="docutils literal notranslate"><span class="pre">self.__class__.__name__</span></code> variable. This will make it so that the <code class="docutils literal notranslate"><span class="pre">str</span></code> method of any class who inherits from <code class="docutils literal notranslate"><span class="pre">Pokemon</span></code> automatically updates it <code class="docutils literal notranslate"><span class="pre">str</span></code> method. Which is nice.</p></li>
+</ol>
+<p>Now, let us implement a few specific Pokemon types. Lets start with the two most iconic ones:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pikachu</span><span class="p">(</span><span class="n">Pokemon</span><span class="p">):</span>
+    <span class="n">BASE_ATK</span> <span class="o">=</span> <span class="mi">112</span>
+    <span class="n">BASE_DEF</span> <span class="o">=</span> <span class="mi">101</span>
+    <span class="n">BASE_STA</span> <span class="o">=</span> <span class="mi">70</span>
+
+
+<span class="k">class</span> <span class="nc">Charizard</span><span class="p">(</span><span class="n">Pokemon</span><span class="p">):</span>
+    <span class="n">BASE_ATK</span> <span class="o">=</span> <span class="mi">223</span>
+    <span class="n">BASE_DEF</span> <span class="o">=</span> <span class="mi">176</span>
+    <span class="n">BASE_STA</span> <span class="o">=</span> <span class="mi">156</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we write <code class="docutils literal notranslate"><span class="pre">Pikachu(Pokemon)</span></code>, this syntax means the class is inheriting from the class within the parentheses and becomes a subclass. Thus <code class="docutils literal notranslate"><span class="pre">Pikachu</span></code> is a subclass of <code class="docutils literal notranslate"><span class="pre">Pokemon</span></code>, i.e., a specialized sub-case. The same is true for <code class="docutils literal notranslate"><span class="pre">Charizard</span></code>. In either case we do not define any new methods for the class, but instead define the base stats as <em>class attributes</em> because they are the same for all pikachus (more on class attributes next week).</p>
+<p>Now we have very easily made two distinct species of Pokemon, without having to re-implement their general behavior. Inheritance has simplified our overall code considerably.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">pokemon</span> <span class="o">=</span> <span class="n">Pikachu</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pokemon</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">pokemon</span> <span class="o">=</span> <span class="n">Charizard</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pokemon</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pikachu(118, 110, 76)
+Pikachu(114, 111, 76)
+Pikachu(122, 108, 82)
+Pikachu(114, 113, 77)
+Pikachu(121, 116, 81)
+
+Charizard(227, 187, 165)
+Charizard(227, 179, 169)
+Charizard(236, 181, 160)
+Charizard(227, 187, 166)
+Charizard(230, 191, 169)
+</pre></div>
+</div>
+</div>
+</div>
+<p>One last detail we want to mention is that a subclass is considered a specialized cased of its superclass. In this case, <code class="docutils literal notranslate"><span class="pre">Pikachu</span></code> and <code class="docutils literal notranslate"><span class="pre">Charizard</span></code> are specific examples of Pokémons. We can check that they are indeed considered to be Pokémons as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pikachu</span> <span class="o">=</span> <span class="n">Pikachu</span><span class="p">()</span>
+<span class="n">charizard</span> <span class="o">=</span> <span class="n">Charizard</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is Pikachu a Pokemon? </span><span class="si">{</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">pikachu</span><span class="p">,</span> <span class="n">Pokemon</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is Charizard a Pokemon? </span><span class="si">{</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">pikachu</span><span class="p">,</span> <span class="n">Pokemon</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is Pikachu a Charizard? </span><span class="si">{</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">pikachu</span><span class="p">,</span> <span class="n">Charizard</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Is Pikachu a Pokemon? True
+Is Charizard a Pokemon? True
+Is Pikachu a Charizard? False
+</pre></div>
+</div>
+</div>
+</div>
+<p>That was it for this example. The point was to illustrate how the goal of inheritance is to put all the general behavior in the superclass, and then only implement the <em>specifics</em> in the subclasses to specialize them.</p>
+<p>If you are interested in Pokemon Go, you can now extend the Pokemon class to for example calculate the CP, tier and so on.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "finsberg/IN1910_H22",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/lectures/python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="intro_to_oop.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to Object-Oriented Programming</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="more_oop.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">More on Object-Oriented Programming</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jonas van den Brink, Henrik Finsberg, Kristian G. Hustad, and Joakim Sundnes<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

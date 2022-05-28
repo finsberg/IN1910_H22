@@ -1,0 +1,1434 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dictionary &#8212; IN1910 - Programming with Scientific Applications</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Installation instructions" href="../setup/setup.html" />
+    <link rel="prev" title="Getting help or giving feedback" href="help.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IN1910 - Programming with Scientific Applications</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   IN1910 – Programming with Scientific Applications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  General information
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview of lectures and exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="curriculum.html">
+   Curriculum
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="motivation.html">
+   The motivation behind IN1910
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exam.html">
+   Project Work, Grading and Exam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="help.html">
+   Getting help or giving feedback
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Dictionary
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Setting up your computer for IN1910
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup/setup.html">
+   Installation instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup/cpp_compiler.html">
+   Installing a C++ compiler
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lecture videos
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../videos/videos_H21.html">
+   Lecture videos from H21
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../videos/videos_H20.html">
+   Lecture videos from H20
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../videos/videos_H19.html">
+   Lecture videos from H19
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/python/python_intro.html">
+   A quick Python refresher
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/python/python_oop.html">
+   Object-oriented programming in Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/python/intro_to_oop.html">
+     Introduction to Object-Oriented Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/python/classes_methods_decorators.html">
+     Creating classes in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/python/more_oop.html">
+     More on Object-Oriented Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/git/version_control_with_git.html">
+   Version Control with Git
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/testing_codestyle/testing_codestyle.html">
+   Testing and Code style
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/testing_codestyle/writing_functioning_code.html">
+     Writing Reliable Software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/testing_codestyle/codestyle_and_docstrings.html">
+     Code Style and Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/testing_codestyle/type_annotations.html">
+     Type annotations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/cpp/cpp.html">
+   C++
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/intro_to_cpp.html">
+     An introduction to C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/arrays_and_pointers.html">
+     Arrays, Memory and Pointers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/oop_in_cpp.html">
+     Object-oriented Programming in C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/dynamic_allocation.html">
+     More on pointers and arrays and dynamic allocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/cpptools.html">
+     C++ tips and tricks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/arraylist.html">
+     Dynamic Arrays, aka, Array Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/linked_lists.html">
+     Linked Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/algorithm_analysis.html">
+     Algorithm Analysis and Big Oh Notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/linkedlists_vs_dynamicarrays.html">
+     Comparing Linked Lists and Dynamic Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/cpp/sorting.html">
+     Sorting Algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/stochastic_processes/stochastic_processes.html">
+   Stochastic processes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/stochastic_processes/random_number_generators.html">
+     Random Number Generators and Seeding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/stochastic_processes/using_random_numbers.html">
+     Using Random Numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/stochastic_processes/random_walks_and_markov_processes.html">
+     Random Walks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/stochastic_processes/solving_the_1D_diffusion_equation.html">
+     Solving the 1D Diffusion Equation using Finite Differences
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/stochastic_processes/markov_chains.html">
+     Markov processes and Markov chains
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/optimization/optimization.html">
+   Software optimization and parallelism
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/optimization/software_optimization.html">
+     Software Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/optimization/optimization_and_mixed_programming.html">
+     Optimization and Mixed Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lectures/optimization/parallel_programming.html">
+     Parallel Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/summary/course_summary.html">
+   Course Summary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <a href="https://www.uio.no/studier/emner/matnat/ifi/IN1910/h22/index.html">Course homepage at UiO</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/info/dictionary.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/finsberg/IN1910_H22/issues/new?title=Issue%20on%20page%20%2Fdocs/info/dictionary.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#english-norwegian">
+   English-Norwegian
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#norwegian-english">
+   Norwegian-English
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Dictionary</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#english-norwegian">
+   English-Norwegian
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#norwegian-english">
+   Norwegian-English
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="dictionary">
+<h1>Dictionary<a class="headerlink" href="#dictionary" title="Permalink to this headline">¶</a></h1>
+<p>Here you will find norwegian (bokmål) and english translations of common words used in this course</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you find a word that you want to add to the dictionary please send an email to <a class="reference external" href="mailto:henriknf&#37;&#52;&#48;simula&#46;no?subject=Ordliste-IN1910">henriknf<span>&#64;</span>simula<span>&#46;</span>no</a></p>
+</div>
+<div class="section" id="english-norwegian">
+<h2>English-Norwegian<a class="headerlink" href="#english-norwegian" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>English</strong></p></th>
+<th class="head"><p><strong>Norwegian</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CPU</p></td>
+<td><p>sentralenhet</p></td>
+</tr>
+<tr class="row-odd"><td><p>abstraction</p></td>
+<td><p>abstraksjon</p></td>
+</tr>
+<tr class="row-even"><td><p>algorithm</p></td>
+<td><p>algoritme</p></td>
+</tr>
+<tr class="row-odd"><td><p>allocate</p></td>
+<td><p>allokere</p></td>
+</tr>
+<tr class="row-even"><td><p>amend</p></td>
+<td><p>tilføye</p></td>
+</tr>
+<tr class="row-odd"><td><p>argument</p></td>
+<td><p>argument</p></td>
+</tr>
+<tr class="row-even"><td><p>array</p></td>
+<td><p>rekke</p></td>
+</tr>
+<tr class="row-odd"><td><p>assign</p></td>
+<td><p>tildele</p></td>
+</tr>
+<tr class="row-even"><td><p>attribute</p></td>
+<td><p>attributt</p></td>
+</tr>
+<tr class="row-odd"><td><p>benchmark</p></td>
+<td><p>ytelsestest</p></td>
+</tr>
+<tr class="row-even"><td><p>branch</p></td>
+<td><p>gren</p></td>
+</tr>
+<tr class="row-odd"><td><p>breakpoint</p></td>
+<td><p>pause punkt</p></td>
+</tr>
+<tr class="row-even"><td><p>bug</p></td>
+<td><p>feil</p></td>
+</tr>
+<tr class="row-odd"><td><p>cache</p></td>
+<td><p>hurtiglager</p></td>
+</tr>
+<tr class="row-even"><td><p>calculate</p></td>
+<td><p>beregne</p></td>
+</tr>
+<tr class="row-odd"><td><p>calculate</p></td>
+<td><p>break point</p></td>
+</tr>
+<tr class="row-even"><td><p>callable</p></td>
+<td><p>kallbar</p></td>
+</tr>
+<tr class="row-odd"><td><p>cancel</p></td>
+<td><p>avbryte</p></td>
+</tr>
+<tr class="row-even"><td><p>character</p></td>
+<td><p>tegn</p></td>
+</tr>
+<tr class="row-odd"><td><p>class</p></td>
+<td><p>klasse</p></td>
+</tr>
+<tr class="row-even"><td><p>clone</p></td>
+<td><p>klone</p></td>
+</tr>
+<tr class="row-odd"><td><p>close</p></td>
+<td><p>lukke</p></td>
+</tr>
+<tr class="row-even"><td><p>command</p></td>
+<td><p>kompilator</p></td>
+</tr>
+<tr class="row-odd"><td><p>command line interface (CLI)</p></td>
+<td><p>kommandolinje grensesnitt</p></td>
+</tr>
+<tr class="row-even"><td><p>commit</p></td>
+<td><p>utføre</p></td>
+</tr>
+<tr class="row-odd"><td><p>compiler</p></td>
+<td><p>kompilator</p></td>
+</tr>
+<tr class="row-even"><td><p>compiling</p></td>
+<td><p>kompilere</p></td>
+</tr>
+<tr class="row-odd"><td><p>complexity</p></td>
+<td><p>kompleksitet</p></td>
+</tr>
+<tr class="row-even"><td><p>compute</p></td>
+<td><p>break point</p></td>
+</tr>
+<tr class="row-odd"><td><p>computer science</p></td>
+<td><p>datavitenskap</p></td>
+</tr>
+<tr class="row-even"><td><p>concatenate</p></td>
+<td><p>slå sammen</p></td>
+</tr>
+<tr class="row-odd"><td><p>condition</p></td>
+<td><p>betingelse</p></td>
+</tr>
+<tr class="row-even"><td><p>condition</p></td>
+<td><p>kompilator</p></td>
+</tr>
+<tr class="row-odd"><td><p>configuration</p></td>
+<td><p>oppsett</p></td>
+</tr>
+<tr class="row-even"><td><p>configure</p></td>
+<td><p>sette opp</p></td>
+</tr>
+<tr class="row-odd"><td><p>console</p></td>
+<td><p>konsoll</p></td>
+</tr>
+<tr class="row-even"><td><p>continue</p></td>
+<td><p>fortsett</p></td>
+</tr>
+<tr class="row-odd"><td><p>conversion</p></td>
+<td><p>konvertering</p></td>
+</tr>
+<tr class="row-even"><td><p>core dump</p></td>
+<td><p>kjerne dump</p></td>
+</tr>
+<tr class="row-odd"><td><p>deallocate</p></td>
+<td><p>deallokere</p></td>
+</tr>
+<tr class="row-even"><td><p>debug</p></td>
+<td><p>feilsøk</p></td>
+</tr>
+<tr class="row-odd"><td><p>debugger</p></td>
+<td><p>feilsøkingsprogram</p></td>
+</tr>
+<tr class="row-even"><td><p>default</p></td>
+<td><p>standard (verdi)</p></td>
+</tr>
+<tr class="row-odd"><td><p>dictionary</p></td>
+<td><p>oppslagsverk</p></td>
+</tr>
+<tr class="row-even"><td><p>directory</p></td>
+<td><p>mappe</p></td>
+</tr>
+<tr class="row-odd"><td><p>editor</p></td>
+<td><p>tekstprogram</p></td>
+</tr>
+<tr class="row-even"><td><p>embed</p></td>
+<td><p>inkludere</p></td>
+</tr>
+<tr class="row-odd"><td><p>environment</p></td>
+<td><p>miljø</p></td>
+</tr>
+<tr class="row-even"><td><p>environment variable</p></td>
+<td><p>miljøvariabel</p></td>
+</tr>
+<tr class="row-odd"><td><p>error</p></td>
+<td><p>feil</p></td>
+</tr>
+<tr class="row-even"><td><p>executable</p></td>
+<td><p>kjørbar</p></td>
+</tr>
+<tr class="row-odd"><td><p>flag</p></td>
+<td><p>flagg</p></td>
+</tr>
+<tr class="row-even"><td><p>float</p></td>
+<td><p>flyttall</p></td>
+</tr>
+<tr class="row-odd"><td><p>folder</p></td>
+<td><p>mappe</p></td>
+</tr>
+<tr class="row-even"><td><p>function</p></td>
+<td><p>funksjon</p></td>
+</tr>
+<tr class="row-odd"><td><p>graphical user interface (GUI)</p></td>
+<td><p>grafisk brukergrensesnitt</p></td>
+</tr>
+<tr class="row-even"><td><p>home directory</p></td>
+<td><p>hjemme mappe</p></td>
+</tr>
+<tr class="row-odd"><td><p>implement</p></td>
+<td><p>implementere</p></td>
+</tr>
+<tr class="row-even"><td><p>increment</p></td>
+<td><p>øke</p></td>
+</tr>
+<tr class="row-odd"><td><p>increment</p></td>
+<td><p>inkrementere</p></td>
+</tr>
+<tr class="row-even"><td><p>incremental</p></td>
+<td><p>økende</p></td>
+</tr>
+<tr class="row-odd"><td><p>indent</p></td>
+<td><p>innrykk</p></td>
+</tr>
+<tr class="row-even"><td><p>inheritance</p></td>
+<td><p>arv</p></td>
+</tr>
+<tr class="row-odd"><td><p>input</p></td>
+<td><p>inndata</p></td>
+</tr>
+<tr class="row-even"><td><p>instance</p></td>
+<td><p>instans</p></td>
+</tr>
+<tr class="row-odd"><td><p>integer</p></td>
+<td><p>heltall</p></td>
+</tr>
+<tr class="row-even"><td><p>interface</p></td>
+<td><p>grensesnitt</p></td>
+</tr>
+<tr class="row-odd"><td><p>interpreter</p></td>
+<td><p>oversetter</p></td>
+</tr>
+<tr class="row-even"><td><p>interval</p></td>
+<td><p>intervall</p></td>
+</tr>
+<tr class="row-odd"><td><p>invalid</p></td>
+<td><p>slette</p></td>
+</tr>
+<tr class="row-even"><td><p>iterate</p></td>
+<td><p>iterere</p></td>
+</tr>
+<tr class="row-odd"><td><p>iterate</p></td>
+<td><p>gjenta</p></td>
+</tr>
+<tr class="row-even"><td><p>iteration</p></td>
+<td><p>gjentakelse</p></td>
+</tr>
+<tr class="row-odd"><td><p>iterative</p></td>
+<td><p>gjentakende</p></td>
+</tr>
+<tr class="row-even"><td><p>key</p></td>
+<td><p>nøkkel</p></td>
+</tr>
+<tr class="row-odd"><td><p>label</p></td>
+<td><p>merkelapp</p></td>
+</tr>
+<tr class="row-even"><td><p>library</p></td>
+<td><p>bibliotek</p></td>
+</tr>
+<tr class="row-odd"><td><p>list</p></td>
+<td><p>liste</p></td>
+</tr>
+<tr class="row-even"><td><p>load</p></td>
+<td><p>last inn</p></td>
+</tr>
+<tr class="row-odd"><td><p>loop</p></td>
+<td><p>løkke</p></td>
+</tr>
+<tr class="row-even"><td><p>markov process</p></td>
+<td><p>markov prosess</p></td>
+</tr>
+<tr class="row-odd"><td><p>matrix</p></td>
+<td><p>matrise</p></td>
+</tr>
+<tr class="row-even"><td><p>memory</p></td>
+<td><p>minne</p></td>
+</tr>
+<tr class="row-odd"><td><p>memory leak</p></td>
+<td><p>minne lekasje</p></td>
+</tr>
+<tr class="row-even"><td><p>merge</p></td>
+<td><p>flette</p></td>
+</tr>
+<tr class="row-odd"><td><p>mixed programming</p></td>
+<td><p>blandet programmering</p></td>
+</tr>
+<tr class="row-even"><td><p>multiprocessing</p></td>
+<td><p>parallellkjøring</p></td>
+</tr>
+<tr class="row-odd"><td><p>namespace</p></td>
+<td><p>navnerom</p></td>
+</tr>
+<tr class="row-even"><td><p>object</p></td>
+<td><p>objekt</p></td>
+</tr>
+<tr class="row-odd"><td><p>parameter</p></td>
+<td><p>parameter</p></td>
+</tr>
+<tr class="row-even"><td><p>parent</p></td>
+<td><p>foreldre</p></td>
+</tr>
+<tr class="row-odd"><td><p>path</p></td>
+<td><p>sti</p></td>
+</tr>
+<tr class="row-even"><td><p>performance</p></td>
+<td><p>ytelse</p></td>
+</tr>
+<tr class="row-odd"><td><p>pointer</p></td>
+<td><p>peker</p></td>
+</tr>
+<tr class="row-even"><td><p>polymorphism</p></td>
+<td><p>polymorfi</p></td>
+</tr>
+<tr class="row-odd"><td><p>print</p></td>
+<td><p>skriv ut</p></td>
+</tr>
+<tr class="row-even"><td><p>profiling</p></td>
+<td><p>profilering</p></td>
+</tr>
+<tr class="row-odd"><td><p>programming</p></td>
+<td><p>programmering</p></td>
+</tr>
+<tr class="row-even"><td><p>programming language</p></td>
+<td><p>programmeringspråk</p></td>
+</tr>
+<tr class="row-odd"><td><p>property</p></td>
+<td><p>egenskap</p></td>
+</tr>
+<tr class="row-even"><td><p>random</p></td>
+<td><p>tilfeldig</p></td>
+</tr>
+<tr class="row-odd"><td><p>recursion</p></td>
+<td><p>rekursjon</p></td>
+</tr>
+<tr class="row-even"><td><p>refactoring</p></td>
+<td><p>refakturere</p></td>
+</tr>
+<tr class="row-odd"><td><p>repository</p></td>
+<td><p>kodelager</p></td>
+</tr>
+<tr class="row-even"><td><p>resource</p></td>
+<td><p>resurs</p></td>
+</tr>
+<tr class="row-odd"><td><p>return type</p></td>
+<td><p>returtype</p></td>
+</tr>
+<tr class="row-even"><td><p>root</p></td>
+<td><p>rot</p></td>
+</tr>
+<tr class="row-odd"><td><p>root directory</p></td>
+<td><p>rotmappe</p></td>
+</tr>
+<tr class="row-even"><td><p>runtime</p></td>
+<td><p>kjøretid</p></td>
+</tr>
+<tr class="row-odd"><td><p>runtime environment</p></td>
+<td><p>kjøreomgivelse</p></td>
+</tr>
+<tr class="row-even"><td><p>save</p></td>
+<td><p>lagre</p></td>
+</tr>
+<tr class="row-odd"><td><p>scope</p></td>
+<td><p>skop</p></td>
+</tr>
+<tr class="row-even"><td><p>scope</p></td>
+<td><p>virkefelt</p></td>
+</tr>
+<tr class="row-odd"><td><p>script</p></td>
+<td><p>skript</p></td>
+</tr>
+<tr class="row-even"><td><p>set</p></td>
+<td><p>mengde</p></td>
+</tr>
+<tr class="row-odd"><td><p>sort</p></td>
+<td><p>sortere</p></td>
+</tr>
+<tr class="row-even"><td><p>source code</p></td>
+<td><p>kildekode</p></td>
+</tr>
+<tr class="row-odd"><td><p>step</p></td>
+<td><p>steg</p></td>
+</tr>
+<tr class="row-even"><td><p>stochastic</p></td>
+<td><p>stokastisk</p></td>
+</tr>
+<tr class="row-odd"><td><p>store</p></td>
+<td><p>lagre</p></td>
+</tr>
+<tr class="row-even"><td><p>stream</p></td>
+<td><p>strøm</p></td>
+</tr>
+<tr class="row-odd"><td><p>suffix</p></td>
+<td><p>endelse</p></td>
+</tr>
+<tr class="row-even"><td><p>tag</p></td>
+<td><p>merke</p></td>
+</tr>
+<tr class="row-odd"><td><p>terminal</p></td>
+<td><p>terminal</p></td>
+</tr>
+<tr class="row-even"><td><p>thread</p></td>
+<td><p>tråd</p></td>
+</tr>
+<tr class="row-odd"><td><p>truncate</p></td>
+<td><p>forkorte</p></td>
+</tr>
+<tr class="row-even"><td><p>tuple</p></td>
+<td><p>tuppel</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>type</p></td>
+</tr>
+<tr class="row-even"><td><p>unit testing</p></td>
+<td><p>enhetstesting</p></td>
+</tr>
+<tr class="row-odd"><td><p>user interface</p></td>
+<td><p>brukergrensesnitt</p></td>
+</tr>
+<tr class="row-even"><td><p>user interface (UI)</p></td>
+<td><p>brukergrensesnitt</p></td>
+</tr>
+<tr class="row-odd"><td><p>validate</p></td>
+<td><p>validere</p></td>
+</tr>
+<tr class="row-even"><td><p>value</p></td>
+<td><p>verdi</p></td>
+</tr>
+<tr class="row-odd"><td><p>variable</p></td>
+<td><p>variabel</p></td>
+</tr>
+<tr class="row-even"><td><p>vector</p></td>
+<td><p>vektor</p></td>
+</tr>
+<tr class="row-odd"><td><p>verify</p></td>
+<td><p>verifisere</p></td>
+</tr>
+<tr class="row-even"><td><p>version control system</p></td>
+<td><p>versjon kontroll system</p></td>
+</tr>
+<tr class="row-odd"><td><p>working directory</p></td>
+<td><p>arbeidsmappe</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="norwegian-english">
+<h2>Norwegian-English<a class="headerlink" href="#norwegian-english" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Norwegian</strong></p></th>
+<th class="head"><p><strong>English</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>abstraksjon</p></td>
+<td><p>abstraction</p></td>
+</tr>
+<tr class="row-odd"><td><p>algoritme</p></td>
+<td><p>algorithm</p></td>
+</tr>
+<tr class="row-even"><td><p>allokere</p></td>
+<td><p>allocate</p></td>
+</tr>
+<tr class="row-odd"><td><p>arbeidsmappe</p></td>
+<td><p>working directory</p></td>
+</tr>
+<tr class="row-even"><td><p>argument</p></td>
+<td><p>argument</p></td>
+</tr>
+<tr class="row-odd"><td><p>arv</p></td>
+<td><p>inheritance</p></td>
+</tr>
+<tr class="row-even"><td><p>attributt</p></td>
+<td><p>attribute</p></td>
+</tr>
+<tr class="row-odd"><td><p>avbryte</p></td>
+<td><p>cancel</p></td>
+</tr>
+<tr class="row-even"><td><p>beregne</p></td>
+<td><p>calculate</p></td>
+</tr>
+<tr class="row-odd"><td><p>betingelse</p></td>
+<td><p>condition</p></td>
+</tr>
+<tr class="row-even"><td><p>bibliotek</p></td>
+<td><p>library</p></td>
+</tr>
+<tr class="row-odd"><td><p>blandet programmering</p></td>
+<td><p>mixed programming</p></td>
+</tr>
+<tr class="row-even"><td><p>break point</p></td>
+<td><p>compute</p></td>
+</tr>
+<tr class="row-odd"><td><p>break point</p></td>
+<td><p>calculate</p></td>
+</tr>
+<tr class="row-even"><td><p>brukergrensesnitt</p></td>
+<td><p>user interface</p></td>
+</tr>
+<tr class="row-odd"><td><p>brukergrensesnitt</p></td>
+<td><p>user interface (UI)</p></td>
+</tr>
+<tr class="row-even"><td><p>datavitenskap</p></td>
+<td><p>computer science</p></td>
+</tr>
+<tr class="row-odd"><td><p>deallokere</p></td>
+<td><p>deallocate</p></td>
+</tr>
+<tr class="row-even"><td><p>egenskap</p></td>
+<td><p>property</p></td>
+</tr>
+<tr class="row-odd"><td><p>endelse</p></td>
+<td><p>suffix</p></td>
+</tr>
+<tr class="row-even"><td><p>enhetstesting</p></td>
+<td><p>unit testing</p></td>
+</tr>
+<tr class="row-odd"><td><p>feil</p></td>
+<td><p>bug</p></td>
+</tr>
+<tr class="row-even"><td><p>feil</p></td>
+<td><p>error</p></td>
+</tr>
+<tr class="row-odd"><td><p>feilsøk</p></td>
+<td><p>debug</p></td>
+</tr>
+<tr class="row-even"><td><p>feilsøkingsprogram</p></td>
+<td><p>debugger</p></td>
+</tr>
+<tr class="row-odd"><td><p>flagg</p></td>
+<td><p>flag</p></td>
+</tr>
+<tr class="row-even"><td><p>flette</p></td>
+<td><p>merge</p></td>
+</tr>
+<tr class="row-odd"><td><p>flyttall</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>foreldre</p></td>
+<td><p>parent</p></td>
+</tr>
+<tr class="row-odd"><td><p>forkorte</p></td>
+<td><p>truncate</p></td>
+</tr>
+<tr class="row-even"><td><p>fortsett</p></td>
+<td><p>continue</p></td>
+</tr>
+<tr class="row-odd"><td><p>funksjon</p></td>
+<td><p>function</p></td>
+</tr>
+<tr class="row-even"><td><p>gjenta</p></td>
+<td><p>iterate</p></td>
+</tr>
+<tr class="row-odd"><td><p>gjentakelse</p></td>
+<td><p>iteration</p></td>
+</tr>
+<tr class="row-even"><td><p>gjentakende</p></td>
+<td><p>iterative</p></td>
+</tr>
+<tr class="row-odd"><td><p>grafisk brukergrensesnitt</p></td>
+<td><p>graphical user interface (GUI)</p></td>
+</tr>
+<tr class="row-even"><td><p>gren</p></td>
+<td><p>branch</p></td>
+</tr>
+<tr class="row-odd"><td><p>grensesnitt</p></td>
+<td><p>interface</p></td>
+</tr>
+<tr class="row-even"><td><p>heltall</p></td>
+<td><p>integer</p></td>
+</tr>
+<tr class="row-odd"><td><p>hjemme mappe</p></td>
+<td><p>home directory</p></td>
+</tr>
+<tr class="row-even"><td><p>hurtiglager</p></td>
+<td><p>cache</p></td>
+</tr>
+<tr class="row-odd"><td><p>implementere</p></td>
+<td><p>implement</p></td>
+</tr>
+<tr class="row-even"><td><p>inkludere</p></td>
+<td><p>embed</p></td>
+</tr>
+<tr class="row-odd"><td><p>inkrementere</p></td>
+<td><p>increment</p></td>
+</tr>
+<tr class="row-even"><td><p>inndata</p></td>
+<td><p>input</p></td>
+</tr>
+<tr class="row-odd"><td><p>innrykk</p></td>
+<td><p>indent</p></td>
+</tr>
+<tr class="row-even"><td><p>instans</p></td>
+<td><p>instance</p></td>
+</tr>
+<tr class="row-odd"><td><p>intervall</p></td>
+<td><p>interval</p></td>
+</tr>
+<tr class="row-even"><td><p>iterere</p></td>
+<td><p>iterate</p></td>
+</tr>
+<tr class="row-odd"><td><p>kallbar</p></td>
+<td><p>callable</p></td>
+</tr>
+<tr class="row-even"><td><p>kildekode</p></td>
+<td><p>source code</p></td>
+</tr>
+<tr class="row-odd"><td><p>kjerne dump</p></td>
+<td><p>core dump</p></td>
+</tr>
+<tr class="row-even"><td><p>kjørbar</p></td>
+<td><p>executable</p></td>
+</tr>
+<tr class="row-odd"><td><p>kjøreomgivelse</p></td>
+<td><p>runtime environment</p></td>
+</tr>
+<tr class="row-even"><td><p>kjøretid</p></td>
+<td><p>runtime</p></td>
+</tr>
+<tr class="row-odd"><td><p>klasse</p></td>
+<td><p>class</p></td>
+</tr>
+<tr class="row-even"><td><p>klone</p></td>
+<td><p>clone</p></td>
+</tr>
+<tr class="row-odd"><td><p>kodelager</p></td>
+<td><p>repository</p></td>
+</tr>
+<tr class="row-even"><td><p>kommandolinje grensesnitt</p></td>
+<td><p>command line interface (CLI)</p></td>
+</tr>
+<tr class="row-odd"><td><p>kompilator</p></td>
+<td><p>command</p></td>
+</tr>
+<tr class="row-even"><td><p>kompilator</p></td>
+<td><p>condition</p></td>
+</tr>
+<tr class="row-odd"><td><p>kompilator</p></td>
+<td><p>compiler</p></td>
+</tr>
+<tr class="row-even"><td><p>kompilere</p></td>
+<td><p>compiling</p></td>
+</tr>
+<tr class="row-odd"><td><p>kompleksitet</p></td>
+<td><p>complexity</p></td>
+</tr>
+<tr class="row-even"><td><p>konsoll</p></td>
+<td><p>console</p></td>
+</tr>
+<tr class="row-odd"><td><p>konvertering</p></td>
+<td><p>conversion</p></td>
+</tr>
+<tr class="row-even"><td><p>lagre</p></td>
+<td><p>store</p></td>
+</tr>
+<tr class="row-odd"><td><p>lagre</p></td>
+<td><p>save</p></td>
+</tr>
+<tr class="row-even"><td><p>last inn</p></td>
+<td><p>load</p></td>
+</tr>
+<tr class="row-odd"><td><p>liste</p></td>
+<td><p>list</p></td>
+</tr>
+<tr class="row-even"><td><p>lukke</p></td>
+<td><p>close</p></td>
+</tr>
+<tr class="row-odd"><td><p>løkke</p></td>
+<td><p>loop</p></td>
+</tr>
+<tr class="row-even"><td><p>mappe</p></td>
+<td><p>folder</p></td>
+</tr>
+<tr class="row-odd"><td><p>mappe</p></td>
+<td><p>directory</p></td>
+</tr>
+<tr class="row-even"><td><p>markov prosess</p></td>
+<td><p>markov process</p></td>
+</tr>
+<tr class="row-odd"><td><p>matrise</p></td>
+<td><p>matrix</p></td>
+</tr>
+<tr class="row-even"><td><p>mengde</p></td>
+<td><p>set</p></td>
+</tr>
+<tr class="row-odd"><td><p>merke</p></td>
+<td><p>tag</p></td>
+</tr>
+<tr class="row-even"><td><p>merkelapp</p></td>
+<td><p>label</p></td>
+</tr>
+<tr class="row-odd"><td><p>miljø</p></td>
+<td><p>environment</p></td>
+</tr>
+<tr class="row-even"><td><p>miljøvariabel</p></td>
+<td><p>environment variable</p></td>
+</tr>
+<tr class="row-odd"><td><p>minne</p></td>
+<td><p>memory</p></td>
+</tr>
+<tr class="row-even"><td><p>minne lekasje</p></td>
+<td><p>memory leak</p></td>
+</tr>
+<tr class="row-odd"><td><p>navnerom</p></td>
+<td><p>namespace</p></td>
+</tr>
+<tr class="row-even"><td><p>nøkkel</p></td>
+<td><p>key</p></td>
+</tr>
+<tr class="row-odd"><td><p>objekt</p></td>
+<td><p>object</p></td>
+</tr>
+<tr class="row-even"><td><p>oppsett</p></td>
+<td><p>configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p>oppslagsverk</p></td>
+<td><p>dictionary</p></td>
+</tr>
+<tr class="row-even"><td><p>oversetter</p></td>
+<td><p>interpreter</p></td>
+</tr>
+<tr class="row-odd"><td><p>parallellkjøring</p></td>
+<td><p>multiprocessing</p></td>
+</tr>
+<tr class="row-even"><td><p>parameter</p></td>
+<td><p>parameter</p></td>
+</tr>
+<tr class="row-odd"><td><p>pause punkt</p></td>
+<td><p>breakpoint</p></td>
+</tr>
+<tr class="row-even"><td><p>peker</p></td>
+<td><p>pointer</p></td>
+</tr>
+<tr class="row-odd"><td><p>polymorfi</p></td>
+<td><p>polymorphism</p></td>
+</tr>
+<tr class="row-even"><td><p>profilering</p></td>
+<td><p>profiling</p></td>
+</tr>
+<tr class="row-odd"><td><p>programmering</p></td>
+<td><p>programming</p></td>
+</tr>
+<tr class="row-even"><td><p>programmeringspråk</p></td>
+<td><p>programming language</p></td>
+</tr>
+<tr class="row-odd"><td><p>refakturere</p></td>
+<td><p>refactoring</p></td>
+</tr>
+<tr class="row-even"><td><p>rekke</p></td>
+<td><p>array</p></td>
+</tr>
+<tr class="row-odd"><td><p>rekursjon</p></td>
+<td><p>recursion</p></td>
+</tr>
+<tr class="row-even"><td><p>resurs</p></td>
+<td><p>resource</p></td>
+</tr>
+<tr class="row-odd"><td><p>returtype</p></td>
+<td><p>return type</p></td>
+</tr>
+<tr class="row-even"><td><p>rot</p></td>
+<td><p>root</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotmappe</p></td>
+<td><p>root directory</p></td>
+</tr>
+<tr class="row-even"><td><p>sentralenhet</p></td>
+<td><p>CPU</p></td>
+</tr>
+<tr class="row-odd"><td><p>sette opp</p></td>
+<td><p>configure</p></td>
+</tr>
+<tr class="row-even"><td><p>skop</p></td>
+<td><p>scope</p></td>
+</tr>
+<tr class="row-odd"><td><p>skript</p></td>
+<td><p>script</p></td>
+</tr>
+<tr class="row-even"><td><p>skriv ut</p></td>
+<td><p>print</p></td>
+</tr>
+<tr class="row-odd"><td><p>slette</p></td>
+<td><p>invalid</p></td>
+</tr>
+<tr class="row-even"><td><p>slå sammen</p></td>
+<td><p>concatenate</p></td>
+</tr>
+<tr class="row-odd"><td><p>sortere</p></td>
+<td><p>sort</p></td>
+</tr>
+<tr class="row-even"><td><p>standard (verdi)</p></td>
+<td><p>default</p></td>
+</tr>
+<tr class="row-odd"><td><p>steg</p></td>
+<td><p>step</p></td>
+</tr>
+<tr class="row-even"><td><p>sti</p></td>
+<td><p>path</p></td>
+</tr>
+<tr class="row-odd"><td><p>stokastisk</p></td>
+<td><p>stochastic</p></td>
+</tr>
+<tr class="row-even"><td><p>strøm</p></td>
+<td><p>stream</p></td>
+</tr>
+<tr class="row-odd"><td><p>tegn</p></td>
+<td><p>character</p></td>
+</tr>
+<tr class="row-even"><td><p>tekstprogram</p></td>
+<td><p>editor</p></td>
+</tr>
+<tr class="row-odd"><td><p>terminal</p></td>
+<td><p>terminal</p></td>
+</tr>
+<tr class="row-even"><td><p>tildele</p></td>
+<td><p>assign</p></td>
+</tr>
+<tr class="row-odd"><td><p>tilfeldig</p></td>
+<td><p>random</p></td>
+</tr>
+<tr class="row-even"><td><p>tilføye</p></td>
+<td><p>amend</p></td>
+</tr>
+<tr class="row-odd"><td><p>tråd</p></td>
+<td><p>thread</p></td>
+</tr>
+<tr class="row-even"><td><p>tuppel</p></td>
+<td><p>tuple</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>type</p></td>
+</tr>
+<tr class="row-even"><td><p>utføre</p></td>
+<td><p>commit</p></td>
+</tr>
+<tr class="row-odd"><td><p>validere</p></td>
+<td><p>validate</p></td>
+</tr>
+<tr class="row-even"><td><p>variabel</p></td>
+<td><p>variable</p></td>
+</tr>
+<tr class="row-odd"><td><p>vektor</p></td>
+<td><p>vector</p></td>
+</tr>
+<tr class="row-even"><td><p>verdi</p></td>
+<td><p>value</p></td>
+</tr>
+<tr class="row-odd"><td><p>verifisere</p></td>
+<td><p>verify</p></td>
+</tr>
+<tr class="row-even"><td><p>versjon kontroll system</p></td>
+<td><p>version control system</p></td>
+</tr>
+<tr class="row-odd"><td><p>virkefelt</p></td>
+<td><p>scope</p></td>
+</tr>
+<tr class="row-even"><td><p>ytelse</p></td>
+<td><p>performance</p></td>
+</tr>
+<tr class="row-odd"><td><p>ytelsestest</p></td>
+<td><p>benchmark</p></td>
+</tr>
+<tr class="row-even"><td><p>øke</p></td>
+<td><p>increment</p></td>
+</tr>
+<tr class="row-odd"><td><p>økende</p></td>
+<td><p>incremental</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "finsberg/IN1910_H22",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/info"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="help.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Getting help or giving feedback</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../setup/setup.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Installation instructions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jonas van den Brink, Henrik Finsberg, Kristian G. Hustad, and Joakim Sundnes<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

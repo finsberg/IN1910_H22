@@ -24,9 +24,9 @@ Another, more extensive, resource you can use is *A Primer on Scientific Program
 
 ## This book is interactive!
 
-This document and the rest of course material is written using [jupyterbook](https://jupyterbook.org). All of the content is written in a format called [Myst Markdown](https://myst-parser.readthedocs.io/en/latest/) that can be translated to jupyter notebooks. If you take a look at the top of the page you will see an icon of a space rocket, and hovering over this will show three options; "Binder", "JupyterHub" and "Live code".
+This document and the rest of course material is written using [jupyterbook](https://jupyterbook.org). All of the content is written in a format called [Myst Markdown](https://myst-parser.readthedocs.io/en/latest/) that can be translated to jupyter notebooks. If you take a look at the top of the page you will see an icon of a space rocket, and hovering over this will show three options; *Binder*, *JupyterHub* and *Live Code*.
 
-```{figure} ../figures/jupyterbook.png
+```{figure} ../../figures/jupyterbook.png
 ---
 width: 150px
 name: jupyterbook
@@ -34,7 +34,7 @@ alt: jupyterbook
 ---
 ```
 
-Clicking on "Binder" or "JupyterHub" will open this page in a jupyter notebook. We recommend you use "JupyterHub" because this will run you code on dedicated servers at UiO which will be more performant. If you click on "Live code", then that will first spin up a server (which will take a minute), and the the code cells on this page will become interactive and allow you to change an run the cells without leaving the page.
+Clicking on *Binder* or *JupyterHub* will open this page in a jupyter notebook. We recommend you use *JupyterHub* because this will run you code on dedicated servers at UiO which will be more performant. If you click on *Live code*, then that will first spin up a server (which will take a minute), and the the code cells on this page will become interactive and allow you to change an run the cells without leaving the page.
 
 
 

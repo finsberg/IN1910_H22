@@ -586,6 +586,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#memory-optimization">
+   Memory optimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#taking-a-step-back-the-rules-of-optimization">
    Taking a step back: The Rules of Optimization
   </a>
@@ -710,6 +715,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#line-profiling">
    Line Profiling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#memory-optimization">
+   Memory optimization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -889,7 +899,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95.7 ns ± 0.232 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>84.1 ns ± 0.066 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -901,7 +911,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>114 ns ± 2.98 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>102 ns ± 0.364 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -913,7 +923,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>132 ns ± 1.35 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>114 ns ± 0.0408 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -925,7 +935,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.08 µs ± 14.6 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>954 ns ± 1.96 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -961,7 +971,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.02 ms ± 35.4 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.58 ms ± 286 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -973,7 +983,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.35 ms ± 38.7 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9 ms ± 219 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -985,7 +995,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.75 ms ± 22.8 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.23 ms ± 1.65 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -997,7 +1007,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.8 ms ± 388 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19.2 ms ± 16.3 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -1074,7 +1084,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <img alt="../../../_images/software_optimization_15_0.png" src="../../../_images/software_optimization_15_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14519
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9317
 </pre></div>
 </div>
 </div>
@@ -1104,23 +1114,23 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         4310769 function calls in 3.966 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         4310769 function calls in 3.372 seconds
 
    Ordered by: standard name
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-   862153    0.108    0.000    0.108    0.000 3439088668.py:10(position)
+   862153    0.083    0.000    0.083    0.000 3439088668.py:10(position)
         1    0.000    0.000    0.000    0.000 3439088668.py:14(steps)
-   862153    0.304    0.000    0.411    0.000 3439088668.py:18(is_at_home)
-   862152    0.730    0.000    3.179    0.000 3439088668.py:21(step)
-        1    0.366    0.366    3.957    3.957 3439088668.py:25(walk_home)
+   862153    0.227    0.000    0.310    0.000 3439088668.py:18(is_at_home)
+   862152    0.627    0.000    2.726    0.000 3439088668.py:21(step)
+        1    0.327    0.327    3.363    3.363 3439088668.py:25(walk_home)
         1    0.000    0.000    0.000    0.000 3439088668.py:5(__init__)
-        1    0.008    0.008    3.965    3.965 &lt;string&gt;:1(&lt;module&gt;)
-        1    0.000    0.000    3.966    3.966 {built-in method builtins.exec}
+        1    0.009    0.009    3.372    3.372 &lt;string&gt;:1(&lt;module&gt;)
+        1    0.000    0.000    3.372    3.372 {built-in method builtins.exec}
         1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
-   862152    0.087    0.000    0.087    0.000 {method &#39;append&#39; of &#39;list&#39; objects}
+   862152    0.071    0.000    0.071    0.000 {method &#39;append&#39; of &#39;list&#39; objects}
         1    0.000    0.000    0.000    0.000 {method &#39;disable&#39; of &#39;_lsprof.Profiler&#39; objects}
-   862152    2.362    0.000    2.362    0.000 {method &#39;randint&#39; of &#39;numpy.random.mtrand.RandomState&#39; objects}
+   862152    2.028    0.000    2.028    0.000 {method &#39;randint&#39; of &#39;numpy.random.mtrand.RandomState&#39; objects}
 </pre></div>
 </div>
 </div>
@@ -1198,6 +1208,10 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <p>So we can see that line 22, increment the position itself, takes up 81.7% of the time it takes to use the <code class="docutils literal notranslate"><span class="pre">step()</span></code> method. Perhaps we can improve this by vectorizing with numpy? Appending the elements to the history takes 20% of the time, which is also a considerable amount. Perhaps it would be better to initialize an empty array and then just update the elements?</p>
+</div>
+<div class="section" id="memory-optimization">
+<span id="software-optimization-memory-optimization"></span><h2>Memory optimization<a class="headerlink" href="#memory-optimization" title="Permalink to this headline">¶</a></h2>
+<p>One of the main optimizations that was added to the python language in the transition from python 2 to python 3 was that</p>
 </div>
 <div class="section" id="taking-a-step-back-the-rules-of-optimization">
 <h2>Taking a step back: The Rules of Optimization<a class="headerlink" href="#taking-a-step-back-the-rules-of-optimization" title="Permalink to this headline">¶</a></h2>

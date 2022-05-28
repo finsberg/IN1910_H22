@@ -942,9 +942,10 @@ In this case, the result of the computation is a number, and <code class="docuti
 <p>Regardless of which style of import you use, import statements should always appear at the top of modules. Modules are what we call separate Python-files. Placing imports at the top is an example of <em>code style</em>, which we will cover later in the course.</p>
 <div class="section" id="exercise-1-your-turn">
 <h3>Exercise 1: Your turn<a class="headerlink" href="#exercise-1-your-turn" title="Permalink to this headline">¶</a></h3>
-<p>The radius of a standard size football is 11 cm. Write code that defines this radius as the variable <code class="docutils literal notranslate"><span class="pre">R</span></code>, the computes the volume of the football according to the following formula
-$<span class="math notranslate nohighlight">\(V = \frac{4\pi R^3}{3}.\)</span>$
-Then finally print out the volume with a single decimal.</p>
+<p>The radius of a standard size football is 11 cm. Write code that defines this radius as the variable <code class="docutils literal notranslate"><span class="pre">R</span></code>, the computes the volume of the football according to the following formula</p>
+<div class="math notranslate nohighlight">
+\[V = \frac{4\pi R^3}{3}.\]</div>
+<p>Then finally print out the volume with a single decimal.</p>
 <ul class="simple">
 <li><p>Hint: You need to either define <code class="docutils literal notranslate"><span class="pre">pi</span></code> or import it from <code class="docutils literal notranslate"><span class="pre">math</span></code>.</p></li>
 <li><p>Hint: To get a neater output, you can convert the <code class="docutils literal notranslate"><span class="pre">V</span></code> variable to be in terms of liters.</p></li>
@@ -966,6 +967,7 @@ Then finally print out the volume with a single decimal.</p>
 </div>
 <p>Depending on your installation, the command <code class="docutils literal notranslate"><span class="pre">python</span></code> might refer to Python 2 instead of 3, which is why we write <code class="docutils literal notranslate"><span class="pre">python3</span></code>.</p>
 <p>A lot of code editors and IDEs (integrated developer environments) also let you run Python scripts directly from the editor. If you prefer to do it this way, you should also ensure you are running Python 3 instead of 2.</p>
+<p>Note also that we will assume that you are using python version 3.8 or newer in this course, so some of the code might not working even if you are using python 3. However, most of the code will be compatible with all versions of python.</p>
 <p>As you work on bigger projects, many of the Python scripts you create are not necessarily meant to be run directly, but rather imported by other scripts. A useful code structure to include then is the following statement</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1043,13 +1045,29 @@ b = 5
 </div>
 </div>
 </div>
+<p>Here we could also use a slightly newer syntax for printing the variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># or with space</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">b</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a=10
+b = 5
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
 <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span> <span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1191,8 +1209,8 @@ y = [0, 1]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Single die: 3
-Sum of three dice: 10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Single die: 4
+Sum of three dice: 6
 </pre></div>
 </div>
 </div>
@@ -1226,7 +1244,28 @@ Sum of three dice: 10
 </pre></div>
 </div>
 <p>Note that in Python3, the range is different from in Python2, in that it is a iterable <code class="docutils literal notranslate"><span class="pre">range</span></code>-object, and not a list, which gives it much better memory performance. If you want a list of integers, simply cast the <code class="docutils literal notranslate"><span class="pre">range</span></code>-object to a list: <code class="docutils literal notranslate"><span class="pre">list(range(10))</span></code></p>
-<p>Two helpful commands to be used in loops are <code class="docutils literal notranslate"><span class="pre">continue</span></code>, which skips to the next iteration of the loop, and <code class="docutils literal notranslate"><span class="pre">break</span></code>, which breaks the remaining iterations.</p>
+<p>Two helpful commands to be used in loops are <code class="docutils literal notranslate"><span class="pre">continue</span></code>, which skips to the next iteration of the loop, and <code class="docutils literal notranslate"><span class="pre">break</span></code>, which breaks the remaining iterations, for example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># i is divisible by 2</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+3
+5
+7
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Example: Using a for-loop to check whether a number is prime</strong></p>
 <p>In the following example we define a function that checks whether a given integer is a prime or not. To do this we use <em>trial division</em>, which looks for a divisor to the number <span class="math notranslate nohighlight">\(n\)</span> in the interval <span class="math notranslate nohighlight">\([2, n)\)</span>.</p>
 <div class="cell docutils container">
@@ -1282,6 +1321,12 @@ Sum of three dice: 10
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
         <span class="n">primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 5, 7, 11]
 </pre></div>
 </div>
 </div>
@@ -1291,12 +1336,19 @@ Sum of three dice: 10
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primes</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 5, 7, 11]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Now, to be clear. Doing something in the least amount of code lines is rarely a goal in and of itself. And more compact code can often be considered less readable and should in certain cases often be avoided.</p>
 <p>However, list comprehensions are considered very “pythonic” and are actually faster than using a loops and appending. As such they are very useful, and you shouldn’t hesitate to use list comprehensions were applicable (and similarly dictionary comprehensions).</p>
+<p>One think to note is that in list comprehension we use square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>. However it is also possible to obtain a similar behavior using parenthesis <code class="docutils literal notranslate"><span class="pre">()</span></code>, but the results is not a list but something called a generator expression. We will talk more about this <a class="reference internal" href="../optimization/software_optimization.html#software-optimization-memory-optimization"><span class="std std-ref">later in the course</span></a></p>
 <div class="section" id="exercise-3-your-turn">
 <h3>Exercise 3: Your turn<a class="headerlink" href="#exercise-3-your-turn" title="Permalink to this headline">¶</a></h3>
 <p>Use a list comprehension to assemble a list of all non-primes <span class="math notranslate nohighlight">\(\leq 12\)</span>. To do this either use the <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> function, or use the list <code class="docutils literal notranslate"><span class="pre">primes</span></code>.</p>
@@ -1367,7 +1419,7 @@ Danny got 231 points
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [30],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [32],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="o">...</span>
 
@@ -1438,7 +1490,7 @@ Danny got 231 points
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/python_intro_66_0.png" src="../../../_images/python_intro_66_0.png" />
+<img alt="../../../_images/python_intro_70_0.png" src="../../../_images/python_intro_70_0.png" />
 </div>
 </div>
 <p>The curve is choppy because we have such few points, which is more obvious if we redefine the linestyle:</p>
@@ -1452,7 +1504,7 @@ Danny got 231 points
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/python_intro_68_0.png" src="../../../_images/python_intro_68_0.png" />
+<img alt="../../../_images/python_intro_72_0.png" src="../../../_images/python_intro_72_0.png" />
 </div>
 </div>
 <p>To get a smoother curve, we need to add more points, this is as easy as adding more points to the <code class="docutils literal notranslate"><span class="pre">linspace</span></code> argument. Let us also illustrate how we add another curve to the same figure</p>
@@ -1469,7 +1521,7 @@ Danny got 231 points
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/python_intro_70_0.png" src="../../../_images/python_intro_70_0.png" />
+<img alt="../../../_images/python_intro_74_0.png" src="../../../_images/python_intro_74_0.png" />
 </div>
 </div>
 <p>Plotting mathematical functions is very fast with numpy and matplotlib because numpy arrays are vectorized, meaning we can define a series of <span class="math notranslate nohighlight">\(x\)</span> values, and compute all <span class="math notranslate nohighlight">\(y\)</span> values in a single function call. This is nice, as it makes it quick to explore functions and their behavior.</p>
@@ -1546,7 +1598,7 @@ u_{i+1} = (1 - a\Delta t)u_{i}.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/python_intro_78_0.png" src="../../../_images/python_intro_78_0.png" />
+<img alt="../../../_images/python_intro_82_0.png" src="../../../_images/python_intro_82_0.png" />
 </div>
 </div>
 </div>

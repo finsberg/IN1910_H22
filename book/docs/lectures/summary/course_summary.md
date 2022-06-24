@@ -87,7 +87,7 @@ To show how helpful knowing a C-style language can be, let's take a quick look a
 ```{figure} ../../figures/spectrum_ranking_2021.png
 ---
 width: 500px
-name: spectrum_ranking
+name: spectrum_ranking2021
 ---
 ```
 

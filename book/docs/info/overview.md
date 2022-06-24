@@ -31,8 +31,6 @@ There are weekly group sessions where you get help with both the weekly exercise
     * [Python refresher and Git](../exercises/week1/E1_python_refresh_and_git.ipynb)
     * [Example Solutions](../exercises/week1/E1_solutions.ipynb)
 * Slides
-    * [Lecture 1](../slides/L01/L1_course_overview.ipynb)
-    * [Lecture 2](../slides/L02/L2_git.md)
 
 #### Week 35 - Exception handling and Testing and Object Oriented Programming
 
@@ -42,7 +40,6 @@ There are weekly group sessions where you get help with both the weekly exercise
   * [Exercises on Unit Testing](../exercises/week3/E3_testing_and_docstrings.md)
   * [Example Solutions](../exercises/week3/E3_solutions.ipynb)
 * Slides
-    * [Lecture 3 + 4](../slides/L03/L3_pytest.md)
 
 #### Week 36 — Object-Oriented Programming
 
@@ -61,14 +58,14 @@ There are weekly group sessions where you get help with both the weekly exercise
     * [More on OOP](../lectures/python/more_oop.ipynb)
 
 * Exercises
-    * [Project 1](../projects/project1/double_pendulum.ipynb)
+    * [Project 1](../projects/project1/project1.md)
 
 #### Week 38 — More on Object-Oriented Programming
 * Lecture notes
     * [More on OOP](../lectures/python/more_oop.ipynb)
 
 * Exercises
-    * [Project 1](../projects/project1/double_pendulum.ipynb)
+    * [Project 1](../projects/project1/project1.md)
     * [Pancake sorting](../exercises/week4/pancake_sort.ipynb)
     * [Pancake sorting solutions](../exercises/week4/pancake_sort_solution.ipynb)
 
@@ -84,8 +81,6 @@ There are weekly group sessions where you get help with both the weekly exercise
     * [Challenge 1—Primes by Trial Division](../exercises/week6/C1_primes_by_trial_division.md)
     * [Challenge 1—Example Solution](../exercises/week6/week6-challenge.md)
 * Slides
-    * [Lecture 11](../slides/L11/L11_cpp_intro.md)
-    * [Lecture 12](../slides/L12/L12_array_memory_pointers.md)
 
 #### Week 40 — Object-oriented Programming in C++
 * Lecture notes
@@ -100,8 +95,6 @@ There are weekly group sessions where you get help with both the weekly exercise
     * [Exercises from Langtangen book translated to C++](../exercises/cpp_exercises.md)
     * [projecteuler.net](https://projecteuler.net/archives)
 * Slides
-    * [Lecture 13](../slides/L13/L13_oop_in_cpp.md)
-    * [Lecture 14](../slides/L14/L14_dynamics_allocation_and_arrays.md)
 
 
 #### Week 42 — Data Structures and Algorithms
@@ -114,8 +107,6 @@ There are weekly group sessions where you get help with both the weekly exercise
 * Exercises
     * [Project 2](../projects/project2/project2.ipynb)
 * Slides
-    * [Lecture 15](../slides/L15/L15_linked_lists_big_oh.md)
-    * [Lecture 16](../slides/L16/L16_header_files_debug.md)
 
 #### Week 43 — Random Number Generators
 
@@ -125,7 +116,6 @@ There are weekly group sessions where you get help with both the weekly exercise
 * Exercises
     * [Random Number Generators](../exercises/week10/E8_random_number_generators.ipynb)
 * Slides
-    * [Lecture 17](../slides/L17/L17_generating_random_numbers.ipynb)
 
 #### Week 44 — Random Walks and Markov Processes
 
@@ -139,8 +129,6 @@ There are weekly group sessions where you get help with both the weekly exercise
 #### Week 45 - Introduction to data science
 
 * Slides
-    * [Intro to pandas and plotting with matplotlib](../slides/L21/L21_plotting_with_matplotlib.ipynb)
-    * [Datasett med `pandas` og plotting med `Plotly Express`](../slides/L22/L22_plotly_express.ipynb)
 * Exercises
     * [Project 3](../projects/project3/project3.ipynb)
 
@@ -153,8 +141,7 @@ There are weekly group sessions where you get help with both the weekly exercise
     * [Optimization and Mixed Programming](../exercises/week12/E10_optimization_and_mixed_programming.ipynb)
     * [Example Solutions](../exercises/week12/E10_solutions.ipynb)
   * Slides
-    * [Software Optimization](../slides/L23/L23_software_optimization.ipynb)
-    * [Mixed programming](../slides/L24/L24_mixed_programming.ipynb)
+
 
 #### Week 47 — Parallelization and Course Summary
 * Lecture Notes
@@ -164,5 +151,3 @@ There are weekly group sessions where you get help with both the weekly exercise
 * Exercises
     * [Parallelization](../exercises/week13/E11_parallel_programming.ipynb)
 * Slides
-    * [Parallel programming](../slides/L25/L25_parallel_programming.ipynb)
-    * [Course summary](../slides/L26/L26_summary.ipynb)

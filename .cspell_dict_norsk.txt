@@ -217,6 +217,7 @@ mypy
 navnerom
 ndim
 nettskjema
+nettskjemas
 newx
 newy
 nojekyll

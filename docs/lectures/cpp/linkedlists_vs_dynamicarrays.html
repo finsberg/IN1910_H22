@@ -133,11 +133,6 @@ const thebe_selector_output = ".output, .cell_output"
    Getting help or giving feedback
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../info/dictionary.html">
-   Dictionary
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -899,7 +894,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>This sum is a geometric progression, which sums out to <span class="math notranslate nohighlight">\(2n\)</span>. The easiest way to see this is simply to draw out the series as a bunch of boxes</p>
 <div class="figure align-default" id="geo-prog">
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Geometric_progression_convergence_diagram.svg/525px-Geometric_progression_convergence_diagram.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Geometric_progression_convergence_diagram.svg/525px-Geometric_progression_convergence_diagram.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Geometric_progression_convergence_diagram.svg/525px-Geometric_progression_convergence_diagram.svg.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">Geometric progression convergence diagram</span><a class="headerlink" href="#geo-prog" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">Geometric progression convergence diagram</span><a class="headerlink" href="#geo-prog" title="Permalink to this image">¶</a></p>
 </div>
 <p>So while each resize might be costly, we carry out so few of them, that the <em>total cost</em> of all the resizes also becomes <span class="math notranslate nohighlight">\(\mathcal{O(n)}\)</span></p>
 <p>So the total cost of appending <span class="math notranslate nohighlight">\(n\)</span> elements to an empty <code class="docutils literal notranslate"><span class="pre">DynamicArray</span></code> is</p>
@@ -1040,7 +1035,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>As we have seen, a linked list is not a direct access data structure. We cannot go into any given index directly, but have to iterate through the sequence from the start. This is known as <em>sequential access</em>.</p>
 <div class="figure align-default" id="seq-rand-access">
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Random_vs_sequential_access.svg/600px-Random_vs_sequential_access.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Random_vs_sequential_access.svg/600px-Random_vs_sequential_access.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Random_vs_sequential_access.svg/600px-Random_vs_sequential_access.svg.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">Sequential versus random access</span><a class="headerlink" href="#seq-rand-access" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text">Sequential versus random access</span><a class="headerlink" href="#seq-rand-access" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -1103,12 +1098,12 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Similarly, we can talk about adding/removing elements. An analogy for adding elements to a dynamic array could be a stack of books lying on a table. Adding a book to the end of the stack is very easy, you just place it on top, where there is room. However, if you want to insert the book into the bottom or middle of the pile, you would have to do a lot more work. The bigger the stack, the more work.</p>
 <div class="figure align-default" id="stack-of-books">
 <a class="reference internal image-reference" href="../../../_images/stack_of_books.jpg"><img alt="../../../_images/stack_of_books.jpg" src="../../../_images/stack_of_books.jpg" style="width: 150px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text">A dynamic array is like a stack of books</span><a class="headerlink" href="#stack-of-books" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 37 </span><span class="caption-text">A dynamic array is like a stack of books</span><a class="headerlink" href="#stack-of-books" title="Permalink to this image">¶</a></p>
 </div>
 <p>Adding or removing elements from a linked list can be though of like modifying a chain, such as the one for your bicycle. If you need to lengthen your bike chain, you simply disconnect two of the “nodes” of the chain, add inn some more, and click them back together. It doesn’t matter how long the chain is, adding more chains is just as hard. For our “insert into the middle” we also added the “search time” to get to the right node. This would be like a bike chain with a broken “node”, first you would need to find the broken linker, to do this you first “iterate” through the chain, then you pop the broken one out and a fresh one in.</p>
 <div class="figure align-default" id="bike-chain">
 <a class="reference internal image-reference" href="../../../_images/bike_chain.jpg"><img alt="../../../_images/bike_chain.jpg" src="../../../_images/bike_chain.jpg" style="width: 3000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 37 </span><span class="caption-text">A linked list is like a bike chain.</span><a class="headerlink" href="#bike-chain" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 38 </span><span class="caption-text">A linked list is like a bike chain.</span><a class="headerlink" href="#bike-chain" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>

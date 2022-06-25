@@ -20,6 +20,7 @@ In this week's lecture, and the next, we will go more into the theoretical basis
 * Class methods and class variables
 * Static methods
 
+(four-pillars-oop)=
 ## The four pillars of OOP
 
 The "four pillars" are four concepts that are central when programming object-oriented, and are often referred to in the literature. These are:

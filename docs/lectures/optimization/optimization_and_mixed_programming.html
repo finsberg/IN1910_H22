@@ -133,11 +133,6 @@ const thebe_selector_output = ".output, .cell_output"
    Getting help or giving feedback
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../info/dictionary.html">
-   Dictionary
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -826,33 +821,35 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.7 µs ± 1.46 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
-12.5 µs ± 1.72 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
-140 µs ± 29.2 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
-69.7 µs ± 1.49 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
-The slowest run took 11.66 times longer than the fastest. This could mean that an intermediate result is being cached.
-1.99 ms ± 602 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
-1.08 ms ± 6.08 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
-The slowest run took 18.07 times longer than the fastest. This could mean that an intermediate result is being cached.
-10.5 ms ± 3.3 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
-6.69 ms ± 13.9 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.8 µs ± 5.9 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
+14.4 µs ± 1.99 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
+208 µs ± 67.1 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
+90.7 µs ± 29.2 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
+The slowest run took 12.77 times longer than the fastest. This could mean that an intermediate result is being cached.
+2.63 ms ± 817 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
+1.35 ms ± 86.7 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
+The slowest run took 21.92 times longer than the fastest. This could mean that an intermediate result is being cached.
+14.5 ms ± 4.73 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The slowest run took 30.10 times longer than the fastest. This could mean that an intermediate result is being cached.
-38.7 ms ± 12.4 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.48 ms ± 856 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.5 ms ± 227 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The slowest run took 35.14 times longer than the fastest. This could mean that an intermediate result is being cached.
+53.3 ms ± 17.6 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The slowest run took 42.25 times longer than the fastest. This could mean that an intermediate result is being cached.
-125 ms ± 40.6 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32.9 ms ± 2.39 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>97.8 ms ± 290 µs per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The slowest run took 50.65 times longer than the fastest. This could mean that an intermediate result is being cached.
+171 ms ± 56.3 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
-<img alt="../../../_images/optimization_and_mixed_programming_10_5.png" src="../../../_images/optimization_and_mixed_programming_10_5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>134 ms ± 6.19 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+</pre></div>
+</div>
+<img alt="../../../_images/optimization_and_mixed_programming_10_6.png" src="../../../_images/optimization_and_mixed_programming_10_6.png" />
 </div>
 </div>
 <p>So we see that for <span class="math notranslate nohighlight">\(n\)</span> less than 1000, our bubble sort actually beats our quicksort! If our code is only sorting lists that are <span class="math notranslate nohighlight">\(\leq 1000\)</span> elements long, then swapping bubble sort with quicksort in our code will actually make it slower! This emphasizes how important timing experiments can be sometimes.</p>
@@ -997,8 +994,8 @@ fig.savefig(&quot;../../figures/sorting_long.png&quot;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17.4 µs ± 111 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
-1.05 µs ± 69.1 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.8 µs ± 2.02 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+1.4 µs ± 159 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1121,7 +1118,7 @@ $<span class="math notranslate nohighlight">\(u_{i, j+1} = \frac{u_{i+1, j} + 2 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>894 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -1220,7 +1217,7 @@ $<span class="math notranslate nohighlight">\(u_{i, j+1} = \frac{u_{i+1, j} + 2 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.8 ms ± 117 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.7 ms ± 622 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -1234,8 +1231,8 @@ $<span class="math notranslate nohighlight">\(u_{i, j+1} = \frac{u_{i+1, j} + 2 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Speedup:  83.75511853321636
-Running time: 1.2%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Speedup:  77.36424066836044
+Running time: 1.3%
 </pre></div>
 </div>
 </div>
@@ -1322,7 +1319,7 @@ def ctriangle(n):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.1 µs ± 464 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>51.1 µs ± 1.48 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1334,7 +1331,7 @@ def ctriangle(n):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>29.7 µs ± 378 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.2 µs ± 2.27 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1363,7 +1360,7 @@ def ctriangle_v2(int n):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>741 ns ± 51.2 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>492 ns ± 43.9 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -2301,7 +2298,7 @@ static PyObject *__pyx_pf_46_cython_magic_7182ce533b9cf9d878112f196f7b14cf_ctria
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>694 ns ± 108 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>564 ns ± 142 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -2345,7 +2342,7 @@ def diffuse_signal_cython(u0, steps=1024):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>922 ms ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2420,7 +2417,7 @@ def diffuse_signal_cython_v2(np.ndarray[double, ndim=1] u0, int steps=1024):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.9 ms ± 22.3 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.68 ms ± 312 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 <img alt="../../../_images/optimization_and_mixed_programming_67_1.png" src="../../../_images/optimization_and_mixed_programming_67_1.png" />
@@ -2476,7 +2473,7 @@ def diffuse_signal_cython_v3(np.ndarray[double, ndim=1] u0, int steps=1024):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.91 ms ± 66.9 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 ms ± 262 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 <img alt="../../../_images/optimization_and_mixed_programming_70_1.png" src="../../../_images/optimization_and_mixed_programming_70_1.png" />
@@ -2539,7 +2536,7 @@ def diffuse_signal_cython_v4(np.ndarray[double, ndim=1] u0, int steps=1024):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.43 ms ± 9.39 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.73 ms ± 98.4 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 <img alt="../../../_images/optimization_and_mixed_programming_73_1.png" src="../../../_images/optimization_and_mixed_programming_73_1.png" />
@@ -2584,8 +2581,8 @@ def diffuse_signal_cython_v4(np.ndarray[double, ndim=1] u0, int steps=1024):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The slowest run took 145.99 times longer than the fastest. This could mean that an intermediate result is being cached.
-41.5 ms ± 96.8 ms per loop (mean ± std. dev. of 7 runs, 3 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The slowest run took 138.62 times longer than the fastest. This could mean that an intermediate result is being cached.
+50.2 ms ± 116 ms per loop (mean ± std. dev. of 7 runs, 3 loops each)
 </pre></div>
 </div>
 <img alt="../../../_images/optimization_and_mixed_programming_76_1.png" src="../../../_images/optimization_and_mixed_programming_76_1.png" />
@@ -2705,7 +2702,7 @@ so that we can use keyword arguments in python. See example on the pybind11 docu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elapsed time: 9.58e+00 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elapsed time: 1.11e+01 seconds
 </pre></div>
 </div>
 </div>
@@ -2721,7 +2718,7 @@ so that we can use keyword arguments in python. See example on the pybind11 docu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elapsed time: 1.82e+00 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elapsed time: 1.94e+00 seconds
 </pre></div>
 </div>
 </div>
@@ -2737,7 +2734,7 @@ so that we can use keyword arguments in python. See example on the pybind11 docu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elapsed time: 3.14e-01 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elapsed time: 4.19e-01 seconds
 </pre></div>
 </div>
 </div>

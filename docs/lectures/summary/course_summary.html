@@ -130,11 +130,6 @@ const thebe_selector_output = ".output, .cell_output"
    Getting help or giving feedback
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../info/dictionary.html">
-   Dictionary
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -906,7 +901,7 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <p>To show how helpful knowing a C-style language can be, let’s take a quick look again at the <a class="reference external" href="https://spectrum.ieee.org/at-work/innovation/the-2018-top-programming-languages">IEEE Spectrum Ranking for 2018</a>, which tries to rank programming languages by <em>popularity</em>, i.e., how much use they see. We can see that Python is number one, this is probably because Python is high-level language it is quick to prototype in. The next four languages in the list however, are all C-style languages. Knowing Python and some C++ therefore goes a long way.</p>
-<div class="figure align-default" id="spectrum-ranking">
+<div class="figure align-default" id="spectrum-ranking2021">
 <a class="reference internal image-reference" href="../../../_images/spectrum_ranking_2021.png"><img alt="../../../_images/spectrum_ranking_2021.png" src="../../../_images/spectrum_ranking_2021.png" style="width: 500px;" /></a>
 </div>
 </div>
@@ -964,7 +959,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Perhaps the most important tool we have covered in IN1910, although it might not feel like it, is version control. In this course you have used <em>git</em> to carry out your project work and collaborate in different ways. This is a hugely important skill to have when working on larger software projects. Version control makes your life <em>much</em> easier in the long run, and tools like <em>git</em> are more or less universally used.</p>
 <div class="figure align-default" id="git">
 <a class="reference internal image-reference" href="../../../_images/git.png"><img alt="../../../_images/git.png" src="../../../_images/git.png" style="width: 350px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text"><a class="reference external" href="https://xkcd.com/1597/">XKCD #1597</a></span><a class="headerlink" href="#git" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text"><a class="reference external" href="https://xkcd.com/1597/">XKCD #1597</a></span><a class="headerlink" href="#git" title="Permalink to this image">¶</a></p>
 </div>
 <p>Here we can also mention a cool tool which we have not covered in IN1910, for <em>visualizing a git repository</em>. Many such tools exist, and they can sometimes be helpful with understanding a large project or its history. Or it can simply be used to create cool graphics. One such tool is <a class="reference external" href="https://gource.io/"><em>gource</em></a>. If you are on Windows, you can download an .exe from the website, otherwise you can install through apt:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gource</span>
@@ -978,7 +973,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Now you get up an animation that shows how files are created and changed over time by different people.  The visualization will look cooler for larger project with many people working on them. You might not have many such repositories yet, but you can try to run one of your project repositories through gource, or the IN1910 course repository itself.</p>
 <div class="figure align-default" id="gource">
 <a class="reference internal image-reference" href="../../../_images/gource.png"><img alt="../../../_images/gource.png" src="../../../_images/gource.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">A snapshot of an animation of the IN1910 repository visualized with gource</span><a class="headerlink" href="#gource" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">A snapshot of an animation of the IN1910 repository visualized with gource</span><a class="headerlink" href="#gource" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="unit-testing-with-pytest">
 <h4>Unit Testing with <code class="docutils literal notranslate"><span class="pre">pytest</span></code><a class="headerlink" href="#unit-testing-with-pytest" title="Permalink to this headline">¶</a></h4>
@@ -1052,7 +1047,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>This point is also strongly connected to object-oriented programming, as one of the main benefits of OOP is that it makes this step easier to accomplish in practice. Basically all 4 pillars of object-oriented programming can be connected to this rule.</p>
 <div class="figure align-default" id="goto">
 <a class="reference internal image-reference" href="../../../_images/goto.png"><img alt="../../../_images/goto.png" src="../../../_images/goto.png" style="width: 650px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text"><strong>Comic explained:</strong> The “goto” keyword is an old keyword available in most programming languages, that works a bit like a function call that never returns, we simply jump somewhere different in the code based on line numbers or a function name. The use of “goto“‘s have always been quite controversial, as they are considered to usually lead to less readable code that is hard to debug. Luckily, for this reason they have become unpopular. <a class="reference external" href="https://xkcd.com/292/">XKCD #292</a></span><a class="headerlink" href="#goto" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text"><strong>Comic explained:</strong> The “goto” keyword is an old keyword available in most programming languages, that works a bit like a function call that never returns, we simply jump somewhere different in the code based on line numbers or a function name. The use of “goto“‘s have always been quite controversial, as they are considered to usually lead to less readable code that is hard to debug. Luckily, for this reason they have become unpopular. <a class="reference external" href="https://xkcd.com/292/">XKCD #292</a></span><a class="headerlink" href="#goto" title="Permalink to this image">¶</a></p>
 </div>
 <blockquote>
 <div><p>1b) Make names consistent, distinctive and meaningful</p>
@@ -1064,7 +1059,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The points underlines what we have been saying: code style is important. The best way to ensure consistent style is to decide on a style guide to follow, or to make one for yourself.</p>
 <div class="figure align-default" id="code-quality">
 <a class="reference internal image-reference" href="../../../_images/code_quality.png"><img alt="../../../_images/code_quality.png" src="../../../_images/code_quality.png" style="width: 650px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text"><a class="reference external" href="https://xkcd.com/1513/">XKCD #1513</a></span><a class="headerlink" href="#code-quality" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text"><a class="reference external" href="https://xkcd.com/1513/">XKCD #1513</a></span><a class="headerlink" href="#code-quality" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="rule-2-let-the-computer-do-the-work">
@@ -1096,7 +1091,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>It is important to also work incrementally on Git, meaning you should commit regularly, with good commit messages.</p>
 <div class="figure align-default" id="git-commit">
 <a class="reference internal image-reference" href="../../../_images/git_commit.png"><img alt="../../../_images/git_commit.png" src="../../../_images/git_commit.png" style="width: 350px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text"><a class="reference external" href="https://xkcd.com/1296/">XKCD #1296</a></span><a class="headerlink" href="#git-commit" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text"><a class="reference external" href="https://xkcd.com/1296/">XKCD #1296</a></span><a class="headerlink" href="#git-commit" title="Permalink to this image">¶</a></p>
 </div>
 <blockquote>
 <div><p>3c) Put everything that has been created manually in version control</p>

@@ -131,11 +131,6 @@ const thebe_selector_output = ".output, .cell_output"
    Getting help or giving feedback
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../info/dictionary.html">
-   Dictionary
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -1077,7 +1072,7 @@ This distinction becomes important when working with multiple files.</p>
 <p>Before moving along we need to talk about the two steps needed to go from a source file (i.e the code we write in the file ending with a <code class="docutils literal notranslate"><span class="pre">.cpp</span></code>) to an executable file (typically a <code class="docutils literal notranslate"><span class="pre">.out</span></code> file or a <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file). These two steps are called <em>compilation</em> and <em>linking</em>. Each source file is first compiled to object files and then the object files are linked together to form the executable.</p>
 <div class="figure align-default" id="compilation-linking">
 <a class="reference internal image-reference" href="../../../_images/compilation_linking.png"><img alt="../../../_images/compilation_linking.png" src="../../../_images/compilation_linking.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Several source files are compiled individually into object files. These object files are then linked together to form the final executable file.</span><a class="headerlink" href="#compilation-linking" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Several source files are compiled individually into object files. These object files are then linked together to form the final executable file.</span><a class="headerlink" href="#compilation-linking" title="Permalink to this image">¶</a></p>
 </div>
 <p>The command</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">++</span> <span class="n">sort</span><span class="o">.</span><span class="n">cpp</span> <span class="o">--</span><span class="n">std</span><span class="o">=</span><span class="n">c</span><span class="o">++</span><span class="mi">11</span> <span class="o">-</span><span class="n">o</span> <span class="n">sort</span>
@@ -1101,7 +1096,7 @@ This distinction becomes important when working with multiple files.</p>
 </div>
 <div class="figure align-default" id="compilation-linking-example">
 <a class="reference internal image-reference" href="../../../_images/compilation_linking_example.png"><img alt="../../../_images/compilation_linking_example.png" src="../../../_images/compilation_linking_example.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Files involved to compile and link our sorting example.</span><a class="headerlink" href="#compilation-linking-example" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">Files involved to compile and link our sorting example.</span><a class="headerlink" href="#compilation-linking-example" title="Permalink to this image">¶</a></p>
 </div>
 <p>Now that we have included <code class="docutils literal notranslate"><span class="pre">sort.hpp</span></code> in <code class="docutils literal notranslate"><span class="pre">test_sort.cpp</span></code> the compiler sees that the function <code class="docutils literal notranslate"><span class="pre">bubble_sort</span></code> function is declared. However, during the compilation step, the compiler does not need to know the definition (or implementation) of <code class="docutils literal notranslate"><span class="pre">bubble_sort</span></code>. It is sufficient that it knows the signature. The definition is needed during the linking step, and since <code class="docutils literal notranslate"><span class="pre">sort.cpp</span></code> also includes <code class="docutils literal notranslate"><span class="pre">sort.hpp</span></code>, the linker will figure out the definition of <code class="docutils literal notranslate"><span class="pre">bubble_sort</span></code> is found in <code class="docutils literal notranslate"><span class="pre">sort.cpp</span></code>.</p>
 </div>

@@ -131,11 +131,6 @@ const thebe_selector_output = ".output, .cell_output"
    Getting help or giving feedback
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../info/dictionary.html">
-   Dictionary
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -830,16 +825,16 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The XKCD comic below illustrates this point by showing how much time you can invest into optimizing your code and still save time. As the comic illustrates, how much time you save by optimizing depends on <em>how many times you run your code</em>.</p>
 <div class="figure align-default" id="xkcd1205">
 <a class="reference internal image-reference" href="../../../_images/xkcd1205.png"><img alt="xkcd1205" src="../../../_images/xkcd1205.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text"><strong>Source:</strong> <a class="reference external" href="https://xkcd.com/1205/">XKCD #1205</a></span><a class="headerlink" href="#xkcd1205" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 46 </span><span class="caption-text"><strong>Source:</strong> <a class="reference external" href="https://xkcd.com/1205/">XKCD #1205</a></span><a class="headerlink" href="#xkcd1205" title="Permalink to this image">¶</a></p>
 </div>
 <p>It is important to stress that if the goal is to produce code that is to be shared with others or sold, making the code more efficient makes a <em>better</em> product, and so the goal is itself not to save your own time, but save others time. The table above is more from the point of view of writing and using your own code. In addition, sometimes optimization is done as a learning exercise, in which case the time used in the optimization isn’t “wasted time”. In other cases it is about showing of, earning epic bragging rights or winning programming competitions.</p>
 <div class="figure align-default" id="xkcd974">
 <a class="reference internal image-reference" href="../../../_images/xkcd974.png"><img alt="xkcd974" src="../../../_images/xkcd974.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 46 </span><span class="caption-text"><strong>Source:</strong> <a class="reference external" href="https://xkcd.com/974/">XKCD #974</a></span><a class="headerlink" href="#xkcd974" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 47 </span><span class="caption-text"><strong>Source:</strong> <a class="reference external" href="https://xkcd.com/974/">XKCD #974</a></span><a class="headerlink" href="#xkcd974" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="xkcd1319">
 <a class="reference internal image-reference" href="../../../_images/xkcd1319.png"><img alt="xkcd1319" src="../../../_images/xkcd1319.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 47 </span><span class="caption-text"><strong>Source:</strong> <a class="reference external" href="https://xkcd.com/1319/">XKCD #1319</a></span><a class="headerlink" href="#xkcd1319" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 48 </span><span class="caption-text"><strong>Source:</strong> <a class="reference external" href="https://xkcd.com/1319/">XKCD #1319</a></span><a class="headerlink" href="#xkcd1319" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="benefits-of-optimization">
@@ -884,7 +879,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Timeit can be used to simply <em>check</em> through experimentation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">math</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="mi">23145</span>
@@ -894,28 +889,48 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">timeit</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> math.sqrt(x)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>87.7 ns ± 2.55 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">timeit</span> <span class="n">x</span><span class="o">**</span><span class="mf">0.5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> x**0.5
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100 ns ± 2.92 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">timeit</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> math.pow(x, 0.5)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>134 ns ± 6.28 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">timeit</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> np.sqrt(x)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.13 µs ± 61.5 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -924,7 +939,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>In our example, we only tried taking the square root of a single number, but let us instead try a large number of different numbers:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sqrt_numbers_math</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sqrt_numbers_math</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20000</span><span class="p">):</span>
         <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
@@ -946,28 +961,48 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We can also store the time from a call to <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> in jupyter, if we append the <code class="docutils literal notranslate"><span class="pre">-o</span></code> flag:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time_math</span> <span class="o">=</span> <span class="o">%</span><span class="n">timeit</span> <span class="o">-</span><span class="n">o</span> <span class="n">sqrt_numbers_math</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_math</span> <span class="o">=</span> <span class="o">%</span><span class="k">timeit</span> -o sqrt_numbers_math()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.28 ms ± 130 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time_exp</span> <span class="o">=</span> <span class="o">%</span><span class="n">timeit</span> <span class="o">-</span><span class="n">o</span> <span class="n">sqrt_numbers_exp</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_exp</span> <span class="o">=</span> <span class="o">%</span><span class="k">timeit</span> -o sqrt_numbers_exp()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.31 ms ± 43.8 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time_pow</span> <span class="o">=</span> <span class="o">%</span><span class="n">timeit</span> <span class="o">-</span><span class="n">o</span> <span class="n">sqrt_numbers_pow</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_pow</span> <span class="o">=</span> <span class="o">%</span><span class="k">timeit</span> -o sqrt_numbers_pow()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.93 ms ± 91.1 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time_np</span> <span class="o">=</span> <span class="o">%</span><span class="n">timeit</span> <span class="o">-</span><span class="n">o</span> <span class="n">sqrt_numbers_np</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_np</span> <span class="o">=</span> <span class="o">%</span><span class="k">timeit</span> -o sqrt_numbers_np()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.4 ms ± 1.04 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -997,7 +1032,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We implement it in an object oriented manner.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="k">class</span> <span class="nc">DrunkardsWalk</span><span class="p">:</span>
@@ -1034,7 +1069,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">drunkard</span> <span class="o">=</span> <span class="n">DrunkardsWalk</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drunkard</span> <span class="o">=</span> <span class="n">DrunkardsWalk</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">steps</span> <span class="o">=</span> <span class="n">drunkard</span><span class="o">.</span><span class="n">walk_home</span><span class="p">()</span>
 <span class="n">drunkard</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1042,10 +1077,16 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/software_optimization_15_0.png" src="../../../_images/software_optimization_15_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>52183
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">walker</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">walker</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="n">drunkard</span> <span class="o">=</span> <span class="n">DrunkardsWalk</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">drunkard</span><span class="o">.</span><span class="n">walk_home</span><span class="p">()</span>
     <span class="n">drunkard</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -1054,13 +1095,37 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/software_optimization_16_0.png" src="../../../_images/software_optimization_16_0.png" />
+</div>
 </div>
 <p>Let us profile this code. In Python, a standard package for profiling is <code class="docutils literal notranslate"><span class="pre">cProfile</span></code>, which should come pre-packaged with your python installation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cProfile</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cProfile</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100122</span><span class="p">)</span>
 <span class="n">cProfile</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;DrunkardsWalk(100).walk_home()&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         4310769 function calls in 4.125 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+   862153    0.104    0.000    0.104    0.000 3439088668.py:10(position)
+        1    0.000    0.000    0.000    0.000 3439088668.py:14(steps)
+   862153    0.303    0.000    0.407    0.000 3439088668.py:18(is_at_home)
+   862152    0.756    0.000    3.295    0.000 3439088668.py:21(step)
+        1    0.415    0.415    4.117    4.117 3439088668.py:25(walk_home)
+        1    0.000    0.000    0.000    0.000 3439088668.py:5(__init__)
+        1    0.008    0.008    4.125    4.125 &lt;string&gt;:1(&lt;module&gt;)
+        1    0.000    0.000    4.125    4.125 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+   862152    0.106    0.000    0.106    0.000 {method &#39;append&#39; of &#39;list&#39; objects}
+        1    0.000    0.000    0.000    0.000 {method &#39;disable&#39; of &#39;_lsprof.Profiler&#39; objects}
+   862152    2.434    0.000    2.434    0.000 {method &#39;randint&#39; of &#39;numpy.random.mtrand.RandomState&#39; objects}
 </pre></div>
 </div>
 </div>
@@ -1100,14 +1165,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p>To use <code class="docutils literal notranslate"><span class="pre">line_profiler</span></code> inside a notebook, we need to load it as an external tool</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">load_ext</span> <span class="n">line_profiler</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> line_profiler
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lpres</span> <span class="o">=</span> <span class="o">%</span><span class="n">lprun</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">f</span> <span class="n">DrunkardsWalk</span><span class="o">.</span><span class="n">step</span> <span class="o">-</span><span class="n">f</span> <span class="n">DrunkardsWalk</span><span class="o">.</span><span class="n">walk_home</span> <span class="n">DrunkardsWalk</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">walk_home</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lpres</span> <span class="o">=</span> <span class="o">%</span><span class="k">lprun</span> -r -f DrunkardsWalk.step -f DrunkardsWalk.walk_home DrunkardsWalk(100).walk_home()
 </pre></div>
 </div>
 </div>
@@ -1163,7 +1228,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Knuth is remarking on rule <em>3</em>, that one should not try to optimize one’s entire program, but just the critical 3%. The quote is often shortened to simply <em>“premature optimization is the root of all evil</em>, which also neatly summarized the fact that rule we started with: First make it work, then make it elegant, lastly make it fast. If you start optimizing while solving the problem for the first time, you are <em>prematurely optimizing</em>.</p>
 <div class="figure align-default" id="xkcd1691">
 <a class="reference internal image-reference" href="../../../_images/xkcd1691.png"><img alt="xkcd1691" src="../../../_images/xkcd1691.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 48 </span><span class="caption-text"><strong>Source:</strong> <a class="reference external" href="https://xkcd.com/1691/">XKCD #1691</a></span><a class="headerlink" href="#xkcd1691" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text"><strong>Source:</strong> <a class="reference external" href="https://xkcd.com/1691/">XKCD #1691</a></span><a class="headerlink" href="#xkcd1691" title="Permalink to this image">¶</a></p>
 </div>
 <p>As an ending thought: We might seem overly harsh on optimizing code in this lecture. However, we <strong>do</strong> think optimization is important and that it <strong>should be done</strong>. We are simply trying to point out that there is a <em>time</em> and a <em>place</em> for optimization. In addition it should be done in a structured, systematic manner.</p>
 <p>Some take quotes like <em>“premature optimization is the root of all evil”</em> too much to heart and forgo optimization altogether, however, this is also far from ideal, which the full quote actually addresses! However, some people think the quote is used to justify laziness and bad practices, leading some to claim that:</p>

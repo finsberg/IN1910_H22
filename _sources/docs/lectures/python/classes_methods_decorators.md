@@ -601,6 +601,43 @@ Here are some that might be of special interest:
 * `__getitem__` and `__setitem__` can be used to make our object indexable, i.e., define what `x[0]`, `x[1]` and so on means
 * (**Advanced**) `__hash__` makes it possible to compute a [hash value](https://www.programiz.com/python-programming/methods/built-in/hash) from your object with `hash(u)`. This is needed if you want to use your object as a key in a dictionary.
 
+(dataclasses)=
+## Dataclasses
+
+Dataclasses is a fairly new concept that was added in python 3.7. When writing the `Vector` class we note that there is a lot of boilerplate code that we have to write. Here we also add [type annotations](type-annotations) because these are needed in dataclasses.
+
+```{code-cell} python
+class VectorNormalClass:
+    def __init__(self, x: float, y: float, z: float) -> None:
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def __repr__(self) -> str:
+        return (
+            f"{type(self).__name__}(x={self.x}, y={self.y}, z={self.z})"
+        )
+
+v1 = VectorNormalClass(1, 2, 3)
+print(v1)
+```
+In the constructor we first take `x`, `y` and `z` as arguments and then set them as attributes on the instance. In the `__repr__` we get the name of the class and basically copy the constructor declaration. As a result the argument `x` is written three times in the constructor and two times in the representation. This seems a bit redundant, and indeed we can solve write the same code using dataclasses as follows
+
+```{code-cell} python
+from dataclasses import dataclass
+
+@dataclass
+class VectorDataClass:
+    x: float
+    y: float
+    z: float
+
+v2 = VectorDataClass(1, 2, 3)
+print(v2)
+```
+
+Notice that we have now added a decorator on the class it self. We will see later how to construct you own decorators.
+
 
 ## Short introduction to inheritance
 

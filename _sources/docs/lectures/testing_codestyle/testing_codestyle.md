@@ -1,4 +1,5 @@
 # Testing and Code style
 
-* [Assertions, Exceptions, Testing](writing_functioning_code.ipynb)
-* [Code Style and Documentation](codestyle_and_docstrings.ipynb)
+* [Assertions, Exceptions, Testing](writing_functioning_code.md)
+* [Code Style and Documentation](codestyle_and_docstrings.md)
+* [Type annotations](type_annotations.md)

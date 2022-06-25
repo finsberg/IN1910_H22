@@ -133,11 +133,6 @@ const thebe_selector_output = ".output, .cell_output"
    Getting help or giving feedback
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../info/dictionary.html">
-   Dictionary
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -612,6 +607,11 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataclasses">
+   Dataclasses
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#short-introduction-to-inheritance">
    Short introduction to inheritance
   </a>
@@ -763,6 +763,11 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataclasses">
+   Dataclasses
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#short-introduction-to-inheritance">
    Short introduction to inheritance
   </a>
@@ -882,7 +887,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;__main__.Vector3D object at 0x7f1f3ec1b400&gt;, &lt;__main__.Vector3D object at 0x7f1f3ec1b400&gt;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;__main__.Vector3D object at 0x7f5ca1047400&gt;, &lt;__main__.Vector3D object at 0x7f5ca1047400&gt;]
 </pre></div>
 </div>
 </div>
@@ -1565,6 +1570,57 @@ v = (0.666667, -0.666667, 0.333333) has a length of 1.0
 </div>
 </div>
 </div>
+<div class="section" id="dataclasses">
+<span id="id1"></span><h2>Dataclasses<a class="headerlink" href="#dataclasses" title="Permalink to this headline">¶</a></h2>
+<p>Dataclasses is a fairly new concept that was added in python 3.7. When writing the <code class="docutils literal notranslate"><span class="pre">Vector</span></code> class we note that there is a lot of boilerplate code that we have to write. Here we also add <a class="reference internal" href="../testing_codestyle/type_annotations.html#type-annotations"><span class="std std-ref">type annotations</span></a> because these are needed in dataclasses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">VectorNormalClass</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(x=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, y=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">, z=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="p">)</span>
+
+<span class="n">v1</span> <span class="o">=</span> <span class="n">VectorNormalClass</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VectorNormalClass(x=1, y=2, z=3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the constructor we first take <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code> as arguments and then set them as attributes on the instance. In the <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> we get the name of the class and basically copy the constructor declaration. As a result the argument <code class="docutils literal notranslate"><span class="pre">x</span></code> is written three times in the constructor and two times in the representation. This seems a bit redundant, and indeed we can solve write the same code using dataclasses as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">VectorDataClass</span><span class="p">:</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">z</span><span class="p">:</span> <span class="nb">float</span>
+
+<span class="n">v2</span> <span class="o">=</span> <span class="n">VectorDataClass</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VectorDataClass(x=1, y=2, z=3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that we have now added a decorator on the class it self. We will see later how to construct you own decorators.</p>
+</div>
 <div class="section" id="short-introduction-to-inheritance">
 <h2>Short introduction to inheritance<a class="headerlink" href="#short-introduction-to-inheritance" title="Permalink to this headline">¶</a></h2>
 <p>For the last portion of this lecture, we will give a very brief introduction to <em>inheritance</em>, which we will come back to in more detail next week. For now we will just one simple example.</p>
@@ -1653,17 +1709,17 @@ v = (0.666667, -0.666667, 0.333333) has a length of 1.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pikachu(115, 103, 81)
-Pikachu(125, 101, 81)
-Pikachu(127, 113, 73)
-Pikachu(120, 109, 72)
-Pikachu(116, 103, 80)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pikachu(116, 113, 85)
+Pikachu(124, 110, 84)
+Pikachu(114, 113, 70)
+Pikachu(120, 101, 75)
+Pikachu(114, 116, 75)
 
-Charizard(224, 179, 157)
-Charizard(238, 179, 165)
-Charizard(226, 190, 161)
-Charizard(226, 180, 165)
-Charizard(237, 191, 169)
+Charizard(228, 177, 169)
+Charizard(229, 187, 158)
+Charizard(225, 187, 171)
+Charizard(223, 188, 163)
+Charizard(232, 187, 161)
 </pre></div>
 </div>
 </div>

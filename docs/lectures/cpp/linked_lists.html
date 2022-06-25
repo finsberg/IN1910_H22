@@ -133,11 +133,6 @@ const thebe_selector_output = ".output, .cell_output"
    Getting help or giving feedback
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../info/dictionary.html">
-   Dictionary
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -728,7 +723,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>As mentioned, there are also hundreds of books on this subject, some probably better than others. Not only are there many to choose from, there are probably several to choose from dedicated for each programming language you might want to use. We will recommend the book used by IN2010, <a class="reference external" href="https://www.wiley.com/en-us/Algorithm+Design+and+Applications-p-9781118335918"><em>Algorithm Design and Application</em> by Goodrich and Tamassia</a> as that is probably the best choice if you want to get a dedicated book and might be taking IN2010 in the future.</p>
 <div class="figure align-default" id="goodrich-and-tamissa">
 <a class="reference internal image-reference" href="../../../_images/goodrich_and_tamissa.jpg"><img alt="../../../_images/goodrich_and_tamissa.jpg" src="../../../_images/goodrich_and_tamissa.jpg" style="width: 175px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">Book used by IN2010, <a class="reference external" href="https://www.wiley.com/en-us/Algorithm+Design+and+Applications-p-9781118335918"><em>Algorithm Design and Application</em> by Goodrich and Tamassia</a></span><a class="headerlink" href="#goodrich-and-tamissa" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">Book used by IN2010, <a class="reference external" href="https://www.wiley.com/en-us/Algorithm+Design+and+Applications-p-9781118335918"><em>Algorithm Design and Application</em> by Goodrich and Tamassia</a></span><a class="headerlink" href="#goodrich-and-tamissa" title="Permalink to this image">¶</a></p>
 </div>
 <p>Another excellent resource to use are the teaching materials for the <a class="reference external" href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/">MIT course 6.006 <em>Introduction to Algorithms</em></a>. The course materials are openly available through Open CourseWare, with recorded video lectures. This course covers the theory behind many data structures and algorithms, and so works well with any programming language, but mostly uses Python for example code. Note that 6.006 goes into many topics we won’t cover, but they also have lectures that cover what we do in IN1910.</p>
 </div>
@@ -742,7 +737,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Note that if we want to implement to specific ADT, say for example a list, there will often be many different underlying data structures we can choose when we implement it. In the case of the list, dynamic arrays would be a natural choice, as we have already seen. Another option would be <em>linked lists</em>, a data structure we will cover in this lecture.</p>
 <div class="figure align-default" id="data-structure-vs-adt">
 <a class="reference internal image-reference" href="../../../_images/data_structure_vs_adt.png"><img alt="../../../_images/data_structure_vs_adt.png" src="../../../_images/data_structure_vs_adt.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">An abstract data type is the interface the user has to interact with, it defines the possible operations on the data and how they behave. The underlying data structure is more specific to how data is represented and stored in memory, it is mostly the implementer who has to think about the data structure. As shown, different data structures can be used to implement a given ADT, lists can for example be made with dynamic arrays <em>or</em> with linked list. This will be different from the perspective of the implementer. But when using the class, we won’t really need to think about the underlying data structure, as the same operations will be supported.</span><a class="headerlink" href="#data-structure-vs-adt" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">An abstract data type is the interface the user has to interact with, it defines the possible operations on the data and how they behave. The underlying data structure is more specific to how data is represented and stored in memory, it is mostly the implementer who has to think about the data structure. As shown, different data structures can be used to implement a given ADT, lists can for example be made with dynamic arrays <em>or</em> with linked list. This will be different from the perspective of the implementer. But when using the class, we won’t really need to think about the underlying data structure, as the same operations will be supported.</span><a class="headerlink" href="#data-structure-vs-adt" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="id1">
@@ -751,17 +746,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p>A node object stores the value of the element itself, but it also contains a pointer to another node. We can use this pointer to <em>link</em> different nodes to each other and create a <em>linked list</em>. In this lecture we will only consider lists that store <em>integers</em>. However, the value field of the nodes could simply be changed to store any kind of object. In C++, it would be best to use <em>templating</em> to define a single list class that can contain any type of data, but we disregard this here to keep things as simple as possible.</p>
 <div class="figure align-default" id="single-node">
 <a class="reference internal image-reference" href="../../../_images/single_node.png"><img alt="../../../_images/single_node.png" src="../../../_images/single_node.png" style="width: 175px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">A single node object.</span><a class="headerlink" href="#single-node" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">A single node object.</span><a class="headerlink" href="#single-node" title="Permalink to this image">¶</a></p>
 </div>
 <p>When link a series of nodes, they form a linked list. We let the list end by having the final node point at a nullptr. In Figure 3, we have a chain of linked nodes, which would correspond to a list <code class="docutils literal notranslate"><span class="pre">[47,</span> <span class="pre">3,</span> <span class="pre">12,</span> <span class="pre">99,</span> <span class="pre">23]</span></code>.</p>
 <div class="figure align-default" id="node-chain">
 <a class="reference internal image-reference" href="../../../_images/node_chain.png"><img alt="../../../_images/node_chain.png" src="../../../_images/node_chain.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">A chain of node objects.</span><a class="headerlink" href="#node-chain" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">A chain of node objects.</span><a class="headerlink" href="#node-chain" title="Permalink to this image">¶</a></p>
 </div>
 <p>To simplify our drawings of linked list, we change to drawing our nodes as simple circles, writing their value inside, and the pointer as an arrow.</p>
 <div class="figure align-default" id="simplified-node-chain">
 <a class="reference internal image-reference" href="../../../_images/simplified_node_chain.png"><img alt="../../../_images/simplified_node_chain.png" src="../../../_images/simplified_node_chain.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">A simplified drawing of a linked list.</span><a class="headerlink" href="#simplified-node-chain" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">A simplified drawing of a linked list.</span><a class="headerlink" href="#simplified-node-chain" title="Permalink to this image">¶</a></p>
 </div>
 <p>This structure defines a clear sequence of integer values. We can also iterate over this list, if we have a reference to the first value, we can do something to this value, for example print it, and then use the <code class="docutils literal notranslate"><span class="pre">next</span></code> pointer to move to the next element in the list, and thus iterate our way through it.</p>
 <div class="section" id="making-the-nodes">
@@ -1050,7 +1045,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We draw the three situations below. If you are still confused, we recommend you draw up a linked list, and then try to insert elements by drawing in new nodes and moving pointers around yourself.</p>
 <div class="figure align-default" id="insert-linked-list">
 <a class="reference internal image-reference" href="../../../_images/insert_linked_list.png"><img alt="../../../_images/insert_linked_list.png" src="../../../_images/insert_linked_list.png" style="width: 250px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">Different way of inserting elements into the linked list</span><a class="headerlink" href="#insert-linked-list" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Different way of inserting elements into the linked list</span><a class="headerlink" href="#insert-linked-list" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>

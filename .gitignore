@@ -1,4 +1,7 @@
 
+book/docs/lectures/optimization/is_prime.py
+book/docs/lectures/optimization/mandelbrot_mp.py
+
 # Build files
 book/_build
 .vscode

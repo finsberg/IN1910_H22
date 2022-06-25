@@ -17,7 +17,7 @@ help:
 
 docs: ## Build book
 	jupyter-book build book
-	cp environment.yml book/_build/html/.
+	cp requirements.txt book/_build/html/.
 	touch book/_build/html/.nojekyll
 
 

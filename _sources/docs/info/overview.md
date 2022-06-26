@@ -36,6 +36,7 @@ There are weekly group sessions where you get help with both the weekly exercise
 
 * Lecture notes
   * [Assertions, Exceptions, Testing](../lectures/python_development/writing_functioning_code.md)
+  [Debugging in python](../lectures/python_development/debugging.md)
 * Exercises
   * [Exercises on Unit Testing](../exercises/week3/E3_testing_and_docstrings.md)
   * [Example Solutions](../exercises/week3/E3_solutions.ipynb)

@@ -13,10 +13,10 @@ Please note that the format of lectures can change during the semester due to th
 At of the start of the semester, the lecture plan is as follows
 
 - Week 34 - Python Recap and Version Control with Git
-- Week 35 - Exception handling and Testing
+- Week 35 - Exception handling, Testing and Debugging
 - Week 36 - Object Oriented Programming
 - Week 37 - Object Oriented Programming, Code style and Documentation
-- Week 38 - Object Oriented Programming
+- Week 38 - Object Oriented Programming and Functional Programming
 - Week 39 - Introduction to C++
 - Week 40 - Object Oriented Programming in C++
 - Week 41 - No lectures (Midsemester exams)

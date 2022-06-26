@@ -200,16 +200,21 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/classes_methods_decorators.html">
-     Creating classes in Python
+    <a class="reference internal" href="../python/oop_methods.html">
+     Methods in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/more_oop.html">
-     More on Object-Oriented Programming
+    <a class="reference internal" href="../python/oop_concepts.html">
+     Designing Object-Oriented Programs
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/functional_programming.html">
+   Functional programming in python
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../git/version_control_with_git.html">
@@ -217,8 +222,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../testing_codestyle/testing_codestyle.html">
-   Testing and Code style
+  <a class="reference internal" href="../python_development/python_development.html">
+   Python development
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -227,18 +232,23 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/writing_functioning_code.html">
+    <a class="reference internal" href="../python_development/writing_functioning_code.html">
      Writing Reliable Software
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/codestyle_and_docstrings.html">
+    <a class="reference internal" href="../python_development/codestyle_and_docstrings.html">
      Code Style and Documentation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/type_annotations.html">
+    <a class="reference internal" href="../python_development/type_annotations.html">
      Type annotations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_development/debugging.html">
+     Debugging in python
     </a>
    </li>
   </ul>
@@ -897,7 +907,7 @@ Now, these operations do not take exactly the same amount of time, but to make a
 <p>Now, interestingly enough, the <span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span> cost we find for the “naive” matrix-matrix multiplication algorithm turns out to be sub-optimal. Several clever techniques have been found to optimize this multiplication and make it scale better. This is very important for linear algebra computations involving large matrices, of which many exist.</p>
 <div class="figure align-default" id="matrix-mult">
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Bound_on_matrix_multiplication_omega_over_time.svg/600px-Bound_on_matrix_multiplication_omega_over_time.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Bound_on_matrix_multiplication_omega_over_time.svg/600px-Bound_on_matrix_multiplication_omega_over_time.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Bound_on_matrix_multiplication_omega_over_time.svg/600px-Bound_on_matrix_multiplication_omega_over_time.svg.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">This graph shows the best-scaling known algorithm for matrix-matrix multiplication over time. The current best scaling was published in 2014 by François Le Gall, and has a scaling of <span class="math notranslate nohighlight">\(\mathcal{O}(n^{2.3728642...})\)</span></span><a class="headerlink" href="#matrix-mult" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">This graph shows the best-scaling known algorithm for matrix-matrix multiplication over time. The current best scaling was published in 2014 by François Le Gall, and has a scaling of <span class="math notranslate nohighlight">\(\mathcal{O}(n^{2.3728642...})\)</span></span><a class="headerlink" href="#matrix-mult" title="Permalink to this image">¶</a></p>
 </div>
 <p>Looking at the graph and the improvements found over time, it is easy to start to wonder where it will end, and as of now, the theoretical optimal scaling of matrix-matrix multiplication is unknown. However, we do know that there is a theoretical limit of <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span>, simply due to the fact that two multiply the <span class="math notranslate nohighlight">\(n \times n\)</span> matrices together requires at least reading out the elements of those matrices, which in itself is <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span>. However, wether it is actually possible to make an algorithm that reaches <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span> is not known, no one has been able to prove, or disprove, that this limit is reachable.</p>
 </div>

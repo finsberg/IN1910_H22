@@ -200,16 +200,21 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/classes_methods_decorators.html">
-     Creating classes in Python
+    <a class="reference internal" href="../python/oop_methods.html">
+     Methods in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/more_oop.html">
-     More on Object-Oriented Programming
+    <a class="reference internal" href="../python/oop_concepts.html">
+     Designing Object-Oriented Programs
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/functional_programming.html">
+   Functional programming in python
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../git/version_control_with_git.html">
@@ -217,8 +222,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../testing_codestyle/testing_codestyle.html">
-   Testing and Code style
+  <a class="reference internal" href="../python_development/python_development.html">
+   Python development
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -227,18 +232,23 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/writing_functioning_code.html">
+    <a class="reference internal" href="../python_development/writing_functioning_code.html">
      Writing Reliable Software
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/codestyle_and_docstrings.html">
+    <a class="reference internal" href="../python_development/codestyle_and_docstrings.html">
      Code Style and Documentation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/type_annotations.html">
+    <a class="reference internal" href="../python_development/type_annotations.html">
      Type annotations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_development/debugging.html">
+     Debugging in python
     </a>
    </li>
   </ul>
@@ -1102,7 +1112,7 @@ c &amp;= 1013904223.
 <p>Pigeons into 100 pigeonholes, there is no way to get an equal number of pigeons into each hole.</p>
 <div class="figure align-default" id="toomanypigeons">
 <a class="reference internal image-reference" href="../../../_images/TooManyPigeons.jpg"><img alt="TooManyPigeons" src="../../../_images/TooManyPigeons.jpg" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">Picture by <a class="reference external" href="https://en.wikipedia.org/wiki/Pigeonhole_principle#/media/File:TooManyPigeons.jpg">Ben Frantz Dale</a> and used under a <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license.</span><a class="headerlink" href="#toomanypigeons" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Picture by <a class="reference external" href="https://en.wikipedia.org/wiki/Pigeonhole_principle#/media/File:TooManyPigeons.jpg">Ben Frantz Dale</a> and used under a <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license.</span><a class="headerlink" href="#toomanypigeons" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="random-numbers-following-a-given-distribution">
 <h3>Random numbers following a given distribution<a class="headerlink" href="#random-numbers-following-a-given-distribution" title="Permalink to this headline">¶</a></h3>
@@ -1223,7 +1233,7 @@ Z_2 = \sqrt{-2 \ln U_1}\sin (2\pi U_2).
 <p>Look closely at this sequence. We have seeded our pRNG with the seed value of <span class="math notranslate nohighlight">\(6\)</span>, when we iterate through and produce new numbers, we eventually end back up at the value 6. From that point onwards, the sequence just repeats itself in exactly the same manner. This is a huge problem, because an important quality of <em>statistically random</em> is that numbers are uncorrelated, and we are now getting big correlations in our datasets.</p>
 <div class="figure align-default" id="xkcd-221">
 <a class="reference internal image-reference" href="../../../_images/xkcd_221.png"><img alt="xkcd_221" src="../../../_images/xkcd_221.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Source: <a class="reference external" href="https://xkcd.com/221/">XKCD #221</a></span><a class="headerlink" href="#xkcd-221" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Source: <a class="reference external" href="https://xkcd.com/221/">XKCD #221</a></span><a class="headerlink" href="#xkcd-221" title="Permalink to this image">¶</a></p>
 </div>
 <p>The number of values a pRNG produces before it repeats itself is called its <em>period</em>. For our example, the period was 6, because it produced six numbers before repeating itself. It’s important when we use a pRNG that we do not exhaust its period.</p>
 <p>Now, our example LCG was purposefully very simple, to illustrate a short period. But note that while this LCG technically has 9 possible outcomes, because <span class="math notranslate nohighlight">\(m=9\)</span>, the period is shorter than 9. This is true for any LCG, if our LCG has <span class="math notranslate nohighlight">\(m=2^{32}\)</span>, then we know that the period is <em>at most</em> <span class="math notranslate nohighlight">\(2^{32}\)</span>. This is again because of the Pigeonhole principle, we simply have to hit a repeated number if we reach <span class="math notranslate nohighlight">\(2^{32}+1\)</span> numbers, as we have exhausted all options.</p>
@@ -1268,7 +1278,7 @@ Z_2 = \sqrt{-2 \ln U_1}\sin (2\pi U_2).
 <p>The “spectral test” in this regard refers to test LCGs, such as randu. If we use our pRNG to draw random points in a unit cube, if our pRNG is behaving as it should, these points will spread out uniformly in the cube, but if there is correlation between the different samples produced by the pRNG, we will see patterns forming in these random points. For most pRNGs we have to move to high dimensions before we can see these patterns, but for RANDU they show up even in 3D.</p>
 <div class="figure align-default" id="randu-planes">
 <a class="reference internal image-reference" href="../../../_images/randu_planes.png"><img alt="randu_planes" src="../../../_images/randu_planes.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text"><strong>Figure 2:</strong> (Left) For a “good” pRNG, like the one used by <code class="docutils literal notranslate"><span class="pre">np.random</span></code>, we can see no discernible patterns in the random samples, i.e., they are uncorrelated. (Right) RANDU however, fails this test, as we can see the points line up into 15 parallel planes.</span><a class="headerlink" href="#randu-planes" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text"><strong>Figure 2:</strong> (Left) For a “good” pRNG, like the one used by <code class="docutils literal notranslate"><span class="pre">np.random</span></code>, we can see no discernible patterns in the random samples, i.e., they are uncorrelated. (Right) RANDU however, fails this test, as we can see the points line up into 15 parallel planes.</span><a class="headerlink" href="#randu-planes" title="Permalink to this image">¶</a></p>
 </div>
 <p>At the time of RANDU’s creation, not enough diligence was put on verifying its properties. And because of its simplicity and speed, it was quite popular in the 60s and 70s. Because of this, a lot of scientific results that rely on stochastic simulations from that time are seen with skepticism.</p>
 </div>
@@ -1295,7 +1305,7 @@ Z_2 = \sqrt{-2 \ln U_1}\sin (2\pi U_2).
 <p>The Electronic Frontier Foundation has traditionally given out large cash prizes to whoever breaks a big milestone, such as the first prime to pass one million, and ten million digits. The next prize is $150,000 to whoever finds the first prime with 100 million digits or more. It wouldn’t be unreasonable to assume the GIMPS will be the first to find this number.</p>
 <div class="figure align-default" id="largest-primes">
 <a class="reference internal image-reference" href="../../../_images/largest_primes.png"><img alt="largest_primes" src="../../../_images/largest_primes.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">The number of digits in the largest prime known over time. Note that the vertical axis is logarithmic, meaning the growth is exponential. The dashed red line is the best fit exponential growth. Figure created by <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Digits_in_largest_prime_2016.svg">Nicoguaro</a>, used under a <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.</span><a class="headerlink" href="#largest-primes" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text">The number of digits in the largest prime known over time. Note that the vertical axis is logarithmic, meaning the growth is exponential. The dashed red line is the best fit exponential growth. Figure created by <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Digits_in_largest_prime_2016.svg">Nicoguaro</a>, used under a <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.</span><a class="headerlink" href="#largest-primes" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>

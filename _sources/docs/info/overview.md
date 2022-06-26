@@ -35,18 +35,17 @@ There are weekly group sessions where you get help with both the weekly exercise
 #### Week 35 - Exception handling and Testing and Object Oriented Programming
 
 * Lecture notes
-  * [Assertions, Exceptions, Testing](../lectures/testing_codestyle/writing_functioning_code.md)
+  * [Assertions, Exceptions, Testing](../lectures/python_development/writing_functioning_code.md)
 * Exercises
   * [Exercises on Unit Testing](../exercises/week3/E3_testing_and_docstrings.md)
   * [Example Solutions](../exercises/week3/E3_solutions.ipynb)
 * Slides
 
-#### Week 36 — Object-Oriented Programming
+#### Week 36 — Object-Oriented Programming and type hints
 
 * Lecture notes
-    * [Introduction to Object-Oriented Programming](../lectures/python/intro_to_oop.ipynb)
-    * [Making Classes in Python](../lectures/python/classes_methods_decorators.ipynb)
-
+    * [Introduction to Object-Oriented Programming](../lectures/python/intro_to_oop.md)
+    * [Type annotations](../lectures/python_development/type_annotations.md)
 * Exercises
     * [Exercises on OOP](../exercises/week2/E2_exercises_on_oop.ipynb)
     * [Example Solutions](../exercises/week2/E2_solutions.ipynb)
@@ -54,15 +53,17 @@ There are weekly group sessions where you get help with both the weekly exercise
 
 #### Week 37 — More on Object-Oriented Programming, Code Style and Documentation
 * Lecture notes
-    * [Code Style and Documentation](../lectures/testing_codestyle/codestyle_and_docstrings.md)
-    * [More on OOP](../lectures/python/more_oop.ipynb)
+    * [Methods in Python](../lectures/python/oop_methods.md)
+    * [Code Style and Documentation](../lectures/python_development/codestyle_and_docstrings.md)
 
 * Exercises
     * [Project 1](../projects/project1/project1.md)
 
-#### Week 38 — More on Object-Oriented Programming
+#### Week 38 —Object-Oriented design and functional programming in python
 * Lecture notes
-    * [More on OOP](../lectures/python/more_oop.ipynb)
+    * [Designing Object-Oriented Programs](../lectures/python/oop_concepts.md)
+    * [Functional programming in python](../lectures/python/functional_programming.md)
+
 
 * Exercises
     * [Project 1](../projects/project1/project1.md)

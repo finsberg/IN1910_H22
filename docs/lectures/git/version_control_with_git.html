@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Testing and Code style" href="../testing_codestyle/testing_codestyle.html" />
-    <link rel="prev" title="More on Object-Oriented Programming" href="../python/more_oop.html" />
+    <link rel="next" title="Python development" href="../python_development/python_development.html" />
+    <link rel="prev" title="Functional programming in python" href="../python/functional_programming.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -198,16 +198,21 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/classes_methods_decorators.html">
-     Creating classes in Python
+    <a class="reference internal" href="../python/oop_methods.html">
+     Methods in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/more_oop.html">
-     More on Object-Oriented Programming
+    <a class="reference internal" href="../python/oop_concepts.html">
+     Designing Object-Oriented Programs
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/functional_programming.html">
+   Functional programming in python
+  </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
@@ -215,8 +220,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../testing_codestyle/testing_codestyle.html">
-   Testing and Code style
+  <a class="reference internal" href="../python_development/python_development.html">
+   Python development
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -225,18 +230,23 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/writing_functioning_code.html">
+    <a class="reference internal" href="../python_development/writing_functioning_code.html">
      Writing Reliable Software
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/codestyle_and_docstrings.html">
+    <a class="reference internal" href="../python_development/codestyle_and_docstrings.html">
      Code Style and Documentation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/type_annotations.html">
+    <a class="reference internal" href="../python_development/type_annotations.html">
      Type annotations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_development/debugging.html">
+     Debugging in python
     </a>
    </li>
   </ul>
@@ -807,7 +817,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>If you want to go more in depth, or have a more extensive reference work, the book <em>Pro Git</em> by Scott Chacon and Ben Straub is released under a <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/3.0/?utm_source=www.domtail.com">Creative Commons BY-NC-SA3.0 license</a>, meaning you can download it for free. The 2. edition was released in 2014, and on the book’s website you can download it as a pdf as well as some common e-book formats (epub, mobi). The book itself is very extensive, being over 500 pages. However, it starts of fairly easy, and goes into more technical details towards the end, so reading the first few chapters can still be a good introduction to git.</p>
 <div class="figure align-default" id="progit">
 <a class="reference internal image-reference" href="../../../_images/progit.png"><img alt="progit" src="../../../_images/progit.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Pro Git Book website: <a class="reference external" href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></span><a class="headerlink" href="#progit" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Pro Git Book website: <a class="reference external" href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></span><a class="headerlink" href="#progit" title="Permalink to this image">¶</a></p>
 </div>
 <p>Another very good alternative it the book called <a class="reference external" href="https://ericsink.com/vcbe/vcbe_a4_lo.pdf"><em>Version Control by Example</em></a> which also touches upon the history of version control as well as other version control system than git.</p>
 <p>At this point we should stress that these resources are simply offered as an alternative, or in addition, to the lecture notes, and we do not expect you to use them unless you want to.</p>
@@ -817,7 +827,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Imagine you have a new software assignment, with a three week deadline. You start working and things are progressing nicely, things are working well and you are happy with your code. Entering the last week, all you have left is to refactor your code and add some small final changes. However, in this process, things suddenly <em>stop</em> working. What happened, and what do you do? Some change you did while refactoring probably messed something up, but you cannot undo everything you have changed, can you? This is just one case where <em>version control</em> would be useful. Giving you the option to “go back in time” in your code.</p>
 <div class="figure align-default" id="phd-final">
 <a class="reference internal image-reference" href="../../../_images/phd_final.gif"><img alt="../../../_images/phd_final.gif" src="../../../_images/phd_final.gif" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Source: Taken from <a class="reference external" href="http://phdcomics.com/comics/archive_print.php?comicid=1531">www.phdcomics.com</a>. Created by Jorge Cham</span><a class="headerlink" href="#phd-final" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Source: Taken from <a class="reference external" href="http://phdcomics.com/comics/archive_print.php?comicid=1531">www.phdcomics.com</a>. Created by Jorge Cham</span><a class="headerlink" href="#phd-final" title="Permalink to this image">¶</a></p>
 </div>
 <p>Today we will discuss version control systems (VCS), and <em>Git</em>, a tool to automate version control. Simply put, VCS is a crucial tool for any software developer, and the bigger a project you are working on, the more important it is.</p>
 <p>The main idea of VCS is very simple, we make regular “backups” of our code at different times, enabling us to look at how the code looked earlier, or in extreme cases, revert the whole codebase to an earlier time. There are many tools for automatic backup of your machine, and many tools have it built in. Dropbox for example has checkpoints of your files built in, which can be very helpful at times. The tools we will discuss today however, are especially built for software development.</p>
@@ -838,18 +848,18 @@ const thebe_selector_output = ".output, .cell_output"
 <p>A VCS is any framework that allows you to keep track of your project over time, and stores revisions. The simplest form is a local one, where the entire file history is stored locally on your computer or network.</p>
 <div class="figure align-default" id="local-vcs">
 <a class="reference internal image-reference" href="../../../_images/local_vcs.png"><img alt="local vcs" src="../../../_images/local_vcs.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">A local VCS. Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#local-vcs" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">A local VCS. Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#local-vcs" title="Permalink to this image">¶</a></p>
 </div>
 <p>There are two problems with using a local VCS. The first is that there is no backup in case of a computer crash or failure. In addition, most programmers do not work on projects by themselves, but often need to pass code back and forth, or have the options of several programmers working on the code simultaneously. A local VCS does not handle such collaboration too well.</p>
 <p>One way to deal with these challenges is to use a <em>centralized</em> server to keep track of the version history. Different users can read out specific versions of files, work on the code and upload their changes to the server. This makes collaboration between programmers easy. Admins and team leaders can also monitor the server and give people the rights to alter the code they are working on. It also has the benefit that if any persons laptop or computer crashes, it doesn’t impact the whole system, only their last changes they haven’t uploaded yet. However, the central server is still a single point of failure, and should be properly backed up—and if the server is down for a while due to maintenance or issues, working becomes hard for the team, and efficiency drops.</p>
 <div class="figure align-default" id="centralized-vcs">
 <a class="reference internal image-reference" href="../../../_images/centralized_vcs.png"><img alt="centralized vcs" src="../../../_images/centralized_vcs.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">A centralized VCS. Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#centralized-vcs" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">A centralized VCS. Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#centralized-vcs" title="Permalink to this image">¶</a></p>
 </div>
 <p>The kind of VCS we will be using is called a <em>distributed</em> VCS. Like the centralized system, we will also interact with an external server to do backups and collaboration. The difference is that with the distributed VCS, every user stores a complete copy of the entire project history. This gives additional safety, as every user has a complete backup. It also gives efficiency, as users can access the whole project history, even offline, and only have to push or pull the changes in code. The only downside is use of space, as we are storing the same information multiple places. However, most software projects take little space, and so this is of little issue.</p>
 <div class="figure align-default" id="distributed-vcs">
 <a class="reference internal image-reference" href="../../../_images/distributed_vcs.png"><img alt="distributed vcs" src="../../../_images/distributed_vcs.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">A distributed VCS. Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#distributed-vcs" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">A distributed VCS. Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#distributed-vcs" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -863,7 +873,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>When you work with Git, you will edit and work with your files as normal. At regular intervals however, you make <em>commits</em>. These commits are “snapshots” of your project files that will be stored in the projects history. Over time you get a long chain of these commits. When looking at your project through your normal file tracker or text editor, you only see your current version of the software. To store the history, Git creates a <em>hidden</em> <code class="docutils literal notranslate"><span class="pre">.git</span></code>-directory. You should ignore this hidden directory and all its files, and never access or edit them manually, as this will mostly break your version control. If you want to look at or access older commits, you do some simple git-commands.</p>
 <div class="figure align-default" id="snapshot-filestream">
 <a class="reference internal image-reference" href="../../../_images/snapshot_filestream.png"><img alt="snapshot filestream" src="../../../_images/snapshot_filestream.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#snapshot-filestream" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#snapshot-filestream" title="Permalink to this image">¶</a></p>
 </div>
 <p>The entire project, including the project history stored in the .git folder, is referred to as a <em>repository</em>. Typically, we create a new repository for each new software project we do.</p>
 <p>A <em>commit</em> typically includes all changes to your project files since your last commit. This includes edits to files, but also creation and deletion of files. If you delete a file from your project, older commits will still contain that file. Thus, when making new commits, we only ever <em>add</em> things to our project, we never remove it. What happens in git, stays in git. In addition, each commit is named after a hash of the complete project history thus far, which makes the project history tamper proof. If you go in and try to change the history, the hashes will no longer match.</p>
@@ -921,7 +931,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>An alternative is to make it through Github. In which case, you just go onto Github. Click the <code class="docutils literal notranslate"><span class="pre">+</span></code> sign and choose “New Repository”. You will come to a page that looks like the following:</p>
 <div class="figure align-default" id="repo-creation">
 <a class="reference internal image-reference" href="../../../_images/repo_creation.png"><img alt="repo creation" src="../../../_images/repo_creation.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Creating a repository at GitHub</span><a class="headerlink" href="#repo-creation" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Creating a repository at GitHub</span><a class="headerlink" href="#repo-creation" title="Permalink to this image">¶</a></p>
 </div>
 <p>Here we need to enter the name of the project, and an optional short description. We can choose to make our repo public, in which case it can be accessed by everyone online (or everyone with a UiO user for <a class="reference external" href="http://github.uio.no">github.uio.no</a>), or private, in case only the people we explicitly give access can see it. If you want to get more out of your regular GitHub account you can apply for a <a class="reference external" href="https://help.github.com/articles/applying-for-a-student-developer-pack/">student develop pack</a>.</p>
 <p>Finally we can add a README, a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> and a license. For now we do want the README, as it makes things practical. We don’t use the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> for now, we will talk about it later. We also leave the license blank.</p>
@@ -937,7 +947,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>When you want to include new files into your project history through a commit, you first have to <em>add</em> them, this is also known as “staging” the files or changes. When you do a commit command, all staged changes are now added to the project history.</p>
 <div class="figure align-default" id="three-states">
 <a class="reference internal image-reference" href="../../../_images/three_states.png"><img alt="repo creation" src="../../../_images/three_states.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#three-states" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#three-states" title="Permalink to this image">¶</a></p>
 </div>
 <p>We can at any time check the current status of the git repository by running</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
@@ -1068,7 +1078,7 @@ open and interactive window and show you the <code class="docutils literal notra
 <p>Pushing is important, because it is what ensures there is an external backup of your project. If you only do commits, and no pushing, and your computer is lost or broken, there goes all your hard work. If you have committed <em>and</em> pushed it, then you have a backup you can clone to a different machine. In addition, if you are sharing your code with others, then they will only get the changes you have made once you have pushed it. Because of these two things, we push often. You don’t have to push after every single commit, but it is a good habit to push at least at the end of every coding session.</p>
 <div class="figure align-default" id="in-case-of-fire">
 <a class="reference internal image-reference" href="../../../_images/in_case_of_fire.png"><img alt="in case of fire" src="../../../_images/in_case_of_fire.png" style="width: 250px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">A common joke in the Git world. Getting your work to safety requires first a commit to store your last changes, and then a push to get your newest commits to the external sever</span><a class="headerlink" href="#in-case-of-fire" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">A common joke in the Git world. Getting your work to safety requires first a commit to store your last changes, and then a push to get your newest commits to the external sever</span><a class="headerlink" href="#in-case-of-fire" title="Permalink to this image">¶</a></p>
 </div>
 <p>Pulling is not as much used if you are working on software alone, as it is used for copying changes others have contributed to a repository down to your local machine. But say for instance you are collaborating on a project with a friend, and your friend pushes a new piece of code you want to work on. Then you would do a</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
@@ -1098,7 +1108,7 @@ open and interactive window and show you the <code class="docutils literal notra
 <p>When you clone somebody else’s repository, you can make local changes to it, but you won’t be able to push any of those changes back to their online repository. This makes sense, it wouldn’t work very well sharing code openly, if anybody could start messing with that code. However, you can instead link your local repository to a new public repository which you own. We call this process <em>forking</em>, and it works quite well. If you find some openly available software project you want to build on or modify in some way, you just make your own personal fork of it. Github makes it very easy to fork any repository, if you are logged in and looking at a repository, there is a “Fork” button, which automatically creates a new repository on your user from the other one, which you can then clone down to your local machine.</p>
 <div class="figure align-default" id="forking">
 <a class="reference internal image-reference" href="../../../_images/github_forking.png"><img alt="forking" src="../../../_images/github_forking.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">You can easily Fork existing projects to build on, extend or modifying existing code</span><a class="headerlink" href="#forking" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">You can easily Fork existing projects to build on, extend or modifying existing code</span><a class="headerlink" href="#forking" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="git-branching">
@@ -1118,7 +1128,7 @@ open and interactive window and show you the <code class="docutils literal notra
 <p>Let’s say we make one called <code class="docutils literal notranslate"><span class="pre">testing</span></code> for example. The situation is now as shown below:</p>
 <div class="figure align-default" id="making-a-branch">
 <a class="reference internal image-reference" href="../../../_images/making_a_branch.png"><img alt="making a branch" src="../../../_images/making_a_branch.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#making-a-branch" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#making-a-branch" title="Permalink to this image">¶</a></p>
 </div>
 <p>Note that our original branch is called <em>master</em> (although it should actually be called <a class="reference external" href="https://github.com/github/renaming">main</a>). When we start a new repo it only has the master branch. The new branch is called testing, and “HEAD” is where we are currently at. Because the HEAD is at master, if we make a new commit, it will be entered into the master branch, not the testing branch. If we instead want to change the testing branch, we have to move the head with</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">&lt;</span><span class="n">branch_name</span><span class="o">&gt;</span>
@@ -1127,12 +1137,12 @@ open and interactive window and show you the <code class="docutils literal notra
 <p>Note that branches can diverge in commits, this is sort of the whole point of branches. We can then jump between the branches using <code class="docutils literal notranslate"><span class="pre">checkout</span></code> as needed.</p>
 <div class="figure align-default" id="branch">
 <a class="reference internal image-reference" href="../../../_images/branching.png"><img alt="branch" src="../../../_images/branching.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#branch" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#branch" title="Permalink to this image">¶</a></p>
 </div>
 <p>Say we have made a branch to develop a cool new feature without disrupting the master branch others are also working on. Once we are happy with our code, we need to <em>merge</em> our branch back into the master branch.</p>
 <div class="figure align-default" id="merge">
 <a class="reference internal image-reference" href="../../../_images/merging.png"><img alt="merge" src="../../../_images/merging.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#merge" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Source: Chacon &amp; Straub, ProGit (2014)</span><a class="headerlink" href="#merge" title="Permalink to this image">¶</a></p>
 </div>
 <p>To merge branches we want to be on the branch we want to keep (typically the master branch), and do the command</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">merge</span> <span class="o">&lt;</span><span class="n">branch_name</span><span class="o">&gt;</span>
@@ -1175,7 +1185,7 @@ open and interactive window and show you the <code class="docutils literal notra
 <p>The bigger a software project, the more important good commits and messages are. For assignments in this course, they are probably not that important, but we are trying to learn good practices, and so you should strive to make at least decent commits.</p>
 <div class="figure align-default" id="xdcd-git">
 <a class="reference internal image-reference" href="../../../_images/xkcd1296_commit_messages.png"><img alt="xdcd-git" src="../../../_images/xkcd1296_commit_messages.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Source: <a class="reference external" href="https://xkcd.com/1296/">XKCD #1296</a></span><a class="headerlink" href="#xdcd-git" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Source: <a class="reference external" href="https://xkcd.com/1296/">XKCD #1296</a></span><a class="headerlink" href="#xdcd-git" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -1225,17 +1235,17 @@ open and interactive window and show you the <code class="docutils literal notra
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../python/more_oop.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../python/functional_programming.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">More on Object-Oriented Programming</p>
+            <p class="prev-next-title">Functional programming in python</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../testing_codestyle/testing_codestyle.html" title="next page">
+    <a class='right-next' id="next-link" href="../python_development/python_development.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Testing and Code style</p>
+        <p class="prev-next-title">Python development</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

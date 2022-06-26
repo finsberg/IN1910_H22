@@ -200,16 +200,21 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/classes_methods_decorators.html">
-     Creating classes in Python
+    <a class="reference internal" href="../python/oop_methods.html">
+     Methods in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/more_oop.html">
-     More on Object-Oriented Programming
+    <a class="reference internal" href="../python/oop_concepts.html">
+     Designing Object-Oriented Programs
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/functional_programming.html">
+   Functional programming in python
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../git/version_control_with_git.html">
@@ -217,8 +222,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="testing_codestyle.html">
-   Testing and Code style
+  <a class="reference internal" href="python_development.html">
+   Python development
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -239,6 +244,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="type_annotations.html">
      Type annotations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="debugging.html">
+     Debugging in python
     </a>
    </li>
   </ul>
@@ -414,11 +424,11 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../../../_sources/docs/lectures/testing_codestyle/codestyle_and_docstrings.ipynb"><button type="button"
+            href="../../../_sources/docs/lectures/python_development/codestyle_and_docstrings.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/docs/lectures/testing_codestyle/codestyle_and_docstrings.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/docs/lectures/python_development/codestyle_and_docstrings.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -435,7 +445,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons sourcebuttons">
         
         <a class="issues-button"
-            href="https://github.com/finsberg/IN1910_H22/issues/new?title=Issue%20on%20page%20%2Fdocs/lectures/testing_codestyle/codestyle_and_docstrings.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/finsberg/IN1910_H22/issues/new?title=Issue%20on%20page%20%2Fdocs/lectures/python_development/codestyle_and_docstrings.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -456,14 +466,14 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/finsberg/IN1910_H22/gh-pages?urlpath=tree/_sources/docs/lectures/testing_codestyle/codestyle_and_docstrings.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/finsberg/IN1910_H22/gh-pages?urlpath=tree/_sources/docs/lectures/python_development/codestyle_and_docstrings.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        <a class="jupyterhub-button" href="https://hub2.jupyterhub.uio.no/hub/user-redirect/git-pull?repo=https://github.com/finsberg/IN1910_H22&urlpath=tree/IN1910_H22/_sources/docs/lectures/testing_codestyle/codestyle_and_docstrings.md&branch=gh-pages"><button type="button"
+        <a class="jupyterhub-button" href="https://hub2.jupyterhub.uio.no/hub/user-redirect/git-pull?repo=https://github.com/finsberg/IN1910_H22&urlpath=tree/IN1910_H22/_sources/docs/lectures/python_development/codestyle_and_docstrings.md&branch=gh-pages"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../../../_static/images/logo_jupyterhub.svg"
@@ -1559,13 +1569,9 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [20],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">vector</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;vector&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This module contains a class for representing 3-dimensional cartesian
+vectors. We made this module in L6 as an example of Object-Oriented
+programming.
 </pre></div>
 </div>
 </div>
@@ -1580,13 +1586,10 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [21],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">u</span> <span class="o">=</span> <span class="n">vector</span><span class="o">.</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">help</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">unit</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method unit in module vector:
 
-<span class="ne">NameError</span>: name &#39;vector&#39; is not defined
+unit() method of vector.Vector3D instance
+    Return a unit vector with the same orientation.
 </pre></div>
 </div>
 </div>
@@ -1659,7 +1662,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docs/lectures/testing_codestyle"
+            path: "./docs/lectures/python_development"
         },
         predefinedOutput: true
     }

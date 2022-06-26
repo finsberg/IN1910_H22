@@ -1,0 +1,884 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debugging in python &#8212; IN1910 - Programming with Scientific Applications</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="C++" href="../cpp/cpp.html" />
+    <link rel="prev" title="Type annotations" href="type_annotations.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IN1910 - Programming with Scientific Applications</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../README.html">
+   IN1910 – Programming with Scientific Applications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  General information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/overview.html">
+   Overview of lectures and exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/curriculum.html">
+   Curriculum
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/motivation.html">
+   The motivation behind IN1910
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/exam.html">
+   Project Work, Grading and Exam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../info/help.html">
+   Getting help or giving feedback
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Setting up your computer for IN1910
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/setup.html">
+   Installation instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/cpp_compiler.html">
+   Installing a C++ compiler
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lecture videos
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../videos/videos_H21.html">
+   Lecture videos from H21
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../videos/videos_H20.html">
+   Lecture videos from H20
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../videos/videos_H19.html">
+   Lecture videos from H19
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/python_intro.html">
+   A quick Python refresher
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python/python_oop.html">
+   Object-oriented programming in Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/intro_to_oop.html">
+     Introduction to Object-Oriented Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/oop_methods.html">
+     Methods in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/oop_concepts.html">
+     Designing Object-Oriented Programs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/functional_programming.html">
+   Functional programming in python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../git/version_control_with_git.html">
+   Version Control with Git
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="python_development.html">
+   Python development
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="writing_functioning_code.html">
+     Writing Reliable Software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="codestyle_and_docstrings.html">
+     Code Style and Documentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="type_annotations.html">
+     Type annotations
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Debugging in python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cpp/cpp.html">
+   C++
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/intro_to_cpp.html">
+     An introduction to C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/arrays_and_pointers.html">
+     Arrays, Memory and Pointers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/oop_in_cpp.html">
+     Object-oriented Programming in C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/dynamic_allocation.html">
+     More on pointers and arrays and dynamic allocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/cpptools.html">
+     C++ tips and tricks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/arraylist.html">
+     Dynamic Arrays, aka, Array Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/linked_lists.html">
+     Linked Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/algorithm_analysis.html">
+     Algorithm Analysis and Big Oh Notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/linkedlists_vs_dynamicarrays.html">
+     Comparing Linked Lists and Dynamic Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cpp/sorting.html">
+     Sorting Algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../stochastic_processes/stochastic_processes.html">
+   Stochastic processes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stochastic_processes/random_number_generators.html">
+     Random Number Generators and Seeding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stochastic_processes/using_random_numbers.html">
+     Using Random Numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stochastic_processes/random_walks_and_markov_processes.html">
+     Random Walks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stochastic_processes/solving_the_1D_diffusion_equation.html">
+     Solving the 1D Diffusion Equation using Finite Differences
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stochastic_processes/markov_chains.html">
+     Markov processes and Markov chains
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../optimization/optimization.html">
+   Software optimization and parallelism
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optimization/software_optimization.html">
+     Software Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optimization/optimization_and_mixed_programming.html">
+     Optimization and Mixed Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optimization/parallel_programming.html">
+     Parallel Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../summary/course_summary.html">
+   Course Summary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <a href="https://www.uio.no/studier/emner/matnat/ifi/IN1910/h22/index.html">Course homepage at UiO</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../../../_sources/docs/lectures/python_development/debugging.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/docs/lectures/python_development/debugging.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/finsberg/IN1910_H22/issues/new?title=Issue%20on%20page%20%2Fdocs/lectures/python_development/debugging.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/finsberg/IN1910_H22/gh-pages?urlpath=tree/_sources/docs/lectures/python_development/debugging.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://hub2.jupyterhub.uio.no/hub/user-redirect/git-pull?repo=https://github.com/finsberg/IN1910_H22&urlpath=tree/IN1910_H22/_sources/docs/lectures/python_development/debugging.md&branch=gh-pages"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../../../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#print-statements-logging">
+   Print statements (logging)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-a-debugger">
+   Using a Debugger
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#post-mortem-debugging">
+     Post-mortem debugging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-a-breakpoint">
+     Adding a breakpoint
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-an-improved-debugger">
+   Using an improved Debugger
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Debugging in python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#print-statements-logging">
+   Print statements (logging)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-a-debugger">
+   Using a Debugger
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#post-mortem-debugging">
+     Post-mortem debugging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-a-breakpoint">
+     Adding a breakpoint
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-an-improved-debugger">
+   Using an improved Debugger
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="debugging-in-python">
+<h1>Debugging in python<a class="headerlink" href="#debugging-in-python" title="Permalink to this headline">¶</a></h1>
+<p>Bugs are errors or a flaw in your program that makes the program not behave as expected. Debugging is the processes of finding bugs and resolving them.</p>
+<p>Being able to quickly resolve bugs if often a skill that differentiate a senior developer from a junior developer. The senior developer has more experience and have a better understanding what might cause a bug, and would therefore know where in the code the bug most likely originates.</p>
+<p>While this might be true, it is not always the case that the senior developer knows the code base where the bug is, and therefore being able to utilize <em>debugging tricks</em> that will speed up the process of finding the bugs are often crucial.</p>
+<p>In this section we will show you have to use a debugger in python, which is often overseen by junior developers, by if you learn how to use it, it will change the way you debug programs.</p>
+<div class="section" id="print-statements-logging">
+<h2>Print statements (logging)<a class="headerlink" href="#print-statements-logging" title="Permalink to this headline">¶</a></h2>
+<p>The most basic way you can debug your code is to add a bunch of print statements everywhere that will print the state of the program. That way, you are more likely to find the source of the bug more easily.</p>
+<p>There are several drawbacks with this. First of all, the amount of information that is printed might be huge, and therefore being able to filter out the relevant information might be tricky.</p>
+<p>Another drawback is that, if you manage to track down the bug, you will end up with a lot of print statements all over your code which you will need to remove.
+However, having the print statements there is also kind of nice in case you encounter a bug in the future.</p>
+<p>This is of course a very typical situation, and the way you solve this is be implementing a logger, e.g using the <a class="reference external" href="https://docs.python.org/3/library/logging.html">python built in logging module</a>.</p>
+<p>When you have a logger you will create a print statement which also contain a logging level. The logging level will typically be <code class="docutils literal notranslate"><span class="pre">WARNING</span></code> which is stuff you really want to know (for example something unexpected happened in your program), <code class="docutils literal notranslate"><span class="pre">INFO</span></code> which is the normal output that should be printed by default and <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> which will print detailed information which is relevant when tracking down bugs.</p>
+<p>When you run you program you will also specify the logging level which allow you to get more or less information depending on what you want to do.</p>
+</div>
+<div class="section" id="using-a-debugger">
+<h2>Using a Debugger<a class="headerlink" href="#using-a-debugger" title="Permalink to this headline">¶</a></h2>
+<p>Python comes with a built in debugger called <code class="docutils literal notranslate"><span class="pre">pdb</span></code> which stands fro Python DeBugger. Let us see how we can use it. To illustrate the example we will try to debug the following program which we will write in a file called <code class="docutils literal notranslate"><span class="pre">debugme.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># debugme.py</span>
+
+
+<span class="k">def</span> <span class="nf">div</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+
+
+<span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">n</span>
+
+
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="n">sub</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">div</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">solve</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If you try to run this program you will see the following error message</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python debugme.py
+Traceback (most recent call last):
+  File &quot;/Users/finsberg/local/src/IN1910/debugme.py&quot;, line 19, in &lt;module&gt;
+    main()
+  File &quot;/Users/finsberg/local/src/IN1910/debugme.py&quot;, line 15, in main
+    solve(2, 1)
+  File &quot;/Users/finsberg/local/src/IN1910/debugme.py&quot;, line 11, in solve
+    return div(x, y2)
+  File &quot;/Users/finsberg/local/src/IN1910/debugme.py&quot;, line 2, in div
+    return x / y
+ZeroDivisionError: division by zero
+</pre></div>
+</div>
+<p>Something is going on here, and we will try to use a debugger to find out.</p>
+<div class="section" id="post-mortem-debugging">
+<h3>Post-mortem debugging<a class="headerlink" href="#post-mortem-debugging" title="Permalink to this headline">¶</a></h3>
+<p>Post-mortem refers to “after death” and post-mortem debugging means that you will start the debugger after the program has crashed.</p>
+<p>We can initiate a post-mortem debugging session by running the script as follows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pdb debugme.py
+</pre></div>
+</div>
+<p>When you execute this command, python will start the debugger (before running your script), and it will throw you into a session that would look something like this</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">IN1910</span><span class="o">/</span><span class="n">debugme</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="k">def</span> <span class="nf">div</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You are now inside the debugger. To run the script you can type <code class="docutils literal notranslate"><span class="pre">c</span></code> (or <code class="docutils literal notranslate"><span class="pre">cont</span></code> or <code class="docutils literal notranslate"><span class="pre">continue</span></code>) and you will run the script.</p>
+<p>Now you will see something similar to this in your terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">c</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/finsberg/.pyenv/versions/3.10.4/lib/python3.10/pdb.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1726</span><span class="p">,</span> <span class="ow">in</span> <span class="n">main</span>
+    <span class="n">pdb</span><span class="o">.</span><span class="n">_runscript</span><span class="p">(</span><span class="n">mainpyfile</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/finsberg/.pyenv/versions/3.10.4/lib/python3.10/pdb.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1586</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_runscript</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/finsberg/.pyenv/versions/3.10.4/lib/python3.10/bdb.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">597</span><span class="p">,</span> <span class="ow">in</span> <span class="n">run</span>
+    <span class="n">exec</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="nb">globals</span><span class="p">,</span> <span class="nb">locals</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/finsberg/local/src/IN1910/debugme.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">19</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">main</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/finsberg/local/src/IN1910/debugme.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">15</span><span class="p">,</span> <span class="ow">in</span> <span class="n">main</span>
+    <span class="n">solve</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/finsberg/local/src/IN1910/debugme.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">11</span><span class="p">,</span> <span class="ow">in</span> <span class="n">solve</span>
+    <span class="k">return</span> <span class="n">div</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/Users/finsberg/local/src/IN1910/debugme.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="n">div</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
+<span class="n">Uncaught</span> <span class="n">exception</span><span class="o">.</span> <span class="n">Entering</span> <span class="n">post</span> <span class="n">mortem</span> <span class="n">debugging</span>
+<span class="n">Running</span> <span class="s1">&#39;cont&#39;</span> <span class="ow">or</span> <span class="s1">&#39;step&#39;</span> <span class="n">will</span> <span class="n">restart</span> <span class="n">the</span> <span class="n">program</span>
+<span class="o">&gt;</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">IN1910</span><span class="o">/</span><span class="n">debugme</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="n">div</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Again you are inside the debugger. Now, let us ask the debugger where we are in the program by executing the command <code class="docutils literal notranslate"><span class="pre">where</span></code> (or <code class="docutils literal notranslate"><span class="pre">bt</span></code> for backtrace)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">where</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/.</span><span class="n">pyenv</span><span class="o">/</span><span class="n">versions</span><span class="o">/</span><span class="mf">3.10.4</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">pdb</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">1726</span><span class="p">)</span><span class="n">main</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">_runscript</span><span class="p">(</span><span class="n">mainpyfile</span><span class="p">)</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/.</span><span class="n">pyenv</span><span class="o">/</span><span class="n">versions</span><span class="o">/</span><span class="mf">3.10.4</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">pdb</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">1586</span><span class="p">)</span><span class="n">_runscript</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/.</span><span class="n">pyenv</span><span class="o">/</span><span class="n">versions</span><span class="o">/</span><span class="mf">3.10.4</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">bdb</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">597</span><span class="p">)</span><span class="n">run</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">exec</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="nb">globals</span><span class="p">,</span> <span class="nb">locals</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">IN1910</span><span class="o">/</span><span class="n">debugme</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">main</span><span class="p">()</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">IN1910</span><span class="o">/</span><span class="n">debugme</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="n">main</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">solve</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">IN1910</span><span class="o">/</span><span class="n">debugme</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="n">solve</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="k">return</span> <span class="n">div</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">IN1910</span><span class="o">/</span><span class="n">debugme</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="n">div</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So we are at the the line 2 (see the 2 in <code class="docutils literal notranslate"> <span class="pre">/Users/finsberg/local/src/IN1910/debugme.py(2)div()</span></code>) where <code class="docutils literal notranslate"><span class="pre">div</span></code> function returns <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">y</span></code>.</p>
+<p>To see another view you can type <code class="docutils literal notranslate"><span class="pre">list</span></code>, which will list the code and put an arrow where you are right now</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="nb">list</span>
+  <span class="mi">1</span>     <span class="k">def</span> <span class="nf">div</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+  <span class="mi">2</span>  <span class="o">-&gt;</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+  <span class="mi">3</span>
+  <span class="mi">4</span>
+  <span class="mi">5</span>     <span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+  <span class="mi">6</span>         <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">n</span>
+  <span class="mi">7</span>
+  <span class="mi">8</span>
+  <span class="mi">9</span>     <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+ <span class="mi">10</span>         <span class="n">y2</span> <span class="o">=</span> <span class="n">sub</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+ <span class="mi">11</span>         <span class="k">return</span> <span class="n">div</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>What else can we do? Well, we can see what arguments are defined in this scope by executing the command <code class="docutils literal notranslate"><span class="pre">args</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">args</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And we see that we have two arguments defined <code class="docutils literal notranslate"><span class="pre">x</span></code> which has the value 2 and <code class="docutils literal notranslate"><span class="pre">y</span></code> which has the value <code class="docutils literal notranslate"><span class="pre">0</span></code>.  You can also explicitly type these variable and the debugger will print out the value</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">x</span>
+<span class="mi">2</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">y</span>
+<span class="mi">0</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>At this point you probably have an idea on why the program failed. You are trying to divide 2 by 0, which will result in a <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>. However where does these values come from? To answer this, we would need to go up one level to the function that called the <code class="docutils literal notranslate"><span class="pre">div</span></code> function. Looking at backtrace</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">bt</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/.</span><span class="n">pyenv</span><span class="o">/</span><span class="n">versions</span><span class="o">/</span><span class="mf">3.10.4</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">pdb</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">1726</span><span class="p">)</span><span class="n">main</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">_runscript</span><span class="p">(</span><span class="n">mainpyfile</span><span class="p">)</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/.</span><span class="n">pyenv</span><span class="o">/</span><span class="n">versions</span><span class="o">/</span><span class="mf">3.10.4</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">pdb</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">1586</span><span class="p">)</span><span class="n">_runscript</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/.</span><span class="n">pyenv</span><span class="o">/</span><span class="n">versions</span><span class="o">/</span><span class="mf">3.10.4</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">bdb</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">597</span><span class="p">)</span><span class="n">run</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">exec</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="nb">globals</span><span class="p">,</span> <span class="nb">locals</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">IN1910</span><span class="o">/</span><span class="n">debugme</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">main</span><span class="p">()</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">IN1910</span><span class="o">/</span><span class="n">debugme</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="n">main</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">solve</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">IN1910</span><span class="o">/</span><span class="n">debugme</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="n">solve</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="k">return</span> <span class="n">div</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">IN1910</span><span class="o">/</span><span class="n">debugme</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="n">div</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>we see that <code class="docutils literal notranslate"><span class="pre">div</span></code> was called from <code class="docutils literal notranslate"><span class="pre">solve</span></code>. Would it be possible to jump up one level to the <code class="docutils literal notranslate"><span class="pre">solve</span></code> method? Yes! Let us execute the <code class="docutils literal notranslate"><span class="pre">up</span></code> command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">up</span>
+<span class="o">&gt;</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">finsberg</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">IN1910</span><span class="o">/</span><span class="n">debugme</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="n">solve</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="k">return</span> <span class="n">div</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, type <code class="docutils literal notranslate"><span class="pre">list</span></code> again</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="nb">list</span>
+  <span class="mi">6</span>         <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">n</span>
+  <span class="mi">7</span>
+  <span class="mi">8</span>
+  <span class="mi">9</span>     <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+ <span class="mi">10</span>         <span class="n">y2</span> <span class="o">=</span> <span class="n">sub</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+ <span class="mi">11</span>  <span class="o">-&gt;</span>     <span class="k">return</span> <span class="n">div</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+ <span class="mi">12</span>
+ <span class="mi">13</span>
+ <span class="mi">14</span>     <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+ <span class="mi">15</span>         <span class="n">solve</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+ <span class="mi">16</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and we see that the arrow has now moved to the <code class="docutils literal notranslate"><span class="pre">solve</span></code> method. Let’s look at the arguments</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">args</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and we see that <code class="docutils literal notranslate"><span class="pre">y</span></code> is 1. However if we type <code class="docutils literal notranslate"><span class="pre">y2</span></code> we see that it is zero</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">y2</span>
+<span class="mi">0</span>
+</pre></div>
+</div>
+<p>Anther useful command is <code class="docutils literal notranslate"><span class="pre">interact</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">interact</span>
+<span class="o">*</span><span class="n">interactive</span><span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>which will start and interactive python session.</p>
+<p>Finally to exit the debugger you hit <code class="docutils literal notranslate"><span class="pre">q</span></code>, <code class="docutils literal notranslate"><span class="pre">quit</span></code> or <code class="docutils literal notranslate"><span class="pre">Ctrl+D</span></code>.</p>
+<p>This was just a taste of what you can do with a debugger. Executing the command <code class="docutils literal notranslate"><span class="pre">help</span></code> will show you all the commands you have available in the debugger.</p>
+</div>
+<div class="section" id="adding-a-breakpoint">
+<h3>Adding a breakpoint<a class="headerlink" href="#adding-a-breakpoint" title="Permalink to this headline">¶</a></h3>
+<p>If you know where in the program you want to start the debugger, you can add something called a breakpoint. For example let us add a breakpoint inside the <code class="docutils literal notranslate"><span class="pre">sub</span></code> method by modifying the code as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="nb">breakpoint</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">n</span>
+</pre></div>
+</div>
+<p>Now you can run python in a normal way (i.e without the <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">pdb</span></code> flag)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python debugme.py
+&gt; /Users/finsberg/local/src/IN1910/debugme.py(7)sub()
+-&gt; return x - n
+(Pdb)
+</pre></div>
+</div>
+<p>We see that it started the debugger at the point where we set the breakpoint. Again you move around and print the arguments and variables.</p>
+</div>
+</div>
+<div class="section" id="using-an-improved-debugger">
+<h2>Using an improved Debugger<a class="headerlink" href="#using-an-improved-debugger" title="Permalink to this headline">¶</a></h2>
+<p>The built in debugger in python is very basic. Therefore, it might be a good idea to upgrade the debugger to a more developer friendly debugger. My recommendation is to use <code class="docutils literal notranslate"><span class="pre">pdb++</span></code>. If you install this debugger</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pdbpp</span>
+</pre></div>
+</div>
+<p>python will use this debugger by default. This will add syntax highlighting and tab completion to your debugger which is much nicer to work with.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "finsberg/IN1910_H22",
+            ref: "gh-pages",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/lectures/python_development"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="type_annotations.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Type annotations</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../cpp/cpp.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">C++</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jonas van den Brink, Henrik Finsberg, Kristian G. Hustad, and Joakim Sundnes<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

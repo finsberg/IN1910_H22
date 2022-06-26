@@ -200,16 +200,21 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/classes_methods_decorators.html">
-     Creating classes in Python
+    <a class="reference internal" href="../python/oop_methods.html">
+     Methods in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/more_oop.html">
-     More on Object-Oriented Programming
+    <a class="reference internal" href="../python/oop_concepts.html">
+     Designing Object-Oriented Programs
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/functional_programming.html">
+   Functional programming in python
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../git/version_control_with_git.html">
@@ -217,8 +222,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../testing_codestyle/testing_codestyle.html">
-   Testing and Code style
+  <a class="reference internal" href="../python_development/python_development.html">
+   Python development
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -227,18 +232,23 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/writing_functioning_code.html">
+    <a class="reference internal" href="../python_development/writing_functioning_code.html">
      Writing Reliable Software
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/codestyle_and_docstrings.html">
+    <a class="reference internal" href="../python_development/codestyle_and_docstrings.html">
      Code Style and Documentation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/type_annotations.html">
+    <a class="reference internal" href="../python_development/type_annotations.html">
      Type annotations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_development/debugging.html">
+     Debugging in python
     </a>
    </li>
   </ul>
@@ -1076,7 +1086,7 @@ It would be convenient if we could store the ODE results in a file. We can do th
 </div>
 <div class="figure align-default" id="solve-ode">
 <a class="reference internal image-reference" href="../../../_images/solving_ode_example.png"><img alt="../../../_images/solving_ode_example.png" src="../../../_images/solving_ode_example.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Plot from ODE solve</span><a class="headerlink" href="#solve-ode" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Plot from ODE solve</span><a class="headerlink" href="#solve-ode" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -1176,10 +1186,10 @@ It would be convenient if we could store the ODE results in a file. We can do th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Id of x in main before call:         140379351040368
-Id of x inside function before stmt: 140379351040368
-Id of x inside function after stmt:  140379351040528
-Id of x in main after  call:         140379351040368
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Id of x in main before call:         139886941667696
+Id of x inside function before stmt: 139886941667696
+Id of x inside function after stmt:  139886941667856
+Id of x in main after  call:         139886941667696
 </pre></div>
 </div>
 </div>
@@ -1232,10 +1242,10 @@ Id of x in main after  call:         140379351040368
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Outside function, before: 140378455557440
-Inside function, before:  140378455557440
-Inside function, after:   140378455557440
-Outside function, after : 140378455557440
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Outside function, before: 139886047811904
+Inside function, before:  139886047811904
+Inside function, after:   139886047811904
+Outside function, after : 139886047811904
 </pre></div>
 </div>
 </div>
@@ -1596,7 +1606,7 @@ None
 <p>Whereas <code class="docutils literal notranslate"><span class="pre">b</span></code> is more or less just an alias, or alternative name, for <code class="docutils literal notranslate"><span class="pre">a</span></code>, the pointer <code class="docutils literal notranslate"><span class="pre">y</span></code> is more of a variable in its own right, that contains a value with the address to <code class="docutils literal notranslate"><span class="pre">x</span></code>. For one, we can create a pointer variable that doesn’t point at anything, which we do in <code class="docutils literal notranslate"><span class="pre">z</span></code>, recall that this is not possible for a reference.</p>
 <div class="figure align-default" id="ref-vs-pointer">
 <a class="reference internal image-reference" href="../../../_images/ref_vs_pointer.png"><img alt="../../../_images/ref_vs_pointer.png" src="../../../_images/ref_vs_pointer.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">A reference variable is an alias for another variable, while a pointer is a variable that stores a memory address as a value, and can thus point at something.</span><a class="headerlink" href="#ref-vs-pointer" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">A reference variable is an alias for another variable, while a pointer is a variable that stores a memory address as a value, and can thus point at something.</span><a class="headerlink" href="#ref-vs-pointer" title="Permalink to this image">¶</a></p>
 </div>
 <p>Because a reference is just an alias, we can use a reference variable as though it was the actual object we want to change, we could now for example do:</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>

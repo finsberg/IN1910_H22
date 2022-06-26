@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Code Style and Documentation" href="codestyle_and_docstrings.html" />
-    <link rel="prev" title="Testing and Code style" href="testing_codestyle.html" />
+    <link rel="prev" title="Python development" href="python_development.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -200,16 +200,21 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/classes_methods_decorators.html">
-     Creating classes in Python
+    <a class="reference internal" href="../python/oop_methods.html">
+     Methods in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/more_oop.html">
-     More on Object-Oriented Programming
+    <a class="reference internal" href="../python/oop_concepts.html">
+     Designing Object-Oriented Programs
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/functional_programming.html">
+   Functional programming in python
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../git/version_control_with_git.html">
@@ -217,8 +222,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="testing_codestyle.html">
-   Testing and Code style
+  <a class="reference internal" href="python_development.html">
+   Python development
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -239,6 +244,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="type_annotations.html">
      Type annotations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="debugging.html">
+     Debugging in python
     </a>
    </li>
   </ul>
@@ -414,11 +424,11 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../../../_sources/docs/lectures/testing_codestyle/writing_functioning_code.ipynb"><button type="button"
+            href="../../../_sources/docs/lectures/python_development/writing_functioning_code.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/docs/lectures/testing_codestyle/writing_functioning_code.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/docs/lectures/python_development/writing_functioning_code.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -435,7 +445,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons sourcebuttons">
         
         <a class="issues-button"
-            href="https://github.com/finsberg/IN1910_H22/issues/new?title=Issue%20on%20page%20%2Fdocs/lectures/testing_codestyle/writing_functioning_code.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/finsberg/IN1910_H22/issues/new?title=Issue%20on%20page%20%2Fdocs/lectures/python_development/writing_functioning_code.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -456,14 +466,14 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/finsberg/IN1910_H22/gh-pages?urlpath=tree/_sources/docs/lectures/testing_codestyle/writing_functioning_code.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/finsberg/IN1910_H22/gh-pages?urlpath=tree/_sources/docs/lectures/python_development/writing_functioning_code.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        <a class="jupyterhub-button" href="https://hub2.jupyterhub.uio.no/hub/user-redirect/git-pull?repo=https://github.com/finsberg/IN1910_H22&urlpath=tree/IN1910_H22/_sources/docs/lectures/testing_codestyle/writing_functioning_code.md&branch=gh-pages"><button type="button"
+        <a class="jupyterhub-button" href="https://hub2.jupyterhub.uio.no/hub/user-redirect/git-pull?repo=https://github.com/finsberg/IN1910_H22&urlpath=tree/IN1910_H22/_sources/docs/lectures/python_development/writing_functioning_code.md&branch=gh-pages"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../../../_static/images/logo_jupyterhub.svg"
@@ -622,20 +632,18 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#test-coverage">
      Test coverage
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#avoiding-confirmation-bias">
-       Avoiding Confirmation Bias
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#let-s-end-on-some-humor">
-       Let’s end on some humor
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#avoiding-confirmation-bias">
+     Avoiding Confirmation Bias
+    </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exit-codes">
+   Exit codes
+  </a>
  </li>
 </ul>
 
@@ -792,20 +800,18 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#test-coverage">
      Test coverage
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#avoiding-confirmation-bias">
-       Avoiding Confirmation Bias
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#let-s-end-on-some-humor">
-       Let’s end on some humor
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#avoiding-confirmation-bias">
+     Avoiding Confirmation Bias
+    </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exit-codes">
+   Exit codes
+  </a>
  </li>
 </ul>
 
@@ -1082,9 +1088,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p>So we know what these simple computations <em>should</em> be. What we do now is implement a unit test to check if this is actually the case for our code.</p>
 <p>First, we want to check that <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">+</span> <span class="pre">v</span></code> gives us the expected values. To check this we use assertions. We can write this test out as follows:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vector</span> <span class="kn">import</span> <span class="n">Vector3D</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vector</span> <span class="kn">import</span> <span class="n">Vector3D</span>
 
 
 <span class="k">def</span> <span class="nf">test_add</span><span class="p">():</span>
@@ -1095,20 +1099,6 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="k">assert</span> <span class="n">w</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span>
     <span class="k">assert</span> <span class="n">w</span><span class="o">.</span><span class="n">z</span> <span class="o">==</span> <span class="mi">3</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">vector</span> <span class="kn">import</span> <span class="n">Vector3D</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">test_add</span><span class="p">():</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;vector&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>In this test we create two vectors and add them together like we would when using the class normally. Then we check the result using <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">w.z</span> <span class="pre">==</span> <span class="pre">3</span></code>. If these pass, meaning the results are as expected, the test passes (we don’t need to return true or anything like that). If they fail, the test fails.</p>
 <p>Because this function’s name starts with <code class="docutils literal notranslate"><span class="pre">test_</span></code>, it will automatically be found an run by pytest. You can run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> from the command line by writing</p>
@@ -1167,29 +1157,13 @@ In which case it looks for all tests in the current folder and any sub-folders. 
 <p>The test fails because <code class="docutils literal notranslate"><span class="pre">w.y</span></code> would become 2, because of the bug, but we assert it to be 1. Note that the error message points to which line the error occurs(<code class="docutils literal notranslate"><span class="pre">&gt;assert</span> <span class="pre">w.y</span> <span class="pre">==</span> <span class="pre">1</span></code>), and explains what the wrongfully assertion is(<code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">==</span> <span class="pre">1</span></code>).</p>
 <p>The statement <code class="docutils literal notranslate"><span class="pre">assert</span></code> effectively asserts that two variables are equal, i.e., that <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></code> is true. In this case, we checked each component separately. However, we could also try <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">w</span> <span class="pre">==</span> <span class="pre">Vector3D(2,</span> <span class="pre">1,</span> <span class="pre">3)</span></code>, but this would fail. This is because we are comparing custom objects, and when comparing custom objects, Python defaults to comparing their location in memory. Because we are comparing two different objects, this would therefore fail by default.</p>
 <p>To make vectors comparable by their values, we need to add a <code class="docutils literal notranslate"><span class="pre">__eq__</span></code> special method to our <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code> method, when we check for equality by doing <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">==</span> <span class="pre">v</span></code>, this is equivalent to calling <code class="docutils literal notranslate"><span class="pre">u.__eq__(v)</span></code>, so our method should return a True or a False.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="n">same_x</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-12</span>
         <span class="n">same_y</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-12</span>
         <span class="n">same_z</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-12</span>
         <span class="k">return</span> <span class="n">same_x</span> <span class="ow">and</span> <span class="n">same_y</span> <span class="ow">and</span> <span class="n">same_z</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">same_x</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-12</span>
-
-<span class="ne">NameError</span>: name &#39;Vector3D&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>In stead of asserting that the numbers are equal, we instead check that the two numbers are close, by checking that the absolute value of their difference is less that some tolerance (here <span class="math notranslate nohighlight">\(10^{-12}\)</span>).</p>
 <p>When testing for equality of floating point numbers, you should always check that numbers are close in stead of strict equality. The reason is that floating point operations can lead to round off errors which can be seen in the following example</p>
@@ -1208,7 +1182,7 @@ In which case it looks for all tests in the current folder and any sub-folders. 
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">assert</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span> <span class="o">==</span> <span class="mf">0.2</span>
@@ -1388,9 +1362,7 @@ test_vector.py:79: Failed
 </pre></div>
 </div>
 <p>This means the last test failed, but the other 8 passed. The last test fails because we never added functionality that raises an exception for the zero-length vector case. Let us add this now.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Vector of zero length has no unit vector.&quot;</span><span class="p">)</span>
@@ -1399,20 +1371,6 @@ test_vector.py:79: Failed
         <span class="n">new_vector</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">new_vector</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">def</span> <span class="nf">unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-
-<span class="ne">NameError</span>: name &#39;Vector3D&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>And after adding this, our test passes!</p>
 </div>
@@ -1435,44 +1393,14 @@ test_vector.py:79: Failed
 <p>Another scenario that you could imagine is if you wanted to test your code against a large number of examples (say 10 or even 100 different examples). In that case you have to copy and paste the code above a lot and this would go again the DRY (Don’t Repeat Yourselves) principle.</p>
 <p>Lets have a look at some ways we can deal with this.</p>
 <p>First of all, note that if we let <code class="docutils literal notranslate"><span class="pre">arg</span> <span class="pre">=</span> <span class="pre">(1,</span> <span class="pre">2,</span> <span class="pre">0)</span></code>, we can create a new vector as follows</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arg</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">arg</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">arg</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">arg</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">arg</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">arg</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;Vector3D&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
 <p>In fact, this is a good opportunity to show the unpacking operator in python. In this case we can actually do the following</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arg</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [17],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">arg</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;Vector3D&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">*</span></code> is called an unpacking operator so that <code class="docutils literal notranslate"><span class="pre">*arg</span></code> unpacks the list so that <code class="docutils literal notranslate"><span class="pre">Vector3D(*arg)</span></code> is identical to <code class="docutils literal notranslate"><span class="pre">Vector3D(arg[0],</span> <span class="pre">arg[1],</span> <span class="pre">arg[2])</span></code> when <code class="docutils literal notranslate"><span class="pre">arg</span></code> is a list of three elements.</p>
 <p>Anyway, with this in mind we can now rewrite our tests as a for loop</p>
@@ -1509,7 +1437,7 @@ test_vector.py:79: Failed
 ======================== test session starts ========================
 platform darwin -- Python 3.9.2, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/henriknf/miniconda3/envs/IN1910-book/bin/python
 cachedir: .pytest_cache
-rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/testing_codestyle
+rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/python_development
 plugins: anyio-2.2.0, cov-2.12.0
 collected 12 items / 10 deselected / 2 selected
 
@@ -1542,7 +1470,7 @@ test_vector.py::test_length_parameterized[arg1-11] PASSED     [100%]
 ======================== test session starts ========================
 platform darwin -- Python 3.9.2, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/henriknf/miniconda3/envs/IN1910-book/bin/python
 cachedir: .pytest_cache
-rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/testing_codestyle
+rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/python_development
 plugins: anyio-2.2.0, cov-2.12.0
 collected 16 items / 12 deselected / 4 selected
 
@@ -1593,7 +1521,7 @@ test_vector.py::test_square[3-9] PASSED                       [100%]
 ======================== test session starts ========================
 platform darwin -- Python 3.9.2, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/henriknf/miniconda3/envs/IN1910-book/bin/python
 cachedir: .pytest_cache
-rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/testing_codestyle
+rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/python_development
 plugins: anyio-2.2.0, cov-2.12.0
 collected 16 items / 12 deselected / 4 selected
 
@@ -1632,13 +1560,13 @@ PASSED
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pytest -k test_square
 ======================== test session starts ========================
 platform darwin -- Python 3.9.2, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
-rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/testing_codestyle
+rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/python_development
 plugins: anyio-2.2.0, cov-2.12.0
 collected 16 items / 12 deselected / 4 selected
 
 test_vector.py
 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; PDB set_trace (IO-capturing turned off) &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-&gt; /Users/henriknf/local/src/IN1910_H21/book/docs/lectures/testing_codestyle/test_vector.py(94)test_square_root()
+&gt; /Users/henriknf/local/src/IN1910_H21/book/docs/lectures/python_development/test_vector.py(94)test_square_root()
 -&gt; assert square(x) == x2
 (Pdb)
 </pre></div>
@@ -1707,26 +1635,128 @@ test_vector.py
 <p>Here “Stmts” are the number of statements, i.e., code lines, in the <a class="reference external" href="http://vector.py">vector.py</a> module, “Miss” are the number of lines that are <em>not</em> covered, and “Cover” shows the line coverage as a percentage. In this case we have 77% coverage, not too shabby.</p>
 <p>There are many other tools for checking line coverage, and some editors and IDE’s lets you do it straight in the editor. CI tools can also automatically check and show coverage on your repository as a HTML “badge”. See for example the <a class="reference external" href="https://requests.readthedocs.io/en/master/">requests repository</a>.</p>
 <p>Note that coverage is a much used and referred to because it is easy to measure and can be done automatically. However, it is far from perfect. A code with 100% test coverage is not guaranteed to be error-free, and a code with 30% coverage can be better tested than one with 70%.</p>
+</div>
 <div class="section" id="avoiding-confirmation-bias">
-<h4>Avoiding Confirmation Bias<a class="headerlink" href="#avoiding-confirmation-bias" title="Permalink to this headline">¶</a></h4>
+<h3>Avoiding Confirmation Bias<a class="headerlink" href="#avoiding-confirmation-bias" title="Permalink to this headline">¶</a></h3>
 <p>Confirmation bias is the tendency of trying to verify your own hypotheses, rather than trying to <em>refute</em> them. The same tendency can be found in software developers, that they tend to write tests that prove their code works, rather than write tests that get the code to fail.</p>
 <p>It is important to remember the goal of testing is to find errors in the code and fix them. When writing tests, you should therefore try to avoid confirmation bias and write tests that are a bit vicious. Put simply, good tests try to break the code.</p>
 <p>There is a famous logic puzzle that illustrates confirmation bias well, called the <em>four-card problem</em>. See if you can solve it.</p>
 <p><strong>Problem:</strong> Suppose you have a deck of cards, where each card has a letter on one side, and a number on the other. On the table in front of you, there are 4 cards, shown below. We now propose the following hypothesis: <em>“If a card has a vowel on one side, then the other side is an even number.”</em>. Which cards are worthwhile to flip over to test this hypothesis?</p>
-<div class="figure align-default" id="four-card-problem">
-<a class="reference internal image-reference" href="../../../_images/four_card_problem.png"><img alt="four card problem" src="../../../_images/four_card_problem.png" style="width: 400px;" /></a>
+<div class="figure align-default" id="caesar">
+<a class="reference internal image-reference" href="../../../_images/four_card_problem.png"><img alt="caesar.four card problem" src="../../../_images/four_card_problem.png" style="width: 400px;" /></a>
 </div>
 <p><strong>Solution:</strong> This problem was originally formulated by psychologist Peter Cathcart Wason in 1966, who proceeded to test university students with it. They found that “A and 4” was the most common answer (46%), followed by “Just A” (32%). Both of these answers are wrong. Because A is a vowel, turning this card over is useful, because if the card on the other side is odd, then we have disproved the hypothesis. Turning over the 4 however, isn’t helpful, because the state hypothesis is “one-way”, i.e., it states “if vowel, then even number”, not vice versa. However, we <em>should</em> flip the 7 over, as this is an odd number, and so if there is a vowel on the other side, then we have disproved the hypothesis! Thus the answer is “A and 7”.</p>
 <p>Wason’s logic puzzle is a good illustration of confirmation bias. Most people when confronted with the riddle want to try to <em>prove</em> the hypothesis, when they should be trying to <em>disprove</em> it. The take away to software development is that good tests try to break code, not confirm that it works!</p>
 </div>
-<div class="section" id="let-s-end-on-some-humor">
-<h4>Let’s end on some humor<a class="headerlink" href="#let-s-end-on-some-humor" title="Permalink to this headline">¶</a></h4>
-<div class="figure align-default" id="qa-engineer">
-<a class="reference internal image-reference" href="../../../_images/qa_engineer.png"><img alt="qa engineer" src="../../../_images/qa_engineer.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">A QA engineer works with “Quality Assurance”. Put simply, their job is try to break others code</span><a class="headerlink" href="#qa-engineer" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="exit-codes">
+<span id="python-exit-codes"></span><h2>Exit codes<a class="headerlink" href="#exit-codes" title="Permalink to this headline">¶</a></h2>
+<p>In this section we will cover a topic that might seem a bit strange but will make more sense when we transition from python to C++. Imagine that you want to chain together two commands in the terminal, meaning that you for example first want to run a python program and if that completes without errors you would like to do something else. Consider the following program</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># divide.py</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You need to provide 2 arguments&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The result is </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>You need to provide 2 arguments
+</pre></div>
 </div>
 </div>
 </div>
+<p>Here we ask the user to provide two numbers and the program will print the first number divided by the second, e.g</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python divide.py 4 2
+The result is 2.0
+</pre></div>
+</div>
+<p>The execution of this program was successful because it ran without any errors. We can verify this by checking that the exit code is <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo $?
+0
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">echo</span></code> is the equivalent of <code class="docutils literal notranslate"><span class="pre">print</span></code> in python, but in <code class="docutils literal notranslate"><span class="pre">bash</span></code>, and $? just mean <em>the exit code of the last running program</em>.
+If you try to run the program with the input <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code> you will get the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python divide.py 1 0
+Traceback (most recent call last):
+  File &quot;/Users/henriknf/divide.py&quot;, line 12, in &lt;module&gt;
+    exit(main(sys.argv[1:]))
+  File &quot;/Users/henriknf/divide.py&quot;, line 8, in main
+    print(f&quot;The result is {float(args[0]) / float(args[1])}&quot;)
+ZeroDivisionError: float division by zero
+</pre></div>
+</div>
+<p>and now the exit code is <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo $?
+1
+</pre></div>
+</div>
+<p>Why is this important? If you have a big program the consist of several programs then exit codes are a way to tell the next program if the previous program failed. In <code class="docutils literal notranslate"><span class="pre">bash</span></code> you can chain together programs using <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>, for example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python divide.py 4 2 &amp;&amp; echo &#39;Success!&#39;
+The result is 2.0
+Success!
+</pre></div>
+</div>
+<p>and we we that ‘Success!’ is printed after the python program is finished. However, if you try</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python divide.py 1 0 &amp;&amp; echo &#39;Success!&#39;
+Traceback (most recent call last):
+  File &quot;/Users/henriknf/test/divide.py&quot;, line 12, in &lt;module&gt;
+    main(sys.argv[1:])
+  File &quot;/Users/henriknf/test/divide.py&quot;, line 8, in main
+    print(f&quot;The result is {float(args[0]) / float(args[1])}&quot;)
+ZeroDivisionError: float division by zero
+</pre></div>
+</div>
+<p>you will only get the error and not the message ‘Success!’. This is because <code class="docutils literal notranslate"><span class="pre">bash</span></code> knows that it should stop if it receives a non-zero exit code.</p>
+<p>Now, you may want to also abort the program if you provided to few or too many arguments to the script, but currently we get the following behavior if you for example try to provide three arguments</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python divide.py 4 2 3 &amp;&amp; echo &#39;Success!&#39;
+You need to provide 2 arguments
+Success!
+</pre></div>
+</div>
+<p>which is not what we want. One way to handle this is to return an exit code from the program to the <code class="docutils literal notranslate"><span class="pre">exit</span></code> method so that your program becomes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You need to provide 2 arguments&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The result is </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>You need to provide 2 arguments
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the value <code class="docutils literal notranslate"><span class="pre">2</span></code> (which is chosen somewhat arbitrarily) is returned and passed to the <code class="docutils literal notranslate"><span class="pre">exit</span></code> method if the number of arguments are different from two. If we try to repeat the procedure above we get</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python divide.py 4 2 3 &amp;&amp; echo &#39;Success!&#39;
+You need to provide 2 arguments
+</pre></div>
+</div>
+<p>which is what we want. Note that if you want to continue the program even if a failure occurs (such as <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>) you can just add a <code class="docutils literal notranslate"><span class="pre">try-except</span></code> block and just suppress the error that way.</p>
 </div>
 </div>
 
@@ -1743,7 +1773,7 @@ test_vector.py
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docs/lectures/testing_codestyle"
+            path: "./docs/lectures/python_development"
         },
         predefinedOutput: true
     }
@@ -1755,11 +1785,11 @@ test_vector.py
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="testing_codestyle.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="python_development.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Testing and Code style</p>
+            <p class="prev-next-title">Python development</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="codestyle_and_docstrings.html" title="next page">

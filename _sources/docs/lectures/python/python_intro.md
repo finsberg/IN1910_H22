@@ -88,7 +88,16 @@ In addition to specifying which variables are to be printed where, you can add i
 print(f"After {t:.2f} seconds, the object has traveled {s:.2f} meters")
 ```
 
-Here `:.2f` is used to specify two decimals, the letter f in this context is short for `float`. If you want a more comprehensive introduction for formatting output, you can take a look at this link from the official Python docs:
+Here `:.2f` is used to specify two decimals, the letter f in this context is short for `float`. Another neat trick, that is useful for debugging is to print the variable names, e.g
+```{code-cell} python
+print(f"t={t}")
+```
+However, with f-string there is a shorthand for this, namely
+```{code-cell} python
+print(f"{t=}")
+```
+
+If you want a more comprehensive introduction for formatting output, you can take a look at this link from the official Python docs:
 * https://docs.python.org/3/tutorial/inputoutput.html
 
 ## Rounding
@@ -137,6 +146,16 @@ Note that the keyword `as` is used rename the namespace from `numpy` to `np`. Th
 
 Regardless of which style of import you use, import statements should always appear at the top of modules. Modules are what we call separate Python-files. Placing imports at the top is an example of *code style*, which we will cover later in the course.
 
+### A note about performance
+All of the following statements are equivalent in terms of performance
+```python
+from numpy import *
+import numpy
+import numpy as np
+from numpy import sin
+```
+It might be reasonable to think that when you do `from numpy import sin` you are only importing a single function from `numpy` and thus it should take less time. However, this is not the case. The difference is what will be available for you. In all cases you will load the entire `numpy` library.
+
 
 ### Exercise 1: Your turn
 
@@ -159,11 +178,19 @@ Python scripts are typically saved with the extension `.py`. When you create a P
 ```
 python3 find_volume.py
 ```
-Depending on your installation, the command `python` might refer to Python 2 instead of 3, which is why we write `python3`.
+Depending on your installation, the command `python` might refer to Python 2 instead of 3. To check the version of python you can execute the command
+```
+python --version
+```
+If it says Python 2.X (most likely 2.7), you should make sure to use `python3`, i.e
+```
+python3 --version
+```
 
 A lot of code editors and IDEs (integrated developer environments) also let you run Python scripts directly from the editor. If you prefer to do it this way, you should also ensure you are running Python 3 instead of 2.
 
-Note also that we will assume that you are using python version 3.8 or newer in this course, so some of the code might not working even if you are using python 3. However, most of the code will be compatible with all versions of python.
+Note also that we will assume that you are using python version 3.8 or newer in this course, so some of the code might not be working even if you are using python 3. One example is the f-string trick that we showed earlier (i.e `print(f"{t=}")`). This syntax was introduced in python version 3.8
+However, most of the code will be compatible with all versions of python.
 
 As you work on bigger projects, many of the Python scripts you create are not necessarily meant to be run directly, but rather imported by other scripts. A useful code structure to include then is the following statement
 ```{code-cell} python
@@ -217,15 +244,7 @@ a = 5
 b = a
 a += 5
 
-print(f"a = {a}")
-print(f"b = {b}")
-```
-
-Here we could also use a slightly newer syntax for printing the variables
-
-```{code-cell} python
-print(f"{a=}")
-# or with space
+print(f"{a = }")
 print(f"{b = }")
 ```
 
@@ -243,11 +262,22 @@ You might expect that the copied variables (`b` and `y`) should be unchanged, si
 
 To understand this, we need to recall how Python objects work. When we are assigning `b = a` or `y = x`, we are not actually making any new *objects*. We are making new *names*, and these names will point as the same objects as the original names are pointing to. When we say `a +=` or `x.append` we are effectively telling Python to change these underlying objects.
 
-For the integer case, the underlying object cannot be changed, and so what happens is that instead Python creates a brand new integer object which `a` can now refer to. So `a` is no referring to a new integer object with a value of 10, while `b` is referring to the unchanged original integer object 5.
+For the integer case, the underlying object cannot be changed, and so what happens is that instead Python creates a brand new integer object which `a` can now refer to. So `a` is now referring to a new integer object with a value of 10, while `b` is referring to the unchanged original integer object 5.
 
 For the list case, the underlying object *can* change, as lists are mutable. When we tell Python to change `x`, the underlying list object is changed. Because `x` and `y` refer to the same object, changing `x` therefore also changes `y`.
 
+If you actually do want to keep `y` unchanged you need to make a copy of the list explicitly, i.e
+```{code-cell} python
+x = [0]
+y = x.copy()  # Make a copy
+x.append(1)
+print(f"{x = }")
+print(f"{y = }")
+```
+Now python will take the list that is assigned to `x` and copy it to a brand new location in memory.
+
 This example might feel like we are making a lot of fuss about minor details. But the differences between mutable and immutable objects and how they are treated is quite important for properly understanding Python. As we will work a lot with object-oriented programming in IN1910, it is worth spending time to properly grasp these basics.
+
 
 
 ## PythonTutor
@@ -293,7 +323,19 @@ for n in range(10):
 
 ### Defining your own functions
 
-You can define your own functions in Python using the `def` keyword. You should use the `return` keyword to specify the return-value (the output) of the function. You can choose freely how many arguments and keyword-arguments a function should have, and you can name these yourself. For any keyword argument you must specify their default value.
+You can define your own functions in Python using the `def` keyword. You should use the `return` keyword to specify the return-value (the output) of the function, and if you don't specify the return value, then the function will return a special object called None.
+
+```{code-cell} python
+def function_no_return_value():
+    ...
+
+x = function_no_return_value()
+print(x)
+```
+Noticed also that here we have used ellipsis (i.e `...`) as a placeholder for the body of the function. This is perfectly valid code, but it doesn't do anything.
+
+
+You can choose freely how many arguments and keyword-arguments a function should have, and you can name these yourself. For any keyword argument you must specify their default value.
 
 ```{code-cell} python
 def double(x, n=1):
@@ -332,14 +374,45 @@ print(f"Sum of three dice: {roll_dice(n=3)}")
 
 This function is an example of a *stochastic trial*, which means the result is random. We will talk more about stochastic code later in the course, and also cover how the computer generates random numbers such as these.
 
-
-
 ### Exercise 2: Your turn
 
 Normal dice have six sides, but many other types of dice existing. In board games for example, dice with 4, 8, 12, and 20 sides are for example very common. Therefore, extend the `roll_dice` function to also use a keyword argument `d` which represents the number of faces on the dice being thrown. The keyword should default to the standard 6 sides.
 
 ```{code-cell} python
 # Fill in your code here
+```
+
+
+### Another example of mutable and immutable data structures
+
+A general rule of thumb is that immutable data structures are preferred if you can use both. When working with mutable data structures such as lists you need to be careful. Consider the following example
+
+```{code-cell} python
+def append_one(x):
+    x += [1]
+    return x
+
+a = [0]
+b = append_one(a)
+print(f"{a = }")
+print(f"{b = }")
+```
+At the first glance you might expect the output to be
+```
+[0]
+[0, 1]
+```
+However, since you passed in a list you also changed the argument that is passed in. If you don't want to change that input argument, then you would be much better of using a `tuple`, i.e
+```{code-cell} python
+def append_one(x):
+    x += (1,)
+    return x
+
+
+a = (0,)
+b = append_one(a)
+print(f"{a = }")
+print(f"{b = }")
 ```
 
 ## For Loops
@@ -355,10 +428,11 @@ for <element> in <iterable>:
 Here, we can name the element whatever we want, for simply integer counts it is normal to use `i`, `j`, and `k`.
 
 We can loop over any iterable object in Python, for example sequences such as lists and tuples. If you want to loop over a range of numbers, you can use the built-in range function:
-```
+```python
 for i in range(10):
+    ...
 ```
-Note that in Python3, the range is different from in Python2, in that it is a iterable `range`-object, and not a list, which gives it much better memory performance. If you want a list of integers, simply cast the `range`-object to a list: `list(range(10))`
+Note that the `range`-object is not a list but it is iterable. We will see more examples of such structures later in the course (such as generators) which provides much better memory performance than lists. If you want a list of integers, simply cast the `range`-object to a list: `list(range(10))`
 
 Two helpful commands to be used in loops are `continue`, which skips to the next iteration of the loop, and `break`, which breaks the remaining iterations, for example
 
@@ -438,7 +512,7 @@ Use a list comprehension to assemble a list of all non-primes $\leq 12$. To do t
 
 ## Enumerate and zip
 
-To built-in functions that are very useful when looping over sequences are `enumerate` and `zip`. Let us show an example of these in practice.
+Two built-in functions that are very useful when looping over sequences are `enumerate` and `zip`. Let us show an example of these in practice.
 
 The function `enumerate` is useful when you want to loop over a list and also have access to the index of an element. Say for example we want to print out primes by their index, we can do that as follows
 

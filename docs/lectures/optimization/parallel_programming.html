@@ -200,16 +200,21 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/classes_methods_decorators.html">
-     Creating classes in Python
+    <a class="reference internal" href="../python/oop_methods.html">
+     Methods in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/more_oop.html">
-     More on Object-Oriented Programming
+    <a class="reference internal" href="../python/oop_concepts.html">
+     Designing Object-Oriented Programs
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/functional_programming.html">
+   Functional programming in python
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../git/version_control_with_git.html">
@@ -217,8 +222,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../testing_codestyle/testing_codestyle.html">
-   Testing and Code style
+  <a class="reference internal" href="../python_development/python_development.html">
+   Python development
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -227,18 +232,23 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/writing_functioning_code.html">
+    <a class="reference internal" href="../python_development/writing_functioning_code.html">
      Writing Reliable Software
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/codestyle_and_docstrings.html">
+    <a class="reference internal" href="../python_development/codestyle_and_docstrings.html">
      Code Style and Documentation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/type_annotations.html">
+    <a class="reference internal" href="../python_development/type_annotations.html">
      Type annotations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_development/debugging.html">
+     Debugging in python
     </a>
    </li>
   </ul>
@@ -926,15 +936,15 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Moore predicted that this trend would continue for at least 10 years. His prediction came true, and in 1975 he revised his estimate, saying it would continue to until at least 2000. The trend held true to almost 2012, and has started to slow a bit, now doubling every 2.5 or 3 years. Moore said in 2015 that he thought the trend would reach saturation, saying: “I see Moore’s law dying here in the next decade.”</p>
 <div class="figure align-default" id="figures-transistor-count-over-time-png">
 <a class="reference internal image-reference" href="../../../_images/transistor_count_over_time.png"><img alt="../../figures/transistor_count_over_time.png" src="../../../_images/transistor_count_over_time.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">Moore’s law states that the number of transistors in a dense integrated chip, such as a computer CPU, doubles roughly every second year. This Figure shows the transistor count of representative CPUs over the years from 1970 to today. Note the logarithmic y-axis, indicating exponential growth.</span><a class="headerlink" href="#figures-transistor-count-over-time-png" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 51 </span><span class="caption-text">Moore’s law states that the number of transistors in a dense integrated chip, such as a computer CPU, doubles roughly every second year. This Figure shows the transistor count of representative CPUs over the years from 1970 to today. Note the logarithmic y-axis, indicating exponential growth.</span><a class="headerlink" href="#figures-transistor-count-over-time-png" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="transistors-log">
 <a class="reference internal image-reference" href="../../../_images/transistors_log.png"><img alt="transistors_log" src="../../../_images/transistors_log.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 51 </span><span class="caption-text">The average transistor count of CPU’s over time shows a straight line when plotted in a logarithmic plot, indicating that the law holds up well.</span><a class="headerlink" href="#transistors-log" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 52 </span><span class="caption-text">The average transistor count of CPU’s over time shows a straight line when plotted in a logarithmic plot, indicating that the law holds up well.</span><a class="headerlink" href="#transistors-log" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="transistors-linear">
 <a class="reference internal image-reference" href="../../../_images/transistors_linear.png"><img alt="transistors_linear" src="../../../_images/transistors_linear.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 52 </span><span class="caption-text">A straight line in a logarithmic plot is an exponential curve. This becomes readily apparent when plotting out the same data as in Figure 2 in a linear plot.</span><a class="headerlink" href="#transistors-linear" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 53 </span><span class="caption-text">A straight line in a logarithmic plot is an exponential curve. This becomes readily apparent when plotting out the same data as in Figure 2 in a linear plot.</span><a class="headerlink" href="#transistors-linear" title="Permalink to this image">¶</a></p>
 </div>
 <p>(the abo../../figures/ are taken from <a class="reference external" href="https://ourworldindata.org/technological-progress">OurWorldinData.org</a> and used under a <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en_US">CC BY-SA 4.0</a> license.)</p>
 <p>The exponential growth seen in Moore’s law means we have seen an incredible growth in computational capacity in the last 50 years.</p>
@@ -962,7 +972,7 @@ $<span class="math notranslate nohighlight">\({\displaystyle P = C\times V^{2}\t
 <p>The figure below shows the historical trend of machine CPU’s (and GPU’s as well). The orange markers for the transistors are going in a straight line. This is a logarithmic plot, so the growth is exponential. This trend has not slowed down considerably yet. What has flattened out and plateaued is the processor frequency, shown in green. This has also flattened out the power consumption and almost the “single thread” performance. The number of cores in a CPU is on the rise however.</p>
 <div class="figure align-default" id="trend-data">
 <a class="reference internal image-reference" href="../../../_images/trend_data.png"><img alt="trend_data" src="../../../_images/trend_data.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 53 </span><span class="caption-text">Image created by <a class="reference external" href="https://www.karlrupp.net/2018/02/42-years-of-microprocessor-trend-data">Karl Rupp</a></span><a class="headerlink" href="#trend-data" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 54 </span><span class="caption-text">Image created by <a class="reference external" href="https://www.karlrupp.net/2018/02/42-years-of-microprocessor-trend-data">Karl Rupp</a></span><a class="headerlink" href="#trend-data" title="Permalink to this image">¶</a></p>
 </div>
 <p>What this means is that while single processors have gotten exponentially more powerful over the last 40 years, this trend is stopping. The increased performance we see out of new hardware emerging now is due to having multiple cores. This means, if we want to capitalize on new, faster hardware, we need to effectively use multiple CPU’s.</p>
 </div>
@@ -982,7 +992,7 @@ $<span class="math notranslate nohighlight">\({\displaystyle P = C\times V^{2}\t
 </ul>
 <div class="figure align-default" id="figures-magnus-carlsen-jpg">
 <a class="reference internal image-reference" href="../../../_images/magnus_carlsen.jpg"><img alt="../../figures/magnus_carlsen.jpg" src="../../../_images/magnus_carlsen.jpg" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 54 </span><span class="caption-text"><strong>Source:</strong> <a class="reference external" href="https://en.chessbase.com/post/carlsen-s-70-board-simul-in-hamburg/">chessbase.com</a></span><a class="headerlink" href="#figures-magnus-carlsen-jpg" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text"><strong>Source:</strong> <a class="reference external" href="https://en.chessbase.com/post/carlsen-s-70-board-simul-in-hamburg/">chessbase.com</a></span><a class="headerlink" href="#figures-magnus-carlsen-jpg" title="Permalink to this image">¶</a></p>
 </div>
 <p>We will now go through different solution strategies which illustrates different ways parallelism.</p>
 <div class="section" id="the-sequential-program">
@@ -1021,7 +1031,7 @@ $<span class="math notranslate nohighlight">\({\displaystyle P = C\times V^{2}\t
 <p>The example with Magnus Carlsen playing chess is an example where the tasks (i.e the chess games) are completely independent. However, in scientific computing one would often like to exploit multiprocessing also where there are some dependence across the cores. For example, when solving equations on a large domain, one approach is to split the domain into smaller subdomains and then solve the equation on each subdomain on a separate core. In Figure 4 we show an example with a heart geometry that has been partitioned into 6 subdomains.</p>
 <div class="figure align-default" id="parallel-mesh">
 <a class="reference internal image-reference" href="../../../_images/parallel_mesh.png"><img alt="parallel_mesh" src="../../../_images/parallel_mesh.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text">A heart geometry partitioned into 6 subdomains to exploit parallelism</span><a class="headerlink" href="#parallel-mesh" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">A heart geometry partitioned into 6 subdomains to exploit parallelism</span><a class="headerlink" href="#parallel-mesh" title="Permalink to this image">¶</a></p>
 </div>
 <p>Introducing multiprocessing with dependencies across cores, requires additional communication between the cores using a <a class="reference external" href="https://en.wikipedia.org/wiki/Message_Passing_Interface">Message Passing Interface (MPI)</a>. This is beyond the scope of this course, but this is covered in e.g <a class="reference external" href="https://www.uio.no/studier/emner/matnat/ifi/IN3200/index-eng.html">IN3200</a>.</p>
 </div>
@@ -1076,7 +1086,7 @@ $<span class="math notranslate nohighlight">\({\displaystyle P = C\times V^{2}\t
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25964951 is prime: True
-Elapsed time: 4.766899585723877
+Elapsed time: 3.9593188762664795
 </pre></div>
 </div>
 </div>
@@ -1107,7 +1117,7 @@ Elapsed time: 4.766899585723877
 24036583 is prime: True
 25964951 is prime: True
 
-Elapsed time: 5.0602569580078125
+Elapsed time: 3.9380924701690674
 </pre></div>
 </div>
 </div>
@@ -1155,7 +1165,7 @@ Elapsed time: 5.0602569580078125
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25964951 is prime: True
 
-Elapsed time: 2.9615085124969482
+Elapsed time: 2.218554973602295
 </pre></div>
 </div>
 </div>
@@ -1181,7 +1191,7 @@ Elapsed time: 2.9615085124969482
 24036583 is prime: True
 25964951 is prime: True
 
-Elapsed time: 5.0292980670928955
+Elapsed time: 4.062826633453369
 </pre></div>
 </div>
 </div>
@@ -1218,7 +1228,7 @@ Elapsed time: 5.0292980670928955
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elapsed time: 0.9140415191650391
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elapsed time: 0.678419828414917
 </pre></div>
 </div>
 </div>
@@ -1952,7 +1962,7 @@ We have removed the next 10 or so lines because they are uninteresting. In this 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe57479dba0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f1ed9cf23e0&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/parallel_programming_48_1.png" src="../../../_images/parallel_programming_48_1.png" />

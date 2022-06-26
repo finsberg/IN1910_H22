@@ -200,16 +200,21 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/classes_methods_decorators.html">
-     Creating classes in Python
+    <a class="reference internal" href="../python/oop_methods.html">
+     Methods in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/more_oop.html">
-     More on Object-Oriented Programming
+    <a class="reference internal" href="../python/oop_concepts.html">
+     Designing Object-Oriented Programs
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/functional_programming.html">
+   Functional programming in python
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../git/version_control_with_git.html">
@@ -217,8 +222,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../testing_codestyle/testing_codestyle.html">
-   Testing and Code style
+  <a class="reference internal" href="../python_development/python_development.html">
+   Python development
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -227,18 +232,23 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/writing_functioning_code.html">
+    <a class="reference internal" href="../python_development/writing_functioning_code.html">
      Writing Reliable Software
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/codestyle_and_docstrings.html">
+    <a class="reference internal" href="../python_development/codestyle_and_docstrings.html">
      Code Style and Documentation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../testing_codestyle/type_annotations.html">
+    <a class="reference internal" href="../python_development/type_annotations.html">
      Type annotations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_development/debugging.html">
+     Debugging in python
     </a>
    </li>
   </ul>
@@ -888,10 +898,10 @@ has a supplemental document called <em>A Transition Guide from Python 2.x to C++
 <p>Before we cover how to compile and run this code, let us read through and analyze what is happening in the C++ version.</p>
 <p>The program starts out with an <code class="docutils literal notranslate"><span class="pre">#include</span></code> statement, which is like importing files in Python. This statement means we are including a so-called <em>header file</em> (more on headers later). Here we include the standard header <code class="docutils literal notranslate"><span class="pre">iostream</span></code> (input-output stream). We need to include this header to be able to output our message.</p>
 <p>Next we define a function named <code class="docutils literal notranslate"><span class="pre">main</span></code>. In C++, we have to define a <em>main function</em>. Executing the program is the same as calling this function. It has to be specifically named <code class="docutils literal notranslate"><span class="pre">main</span></code>, or you will get an error. You can think of this function as the starting point of our program which will be executed if you run the program directly. In fact this is not different from python, which does this using and <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;</span></code> block instead, but is far less restrictive.</p>
-<p>We write <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main()</span></code> because our function <em>returns an integer</em> (i.e an exit code see <a class="reference internal" href="../python/more_oop.html#python-exit-codes"><span class="std std-ref">Exit codes</span></a>), is named <em>main</em>, and takes no input. The contents of our function go between two curly braces (<code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">}</span></code>).</p>
+<p>We write <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main()</span></code> because our function <em>returns an integer</em> (i.e an exit code see <a class="reference internal" href="../python_development/writing_functioning_code.html#python-exit-codes"><span class="std std-ref">Exit codes</span></a>), is named <em>main</em>, and takes no input. The contents of our function go between two curly braces (<code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">}</span></code>).</p>
 <div class="figure align-default" id="function-declaration">
 <a class="reference internal image-reference" href="../../../_images/function_declaration.png"><img alt="function_declaration" src="../../../_images/function_declaration.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Declaring the <em>main</em> function of a C++ program</span><a class="headerlink" href="#function-declaration" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Declaring the <em>main</em> function of a C++ program</span><a class="headerlink" href="#function-declaration" title="Permalink to this image">¶</a></p>
 </div>
 <p>Inside our main function, we do two things:</p>
 <ol class="simple">

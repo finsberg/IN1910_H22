@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="C++" href="../cpp/cpp.html" />
+    <link rel="next" title="Debugging in python" href="debugging.html" />
     <link rel="prev" title="Code Style and Documentation" href="codestyle_and_docstrings.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -198,16 +198,21 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/classes_methods_decorators.html">
-     Creating classes in Python
+    <a class="reference internal" href="../python/oop_methods.html">
+     Methods in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/more_oop.html">
-     More on Object-Oriented Programming
+    <a class="reference internal" href="../python/oop_concepts.html">
+     Designing Object-Oriented Programs
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python/functional_programming.html">
+   Functional programming in python
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../git/version_control_with_git.html">
@@ -215,8 +220,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="testing_codestyle.html">
-   Testing and Code style
+  <a class="reference internal" href="python_development.html">
+   Python development
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -237,6 +242,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Type annotations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="debugging.html">
+     Debugging in python
     </a>
    </li>
   </ul>
@@ -412,11 +422,11 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
-            href="../../../_sources/docs/lectures/testing_codestyle/type_annotations.ipynb"><button type="button"
+            href="../../../_sources/docs/lectures/python_development/type_annotations.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/docs/lectures/testing_codestyle/type_annotations.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/docs/lectures/python_development/type_annotations.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -433,7 +443,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons sourcebuttons">
         
         <a class="issues-button"
-            href="https://github.com/finsberg/IN1910_H22/issues/new?title=Issue%20on%20page%20%2Fdocs/lectures/testing_codestyle/type_annotations.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/finsberg/IN1910_H22/issues/new?title=Issue%20on%20page%20%2Fdocs/lectures/python_development/type_annotations.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -454,14 +464,14 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/finsberg/IN1910_H22/gh-pages?urlpath=tree/_sources/docs/lectures/testing_codestyle/type_annotations.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/finsberg/IN1910_H22/gh-pages?urlpath=tree/_sources/docs/lectures/python_development/type_annotations.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        <a class="jupyterhub-button" href="https://hub2.jupyterhub.uio.no/hub/user-redirect/git-pull?repo=https://github.com/finsberg/IN1910_H22&urlpath=tree/IN1910_H22/_sources/docs/lectures/testing_codestyle/type_annotations.md&branch=gh-pages"><button type="button"
+        <a class="jupyterhub-button" href="https://hub2.jupyterhub.uio.no/hub/user-redirect/git-pull?repo=https://github.com/finsberg/IN1910_H22&urlpath=tree/IN1910_H22/_sources/docs/lectures/python_development/type_annotations.md&branch=gh-pages"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="../../../_static/images/logo_jupyterhub.svg"
@@ -532,6 +542,11 @@ const thebe_selector_output = ".output, .cell_output"
    </code>
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#want-to-learn-more">
+   Want to learn more?
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -597,6 +612,11 @@ const thebe_selector_output = ".output, .cell_output"
      mypy
     </span>
    </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#want-to-learn-more">
+   Want to learn more?
   </a>
  </li>
 </ul>
@@ -866,7 +886,7 @@ Hello Henrik from Oslo
 </ul>
 <div class="figure align-default" id="tab-completion">
 <a class="reference internal image-reference" href="../../../_images/tab_completion.png"><img alt="../../../_images/tab_completion.png" src="../../../_images/tab_completion.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">By providing type annotations, editors can provide a better user experience by showing methods and attributes by typing <code class="docutils literal notranslate"><span class="pre">.</span></code></span><a class="headerlink" href="#tab-completion" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">By providing type annotations, editors can provide a better user experience by showing methods and attributes by typing <code class="docutils literal notranslate"><span class="pre">.</span></code></span><a class="headerlink" href="#tab-completion" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p><em>Static type checking</em> - When we add type annotations to our python code we can use something called a static type checker to verify that all types are correctly passed between functions. Later in the course, when we will introduce C++, you will see that type checking is something that a compiler will do for us. A static type checker can actually catch a lot of bugs that normally would require a lot of unit test.</p></li>
@@ -1032,6 +1052,10 @@ Found 1 error in 1 file (checked 1 source file)
 </div>
 <p>If you don’t understand the bug, please come an ask me in the lecture and I will be happy to explain it.</p>
 </div>
+<div class="section" id="want-to-learn-more">
+<h2>Want to learn more?<a class="headerlink" href="#want-to-learn-more" title="Permalink to this headline">¶</a></h2>
+<p>Check out the <a class="reference external" href="https://realpython.com/python-type-checking/">Python type checking guide from realpython.com</a>.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1047,7 +1071,7 @@ Found 1 error in 1 file (checked 1 source file)
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docs/lectures/testing_codestyle"
+            path: "./docs/lectures/python_development"
         },
         predefinedOutput: true
     }
@@ -1066,10 +1090,10 @@ Found 1 error in 1 file (checked 1 source file)
             <p class="prev-next-title">Code Style and Documentation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../cpp/cpp.html" title="next page">
+    <a class='right-next' id="next-link" href="debugging.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">C++</p>
+        <p class="prev-next-title">Debugging in python</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

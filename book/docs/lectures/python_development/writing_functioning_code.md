@@ -234,8 +234,6 @@ We have now covered how we can use both assert statements, and raising exception
 Because of their benefits, asserts should be used to test for conditions that should never happen. We use them mostly as an aid when developing the code. For any error that we expect to possibly happen during normal use of the software should instead raise exceptions, which will be much better for the end user due to the better information and handling possibilities.
 
 
-
-
 ## Testing
 
 So far we have talked about how to get the program to fail in a controlled manner. Now we turn to how to *test* code. When writing larger pieces of software, we will make mistakes, 100 % guaranteed. Tests let us catch these errors before the software is used for something important.
@@ -294,7 +292,7 @@ So we know what these simple computations *should* be. What we do now is impleme
 
 First, we want to check that `u + v` gives us the expected values. To check this we use assertions. We can write this test out as follows:
 
-```{code-cell} python
+```python
 from vector import Vector3D
 
 
@@ -376,7 +374,7 @@ To make vectors comparable by their values, we need to add a `__eq__` special me
 
 
 
-```{code-cell} python
+```python
 class Vector3D(Vector3D):
     def __eq__(self, other):
         same_x = abs(self.x - other.x) < 1e-12
@@ -561,7 +559,7 @@ test_vector.py:79: Failed
 ```
 This means the last test failed, but the other 8 passed. The last test fails because we never added functionality that raises an exception for the zero-length vector case. Let us add this now.
 
-```{code-cell} python
+```python
 class Vector3D(Vector3D):
     def unit(self):
         if self.length == 0:
@@ -594,12 +592,12 @@ Another scenario that you could imagine is if you wanted to test your code again
 Lets have a look at some ways we can deal with this.
 
 First of all, note that if we let `arg = (1, 2, 0)`, we can create a new vector as follows
-```{code-cell} python
+```python
 arg = (1, 2, 0)
 u = Vector3D(arg[0], arg[1], arg[2])
 ```
 In fact, this is a good opportunity to show the unpacking operator in python. In this case we can actually do the following
-```{code-cell} python
+```python
 arg = (1, 2, 0)
 u = Vector3D(*arg)
 ```
@@ -636,7 +634,7 @@ $ python -m pytest -k test_length_parameterized -v
 ======================== test session starts ========================
 platform darwin -- Python 3.9.2, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/henriknf/miniconda3/envs/IN1910-book/bin/python
 cachedir: .pytest_cache
-rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/testing_codestyle
+rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/python_development
 plugins: anyio-2.2.0, cov-2.12.0
 collected 12 items / 10 deselected / 2 selected
 
@@ -668,7 +666,7 @@ $ python -m pytest -k test_square -v
 ======================== test session starts ========================
 platform darwin -- Python 3.9.2, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/henriknf/miniconda3/envs/IN1910-book/bin/python
 cachedir: .pytest_cache
-rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/testing_codestyle
+rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/python_development
 plugins: anyio-2.2.0, cov-2.12.0
 collected 16 items / 12 deselected / 4 selected
 
@@ -720,7 +718,7 @@ $ python -m pytest -k test_square -sv
 ======================== test session starts ========================
 platform darwin -- Python 3.9.2, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /Users/henriknf/miniconda3/envs/IN1910-book/bin/python
 cachedir: .pytest_cache
-rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/testing_codestyle
+rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/python_development
 plugins: anyio-2.2.0, cov-2.12.0
 collected 16 items / 12 deselected / 4 selected
 
@@ -755,13 +753,13 @@ Running pytest now will drop you into a debug shell
 $ python -m pytest -k test_square
 ======================== test session starts ========================
 platform darwin -- Python 3.9.2, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
-rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/testing_codestyle
+rootdir: /Users/henriknf/local/src/IN1910/IN1910_dev/book/docs/lectures/python_development
 plugins: anyio-2.2.0, cov-2.12.0
 collected 16 items / 12 deselected / 4 selected
 
 test_vector.py
 >>>>>>>>>>>>>> PDB set_trace (IO-capturing turned off) >>>>>>>>>>>>>>
-> /Users/henriknf/local/src/IN1910_H21/book/docs/lectures/testing_codestyle/test_vector.py(94)test_square_root()
+> /Users/henriknf/local/src/IN1910_H21/book/docs/lectures/python_development/test_vector.py(94)test_square_root()
 -> assert square(x) == x2
 (Pdb)
 ```
@@ -772,6 +770,11 @@ and now you have access to all the variables like you would have in a normal pyt
 :class: tip
 If you want a better debugger than the built in one (with coloring and tab completion), I recommend a debugger called `pdb++`. You can install it with `pip install pdbpp`. Once this is installed it will use it by default.
 ```
+
+
+
+
+
 
 ### Integration testing
 
@@ -789,9 +792,6 @@ A different kind of term you might come across is called "regression testing". T
 In larger software projects, regression tests are also used to fix bugs. When a bug or issue is found, the first step is often to find out how to reproduce that bug reliably. Here the developers often ask for a *minimal working example*, i.e., the least amount of code needed to cause the bug to happen. This minimal working example can be made into a test. This is extremely useful in the long run because this will become an automatic regression test. When the bug is fixed, the newly created test will pass. If the bug is ever reintroduced later, the regression test will immediately catch it.
 
 
-
-
-
 ## Agile software development
 
 [Agile software development](https://en.wikipedia.org/wiki/Agile_software_development) is a modern (2001-) set of software development methods that is seeing frequent use in the industry. It focuses tools, methods and structures that make it easier to develop software quickly and efficiently, while maintaining quality and flexibility.
@@ -800,8 +800,6 @@ In agile software development, there is a strong focus on testing, and especiall
 
 One of the main ideas of test-driven development can be summarized by:
 > Write tests first, otherwise you'll write them never
-
-
 
 
 ### Testing and Version Control
@@ -852,7 +850,7 @@ There are many other tools for checking line coverage, and some editors and IDE'
 
 Note that coverage is a much used and referred to because it is easy to measure and can be done automatically. However, it is far from perfect. A code with 100% test coverage is not guaranteed to be error-free, and a code with 30% coverage can be better tested than one with 70%.
 
-#### Avoiding Confirmation Bias
+### Avoiding Confirmation Bias
 
 Confirmation bias is the tendency of trying to verify your own hypotheses, rather than trying to *refute* them. The same tendency can be found in software developers, that they tend to write tests that prove their code works, rather than write tests that get the code to fail.
 
@@ -866,8 +864,8 @@ There is a famous logic puzzle that illustrates confirmation bias well, called t
 ```{figure} ../../figures/four_card_problem.png
 ---
 width: 400px
-name: four-card-problem
-alt: four card problem
+name: caesar
+alt: caesar.four card problem
 ---
 ```
 
@@ -875,17 +873,3 @@ alt: four card problem
 **Solution:** This problem was originally formulated by psychologist Peter Cathcart Wason in 1966, who proceeded to test university students with it. They found that "A and 4" was the most common answer (46%), followed by "Just A" (32%). Both of these answers are wrong. Because A is a vowel, turning this card over is useful, because if the card on the other side is odd, then we have disproved the hypothesis. Turning over the 4 however, isn't helpful, because the state hypothesis is "one-way", i.e., it states "if vowel, then even number", not vice versa. However, we *should* flip the 7 over, as this is an odd number, and so if there is a vowel on the other side, then we have disproved the hypothesis! Thus the answer is "A and 7".
 
 Wason's logic puzzle is a good illustration of confirmation bias. Most people when confronted with the riddle want to try to *prove* the hypothesis, when they should be trying to *disprove* it. The take away to software development is that good tests try to break code, not confirm that it works!
-
-
-
-#### Let's end on some humor
-
-
-```{figure} ../../figures/qa_engineer.png
----
-width: 400px
-name: qa-engineer
-alt: qa engineer
----
-A QA engineer works with "Quality Assurance". Put simply, their job is try to break others code
-```

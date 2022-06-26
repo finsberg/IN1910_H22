@@ -320,3 +320,8 @@ print(count_letters_in_names(names))
 ```
 
 If you don't understand the bug, please come an ask me in the lecture and I will be happy to explain it.
+
+
+## Want to learn more?
+
+Check out the [Python type checking guide from realpython.com](https://realpython.com/python-type-checking/).

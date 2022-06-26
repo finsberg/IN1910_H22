@@ -30,22 +30,21 @@ notebook_interface: "notebook"
 
 #######################################################################################
 # Launch button settings
-repository:
-  url: https://github.com/finsberg/IN1910_H22
-  path_to_book: _sources
-  branch: gh-pages
-
 launch_buttons:
   notebook_interface: "classic"
   jupyterhub_url: "https://hub2.jupyterhub.uio.no"
   binderhub_url: "https://mybinder.org"
   thebe: true
 
+repository:
+  url: https://github.com/finsberg/IN1910_H22
+  path_to_book: _sources
+  branch: gh-pages
+
 latex:
   latex_engine: "xelatex"
   latex_documents:
     targetname: book.tex
-
 
 
 sphinx:

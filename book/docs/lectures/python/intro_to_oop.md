@@ -12,18 +12,10 @@ kernelspec:
 
 # Introduction to Object-Oriented Programming
 
-In this lecture we will start looking at object-oriented programming (OOP). This is one of the major components of IN1910. In this lecture we will start to look at what OOP is, and how to program object-oriented in Python. In later lectures we will cover some more theory of object-oriented programming and also touch on it in C++.
+In this section we will start looking at object-oriented programming (OOP). This is one of the major components of IN1910. In this lecture we will start to look at what OOP is, and how to program object-oriented in Python. In later lectures we will cover some more theory of object-oriented programming and also touch on it in C++.
 
 
 ## Other references
-
-Object-oriented programming in Python is fairly well covered by *Langtangen*. Especially so in:
-* **Chapter 7: Introduction to Classes** Gives a good introduction to defining classes and Python syntax.
-* **Chapter 9: Object-Oriented Programming** Gives a better overview of theory and gives more technical examples.
-
-If you want a different introduction to OOP in Python, these two lectures from MIT Open courseware might be a good place to start
-* [Lecture 8: Object-Oriented Programming](https://youtu.be/-DP1i2ZU9gk)
-* [Lecture 9: Python Classes and Inheritance](https://www.youtube.com/watch?v=FlGjISF3l78)
 
 
 ## What is Object-Oriented Programming?
@@ -100,50 +92,24 @@ print(type(contact))
 So far we have only added the same information as the dictionary, but we could now go ahead and change how this object behaves. We could for example add a method that starts a new call to the person, so that we could do `contact.initiate_call()`, or a button to start an email to the person, and so on.
 
 
-## Attributes, Fields, Methods
-
-Classes are custom data types, and are extremely central to object-oriented programming. When you are developing object-oriented, most of your development will go into defining classes and how they interact.
-
-When defining a new class, you need to specify what data an object of that type should contain, and what functionality it has. We call these the *attributes* of the class/object, and these can be split into two main groups:
-* *fields* are pieces of data stored in the object
-* *methods* are functions we can call
-
-In Python we use the dot-syntax to access an objects attributes. For example
-
-```{code-cell} python
-x = complex(4, 3)
-
-print(x.real)
-print(x.imag)
-print(x.conjugate())
-```
-
-Here we create a `complex`-type object, which represents a complex number. We can then access its real and imaginary components using the names `x.real` and `x.imag`. These are examples of attributes of object, in this case these are `float` attributes, which in turn are examples of data fields.
-
-Last we use `x.conjugate()`, and this is also a class attribute - but in this case the attribute is callable and will behave as a function. Such attributes we call *methods* in Python. In this case the method returns the complex conjugate of the object.
-
-```{code-cell} python
-print(type(x.real))
-print(type(x.conjugate))
-```
-
-
 ## Class vs Instance
 
 When we define a class, we are defining a new data type. To actually use it, we have to define a new object of that type, we call this an *instance* of the class. In our contact-list example, the `Contact` class is the general class we defined, then we can implement specific instances of the class, one for "Lisa", one for "Frank" and so on. The class is thus the abstract *concept* of a contact, and objects are the specific cases of that type. A different example: A Nissan leaf is a given type of car, and can be represented as a class. A specific car with the license plate "EM93277" (courtesy of random.org) is an *instance* of the Nissan leaf class. The specific car is an object of the *type* Nissan leaf. In this sense, the class is like the blue-print, it specifies how objects of that type should be built and how they should behave.
 
 ### Naming Conventions
 
-According to the [PEP8](https://www.python.org/dev/peps/pep-0008/?#class-names) style-guide (more on this next week), class names should use the CapWords convention. This means every word in the class name should be capitalized, and the words should **not** be separated by underscores.
+According to the [PEP8](https://www.python.org/dev/peps/pep-0008/?#class-names) style-guide class names should use the CapWords convention (aka PascalCase). This means every word in the class name should be capitalized, and the words should **not** be separated by underscores.
 
 Some examples: `Person`, `Polynomial`, `Vector3D`, `BankAccount`, `FileReader`.
 
 Specific instances of a class however, should always be lowercase. So when we define a variable of a given class, we would write for example:
-```
+
+```python
 u = Vector3D()
 poly = Polynomial()
 acc9302100 = BankAccount()
 ```
+
 You should be strict about this rule, as it makes it much easier to differentiate the *classes* themselves (the general datatype) from instances of that class (the specific objects) in your code.
 
 
@@ -220,163 +186,6 @@ In our deck of cards example, we have specific methods the user can use to inter
 The act of hiding dirty implementation or technical details under the hood is called *encapsulation*. Encapsulation is useful for keeping code nice and tidy and user friendly. Also, it means that the details under the hood can change without issue, as long as the external interface remains the same. A mechanic can replace the engine in your car, but you will still be able to drive it as before, because the interface is the same.
 
 In some languages, like Java and C++, you can explicitly define interfaces that define what a class must contain.  These are often described as "contracts", as they state what a given class that follows that interface must contain.
-
-
-
-## Special Methods
-
-In Python, defining classes often involve implementing *special* methods, also known as *magic* methods (or dunder methods). These are methods we do not expect to call explicitly. Rather, we expect Python to call them for us as needed, depending on the situation. They are extremely useful to learn how to use, and they lead to elegant, understandable and usable code. Becoming adept at special methods is crucial if you want to make good Pythonic code.
-
-Special methods have specific names, so Python knows what to call. They all use two leading and two trailing underscores. You have already seen an example of this, the constructor: `__init__`.
-
-
-### The constructor (`__init__`)
-
-You have already seen the most important example of special methods, the constructor, or initialization special method (`__init__`). This function is called every time you define a new instance of a class.
-
-```{code-cell} python
-from math import pi
-
-
-class Sphere:
-    def __init__(self, radius):
-        self.radius = radius
-        self.area = 4 * pi * radius**2
-        self.volume = 4 * pi * radius**3 / 3
-
-
-football = Sphere(11)
-print(f"A football of radius {football.radius:.0f} cm")
-print(f"Has a surface area of {football.area:.0f} cm^2")
-print(f"And a volume of {football.volume:.0f} cm^3")
-```
-
-Once we define a new instance of the class, the `__init__`-method is called behind the scenes. As usual, the first argument is called "self", because this will be the object itself. In addition we send in any additional arguments we need to define an object of the given class. In this example we define a sphere-object, and so we send in the radius as an argument. In our constructor we then choose to store the radius as a data attribute by writing
-```{code-cell} python
-self.radius = radius
-```
-This code line might look a bit weird, but here we are defining the instance property `football.radius`, and setting the value to be the same as the function argument (`11`). In addition to storing the radius, we have chosen to also compute the area and volume of the sphere, and store these as attributes as well.
-
-
-### Printing out instances of custom classes
-
-If you attempt to call `print` on a custom object, you'll find that it doesn't produce output that is super helpful.
-
-```{code-cell} python
-print(football)
-```
-
-Reading the output we get out the type, in this case `__main__.Sphere` (main because we defined it in our main script, and didn't import it), it tells us it is an object, and then it specifies where in memory the object is stored. The object type can in many cases be useful information, but you could already get this information by using the `type()` function.
-
-To print more useful information, we can implement the string special method (`__str__`). This special method is called automatically for us when we try to turn our custom object into a string by writing `str(u)`. In addition, when we call `print(u)`, Python actually first converts the object to a string behind the scenes before printing it (unlike for example `sys.stdout.write`, where you have to do it manually). So if we implement `Football.__str__` we would get the following happening behind the scenes
-
-* `print(football)` -> `print(str(football))` -> `print(football.__str__())`
-
-This means: if we implement a `__str__` that returns a nicely formatted string, we can print our object exactly the way we want it.
-
-```{code-cell} python
-from math import pi
-
-
-class Sphere:
-    def __init__(self, radius):
-        self.radius = radius
-        self.area = 4 * pi * radius**2
-        self.volume = 4 * pi * radius**3 / 3
-
-    def __str__(self):
-        return f"Sphere({self.radius})"
-
-
-football = Sphere(11)
-print(football)
-```
-
-A different special method that is similar to the string method is the representation special method (`__repr__`). The main difference is that `__str__` is meant to be human readable, so that it works with `print()`. This means that `__str__` can be informal, and ambiguous, as long as it is somewhat informative.
-
-On the other hand we have `__repr__`, which is meant to be unambiguous and more formal. It should be a unique representation of the object so that it could be used to recreate that object later. When calling `repr(u)` we should get a string that we for example can write to a file, then later load in and execute that statement to get the object back. So `eval(repr(u))` should give `u`.
-
-The repr special method is also called when printing out elements inside a list for example, so if we write out our football inside a list, the output will be as before, despite having implemented a str-method. To fix this we would need to add a repr instead, or in addition to, the str-method.
-
-```{code-cell} python
-list_of_spheres = [Sphere(0), Sphere(5), Sphere(10)]
-print(list_of_spheres)
-```
-
-Now let us implement the `__repr__` method
-
-```{code-cell} python
-from math import pi
-
-
-class Sphere:
-    def __init__(self, radius):
-        self.radius = radius
-        self.area = 4 * pi * radius**2
-        self.volume = 4 * pi * radius**3 / 3
-
-    def __str__(self):
-        return f"Sphere({self.radius})"
-
-    def __repr__(self):
-        return str(self)
-```
-
-Here we use a quick little trick. Because we don't really want `__repr__` and `__str__` to produce any different output, we simply let `__repr__` use the string special method by writing `self(str)`. Using methods internally when defining classes is very common, and can save us a lot of hassle
-
-```{code-cell} python
-list_of_spheres = [Sphere(0), Sphere(5), Sphere(10)]
-print(list_of_spheres)
-```
-
-### Making callable objects
-
-Another important special method is the *call* method (`__call__`). If a class has an implemented call method, we can call a given object as though it were a function. This is because Python automatically will use the call-method behind the scenes. This is extremely useful when we want to create objects that represent mathematical functions.
-
-Say for example we want to make a class for quadratic functions, which can be written as
-
-$$
-f(x) = ax^2 + bx + c.
-$$
-
-Here, there a three free parameters, the coefficients $a$, $b$, and $c$. We therefore let the constructor take these in. We then implement the mathematical function itself as the call special method:
-
-```{code-cell} python
-class Quadratic:
-    def __init__(self, a, b, c):
-        self.coefficients = a, b, c
-
-    def __call__(self, x):
-        a, b, c = self.coefficients
-        return a * x**2 + b * x + c
-
-
-f = Quadratic(1, 2, 1)
-print(f(4))
-```
-
-Here, when we assign `f = Quadratic(1, 2, 1)`, we are creating a new object of the class that represents the function $f(x) = x^2 + 2x + 1$. It isn't actually a Python function, but it is *callable*. We can therefore use it as if it were a normal function and call it by writing `f(4)`. When we write this, Python interprets it behind-the-scenes as
-
-* `f(4)` -> `f.__call__(4)` -> `Quadratic.__call__(f, 4)`
-
-We can now easily create quadratic functions and use them as normal functions:
-
-```{code-cell} python
-import numpy as np
-import matplotlib.pyplot as plt
-
-f = Quadratic(1, 2, 1)
-g = Quadratic(-1, 4, 4)
-h = Quadratic(0, -2, 3)
-
-x = np.linspace(-4, 4, 101)
-plt.plot(x, f(x))
-plt.plot(x, g(x))
-plt.plot(x, h(x))
-plt.show()
-```
-
-There are several advantages to implementing these quadratic functions as actual Quadratic-objects, rather than as normal Python functions. For one, they now have a custom type, which we can check using `isinstance(f, Quadratic)`. Thus, other parts of our code can *know* that the function is a quadratic function. We can also extend the class adding plenty of useful functionality. We could for example add functionality for adding or subtracting functions, producing new Quadratic-objects. This cannot be done with normal functions. Or we could add a method for returning the derivative. If you do this week's exercises, you will get the chance to implement all of these for a general degree polynomial.
 
 
 ## Polymorphism
@@ -467,22 +276,12 @@ newton(f, x0)
 Implementing the `Derivative` class ourselves does hopefully make it more apparent how SciPy can use Newton's method without having the derivative function - it is also a good example of how OOP can be used in scientific computing.
 
 
-## More Special Methods
-
-So far, we have shown the following special methods
-* `__init__`
-* `__str__`
-* `__repr__`
-* `__call__`
-
-These are just a few of many, many possible special methods you can implement. We will look at more example in the next lecture. For a more comprehensive list and more examples, you can check out [this site](http://www.diveintopython3.net/special-method-names.html).
-
-
 ## Properties
 
-The final topic we will cover today are what we call *properties*, which is a very handy topic to know about when implementing and using your own custom classes, and we therefore go back to our example with the sphere-class
-
+Another important topic is *properties*, which is a very handy topic to know about when implementing and using your own custom classes. Consider the following class `Sphere` which is a class that takes a radius as the argument in the constructor and stores the area and volume as attributes on the instance.
 ```{code-cell} python
+pi = 3.141592653589793
+
 class Sphere:
     def __init__(self, radius):
         self.radius = radius
@@ -492,7 +291,7 @@ class Sphere:
     def __str__(self):
         return f"Sphere({self.radius})"
 ```
-
+We have also implemented a simple `__str__` method so that the sphere is printed nicely when we try to print it, see {ref}`python-oop-special-print`.
 Here we set the radius of the sphere once we create the object, and the area and volume are automatically computed. This works quite well, but it has a few issues as well. For one thing, there is nothing that prevents us from changing one of these fields directly. If we do this, the other fields do **not** change automatically
 
 
@@ -713,3 +512,146 @@ The code is now *a lot* more complex than what we started out with. And in many 
 In our final example, the user has the properties `football.radius` and `football.area` they can interact with, while the class itself stores the internal data in the fields `_radius` and `_area`. We call the first two *public* properties or variables. Here, public means that they are accessible from outside the class. The latter two variables are *private*, meaning they should only be accessed from inside the class and are not meant to be used from outside.
 
 Note that we give the private variables leading underscores in their name, which indicates they are private. In Python, there is no way to enforce private variables however, and the leading underscore is just a convention. Thus the user can go inn and change these directly: `football._radius = 9`, however, this is breaking the *convention* that one should change a private variable, and if this breaks the object, it is the users fault. Other languages, such as Java and C++ however, *do* enforce private and public variables. If you attempt to access a private variable from outside, an error is thrown.
+
+
+```{figure} ../../figures/private.jpg
+---
+width: 500px
+name: python_private
+---
+Private attributes in python are not really private.
+```
+
+(dataclasses)=
+## Dataclasses
+
+Dataclasses is a fairly new concept that was added in python 3.7. When writing a class we note that there is a lot of boilerplate code that we have to write. Consider the `Contact` class that was introduced in the beginning of this section
+
+```{code-cell} python
+class Contact:
+    def __init__(self, name, email=None, cellphone=None):
+        self.name = name
+        self.email = email
+        self.cellphone = cellphone
+
+    def __str__(self):
+        return f"Contact({name=self.name}, {email=self.email}, {cellphone=self.cellphone})"
+```
+Here we have also added a special method `__str__` which will make sure that an instance is printed nicely, see {ref}`python-oop-special-print`. We can create and instance and print it
+```{code-cell} python
+p = Contact(name="Henrik", email="henriknf@simula.no")
+print(p)
+```
+What we noticed here is that there is a lot of repetition in the code. First we need to specify the arguments in the `__init__` function, then we need to set the attributes on the instance, and finally we need to access the same attributes when we want to make a nice print function. In fact, this is a very common use case for a class in python. You simply create a class that should hold some data. Because this is a very common pattern, python actually introduced a new concept in python3.7 known as *dataclasses*  that will make the process of creating classes that should simply hold some data simpler.
+
+Before introducing dataclasses we will also add type annotations to the arguments (see {ref}`type-annotations` for more info) and methods since this is required when working with dataclasses. We can add types to the `Contact` class as follows
+
+
+```{code-cell} python
+import typing
+
+class Contact:
+    def __init__(self, name: str, email: typing.Optional[str] = None, cellphone: typing.Optional[str] = None) -> None:
+        self.name = name
+        self.email = email
+        self.cellphone = cellphone
+
+    def __str__(self) -> str:
+        return f"Contact({name=self.name}, {email=self.email}, {cellphone=self.cellphone})"
+```
+
+We are now ready to transform this class into a dataclass, and we do so by import `dataclass` from the `dataclasses` modules and add the `dataclass` decorator to the class.
+
+```{code-cell} python
+from dataclasses import dataclass
+
+@dataclass
+class Contact:
+    name: str
+    email: typing.Optional[str] = None
+    cellphone: typing.Optional[str] = None
+```
+
+We can now try to redo the example above and create an instance an print it
+```{code-cell} python
+p = Contact(name="Henrik", email="henriknf@simula.no")
+print(p)
+```
+Pretty nice, right? The two examples above are equivalent but we see that we can write less code when using dataclasses. It should noted that dataclasses are just normal classes, but with some extra syntactic sugar to make is simpler and to avoid writing too much boilerplate that. Therefore you can also perfectly add methods to this class as you would with a regular python class e.g
+
+```{code-cell} python
+from dataclasses import dataclass
+
+@dataclass
+class Contact:
+    name: str
+    email: typing.Optional[str] = None
+    cellphone: typing.Optional[str] = None
+
+    def has_email(self) -> bool:
+        return self.email is not None
+
+    def has_cellphone(self) -> bool:
+        return self.cellphone is not None
+
+    def make_phone_call(self) -> None:
+        if not self.has_cellphone():
+            print(f"Cannot call {self.name}. No phone number available")
+            return
+
+        print(f"Calling {self.name} at {self.cellphone}...")
+
+p1 = Contact(name="Henrik", email="henriknf@simula.no")
+p1.make_phone_call()
+
+p2 = Contact(name="Elon Mush", cellphone="12345678")
+p2.make_phone_call()
+```
+
+If you want to learn more about dataclasses, please check out [Dataclasses guide on realpython.com](https://realpython.com/python-data-classes/)
+
+
+(named-tuples)=
+## NamedTuple
+
+In the dataclass example above we use also obtain the same result using a `NamedTuple`. In that case the code would as follows
+```{code-cell} python
+
+
+class ContactNamedTuple(typing.NamedTuple):
+    name: str
+    email: typing.Optional[str] = None
+    cellphone: typing.Optional[str] = None
+
+    def has_email(self) -> bool:
+        return self.email is not None
+
+    def has_cellphone(self) -> bool:
+        return self.cellphone is not None
+
+    def make_phone_call(self) -> None:
+        if not self.has_cellphone():
+            print(f"Cannot call {self.name}. No phone number available")
+            return
+
+        print(f"Calling {self.name} at {self.cellphone}...")
+
+p1_named_tuple = ContactNamedTuple(name="Henrik", email="henriknf@simula.no")
+p1_named_tuple.make_phone_call()
+
+p2_named_tuple = ContactNamedTuple(name="Elon Mush", cellphone="12345678")
+p2_named_tuple.make_phone_call()
+```
+So what is the difference? The difference is that dataclasses are regular (dynamic) classes. This means that for example, assigning new attributes to the instance is allowed, i.e
+
+```{code-cell}
+p1.new_attribute = 42
+```
+
+When creating a named tuple, you are not creating a regular class, but a "fancy" tuple. As we have have seen tuples are immutable data structures which means that once you have created it, you cannot change it, and the following will raise an error
+```{code-cell}
+p1_named_tuple.new_attribute = 42
+```
+
+## NamedTuple vs Dataclass vs Regular Class?
+So which should you choose? My recommendations is to start out with a named tuple, and if you find that it doesn't work (for example if you need to set attributes dynamically), then you can upgrade to a dataclass. And again if that doesn't work, for example if you need to do something more advanced in the initializer, then you might be better of just using a regular class. Choosing a regular class also have the benefit that you don't need to import anything and use inheritance (for NamedTuple) of a class decorator (for dataclasses).

@@ -180,6 +180,7 @@ lldb
 loadtxt
 loglinear
 loglog
+loguru
 lpres
 lprun
 lrwxr
@@ -318,6 +319,7 @@ stdexcept
 Stmts
 Straub
 Stroustrup
+struclog
 struct
 Structs
 strunk

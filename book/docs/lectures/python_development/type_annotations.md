@@ -148,7 +148,6 @@ Using `None` in a union is so common that there is actually a shorthand for this
 
 ```python
 from typing import Optional
-
 from typing import Union
 
 

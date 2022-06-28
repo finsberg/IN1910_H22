@@ -32,7 +32,64 @@ This is of course a very typical situation, and the way you solve this is be imp
 
 When you have a logger you will create a print statement which also contain a logging level. The logging level will typically be `WARNING` which is stuff you really want to know (for example something unexpected happened in your program), `INFO` which is the normal output that should be printed by default and `DEBUG` which will print detailed information which is relevant when tracking down bugs.
 
-When you run you program you will also specify the logging level which allow you to get more or less information depending on what you want to do.
+When you run you program you will also specify the logging level which allow you to get more or less information depending on what you want to do. Lets look at a simple example. This first thing we need to do is to import the `logging` module and call the `basicConfig` method. This will make sure that logging is configured
+
+```{code-cell} python
+import logging
+
+logging.basicConfig()
+```
+
+Now lets create a logger
+
+```{code-cell} python
+logger = logging.getLogger(name="My fancy logger")
+```
+
+Here we create a logger and give it the name `"My fancy logger"`. Then we assign it to a variable `logger`. To print out a warning message, you can write
+```{code-cell} python
+logger.warning("This is a warning")
+```
+and a see that a warning message it printed. We also see that the string that is printed consists of the log level (`"WARNING"`), then name of the logger (`"My fancy logger"`) and the message. Now lets try to print an info message
+```{code-cell} python
+logger.info("This is an info message")
+```
+We see that nothing is printed. This is because when a logger is created, the default logging level is set to `WARNING`. To change the log level to `INFO` we call the `setLevel` method on the logger
+```{code-cell} python
+logger.setLevel(logging.INFO)
+logger.info("This is an info message")
+```
+Now we see that the info message is displayed. The warning message also still prints because warnings have higher priorities than info messages
+```{code-cell} python
+logger.warning("This is a warning")
+```
+However, debug message are not printed. To print a debug message you need to use the `debug` method.
+```{code-cell} python
+logger.debug("This is a debug message")
+```
+Again, you can change the log level to `logging.DEBUG` to also see debug messages. Here is an example where we create three different loggers with three different log levels
+
+```{code-cell} python
+logger1 = logging.getLogger(name="First logger")
+# logger1.setLevel(logging.WARNING)
+logger1.warning("This is a warning")
+logger1.info("This is an info message")
+logger1.info("This is an debugging message")
+
+logger2 = logging.getLogger(name="Second logger")
+logger2.setLevel(logging.INFO)
+logger2.warning("This is a warning")
+logger2.info("This is an info message")
+logger2.debug("This is an debugging message")
+
+logger3 = logging.getLogger(name="Third logger")
+logger3.setLevel(logging.DEBUG)
+logger3.warning("This is a warning")
+logger3.info("This is an info message")
+logger3.debug("This is an debugging message")
+```
+
+Finally, logging in python is highly configurable. You can change the way log messages are printed, as well when you want the log message to go (e.g in the terminal or in a file). The fact that the logging module is so configurable also makes it a bit difficult to use correctly. Therefore there other logging packages that tries to simplify logging in python. Some popular libraries are [`struclog`](https://www.structlog.org/en/stable/) and [`loguru`](https://github.com/Delgan/loguru)
 
 ## Using a Debugger
 
@@ -284,11 +341,11 @@ $ python debugme.py
 ```
 We see that it started the debugger at the point where we set the breakpoint. Again you move around and print the arguments and variables.
 
-## Using an improved Debugger
+## Using an improved debugger
 
 The built in debugger in python is very basic. Therefore, it might be a good idea to upgrade the debugger to a more developer friendly debugger. My recommendation is to use `pdb++`. If you install this debugger
 
 ```
 python -m pip install pdbpp
 ```
-python will use this debugger by default. This will add syntax highlighting and tab completion to your debugger which is much nicer to work with.
+python will use this debugger by default. This will add syntax highlighting and tab completion to your debugger which is much nicer to work with. Using `pdb++` in stead of `pdb` would be similar of using `IPython` instead of regular `Python`.

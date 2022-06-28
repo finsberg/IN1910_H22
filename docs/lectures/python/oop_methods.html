@@ -1077,7 +1077,7 @@ And a volume of 5575 cm^3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__main__.Sphere object at 0x7fa8954f7100&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__main__.Sphere object at 0x7f41ef47d5d0&gt;
 </pre></div>
 </div>
 </div>
@@ -1125,7 +1125,7 @@ And a volume of 5575 cm^3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;__main__.Sphere object at 0x7fa8901bff70&gt;, &lt;__main__.Sphere object at 0x7fa8901cd720&gt;, &lt;__main__.Sphere object at 0x7fa8901ce200&gt;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;__main__.Sphere object at 0x7f41ec1bed40&gt;, &lt;__main__.Sphere object at 0x7f41ec1d4970&gt;, &lt;__main__.Sphere object at 0x7f41ec1d42b0&gt;]
 </pre></div>
 </div>
 </div>
@@ -1320,40 +1320,12 @@ f(x) = ax^2 + bx + c.
 </div>
 <p>Obviously, this does not behave as we expect. We want <code class="docutils literal notranslate"><span class="pre">nr_of_rabbits</span></code> to be 3, since we created 3 rabbits. But we see that the class variable <code class="docutils literal notranslate"><span class="pre">Rabbit.nr_of_rabbits</span></code> reports 0 rabbits, and <code class="docutils literal notranslate"><span class="pre">alice.nr_of_rabbits</span></code>, which should just default to the class variable reports 1 rabbit!  What is actually happening here?</p>
 <p>When we write:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">nr_of_rabbits</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">nr_of_rabbits</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr_of_rabbits</span> <span class="o">+=</span> <span class="mi">1</span>
-
-<span class="ne">NameError</span>: name &#39;self&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>This is equivalent to writing</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">nr_of_rabbits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr_of_rabbits</span> <span class="o">+</span> <span class="mi">1</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">nr_of_rabbits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr_of_rabbits</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr_of_rabbits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr_of_rabbits</span> <span class="o">+</span> <span class="mi">1</span>
-
-<span class="ne">NameError</span>: name &#39;self&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now the right hand side is evaluated first. When creating the object, the new rabbit has no <code class="docutils literal notranslate"><span class="pre">nr_of_rabbits</span></code> instance variable, so it looks up the class variable instead, which is 0, then we add 1, giving 1 as a result.</p>
 <p>Now, this is supposed to be stored in the variable to the left of the assignment operator (<code class="docutils literal notranslate"><span class="pre">=</span></code>), but <code class="docutils literal notranslate"><span class="pre">self.nr_of_rabbits</span></code> is interpreted by Python as if we want to create this instance variable. Therefore, the new rabbit object gets its own personal <code class="docutils literal notranslate"><span class="pre">nr_of_rabbit</span></code> instance variable, and the class variable never gets updated.</p>
@@ -1571,7 +1543,7 @@ f(x) = ax^2 + bx + c.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39
-&lt;function Person.calculate_age at 0x7fa86124e830&gt;
+&lt;function Person.calculate_age at 0x7f41bb1cd990&gt;
 </pre></div>
 </div>
 </div>
@@ -1685,7 +1657,7 @@ instance data or class data (i.e. neither <code class="docutils literal notransl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;__main__.Vector3D object at 0x7fa86124a380&gt;, &lt;__main__.Vector3D object at 0x7fa86124a380&gt;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;__main__.Vector3D object at 0x7f41ef47d2a0&gt;, &lt;__main__.Vector3D object at 0x7f41ef47d2a0&gt;]
 </pre></div>
 </div>
 </div>
@@ -1733,26 +1705,10 @@ instance data or class data (i.e. neither <code class="docutils literal notransl
 <h3>Addition<a class="headerlink" href="#addition" title="Permalink to this headline">¶</a></h3>
 <p>If we want to be able to add two vectors together, we need to add a method that defines how such an operation is to be handled. We could for example define a <code class="docutils literal notranslate"><span class="pre">add</span></code> method, and write <code class="docutils literal notranslate"><span class="pre">u.add(v)</span></code> to compute <span class="math notranslate nohighlight">\(u + v\)</span>. However, this isn’t very elegant. Instead, we want to be able to write <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">+</span> <span class="pre">v</span></code> in our code. A statement like this uses the <em>binary operator</em> <code class="docutils literal notranslate"><span class="pre">+</span></code> (binary meaning it acts on two variables/objects). For any such operators in Python, there is one or more special methods associated with it. So when you write <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code> Python will automatically interpret this behind the scenes as <code class="docutils literal notranslate"><span class="pre">a.__add__(b)</span></code>. Let us implement this method.</p>
 <p>The result of adding two vectors together is a brand new vectors. Our <code class="docutils literal notranslate"><span class="pre">__add__</span></code> method therefore needs to create and return a new <code class="docutils literal notranslate"><span class="pre">Vector3D</span></code>-object. If this is confusing, imagine the following code snippet</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">w</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [31],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">u</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">w</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span>
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;Vector3D&#39; and &#39;Vector3D&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>In this case, adding <code class="docutils literal notranslate"><span class="pre">u</span></code> and <code class="docutils literal notranslate"><span class="pre">v</span></code> to define <code class="docutils literal notranslate"><span class="pre">w</span></code> shouldn’t change the values of <code class="docutils literal notranslate"><span class="pre">u</span></code> and <code class="docutils literal notranslate"><span class="pre">v</span></code>, but should instead create a <em>new vector object</em>, which we give the name <code class="docutils literal notranslate"><span class="pre">w</span></code>. For <code class="docutils literal notranslate"><span class="pre">w</span></code> to refer to a new object, it must be created somewhere, and we must do this inside <code class="docutils literal notranslate"><span class="pre">__add__</span></code>. The code therefore can look as follows</p>
 <div class="cell docutils container">
@@ -2089,7 +2045,7 @@ Is w ⊥ v? True
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [43],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [40],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span>
 
 <span class="ne">TypeError</span>: unsupported operand type(s) for *: &#39;int&#39; and &#39;Vector3D&#39;
@@ -2110,15 +2066,15 @@ Is w ⊥ v? True
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">Input In [44],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [41],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="nn">Input In [39],</span> in <span class="ni">Vector3D.__mul__</span><span class="nt">(self, other)</span>
+<span class="nn">Input In [36],</span> in <span class="ni">Vector3D.__mul__</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="sd">&quot;&quot;&quot;Interpret u*v as the dot product&quot;&quot;&quot;</span>
 <span class="ne">----&gt; </span><span class="mi">4</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
-<span class="nn">Input In [38],</span> in <span class="ni">Vector3D.dot</span><span class="nt">(self, other)</span>
+<span class="nn">Input In [35],</span> in <span class="ni">Vector3D.dot</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span>
 
@@ -2396,18 +2352,10 @@ e_3 = (0, 0, 1)
 <p>To do this we could implement them as class methods. For example as follows</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
   <span class="nd">@classmethod</span>
   <span class="k">def</span> <span class="nf">e1</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">56</span><span class="p">]</span>
-    <span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">)</span>
-                            <span class="o">^</span>
-<span class="ne">SyntaxError</span>: expected &#39;:&#39;
 </pre></div>
 </div>
 </div>
@@ -2421,13 +2369,7 @@ e_3 = (0, 0, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">Input In [57],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">e1</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="o">.</span><span class="n">e1</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span>
-
-<span class="ne">AttributeError</span>: type object &#39;Vector3D&#39; has no attribute &#39;e1&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 0, 0)
 </pre></div>
 </div>
 </div>
@@ -2435,7 +2377,7 @@ e_3 = (0, 0, 1)
 <p>Now you may wonder, what is this <code class="docutils literal notranslate"><span class="pre">cls</span></code>? You can read more about this in the section about <a class="reference internal" href="#class-methods"><span class="std std-ref">Class Methods</span></a>, but one thing you could do is to print what it is, i.e</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">):</span>
   <span class="nd">@classmethod</span>
   <span class="k">def</span> <span class="nf">e1</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cls =</span><span class="si">{</span><span class="bp">cls</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -2447,10 +2389,8 @@ e_3 = (0, 0, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">58</span><span class="p">]</span>
-    <span class="k">class</span> <span class="nc">Vector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">)</span>
-                            <span class="o">^</span>
-<span class="ne">SyntaxError</span>: expected &#39;:&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cls =&lt;class &#39;__main__.Vector3D&#39;&gt;
+Vector3D = &lt;class &#39;__main__.Vector3D&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -2674,17 +2614,17 @@ e_3 = (0, 0, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pikachu(117, 106, 82)
-Pikachu(116, 112, 85)
-Pikachu(114, 112, 83)
-Pikachu(124, 109, 82)
-Pikachu(125, 113, 72)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pikachu(121, 110, 80)
+Pikachu(122, 101, 82)
+Pikachu(118, 113, 75)
+Pikachu(123, 102, 85)
+Pikachu(117, 108, 79)
 
-Charizard(225, 181, 165)
-Charizard(225, 180, 170)
-Charizard(226, 179, 156)
-Charizard(238, 182, 156)
-Charizard(228, 188, 167)
+Charizard(225, 182, 159)
+Charizard(225, 179, 160)
+Charizard(233, 185, 165)
+Charizard(228, 190, 167)
+Charizard(227, 183, 168)
 </pre></div>
 </div>
 </div>

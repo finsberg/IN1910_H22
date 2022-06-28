@@ -276,11 +276,11 @@ print(alice.nr_of_rabbits)
 Obviously, this does not behave as we expect. We want `nr_of_rabbits` to be 3, since we created 3 rabbits. But we see that the class variable `Rabbit.nr_of_rabbits` reports 0 rabbits, and `alice.nr_of_rabbits`, which should just default to the class variable reports 1 rabbit!  What is actually happening here?
 
 When we write:
-```{code-cell} python
+```python
 self.nr_of_rabbits += 1
 ```
 This is equivalent to writing
-```{code-cell} python
+```python
 self.nr_of_rabbits = self.nr_of_rabbits + 1
 ```
 
@@ -613,7 +613,7 @@ The main goal of our `Vector3D` class is to automate vector arithmetic, so let u
 If we want to be able to add two vectors together, we need to add a method that defines how such an operation is to be handled. We could for example define a `add` method, and write `u.add(v)` to compute $u + v$. However, this isn't very elegant. Instead, we want to be able to write `u + v` in our code. A statement like this uses the *binary operator* `+` (binary meaning it acts on two variables/objects). For any such operators in Python, there is one or more special methods associated with it. So when you write `a + b` Python will automatically interpret this behind the scenes as `a.__add__(b)`. Let us implement this method.
 
 The result of adding two vectors together is a brand new vectors. Our `__add__` method therefore needs to create and return a new `Vector3D`-object. If this is confusing, imagine the following code snippet
-```{code-cell} python
+```python
 u = Vector3D(2, 0, -2)
 v = Vector3D(2, 4, 2)
 w = u + v
@@ -1103,7 +1103,7 @@ $$
 To do this we could implement them as class methods. For example as follows
 
 ```{code-cell} python
-class Vector3D(Vector3D)
+class Vector3D(Vector3D):
   @classmethod
   def e1(cls):
     return cls(1, 0, 0)
@@ -1115,7 +1115,7 @@ print(e1)
 ```
 Now you may wonder, what is this `cls`? You can read more about this in the section about {ref}`class-methods`, but one thing you could do is to print what it is, i.e
 ```{code-cell} python
-class Vector3D(Vector3D)
+class Vector3D(Vector3D):
   @classmethod
   def e1(cls):
     print(f"cls ={cls}")

@@ -525,17 +525,17 @@ Private attributes in python are not really private.
 (dataclasses)=
 ## Dataclasses
 
-Dataclasses is a fairly new concept that was added in python 3.7. When writing a class we note that there is a lot of boilerplate code that we have to write. Consider the `Contact` class that was introduced in the beginning of this section
+Dataclasses is a fairly new concept that was added in python 3.7. When writing a class we note that there is a lot of boilerplate code that we have to write. Consider the `Contact` class that was introduced in the beginning of this section (here we have changed the default values for `email` and `cellphone` from `None` to an empty string (`""`). We will see later in this section how to deal with `None`)
 
 ```{code-cell} python
 class Contact:
-    def __init__(self, name, email=None, cellphone=None):
+    def __init__(self, name, email="", cellphone=""):
         self.name = name
         self.email = email
         self.cellphone = cellphone
 
     def __str__(self):
-        return f"Contact({name=self.name}, {email=self.email}, {cellphone=self.cellphone})"
+        return f"Contact(name={self.name}, email={self.email}, cellphone={self.cellphone})"
 ```
 Here we have also added a special method `__str__` which will make sure that an instance is printed nicely, see {ref}`python-oop-special-print`. We can create and instance and print it
 ```{code-cell} python
@@ -548,16 +548,14 @@ Before introducing dataclasses we will also add type annotations to the argument
 
 
 ```{code-cell} python
-import typing
-
 class Contact:
-    def __init__(self, name: str, email: typing.Optional[str] = None, cellphone: typing.Optional[str] = None) -> None:
+    def __init__(self, name: str, email: str ="", cellphone: str ="") -> None:
         self.name = name
         self.email = email
         self.cellphone = cellphone
 
-    def __str__(self) -> str:
-        return f"Contact({name=self.name}, {email=self.email}, {cellphone=self.cellphone})"
+    def __str__(self):
+        return f"Contact(name={self.name}, email={self.email}, cellphone={self.cellphone})"
 ```
 
 We are now ready to transform this class into a dataclass, and we do so by import `dataclass` from the `dataclasses` modules and add the `dataclass` decorator to the class.
@@ -568,16 +566,54 @@ from dataclasses import dataclass
 @dataclass
 class Contact:
     name: str
-    email: typing.Optional[str] = None
-    cellphone: typing.Optional[str] = None
+    email: str = ""
+    cellphone: str = ""
 ```
 
-We can now try to redo the example above and create an instance an print it
+We can now try to redo the example above and create an instance and print it
 ```{code-cell} python
 p = Contact(name="Henrik", email="henriknf@simula.no")
 print(p)
 ```
-Pretty nice, right? The two examples above are equivalent but we see that we can write less code when using dataclasses. It should noted that dataclasses are just normal classes, but with some extra syntactic sugar to make is simpler and to avoid writing too much boilerplate that. Therefore you can also perfectly add methods to this class as you would with a regular python class e.g
+Pretty nice, right? The two examples above are equivalent but we see that we can write less code when using dataclasses. We also see that adding type hints not only improves the readability, documentation and IDE integration, but also allow us to write less code using dataclasses. Win win!
+
+Lets go back to the original `Contact` class where `email` and `cellphone` was set to `None`.
+In this case `email` and `cellphone` should be strings, but if no value is provided they should have a default value `None`. The type of such an a variable is `Optional[str]` where `Optional` is imported from the `typing` module (again see {ref}`type-annotations` for more info).
+
+```{code-cell} python
+import typing
+
+class Contact:
+    def __init__(self, name, email: typing.Optional[str] = None, cellphone: typing.Optional[str] = None) -> None:
+        self.name = name
+        self.email = email
+        self.cellphone = cellphone
+
+    def __str__(self) -> str:
+        return f"Contact(name={self.name}, email={self.email}, cellphone={self.cellphone})"
+
+p = Contact(name="Henrik", email="henriknf@simula.no")
+print(p)
+```
+
+Translating this to a dataclass would simply be
+
+```{code-cell} python
+from dataclasses import dataclass
+
+@dataclass
+class Contact:
+    name: str
+    email: typing.Optional[str] = None
+    cellphone: typing.Optional[str] = None
+
+
+p = Contact(name="Henrik", email="henriknf@simula.no")
+print(p)
+```
+
+It should noted that dataclasses are just normal classes, but with some extra syntactic sugar to make it simpler and to avoid writing too much boilerplate code.
+Therefore you can also perfectly add methods to this class as you would with a regular python class e.g
 
 ```{code-cell} python
 from dataclasses import dataclass
@@ -604,7 +640,7 @@ class Contact:
 p1 = Contact(name="Henrik", email="henriknf@simula.no")
 p1.make_phone_call()
 
-p2 = Contact(name="Elon Mush", cellphone="12345678")
+p2 = Contact(name="Elon Musk", cellphone="12345678")
 p2.make_phone_call()
 ```
 
@@ -614,7 +650,7 @@ If you want to learn more about dataclasses, please check out [Dataclasses guide
 (named-tuples)=
 ## NamedTuple
 
-In the dataclass example above we use also obtain the same result using a `NamedTuple`. In that case the code would as follows
+In the dataclass example above we could also obtain the same result using a `NamedTuple`. In that case the code would as follows
 ```{code-cell} python
 
 
@@ -639,9 +675,11 @@ class ContactNamedTuple(typing.NamedTuple):
 p1_named_tuple = ContactNamedTuple(name="Henrik", email="henriknf@simula.no")
 p1_named_tuple.make_phone_call()
 
-p2_named_tuple = ContactNamedTuple(name="Elon Mush", cellphone="12345678")
+p2_named_tuple = ContactNamedTuple(name="Elon Musk", cellphone="12345678")
 p2_named_tuple.make_phone_call()
 ```
+Notice, that here we inherit from `typing.NamedTuple` (more about inheritance later in the course).
+
 So what is the difference? The difference is that dataclasses are regular (dynamic) classes. This means that for example, assigning new attributes to the instance is allowed, i.e
 
 ```{code-cell}

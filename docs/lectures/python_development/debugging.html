@@ -519,7 +519,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-an-improved-debugger">
-   Using an improved Debugger
+   Using an improved debugger
   </a>
  </li>
 </ul>
@@ -566,7 +566,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-an-improved-debugger">
-   Using an improved Debugger
+   Using an improved debugger
   </a>
  </li>
 </ul>
@@ -592,7 +592,125 @@ const thebe_selector_output = ".output, .cell_output"
 However, having the print statements there is also kind of nice in case you encounter a bug in the future.</p>
 <p>This is of course a very typical situation, and the way you solve this is be implementing a logger, e.g using the <a class="reference external" href="https://docs.python.org/3/library/logging.html">python built in logging module</a>.</p>
 <p>When you have a logger you will create a print statement which also contain a logging level. The logging level will typically be <code class="docutils literal notranslate"><span class="pre">WARNING</span></code> which is stuff you really want to know (for example something unexpected happened in your program), <code class="docutils literal notranslate"><span class="pre">INFO</span></code> which is the normal output that should be printed by default and <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> which will print detailed information which is relevant when tracking down bugs.</p>
-<p>When you run you program you will also specify the logging level which allow you to get more or less information depending on what you want to do.</p>
+<p>When you run you program you will also specify the logging level which allow you to get more or less information depending on what you want to do. Lets look at a simple example. This first thing we need to do is to import the <code class="docutils literal notranslate"><span class="pre">logging</span></code> module and call the <code class="docutils literal notranslate"><span class="pre">basicConfig</span></code> method. This will make sure that logging is configured</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now lets create a logger</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;My fancy logger&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we create a logger and give it the name <code class="docutils literal notranslate"><span class="pre">&quot;My</span> <span class="pre">fancy</span> <span class="pre">logger&quot;</span></code>. Then we assign it to a variable <code class="docutils literal notranslate"><span class="pre">logger</span></code>. To print out a warning message, you can write</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This is a warning&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:My fancy logger:This is a warning
+</pre></div>
+</div>
+</div>
+</div>
+<p>and a see that a warning message it printed. We also see that the string that is printed consists of the log level (<code class="docutils literal notranslate"><span class="pre">&quot;WARNING&quot;</span></code>), then name of the logger (<code class="docutils literal notranslate"><span class="pre">&quot;My</span> <span class="pre">fancy</span> <span class="pre">logger&quot;</span></code>) and the message. Now lets try to print an info message</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is an info message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that nothing is printed. This is because when a logger is created, the default logging level is set to <code class="docutils literal notranslate"><span class="pre">WARNING</span></code>. To change the log level to <code class="docutils literal notranslate"><span class="pre">INFO</span></code> we call the <code class="docutils literal notranslate"><span class="pre">setLevel</span></code> method on the logger</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is an info message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:My fancy logger:This is an info message
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we see that the info message is displayed. The warning message also still prints because warnings have higher priorities than info messages</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This is a warning&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:My fancy logger:This is a warning
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, debug message are not printed. To print a debug message you need to use the <code class="docutils literal notranslate"><span class="pre">debug</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;This is a debug message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again, you can change the log level to <code class="docutils literal notranslate"><span class="pre">logging.DEBUG</span></code> to also see debug messages. Here is an example where we create three different loggers with three different log levels</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger1</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;First logger&quot;</span><span class="p">)</span>
+<span class="c1"># logger1.setLevel(logging.WARNING)</span>
+<span class="n">logger1</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This is a warning&quot;</span><span class="p">)</span>
+<span class="n">logger1</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is an info message&quot;</span><span class="p">)</span>
+<span class="n">logger1</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is an debugging message&quot;</span><span class="p">)</span>
+
+<span class="n">logger2</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Second logger&quot;</span><span class="p">)</span>
+<span class="n">logger2</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger2</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This is a warning&quot;</span><span class="p">)</span>
+<span class="n">logger2</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is an info message&quot;</span><span class="p">)</span>
+<span class="n">logger2</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;This is an debugging message&quot;</span><span class="p">)</span>
+
+<span class="n">logger3</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Third logger&quot;</span><span class="p">)</span>
+<span class="n">logger3</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logger3</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This is a warning&quot;</span><span class="p">)</span>
+<span class="n">logger3</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is an info message&quot;</span><span class="p">)</span>
+<span class="n">logger3</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;This is an debugging message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:First logger:This is a warning
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:Second logger:This is a warning
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:Second logger:This is an info message
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:Third logger:This is a warning
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:Third logger:This is an info message
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:Third logger:This is an debugging message
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, logging in python is highly configurable. You can change the way log messages are printed, as well when you want the log message to go (e.g in the terminal or in a file). The fact that the logging module is so configurable also makes it a bit difficult to use correctly. Therefore there other logging packages that tries to simplify logging in python. Some popular libraries are <a class="reference external" href="https://www.structlog.org/en/stable/"><code class="docutils literal notranslate"><span class="pre">struclog</span></code></a> and <a class="reference external" href="https://github.com/Delgan/loguru"><code class="docutils literal notranslate"><span class="pre">loguru</span></code></a></p>
 </div>
 <div class="section" id="using-a-debugger">
 <h2>Using a Debugger<a class="headerlink" href="#using-a-debugger" title="Permalink to this headline">¶</a></h2>
@@ -812,12 +930,12 @@ ZeroDivisionError: division by zero
 </div>
 </div>
 <div class="section" id="using-an-improved-debugger">
-<h2>Using an improved Debugger<a class="headerlink" href="#using-an-improved-debugger" title="Permalink to this headline">¶</a></h2>
+<h2>Using an improved debugger<a class="headerlink" href="#using-an-improved-debugger" title="Permalink to this headline">¶</a></h2>
 <p>The built in debugger in python is very basic. Therefore, it might be a good idea to upgrade the debugger to a more developer friendly debugger. My recommendation is to use <code class="docutils literal notranslate"><span class="pre">pdb++</span></code>. If you install this debugger</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pdbpp</span>
 </pre></div>
 </div>
-<p>python will use this debugger by default. This will add syntax highlighting and tab completion to your debugger which is much nicer to work with.</p>
+<p>python will use this debugger by default. This will add syntax highlighting and tab completion to your debugger which is much nicer to work with. Using <code class="docutils literal notranslate"><span class="pre">pdb++</span></code> in stead of <code class="docutils literal notranslate"><span class="pre">pdb</span></code> would be similar of using <code class="docutils literal notranslate"><span class="pre">IPython</span></code> instead of regular <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
 </div>
 </div>
 

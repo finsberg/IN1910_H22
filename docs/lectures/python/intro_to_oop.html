@@ -890,7 +890,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;C&#39;, 9), (&#39;S&#39;, 12), (&#39;H&#39;, 8), (&#39;D&#39;, 8), (&#39;H&#39;, 7)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;S&#39;, 5), (&#39;D&#39;, 6), (&#39;C&#39;, 9), (&#39;D&#39;, 3), (&#39;D&#39;, 5)]
 </pre></div>
 </div>
 </div>
@@ -1341,25 +1341,17 @@ Sphere(8.920620580763856) has an area of 1000
 </div>
 <div class="section" id="dataclasses">
 <span id="id1"></span><h2>Dataclasses<a class="headerlink" href="#dataclasses" title="Permalink to this headline">¶</a></h2>
-<p>Dataclasses is a fairly new concept that was added in python 3.7. When writing a class we note that there is a lot of boilerplate code that we have to write. Consider the <code class="docutils literal notranslate"><span class="pre">Contact</span></code> class that was introduced in the beginning of this section</p>
+<p>Dataclasses is a fairly new concept that was added in python 3.7. When writing a class we note that there is a lot of boilerplate code that we have to write. Consider the <code class="docutils literal notranslate"><span class="pre">Contact</span></code> class that was introduced in the beginning of this section (here we have changed the default values for <code class="docutils literal notranslate"><span class="pre">email</span></code> and <code class="docutils literal notranslate"><span class="pre">cellphone</span></code> from <code class="docutils literal notranslate"><span class="pre">None</span></code> to an empty string (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>). We will see later in this section how to deal with <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Contact</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cellphone</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">cellphone</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cellphone</span> <span class="o">=</span> <span class="n">cellphone</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Contact(</span><span class="si">{</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">email</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cellphone</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cellphone</span><span class="si">}</span><span class="s2">)&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Contact(</span><span class="si">{</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">email</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cellphone</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cellphone</span><span class="si">}</span><span class="s2">)&quot;</span>
-                                                                                       <span class="o">^</span>
-<span class="ne">SyntaxError</span>: f-string: expecting &#39;}&#39;
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Contact(name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, email=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="si">}</span><span class="s2">, cellphone=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cellphone</span><span class="si">}</span><span class="s2">)&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1373,7 +1365,7 @@ Sphere(8.920620580763856) has an area of 1000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__main__.Contact object at 0x7f2c9b94f070&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contact(name=Henrik, email=henriknf@simula.no, cellphone=)
 </pre></div>
 </div>
 </div>
@@ -1382,24 +1374,14 @@ Sphere(8.920620580763856) has an area of 1000
 <p>Before introducing dataclasses we will also add type annotations to the arguments (see <a class="reference internal" href="../python_development/type_annotations.html#type-annotations"><span class="std std-ref">Type annotations</span></a> for more info) and methods since this is required when working with dataclasses. We can add types to the <code class="docutils literal notranslate"><span class="pre">Contact</span></code> class as follows</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">typing</span>
-
-<span class="k">class</span> <span class="nc">Contact</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cellphone</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Contact</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">cellphone</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cellphone</span> <span class="o">=</span> <span class="n">cellphone</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Contact(</span><span class="si">{</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">email</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cellphone</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cellphone</span><span class="si">}</span><span class="s2">)&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Contact(</span><span class="si">{</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">email</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cellphone</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cellphone</span><span class="si">}</span><span class="s2">)&quot;</span>
-                                                                                       <span class="o">^</span>
-<span class="ne">SyntaxError</span>: f-string: expecting &#39;}&#39;
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Contact(name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, email=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="si">}</span><span class="s2">, cellphone=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cellphone</span><span class="si">}</span><span class="s2">)&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1412,34 +1394,13 @@ Sphere(8.920620580763856) has an area of 1000
 <span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">Contact</span><span class="p">:</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">email</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">cellphone</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [28],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nd">@dataclass</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">class</span> <span class="nc">Contact</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">email</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="nn">Input In [28],</span> in <span class="ni">Contact</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nd">@dataclass</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">class</span> <span class="nc">Contact</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="n">email</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">cellphone</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="ne">NameError</span>: name &#39;typing&#39; is not defined
+    <span class="n">email</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">cellphone</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can now try to redo the example above and create an instance an print it</p>
+<p>We can now try to redo the example above and create an instance and print it</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Contact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Henrik&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;henriknf@simula.no&quot;</span><span class="p">)</span>
@@ -1448,12 +1409,63 @@ Sphere(8.920620580763856) has an area of 1000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__main__.Contact object at 0x7f2c9ba4a2c0&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contact(name=&#39;Henrik&#39;, email=&#39;henriknf@simula.no&#39;, cellphone=&#39;&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-<p>Pretty nice, right? The two examples above are equivalent but we see that we can write less code when using dataclasses. It should noted that dataclasses are just normal classes, but with some extra syntactic sugar to make is simpler and to avoid writing too much boilerplate that. Therefore you can also perfectly add methods to this class as you would with a regular python class e.g</p>
+<p>Pretty nice, right? The two examples above are equivalent but we see that we can write less code when using dataclasses. We also see that adding type hints not only improves the readability, documentation and IDE integration, but also allow us to write less code using dataclasses. Win win!</p>
+<p>Lets go back to the original <code class="docutils literal notranslate"><span class="pre">Contact</span></code> class where <code class="docutils literal notranslate"><span class="pre">email</span></code> and <code class="docutils literal notranslate"><span class="pre">cellphone</span></code> was set to <code class="docutils literal notranslate"><span class="pre">None</span></code>.
+In this case <code class="docutils literal notranslate"><span class="pre">email</span></code> and <code class="docutils literal notranslate"><span class="pre">cellphone</span></code> should be strings, but if no value is provided they should have a default value <code class="docutils literal notranslate"><span class="pre">None</span></code>. The type of such an a variable is <code class="docutils literal notranslate"><span class="pre">Optional[str]</span></code> where <code class="docutils literal notranslate"><span class="pre">Optional</span></code> is imported from the <code class="docutils literal notranslate"><span class="pre">typing</span></code> module (again see <a class="reference internal" href="../python_development/type_annotations.html#type-annotations"><span class="std std-ref">Type annotations</span></a> for more info).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">typing</span>
+
+<span class="k">class</span> <span class="nc">Contact</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cellphone</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cellphone</span> <span class="o">=</span> <span class="n">cellphone</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Contact(name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, email=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="si">}</span><span class="s2">, cellphone=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cellphone</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Contact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Henrik&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;henriknf@simula.no&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contact(name=Henrik, email=henriknf@simula.no, cellphone=None)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Translating this to a dataclass would simply be</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Contact</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">email</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">cellphone</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Contact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Henrik&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;henriknf@simula.no&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Contact(name=&#39;Henrik&#39;, email=&#39;henriknf@simula.no&#39;, cellphone=None)
+</pre></div>
+</div>
+</div>
+</div>
+<p>It should noted that dataclasses are just normal classes, but with some extra syntactic sugar to make it simpler and to avoid writing too much boilerplate code.
+Therefore you can also perfectly add methods to this class as you would with a regular python class e.g</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
@@ -1480,30 +1492,14 @@ Sphere(8.920620580763856) has an area of 1000
 <span class="n">p1</span> <span class="o">=</span> <span class="n">Contact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Henrik&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;henriknf@simula.no&quot;</span><span class="p">)</span>
 <span class="n">p1</span><span class="o">.</span><span class="n">make_phone_call</span><span class="p">()</span>
 
-<span class="n">p2</span> <span class="o">=</span> <span class="n">Contact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Elon Mush&quot;</span><span class="p">,</span> <span class="n">cellphone</span><span class="o">=</span><span class="s2">&quot;12345678&quot;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">Contact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Elon Musk&quot;</span><span class="p">,</span> <span class="n">cellphone</span><span class="o">=</span><span class="s2">&quot;12345678&quot;</span><span class="p">)</span>
 <span class="n">p2</span><span class="o">.</span><span class="n">make_phone_call</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [30],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nd">@dataclass</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">class</span> <span class="nc">Contact</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">email</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="nn">Input In [30],</span> in <span class="ni">Contact</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nd">@dataclass</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">class</span> <span class="nc">Contact</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="n">email</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">cellphone</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="k">def</span> <span class="nf">has_email</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-
-<span class="ne">NameError</span>: name &#39;typing&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot call Henrik. No phone number available
+Calling Elon Musk at 12345678...
 </pre></div>
 </div>
 </div>
@@ -1512,7 +1508,7 @@ Sphere(8.920620580763856) has an area of 1000
 </div>
 <div class="section" id="namedtuple">
 <span id="named-tuples"></span><h2>NamedTuple<a class="headerlink" href="#namedtuple" title="Permalink to this headline">¶</a></h2>
-<p>In the dataclass example above we use also obtain the same result using a <code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code>. In that case the code would as follows</p>
+<p>In the dataclass example above we could also obtain the same result using a <code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code>. In that case the code would as follows</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ContactNamedTuple</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
@@ -1536,38 +1532,23 @@ Sphere(8.920620580763856) has an area of 1000
 <span class="n">p1_named_tuple</span> <span class="o">=</span> <span class="n">ContactNamedTuple</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Henrik&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;henriknf@simula.no&quot;</span><span class="p">)</span>
 <span class="n">p1_named_tuple</span><span class="o">.</span><span class="n">make_phone_call</span><span class="p">()</span>
 
-<span class="n">p2_named_tuple</span> <span class="o">=</span> <span class="n">ContactNamedTuple</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Elon Mush&quot;</span><span class="p">,</span> <span class="n">cellphone</span><span class="o">=</span><span class="s2">&quot;12345678&quot;</span><span class="p">)</span>
+<span class="n">p2_named_tuple</span> <span class="o">=</span> <span class="n">ContactNamedTuple</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Elon Musk&quot;</span><span class="p">,</span> <span class="n">cellphone</span><span class="o">=</span><span class="s2">&quot;12345678&quot;</span><span class="p">)</span>
 <span class="n">p2_named_tuple</span><span class="o">.</span><span class="n">make_phone_call</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [31],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">class</span> <span class="nc">ContactNamedTuple</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">email</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="ne">NameError</span>: name &#39;typing&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot call Henrik. No phone number available
+Calling Elon Musk at 12345678...
 </pre></div>
 </div>
 </div>
 </div>
+<p>Notice, that here we inherit from <code class="docutils literal notranslate"><span class="pre">typing.NamedTuple</span></code> (more about inheritance later in the course).</p>
 <p>So what is the difference? The difference is that dataclasses are regular (dynamic) classes. This means that for example, assigning new attributes to the instance is allowed, i.e</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span><span class="o">.</span><span class="n">new_attribute</span> <span class="o">=</span> <span class="mi">42</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [32],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">p1</span><span class="o">.</span><span class="n">new_attribute</span> <span class="o">=</span> <span class="mi">42</span>
-
-<span class="ne">NameError</span>: name &#39;p1&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1581,11 +1562,11 @@ Sphere(8.920620580763856) has an area of 1000
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [33],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [35],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">p1_named_tuple</span><span class="o">.</span><span class="n">new_attribute</span> <span class="o">=</span> <span class="mi">42</span>
 
-<span class="ne">NameError</span>: name &#39;p1_named_tuple&#39; is not defined
+<span class="ne">AttributeError</span>: &#39;ContactNamedTuple&#39; object has no attribute &#39;new_attribute&#39;
 </pre></div>
 </div>
 </div>
